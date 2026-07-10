@@ -529,7 +529,7 @@ tr.is-weak td{color:var(--bad-ink);}
 .progress-fill{height:100%;background:var(--accent);border-radius:999px;}
 
 /* ---- 藍圖其餘 ---- */
-.mode-pick-row{display:flex;flex-wrap:wrap;gap:.7rem .6rem;align-items:center;font-size:.92rem;}
+.mode-pick-row{display:flex;flex-wrap:wrap;gap:.7rem 1rem;align-items:center;font-size:.92rem;}   /* 橫向間距加大(.6rem→1rem,對齊 .field-row 同類「標籤+按鈕列」的既有值),按鈕靠太近 */
 .mode-pick-row button{flex:0 0 auto;}   /* 防呆:按鈕不縮、不被擠到重疊（縮放/窄寬皆穩） */
 .mode-pick-row button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent);}
 /* P4 預計考試日期 */
