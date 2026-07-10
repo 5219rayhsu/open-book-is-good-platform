@@ -382,7 +382,7 @@ function _buildExamCard(e) {
    分組依 category：升學(學測/會考)歸 shengxue,其餘歸 kaogao(國家考試)。 */
 var EXAM_GROUPS = [
   { id: 'kaogao', name: '國家考試', blurb: '社工師、律師、會計師、醫師、護理師、諮商與臨床心理師、教師資格考試 —— 考選部與教育部歷屆國家考試。' },
-  { id: 'shengxue', name: '升學', blurb: '學測、會考 —— 大考中心與國中教育會考歷屆。' }
+  { id: 'shengxue', name: '升學考試', blurb: '學測、會考 —— 大考中心與國中教育會考歷屆。' }
 ];
 function examGroup(e) { return (e.category === '升學') ? 'shengxue' : 'kaogao'; }
 function examsInGroup(gid) { return EXAMS.filter(function (e) { return examGroup(e) === gid; }); }
