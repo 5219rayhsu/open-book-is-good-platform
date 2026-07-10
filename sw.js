@@ -2,7 +2,7 @@
 /* ============================================================
    Service Worker — P0 PWA(離線可用＋可安裝)。
 
-   放在站台**根目錄**(_platform/),服務於 /sw.js → 預設 scope = /,
+   放在站台**根目錄**(即 repo 根),服務於 /sw.js → 預設 scope = /,
    同時涵蓋根 landing(/index.html)、app(/web/)與題庫(/data/)。
    (放 web/ 下 scope 只到 /web/,雖然仍能攔到 app 頁發出的 /data/ 子請求,
     但根 landing /index.html 會落在 scope 外、離線變白頁;移到根一次解決。)

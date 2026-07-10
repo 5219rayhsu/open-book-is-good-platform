@@ -63,7 +63,7 @@ python3 -m http.server 8753
 
 ## 部署到 Cloudflare Pages
 
-完整步驟見 `docs/DEPLOY_cloudflare.md`。要點：Framework preset 選 **None**、無 build command、部署根目錄指向 repo 根目錄，不再使用 `_platform` 子目錄。每個題庫檔都在 25 MiB 的單檔上限之內（目前最大約 3.5 MB）。
+完整步驟見 `docs/DEPLOY_cloudflare.md`。要點：Framework preset 選 **None**、無 build command、部署根目錄指向 repo 根目錄。每個題庫檔都在 25 MiB 的單檔上限之內（目前最大的 `data/doctor/bank.json` 約 6 MB）。
 
 ## 進度與隱私
 

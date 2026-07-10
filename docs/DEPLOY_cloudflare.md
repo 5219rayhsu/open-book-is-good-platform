@@ -27,14 +27,13 @@ open-book-is-good-platform/ ← 部署根目錄(Cloudflare Pages 的 root)
 ## 部署步驟（GUI，最簡單）
 
 1. 把 repo 根目錄推到 GitHub（本專案即 `open-book-is-good-platform`）。
-   - `index.html`、`web/`、`data/`、`_headers` 應位在 repo 根目錄。
-   - 不再使用 `_platform` 子目錄。
+   - `index.html`、`web/`、`data/`、`_headers` 應位在 repo 根目錄，沒有額外的子目錄層。
 2. Cloudflare Dashboard → Workers & Pages → Create → Pages → Connect to Git → 選該 repo。
 3. 設定：
    - **Framework preset**：`None`
    - **Root directory**：留空（使用 repo 根目錄）
    - **Build command**：留空（無 build）
-   - **Build output directory**：指向 repo 根目錄（不要填 `_platform`）
+   - **Build output directory**：留空或填 `/`（即 repo 根目錄）
 4. Deploy。完成後得到 `https://<專案>.pages.dev`。
 
 ### 或：直接上傳（不接 Git）

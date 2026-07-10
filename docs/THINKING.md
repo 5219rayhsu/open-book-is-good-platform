@@ -1,7 +1,7 @@
 # 思考（不實作）— T1 字體大小／無障礙、T2 離線終極方案
 
 > 隔夜 loop 的「思考不做」項。這裡只做評估與建議，**不動程式碼**；待使用者拍板再排進下一輪。
-> 評估基於統一站 `_platform/web/` 的實際盤點（2026-06-21）。
+> 評估基於統一站 `web/` 的實際盤點（2026-06-21）。
 
 ---
 
@@ -25,7 +25,7 @@
 - **對比稽核**：跑一次 WCAG 2.2 AA 對比檢查；暖紙底配色多數應達標，但 `--ink-faint` 小字要驗。
 - **`prefers-contrast: more`**：提供高對比覆寫（加深文字／邊線）。
 - **動效尊重**：`prefers-reduced-motion` 擴及考試切換與卡片 hover transition。
-- **建議用 `a11y-architect` agent 做一次 WCAG 2.2 audit**（Web 平台），產出待修清單。
+- **建議用 `a11y-architect` agent 做一次 WCAG 2.2 audit**（Web 平臺），產出待修清單。
 - **估時**：focus 補全約半天；完整 WCAG audit + 修約 1–2 天。
 
 ### 判斷
