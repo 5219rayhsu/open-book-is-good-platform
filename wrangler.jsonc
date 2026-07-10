@@ -1,0 +1,9 @@
+{
+  // 純靜態資源 Worker：把整個 repo 根目錄當作站台資源直接服務，無 server 端程式碼。
+  // 有了這個設定，`wrangler deploy` 才不會在 CI 裡跳互動式問句而卡死。
+  "name": "open-book-is-good-platform",
+  "compatibility_date": "2026-07-11",
+  "assets": {
+    "directory": "."
+  }
+}

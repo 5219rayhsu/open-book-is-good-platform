@@ -9,3 +9,8 @@ __pycache__/
 .idea/
 .vscode/
 .claude/
+
+# 憑證絕不進 git
+.env
+.env.*
+!.env.example
