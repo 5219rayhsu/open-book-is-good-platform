@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>開卷有益｜國考與升學</title>
+<!-- 統一站:一份引擎跑多科。標題與科名由 exams.js 依當前考試動態設定;
+     資料用 fetch 載 ../data/<考試>/*.json(Cloudflare Pages 線上)。 -->
+<!-- PWA:manifest(可安裝)+ theme-color(工具列/分頁色)+ apple-touch-icon(iOS 加入主畫面)。
+     顏色沿用 app.css 既有暖紙/沉穩藍變數值,不自創。 -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#2f5d8a">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="app.css">
+<!-- KaTeX(自架,離線可用):渲染數學/自然題的 \( \) 行內、\[ \] 行間 LaTeX 公式。defer 保序:katex 先於 auto-render。 -->
+<link rel="stylesheet" href="katex/katex.min.css">
+<script src="katex/katex.min.js" defer></script>
+<script src="katex/auto-render.min.js" defer></script>
+</head>
+<body>
+<!-- 螢幕報讀器即時朗讀區:答對/答錯、評分結果等回饋會寫進這裡讓 AT 念出。
+     視覺上隱藏(.visually-hidden),不影響版面。 -->
+<div id="sr-announce" class="visually-hidden" aria-live="assertive" aria-atomic="true"></div>
+<div class="page">
+
+<header class="masthead">
+  <h1><button type="button" id="home-title" class="home-title" title="回到最初首頁（國考／升學選擇）">開卷有益｜國考與升學</button></h1>
+  <!-- 考試選擇器:由 exams.js 依 manifest 填入 5 科按鈕,當前科高亮;切換 = 換命名空間後重載 -->
+  <div id="exam-switcher" class="exam-switcher" role="group" aria-label="選擇考試"></div>
+  <p class="subtitle"><span data-exam-field="authority">考選部</span>歷屆試題・線上練習・進度存在你的瀏覽器、不上傳</p>
+  <div id="status-line">題庫載入中……</div>
+  <div id="name-tag" class="name-tag"></div>
+  <div class="io-row">
+    <button id="btn-help" type="button" class="btn-quiet">使用說明</button>
+    <button id="btn-settings" type="button" class="btn-quiet">設定</button>
+  </div>
+</header>
+
+<nav id="nav" aria-label="功能目次">
+  <div class="nav-row">
+    <span class="nav-label">練習</span>
+    <button type="button" id="tab-practice" data-panel="practice" aria-current="page">單題練習</button>
+    <button type="button" id="tab-paper" data-panel="paper">歷屆原卷</button>
+    <button type="button" id="tab-mock" data-panel="mock">模擬考</button>
+    <button type="button" id="tab-essay" data-panel="essay">申論題</button>
+    <button type="button" id="tab-wrongbook" data-panel="wrongbook">錯題複習</button>
+    <button type="button" id="tab-cluster" data-panel="cluster">弱點殲滅</button>
+  </div>
+  <div class="nav-row">
+    <span class="nav-label">進度</span>
+    <button type="button" id="tab-radar" data-panel="radar">能力雷達</button>
+    <button type="button" id="tab-trend" data-panel="trend">學習趨勢</button>
+    <button type="button" id="tab-history" data-panel="history">歷史紀錄</button>
+    <button type="button" id="tab-blueprint" data-panel="blueprint">學習藍圖</button>
+  </div>
+</nav>
+
+<main id="app">
+
+  <!-- 題庫載入失敗 fallback:說明 + 拖放 -->
+  <section id="load-error" hidden>
+    <h2>題庫尚未載入</h2>
+    <p>題庫是線上載入的（fetch <code>data/&lt;考試&gt;/bank.json</code>）。會看到這頁，通常是網路或暫時性問題 —— 請重新整理，或稍後再試。</p>
+    <p>若你是在本機預覽，請用 <code>python3 -m http.server</code> 後開 <code>http://localhost:8000/web/</code>（<code>file://</code> 直接開啟無法 fetch 題庫）。</p>
+    <div id="drop-zone">也可直接把 bank.json（可同時拖 relations.json）拖放到這裡</div>
+    <p><label>或點選檔案：<input id="file-input" type="file" accept="application/json,.json" multiple></label></p>
+  </section>
+
+  <!-- 一、單題練習(自適應) -->
+  <section class="panel" id="panel-practice">
+    <h2>單題練習</h2>
+    <p class="subtitle">隨手練：系統一次出一題、答完即時回饋；自動排到期複習與弱項題。不計入落點平均，任何時候、任何環境都能放心練。</p>
+    <div id="daily-summary"></div>
+    <div id="practice-head">
+      <span id="daily-goal">—</span>
+      <span id="due-count">—</span>
+      <span id="session-stats">本次：0 題</span>
+    </div>
+    <div id="today-card"></div>
+    <p id="practice-empty" class="empty-note" hidden>題庫載入後即可開始。</p>
+  </section>
+
+  <!-- 二、歷屆原卷 -->
+  <section class="panel" id="panel-paper" hidden>
+    <h2>歷屆原卷</h2>
+    <div id="paper-picker"></div>
+  </section>
+
+  <!-- 三、模擬考 -->
+  <section class="panel" id="panel-mock" hidden>
+    <h2>模擬考（混合出題）</h2>
+    <div id="mock-picker"></div>
+  </section>
+
+  <!-- 四、弱點殲滅 -->
+  <section class="panel" id="panel-cluster" hidden>
+    <h2>弱點殲滅（易混淆題組）</h2>
+    <div id="cluster-picker"></div>
+  </section>
+
+  <!-- 五之二、申論題(作答 + 涵蓋度評分 + 優化方向) -->
+  <section class="panel" id="panel-essay" hidden>
+    <h2>申論題</h2>
+    <div id="essay-picker"></div>
+  </section>
+
+  <!-- 五、錯題複習 -->
+  <section class="panel" id="panel-wrongbook" hidden>
+    <h2>錯題複習</h2>
+    <p class="subtitle">目前以「科目」作為概念分組；答錯的題會自動收錄，點「重練此組」即可回到單題練習重新提取。</p>
+    <div id="wrongbook-list"></div>
+    <p id="wrongbook-empty" class="empty-note" hidden>尚無錯題。答錯的題目會自動收錄於此。</p>
+  </section>
+
+  <!-- 動態:逐題練習(弱點/診斷) -->
+  <section class="panel" id="panel-run" hidden></section>
+
+  <!-- 動態:整卷作答(原卷/模擬/完整診斷) -->
+  <section class="panel" id="panel-sheet" hidden></section>
+
+  <!-- 六、能力雷達 -->
+  <section class="panel" id="panel-radar" hidden>
+    <h2>能力雷達（<span data-exam-field="subjectCount">6 科</span>正確率）</h2>
+
+    <h3>落點與進度</h3>
+    <p class="subtitle">「落點」只計入考試形式整卷（歷屆原卷、完整模擬、完整診斷）；單題練習、弱點殲滅、少量模擬等隨手練不計入平均，放心練。</p>
+    <div id="landing-stats"></div>
+
+    <h3>各科能力雷達</h3>
+    <div class="figure" id="radar-box"></div>
+    <p class="subtitle">虛線為 60% 練習對照線（僅供自我對照，非官方錄取標準）。實線越往外、越接近滿分。</p>
+    <div id="radar-table"></div>
+    <h3>學習教練建議</h3>
+    <p class="subtitle">依你目前的強弱項，給出下一步的練習建議。</p>
+    <div class="coach-advice" id="coach-advice"></div>
+  </section>
+
+  <!-- 七、學習趨勢 -->
+  <section class="panel" id="panel-trend" hidden>
+    <h2>正確率趨勢</h2>
+    <div id="trend-toggle"></div>
+    <div class="figure" id="trend-box"></div>
+    <p id="trend-summary" class="subtitle"></p>
+  </section>
+
+  <!-- 七之二、歷史紀錄 -->
+  <section class="panel" id="panel-history" hidden>
+    <h2>歷史紀錄</h2>
+    <p class="subtitle">先列「整卷成績」（考試形式整卷的得分與耗時），再列逐題作答紀錄（每種練習最近 30 筆，點開看當時題目、對錯與評語）。紀錄只存題目編號，題目從已載入的題庫即時還原，不佔空間、也全部保留。</p>
+    <div id="history-box"></div>
+  </section>
+
+  <!-- 八、學習藍圖 -->
+  <section class="panel" id="panel-blueprint" hidden>
+    <h2>學習藍圖</h2>
+
+    <h3>備考路線與每週工作量</h3>
+    <div class="mode-pick-row">
+      <span>目前程度：</span>
+      <button type="button" id="basis-has" aria-pressed="false">有基礎</button>
+      <button type="button" id="basis-none" aria-pressed="false">無基礎</button>
+    </div>
+    <div class="mode-pick-row">
+      <span>準備時程：</span>
+      <button type="button" id="weeks-26" aria-pressed="false">半年</button>
+      <button type="button" id="weeks-52" aria-pressed="false">一年</button>
+      <button type="button" id="btn-rediagnose" class="btn-quiet">重做入學診斷</button>
+    </div>
+    <div class="mode-pick-row">
+      <label for="exam-date">預計考試日期（選填）：</label>
+      <input type="date" id="exam-date" class="date-input">
+      <button type="button" id="exam-date-clear" class="btn-quiet">清除</button>
+      <span id="exam-countdown" class="exam-countdown"></span>
+    </div>
+    <div id="weekly-target">—</div>
+    <p id="plan-detail"></p>
+    <p class="honest" id="honest-note">此週目標為「為上榜而設計」的工作量推估，不是上榜保證；
+    沒有任何系統能保證考試結果。公式全部透明，進度依實際作答每日滾動重算。</p>
+
+    <h3>各科覆蓋與掌握</h3>
+    <label class="chk"><input type="checkbox" id="include-review">
+    把 <span id="review-count">—</span> 題「待校題」(parse=review，解析可能不完整）也納入練習</label>
+    <label class="chk" id="legacy-row"><input type="checkbox" id="include-legacy">
+    納入舊年度歷史題庫（準則／法規可能已過時,僅供題型熟悉）</label>
+    <div id="coverage-table"></div>
+
+    <h3>歷年題量分布</h3>
+    <div class="figure" id="year-dist"></div>
+
+    <h3>各科科目說明</h3>
+    <dl class="note-block" id="subject-notes"></dl>
+    <p class="subtitle">註：科目說明為通識性描述，非<span data-exam-field="authority">考選部</span>官方文件。</p>
+    <p class="honest">申論採「涵蓋度評分 + 參考要點」（非語意批改）；參考要點為 AI 整理、非官方標準答案，作答與引用前請對照現行<span data-exam-field="jurisdiction">中華民國法規</span>查證。</p>
+
+  </section>
+
+</main>
+
+<!-- 首次入學診斷覆蓋層(由 diagnostic.js 填入) -->
+<div id="diag-overlay" hidden></div>
+
+<!-- 使用說明覆蓋層(由 app.js renderHelp 填入,標頭「使用說明」按鈕隨時開啟) -->
+<div id="help-overlay" hidden></div>
+
+<!-- 命名 / 備份還原覆蓋層(naming.js / progress.js 動態填入) -->
+<div id="backup-overlay" hidden></div>
+
+<!-- 設定覆蓋層(settings.js 動態填入:字體大小／顯示名稱) -->
+<div id="settings-overlay" hidden></div>
+
+<!-- 疑義覆蓋層(feedback.js 動態填入:類型下拉＋說明，本機收集待後端) -->
+<div id="feedback-overlay" hidden></div>
+
+<footer class="colophon">
+  <p>題庫出處：<span data-exam-field="sourceName">考選部「國家考試試題及測驗式試題答案」開放資料</span>（<span data-exam-field="sourceLicense">dataset 170565,OGDL 授權</span>）;
+  試題著作權屬<span data-exam-field="authority">考選部</span>，使用時請註明出處。</p>
+  <p>作答紀錄預設存在你瀏覽器的 localStorage（鍵名前綴依考試，各科分開），不上傳、無追蹤、無第三方分析；登入後可雲端同步（規劃中）。</p>
+  <p class="byline">製作：許哲睿（HSU, Che-jui）・聯絡：<a href="mailto:1003ray1003@gmail.com">1003ray1003@gmail.com</a>・個人網站：<a href="https://hsuchejui.myportfolio.com/" target="_blank" rel="noopener">hsuchejui.myportfolio.com</a></p>
+</footer>
+
+</div>
+<noscript><p style="padding:1rem;">本頁為純前端應用，需要啟用 JavaScript。</p></noscript>
+<!-- exams.js 必須最先:提供全域 EXAM(app.js 啟動即需),並渲染考試選擇器 -->
+<script src="exams.js" defer></script>
+<script src="srs.js" defer></script>
+<script src="stats.js" defer></script>
+<script src="charts.js" defer></script>
+<script src="loader.js" defer></script>
+<script src="run.js" defer></script>
+<script src="coach.js" defer></script>
+<script src="essays.js" defer></script>
+<script src="explain.js" defer></script>
+<script src="feedback.js" defer></script>
+<script src="diagnostic.js" defer></script>
+<script src="modes.js" defer></script>
+<script src="help.js" defer></script>
+<script src="progress.js" defer></script>
+<script src="naming.js" defer></script>
+<script src="settings.js" defer></script>
+<script src="history.js" defer></script>
+<script src="blueprint.js" defer></script>
+<script src="app.js" defer></script>
+</body>
+</html>

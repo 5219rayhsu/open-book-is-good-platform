@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>開卷有益｜國考與升學</title>
+<meta name="description" content="以歷屆國家考試與升學考試（學測／會考）試題的開放資料打造的自學系統，一站練習；線上即用、不追蹤。">
+<!-- 沿用統一站引擎的設計語言(紙感、襯線、墨線、沉穩藍),landing 只補版面專屬樣式 -->
+<link rel="stylesheet" href="web/app.css">
+<style>
+  .landing{max-width:60rem;margin:0 auto;padding:clamp(1.5rem,4vw,3.5rem) 1.1rem 3rem;}
+  .landing-hero{border-bottom:2px solid var(--ink);padding-bottom:1.4rem;margin-bottom:1.8rem;}
+  .landing-hero h1{font-family:var(--serif);font-size:clamp(2rem,4.5vw,3.2rem);letter-spacing:.04em;margin:0 0 .3rem;color:var(--ink);}
+  .landing-hero .lead{font-family:var(--serif);font-size:clamp(1.02rem,1.6vw,1.25rem);color:var(--ink-soft);margin:.2rem 0;}
+  .landing-hero .sub{font-size:.92rem;color:var(--ink-faint);margin:.6rem 0 0;}
+  .exam-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:1rem;margin:1.5rem 0;}
+  .exam-card{display:block;text-decoration:none;color:inherit;background:var(--paper-card);
+    border:1px solid var(--rule);border-radius:var(--r-lg);padding:1.15rem 1.2rem;
+    box-shadow:var(--shadow-sm);transition:transform .15s var(--ease),box-shadow .15s var(--ease),border-color .15s var(--ease);}
+  .exam-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--accent);}
+  .exam-card:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .exam-card .cat{display:inline-block;font-size:.72rem;letter-spacing:.08em;color:var(--accent);
+    background:var(--accent-wash);border-radius:999px;padding:.12rem .6rem;margin-bottom:.55rem;}
+  .exam-card h2{font-family:var(--serif);font-size:1.4rem;margin:.1rem 0 .15rem;color:var(--ink);}
+  .exam-card .meta{font-size:.84rem;color:var(--ink-faint);margin:.1rem 0 .5rem;}
+  .exam-card .desc{font-size:.9rem;color:var(--ink-soft);line-height:1.55;margin:0;}
+  .exam-card .go{display:inline-block;margin-top:.7rem;font-size:.88rem;color:var(--accent);font-weight:600;}
+  .landing-note{font-size:.9rem;color:var(--ink-soft);line-height:1.7;border-top:1px solid var(--rule-faint);padding-top:1.2rem;margin-top:1.5rem;}
+  .landing-note b{color:var(--ink);}
+</style>
+</head>
+<body>
+<div class="landing">
+
+  <header class="landing-hero">
+    <h1>開卷有益</h1>
+    <p class="lead">國考與升學自學系統 —— 國家考試 × 升學（學測／會考），一站練習</p>
+    <p class="sub">beta ・ 歷屆試題開放資料 ・ 線上即用、無廣告</p>
+  </header>
+
+  <!-- 考試卡片由 web/exams.js 從 EXAMS manifest 動態生成(類別/科數/題數/簡述)。
+       新增一個考試＝在 manifest 加一筆,這裡零改動。 -->
+  <nav id="exam-grid" class="exam-grid" aria-label="選擇考試類科"></nav>
+  <noscript><p class="landing-note">本站為純前端應用，請啟用 JavaScript 以載入各科入口與練習功能。</p></noscript>
+
+  <section class="landing-note">
+    <p><b>目前是 beta。</b>題庫與圖表仍在校對：少數題目因原始圖檔缺漏而暫時退出練習池，詳解也還沒補齊每一科。作答進度現在只存在你的瀏覽器；登入（Google 帳號）與雲端備份（Cloudflare R2）正在建置，上線時會一併說明資料存在哪裡、誰讀得到。已知問題完整列在專案的 <a href="https://github.com/5219rayhsu/open-book-is-good-platform" target="_blank" rel="noopener">GitHub</a>，發現新的歡迎回報。</p>
+    <p><b>怎麼運作：</b>每科都是同一套引擎 —— 單題自適應練習、歷屆原卷、模擬考、弱點殲滅、申論、能力雷達與學習藍圖。進度預設存在你瀏覽器的 localStorage，各科分開、互不影響（Google 登入與雲端備份建置中）；切換考試在站內頂端隨時可換。</p>
+    <p><b>資料來源與免責聲明：</b>題庫出自考選部「國家考試試題及測驗式試題答案」開放資料（OGDL 授權），以及大考中心（學測）、臺師大心測中心（會考）等官方歷屆試題；依著作權法第 9 條，依法令舉行之考試試題不得為著作權之標的、得自由利用，引用仍請註明出處。選擇題詳解與申論參考要點為 AI 整理的學習輔助，以及開源工作者與公眾的協助解答，並非官方標準答案；法規會修訂，作答與引用前請對照現行法規查證。任何備考工作量的推估，都是「為上榜而設計」的估計，而非上榜的保證。</p>
+  </section>
+
+  <footer class="colophon">
+    <p class="byline">製作：許哲睿（HSU, Che-jui）・聯絡：<a href="mailto:1003ray1003@gmail.com">1003ray1003@gmail.com</a>・個人網站：<a href="https://hsuchejui.myportfolio.com/" target="_blank" rel="noopener">hsuchejui.myportfolio.com</a></p>
+  </footer>
+
+</div>
+<!-- exams.js 提供 EXAMS manifest;在 landing 會生成考試卡片 + 填 data-exam-field -->
+<script src="web/exams.js" defer></script>
+</body>
+</html>

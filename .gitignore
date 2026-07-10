@@ -1,0 +1,11 @@
+# born clean：統一站只進「引擎 + 資料 + 文件」,雜物不進 git 樹
+_scratch/
+.DS_Store
+**/.DS_Store
+*.bak
+*.tmp
+__pycache__/
+*.pyc
+.idea/
+.vscode/
+.claude/

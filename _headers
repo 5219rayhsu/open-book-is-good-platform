@@ -1,0 +1,30 @@
+# Cloudflare Pages 標頭設定(部署時自動套用)。
+# 安全標頭全站套用;快取依資源型別分級。
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Content-Security-Policy: default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'
+
+# HTML 不快取:改版即時生效,使用者不會卡在舊版引擎
+/index.html
+  Cache-Control: no-cache
+/web/index.html
+  Cache-Control: no-cache
+
+# Service Worker 不快取:瀏覽器每次導覽都重新比對 sw.js,改版(CACHE_VERSION)才能即時生效,
+# 不會被 HTTP 快取卡住舊 SW。sw.js 在站根 → scope=/,涵蓋 /web/(app)+/data/(題庫)+根 landing。
+/sw.js
+  Cache-Control: no-cache
+
+# 引擎程式碼:更新頻率低,快取一天(改版可用檔名加版本破快取)
+/web/*.js
+  Cache-Control: public, max-age=86400
+/web/*.css
+  Cache-Control: public, max-age=86400
+
+# 題庫資料:偶爾更新,快取一小時 + 需重新驗證
+/data/*
+  Cache-Control: public, max-age=3600, must-revalidate

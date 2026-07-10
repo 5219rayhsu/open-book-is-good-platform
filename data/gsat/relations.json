@@ -1,0 +1,1 @@
+{"meta": {"source": "bank.json", "note": "gsat 尚未產生確定性關聯權重；先放空 map 消掉 404，行為與檔案缺席時相同(前端 looksLikeRelations 對空 map 一律判定未載入，答錯照舊退化為同科補強)。之後補產生時直接覆蓋此檔。", "n_questions": 0, "n_linked": 0, "n_links": {"similar": 0, "opposite": 0, "related": 0}}, "relations": {}}

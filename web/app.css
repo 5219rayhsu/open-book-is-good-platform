@@ -1,0 +1,608 @@
+/* ============================================================
+   會計師國考自學系統 — 樣式
+   方向:平靜的「書卷 / 考卷感」,為長時間學習而調。暖紙白底、明體標題、
+   細墨線;但加上柔和圓角、極淡陰影與一個克制的導航藍,降低生硬、利於專注。
+
+   為什麼是這個風格(而非炫的主題):
+   · 介面要減少干擾、高可讀、像好考卷般直接（專注、好讀）。
+   · 不操弄 + 可及性：無成癮裝飾、對比達 WCAG AA、色彩編碼清楚
+     (綠=答對、紅=答錯、藍=導航/連結),尊重 reduced-motion,尊重注意力。
+
+   色彩語意鎖定:綠=正確、紅=錯誤/警示、藍=導航與互動。其餘以墨階表現層級。
+   class 名稱與 SVG token 全保留(JS / charts.js 不動),只重寫樣式。
+   build_app.py 會把本檔整段內嵌進單檔版。
+   ============================================================ */
+:root{
+  --paper:#f5f1e6;            /* 暖紙底 */
+  --paper-deep:#ece6d6;       /* 下沉 / hover */
+  --paper-card:#fbf8f1;       /* 卡片面 */
+  --ink:#1c1813;              /* 墨(近黑)*/
+  --ink-soft:#51493e;         /* 次要文字(AA)*/
+  --ink-faint:#6e6555;        /* 輔助文字(小字仍達 AA)*/
+  --rule:#c2b9a4;             /* 墨線 */
+  --rule-faint:#ddd5c4;       /* 細墨線 */
+  --ok-ink:#2f6b40;           /* 答對(綠)*/
+  --ok-wash:#e7eee0;
+  --bad-ink:#a23b2e;          /* 答錯 / 警示(紅)*/
+  --bad-wash:#f3e4de;
+  --accent:#2f5d8a;           /* 導航 / 連結 / 對焦(沉穩藍)*/
+  --accent-wash:#e6edf3;
+  --seal:#2f5d8a;
+  --serif:"Noto Serif TC","Songti TC",PMingLiU,"Times New Roman",serif;
+  --sans:"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;
+  --r:8px;                    /* 控制 / 卡片圓角 */
+  --r-lg:12px;                /* 大面 */
+  --shadow:0 1px 2px rgba(28,24,19,.05), 0 6px 18px rgba(28,24,19,.05);
+  --shadow-sm:0 1px 2px rgba(28,24,19,.05);
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+*{box-sizing:border-box;}
+html{background:var(--paper);}
+/* 白底主題(設定面板切換):近白頁底 + 純白卡片(保留卡片層次) + 冷灰墨線;墨色不動(對白高對比、AA 充足) */
+html.theme-light{
+  --paper:#f4f5f7;            /* 頁底:極淺冷白 */
+  --paper-deep:#e8eaed;       /* 下沉 / hover */
+  --paper-card:#ffffff;       /* 卡片純白、靠對比浮起 */
+  --rule:#d2d5da;
+  --rule-faint:#e7e9ec;
+}
+body{
+  margin:0;color:var(--ink);font-family:var(--sans);
+  font-size:1.02rem;line-height:1.8;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  accent-color:var(--accent);
+}
+.page{max-width:46rem;margin:0 auto;padding:2.2rem 1.1rem 4rem;}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:600;letter-spacing:.04em;line-height:1.45;color:var(--ink);}
+h1{font-size:1.7rem;margin:0 0 .2rem;}
+h2{font-size:1.24rem;margin:1.7rem 0 .8rem;padding-top:1.2rem;border-top:1px solid var(--rule);}
+h3{font-size:1.06rem;margin:1.2rem 0 .4rem;}
+h4{font-size:.99rem;margin:1rem 0 .3rem;}
+p{margin:.5rem 0;}
+a{color:var(--accent);}
+code{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:.9em;background:var(--paper-deep);padding:.05em .3em;border-radius:5px;}
+header.masthead{border-bottom:2px solid var(--ink);padding-bottom:1rem;margin-bottom:1rem;}
+/* 標題本身是按鈕:外觀完全同 h1,點按/Enter 回單題練習(覆蓋全域 button 樣式) */
+.home-title{
+  font:inherit;color:inherit;background:none;border:none;padding:0;margin:0;
+  letter-spacing:inherit;text-align:left;cursor:pointer;border-radius:var(--r);
+  transition:color .15s var(--ease);
+}
+.home-title:hover{background:none;color:var(--accent);border:none;transform:none;}
+.home-title:active{transform:none;}
+.subtitle{margin:.1rem 0 .6rem;color:var(--ink-soft);font-size:.92rem;}
+
+/* 考試選擇器(統一站,一份引擎跑多科):沿用 nav pill 語彙,當前科實心藍、其餘墨框紙底 */
+.exam-switcher{display:flex;flex-wrap:wrap;gap:.4rem;margin:.45rem 0 .35rem;}
+.exam-btn{font-family:var(--serif);font-size:.92rem;border:1px solid var(--rule);
+  background:var(--paper-card);color:var(--ink-soft);border-radius:999px;
+  padding:.3rem 1.05rem;cursor:pointer;
+  transition:background .15s var(--ease),color .15s var(--ease),border-color .15s var(--ease);}
+.exam-btn:hover{background:var(--accent-wash);border-color:var(--accent);color:var(--ink);}
+.exam-btn.active{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600;}
+.exam-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+@media (max-width:560px){.exam-btn{flex:1 1 28%;min-height:40px;}}
+
+#status-line{font-size:.86rem;color:var(--ink-soft);border-top:1px solid var(--rule-faint);padding-top:.5rem;}
+.io-row{margin-top:.6rem;font-size:.88rem;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;}
+
+/* 全域對焦框:藍色,清楚可見(鍵盤可及性) */
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:2px;border-radius:var(--r);}
+
+/* ---- 按鈕:墨線框、柔和圓角、輕觸感 ---- */
+button,.btn{
+  font:inherit;font-size:.92rem;color:var(--ink);background:var(--paper-card);
+  border:1px solid var(--rule);padding:.34rem 1rem;cursor:pointer;border-radius:var(--r);
+  transition:background .15s var(--ease),color .15s var(--ease),
+             border-color .15s var(--ease),transform .08s var(--ease);
+}
+button:hover,.btn:hover{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+button:active,.btn:active{transform:translateY(1px);}
+button[disabled]{opacity:.4;cursor:default;}
+button[disabled]:hover{background:var(--paper-card);color:var(--ink);border-color:var(--rule);transform:none;}
+.btn-quiet{background:transparent;border-color:var(--rule);color:var(--ink-soft);}
+.btn-quiet:hover{background:var(--ink-soft);color:var(--paper);border-color:var(--ink-soft);}
+.btn-danger{border-color:var(--bad-ink);color:var(--bad-ink);}
+.btn-danger:hover{background:var(--bad-ink);color:var(--paper);border-color:var(--bad-ink);}
+
+/* ---- 作答後動作列:左「疑義回報」右「下一題」,同一列 ---- */
+.qa-actions{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:.9rem;}
+
+/* ---- 導覽:兩列目次(練習 / 進度)— 膠囊分頁 ---- */
+nav#nav{margin:1rem 0 0;border-bottom:1px solid var(--rule);padding-bottom:.9rem;}
+.nav-row{display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;margin-bottom:.5rem;}
+.nav-row:last-child{margin-bottom:0;}
+.nav-label{font-family:var(--serif);font-size:.78rem;color:var(--ink-faint);letter-spacing:.14em;width:3.2rem;flex:0 0 auto;}
+nav#nav button{border:1px solid var(--rule);font-size:.9rem;background:transparent;border-radius:999px;padding:.28rem .95rem;min-width:6.6em;text-align:center;}
+nav#nav button:hover{background:var(--accent-wash);border-color:var(--accent);color:var(--ink);}
+nav#nav button[aria-current="page"]{background:var(--accent);color:#fff;border-color:var(--accent);}
+nav#nav button[aria-current="page"]:hover{background:var(--accent);color:#fff;}
+main#app{min-height:24rem;}
+section.panel{padding-top:.4rem;}
+
+/* ---- 載入失敗 fallback ---- */
+#load-error{border:1px solid var(--bad-ink);border-radius:var(--r-lg);padding:1rem 1.2rem;margin-top:1.2rem;background:var(--bad-wash);}
+#load-error h2{border:none;padding-top:0;margin-top:0;color:var(--bad-ink);}
+#drop-zone{
+  margin-top:.8rem;border:2px dashed var(--ink-soft);border-radius:var(--r);padding:1.6rem 1rem;
+  text-align:center;color:var(--ink-soft);background:var(--paper);
+}
+#drop-zone.dragover{border-color:var(--accent);color:var(--accent);}
+
+/* ============================================================
+   題型目次(模式選單)— 像考卷封面的「應試說明」清單
+   ============================================================ */
+.mode-menu{margin:.4rem 0 0;}
+.mode-item{
+  display:grid;grid-template-columns:2.2rem 1fr auto;gap:.2rem 0;align-items:baseline;
+  width:100%;text-align:left;border:1px solid transparent;border-bottom:1px solid var(--rule-faint);
+  padding:.85rem .6rem;background:transparent;border-radius:0;
+  transition:background .15s var(--ease);
+}
+.mode-item:hover{background:var(--paper-card);color:var(--ink);border-color:var(--rule-faint);border-radius:var(--r);}
+.mode-item:hover .mode-idx{color:var(--accent);}
+.mode-idx{font-family:var(--serif);font-size:1.2rem;color:var(--ink-faint);grid-row:1 / span 2;}
+.mode-name{font-family:var(--serif);font-size:1.12rem;}
+.mode-tags{justify-self:end;display:flex;gap:.3rem;flex-wrap:wrap;}
+.mode-desc{grid-column:2 / span 2;font-size:.86rem;color:var(--ink-soft);line-height:1.7;margin-top:.1rem;}
+
+/* 小標籤:髮絲框小字(膠囊)*/
+.ptag{
+  font-size:.72rem;font-family:var(--sans);color:var(--ink-soft);
+  border:1px solid var(--rule);border-radius:999px;padding:.05rem .55rem;letter-spacing:.03em;
+  white-space:nowrap;line-height:1.6;
+}
+.ptag.lead{border-color:var(--accent);color:var(--accent);background:var(--accent-wash);}
+
+/* ---- 練習卷 ---- */
+.back-link{font-size:.88rem;color:var(--accent);margin:.2rem 0 .8rem;display:inline-block;text-decoration:none;}
+.back-link:hover{text-decoration:underline;}
+#practice-head,.run-head{
+  display:flex;flex-wrap:wrap;align-items:center;gap:.4rem 1.4rem;font-size:.88rem;color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-faint);padding-bottom:.5rem;margin-bottom:1rem;
+}
+/* 倒數計時(見 ADR-0001):等寬數字防跳動;過建議時間轉紅;暫停鈕小一號 */
+#sheet-timer{font-variant-numeric:tabular-nums;font-weight:600;}
+#sheet-timer.over-suggest{color:var(--bad-ink);font-weight:700;}
+#sheet-pause{font-size:.78rem;padding:.12rem .65rem;}
+.timing-note{margin-top:-.3rem;font-size:.84rem;}
+.exam-instruction{
+  font-family:var(--serif);font-size:.98rem;color:var(--ink);background:var(--paper-card);
+  border:1px solid var(--rule-faint);border-radius:var(--r);padding:.55rem .9rem;margin:.6rem 0 .5rem;
+}
+.explain{
+  border-left:3px solid var(--accent);background:var(--paper-card);border-radius:0 var(--r) var(--r) 0;
+  padding:.55rem .9rem;margin:.5rem 0 .9rem;
+}
+.explain-head{font-family:var(--serif);font-size:.92rem;color:var(--accent);letter-spacing:.04em;}
+.explain-body{margin:.25rem 0 0;font-size:.95rem;line-height:1.78;color:var(--ink);}
+.explain-note{margin:.4rem 0 0;font-size:.78rem;color:var(--ink-faint);}
+/* IFRS／稅法等時效提示(staleness=ifrs_sensitive / law_sensitive):紅字一行,作答以現行為準 */
+.stale-note{margin:.5rem 0 .2rem;font-size:.82rem;line-height:1.7;color:var(--bad-ink);border-left:3px solid var(--bad-ink);border-radius:0 var(--r) var(--r) 0;background:var(--bad-wash);padding:.35rem .7rem;}
+.essay-samples{margin:1rem 0 .4rem;border-top:1px solid var(--rule-faint);padding-top:.8rem;}
+.sample-tabs{margin:.4rem 0 .6rem;}
+.sample-body{border-left:3px solid var(--accent);background:var(--paper-card);border-radius:0 var(--r) var(--r) 0;padding:.6rem .95rem;}
+.sample-text{white-space:pre-line;font-size:.95rem;line-height:1.9;margin:0;color:var(--ink);}
+/* 申論篇幅提示:正式考場約 900–1100 字,範本只示範架構,提醒自行擴寫 */
+.essay-len-note{margin:.2rem 0 .8rem;font-size:.9rem;line-height:1.7;color:var(--ink);background:var(--accent-wash);border-left:3px solid var(--accent);border-radius:0 var(--r) var(--r) 0;padding:.5rem .8rem;}
+.question-card{
+  border:1px solid var(--rule);border-radius:var(--r-lg);background:var(--paper-card);
+  padding:1.3rem 1.5rem 1.5rem;box-shadow:var(--shadow);
+}
+.q-meta{font-size:.85rem;color:var(--ink-soft);letter-spacing:.03em;border-bottom:1px solid var(--rule-faint);padding-bottom:.45rem;}
+.question-stem{font-size:1.1rem;line-height:1.75;margin:1rem 0 1.1rem;}
+ol.options{list-style:none;margin:0;padding:0;}
+ol.options li{margin:0 0 .6rem;}
+ol.options button.opt{
+  display:block;width:100%;text-align:left;line-height:1.75;font-size:1rem;
+  border:1px solid var(--rule);border-radius:var(--r);background:var(--paper);padding:.6rem .9rem;
+}
+ol.options button.opt:hover{background:var(--accent-wash);border-color:var(--accent);color:var(--ink);}
+ol.options button.opt .letter{font-family:var(--serif);margin-right:.55rem;color:var(--ink-soft);}
+ol.options button.opt.is-correct{border-color:var(--ok-ink);background:var(--ok-wash);color:var(--ok-ink);}
+ol.options button.opt.is-correct .letter{color:var(--ok-ink);}
+ol.options button.opt.is-wrong{border-color:var(--bad-ink);background:var(--bad-wash);color:var(--bad-ink);}
+ol.options button.opt.is-wrong .letter{color:var(--bad-ink);}
+ol.options button.opt.is-dim{opacity:.5;}
+ol.options button.opt.picked{border-color:var(--accent);background:var(--accent-wash);font-weight:600;}
+/* 多選題「確認作答」鈕(單選即點即評,無此鈕) */
+button.btn-confirm{margin-top:.7rem;font-weight:600;}
+.feedback{margin:1.1rem 0 .2rem;font-family:var(--serif);font-size:1.04rem;}
+.feedback.good{color:var(--ok-ink);}
+.feedback.bad{color:var(--bad-ink);}
+.reason{font-size:.9rem;color:var(--ink-soft);margin:.2rem 0 .9rem;border-left:3px solid var(--accent);padding-left:.8rem;}
+.reason .reason-tag{font-family:var(--serif);color:var(--ink);margin-right:.4rem;}
+.empty-note{color:var(--ink-soft);}
+.kbd-hint{font-size:.82rem;color:var(--ink-faint);margin:.6rem 0 0;}
+kbd{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:.8em;border:1px solid var(--rule);border-bottom-width:2px;border-radius:5px;padding:.02em .4em;background:var(--paper-card);color:var(--ink-soft);}
+
+/* ---- 每日使用個人化摘要 ---- */
+.daily-summary-card{border:1px solid var(--rule-faint);border-radius:var(--r);background:var(--paper-card);padding:.7rem 1rem;margin:.2rem 0 1rem;box-shadow:var(--shadow-sm);}
+.daily-line{font-size:.9rem;color:var(--ink-soft);margin:.15rem 0;}
+.daily-line.strong{font-family:var(--serif);font-size:1.02rem;color:var(--ink);}
+.daily-line.focus{border-top:1px solid var(--rule-faint);padding-top:.45rem;margin-top:.45rem;color:var(--ink);}
+.daily-line .jump{color:var(--accent);cursor:pointer;text-decoration:none;font-weight:600;}
+.daily-line .jump:hover{text-decoration:underline;}
+.daily-hint{font-size:.9rem;color:var(--ink-soft);background:var(--paper-card);border-left:3px solid var(--accent);border-radius:0 var(--r) var(--r) 0;padding:.6rem .9rem;margin:.2rem 0 1rem;}
+
+/* ---- 學習教練:單題評語 + 大師方針 ---- */
+.coach{border-left:3px solid var(--ok-ink);border-radius:0 var(--r) var(--r) 0;background:var(--paper-card);padding:.6rem .9rem;margin:.3rem 0 .9rem;}
+.coach-head{font-size:.93rem;}
+.coach-tag{font-family:var(--serif);margin-right:.5rem;color:var(--ink);}
+.coach-text{color:var(--ink);}
+.coach-principle{font-size:.85rem;color:var(--ink-soft);margin-top:.4rem;}
+.coach-master{font-family:var(--serif);color:var(--accent);margin-right:.4rem;}
+.coach-master::before{content:"｜";color:var(--rule);margin-right:.3rem;}
+.coach-advice{margin:.4rem 0 1rem;}
+.coach-advice-card{border:1px solid var(--rule-faint);border-radius:var(--r);background:var(--paper-card);padding:.7rem 1rem;margin:.55rem 0;box-shadow:var(--shadow-sm);}
+.coach-advice-title{font-family:var(--serif);font-size:1.02rem;}
+.coach-advice-title .coach-master{font-size:.8rem;color:var(--ink-faint);font-family:var(--sans);}
+.coach-advice-title .coach-master::before{content:"·";margin:0 .35rem;color:var(--rule);}
+.coach-advice-body{font-size:.88rem;color:var(--ink-soft);margin:.3rem 0 0;line-height:1.7;}
+
+/* ---- 錯題本 / 弱點 群組 ---- */
+.wrong-group{border:1px solid var(--rule);border-radius:var(--r);margin-bottom:1rem;background:var(--paper-card);overflow:hidden;}
+.wrong-group header{
+  display:flex;justify-content:space-between;align-items:center;gap:.6rem;
+  padding:.55rem 1rem;border-bottom:1px solid var(--rule-faint);
+}
+.wrong-group header .gname{font-family:var(--serif);}
+.wrong-group ul{margin:0;padding:.5rem 1.1rem .7rem;list-style:none;}
+.wrong-group li{
+  font-size:.9rem;color:var(--ink-soft);white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis;border-bottom:1px dotted var(--rule-faint);padding:.2rem 0;
+}
+
+/* ---- 申論題作答 ---- */
+textarea{
+  font:inherit;font-size:1.02rem;line-height:1.85;width:100%;
+  border:1px solid var(--rule);border-radius:var(--r);background:var(--paper);color:var(--ink);
+  padding:.8rem .9rem;resize:vertical;
+}
+/* 題組本體(閱讀引文／非選文言文)。每組畫一次,襯線、左墨線、保留換行。 */
+.q-group-head{font-family:var(--serif);font-size:.92rem;font-weight:600;color:var(--accent);margin:.6rem 0 .35rem;padding-left:.1rem;}
+.q-passage{font-family:var(--serif);font-size:1rem;line-height:1.95;
+  border-left:3px solid var(--rule);background:var(--paper-card);border-radius:0 var(--r) var(--r) 0;
+  padding:.7rem 1.05rem;margin:.3rem 0 .9rem;}
+.q-passage-p{margin:0 0 .75rem;text-align:justify;}
+.q-passage-p:last-child{margin-bottom:0;}
+/* 非選(簡答)作答:字數規定、textarea、即時字數計數(超上限轉紅)。 */
+.essay-limit{margin:.3rem 0 .4rem;}
+.essay-answer-input{margin:.2rem 0 .35rem;}
+.char-count{font-size:.85rem;color:var(--ink-soft);margin:0 0 .6rem;text-align:right;}
+.char-count.over{color:var(--bad-ink);font-weight:600;}
+.essay-reveal{margin-top:.7rem;border-top:1px solid var(--rule);padding-top:.7rem;}
+.review-official-pending{font-size:.9rem;color:var(--ink-soft);background:var(--paper-card);
+  border-left:3px solid var(--rule-faint);border-radius:0 var(--r) var(--r) 0;padding:.5rem .8rem;margin:.5rem 0;}
+.essay-overview{border:1px solid var(--rule-faint);border-radius:var(--r);background:var(--paper-card);padding:.6rem .9rem;margin:.2rem 0 1rem;box-shadow:var(--shadow-sm);}
+.essay-overview table{margin:.4rem 0 0;}
+.essay-result{margin-top:1rem;border-top:1px solid var(--rule);padding-top:.9rem;}
+.essay-chips{margin:.5rem 0;font-size:.9rem;}
+.essay-chips-label{font-family:var(--serif);margin-right:.4rem;color:var(--ink-soft);}
+.chip{display:inline-block;border:1px solid var(--rule);border-radius:999px;padding:.1rem .6rem;margin:.18rem .28rem .18rem 0;font-size:.85rem;}
+.chip-hit{border-color:var(--ok-ink);color:var(--ok-ink);background:var(--ok-wash);}
+.chip-miss{border-color:var(--bad-ink);color:var(--bad-ink);background:var(--bad-wash);}
+.essay-ref{border:1px solid var(--rule);border-radius:var(--r);background:var(--paper-card);padding:.7rem 1.1rem;margin:.9rem 0;}
+.essay-ref-summary{font-family:var(--serif);}
+.essay-frame{margin:.3rem 0 .6rem 1.2rem;padding:0;}
+.essay-frame li{margin:.25rem 0;}
+.essay-laws{font-size:.92rem;}
+.essay-pitfalls{margin:.3rem 0 .6rem 1.2rem;color:var(--ink-soft);font-size:.9rem;}
+.essay-rate{margin:.3rem 0 1rem;}
+.essay-rate button{min-width:2.6rem;}
+
+/* ---- 對照題組(易混淆)---- */
+.cluster-card{border:1px solid var(--rule);border-radius:var(--r);background:var(--paper-card);margin:1rem 0;overflow:hidden;}
+.cluster-tag{
+  display:inline-block;font-family:var(--serif);font-size:.84rem;
+  padding:.25rem .8rem;border-bottom:1px solid var(--rule-faint);width:100%;
+}
+.cluster-tag.similar{color:var(--accent);}
+.cluster-tag.opposite{color:var(--bad-ink);}
+.cluster-body{padding:.7rem 1.1rem 1rem;}
+.cluster-body .q-meta{border:none;padding:0;margin-bottom:.3rem;}
+.cluster-why{font-size:.82rem;color:var(--ink-faint);margin-top:.4rem;}
+
+/* ============================================================
+   首次入學診斷(覆蓋層)— 平靜的霜面卡
+   ============================================================ */
+#diag-overlay{
+  position:fixed;inset:0;background:rgba(28,24,19,.55);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:2rem 1rem;overflow:auto;z-index:50;
+}
+/* id 選擇器會壓過 [hidden] 的 UA 樣式,需顯式還原隱藏(否則覆蓋層關不掉) */
+#diag-overlay[hidden]{display:none;}
+
+/* 使用說明覆蓋層(沿用診斷的霜面卡風格,可隨時開關) */
+#help-overlay{
+  position:fixed;inset:0;background:rgba(28,24,19,.55);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:2rem 1rem;overflow:auto;z-index:60;
+}
+#help-overlay[hidden]{display:none;}
+.help-sheet{
+  background:var(--paper);max-width:42rem;width:100%;border:1px solid var(--rule);
+  border-radius:var(--r-lg);padding:1.7rem 1.7rem 2rem;box-shadow:0 16px 50px rgba(28,24,19,.28);
+}
+.help-sheet h2{border:none;padding:0;margin:0 0 .2rem;font-size:1.36rem;}
+.help-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;}
+.help-close{flex:0 0 auto;}
+.help-sheet h3{font-size:1.02rem;margin:1.1rem 0 .3rem;color:var(--accent);}
+.help-sheet ul{margin:.2rem 0 .6rem 1.1rem;padding:0;}
+.help-sheet li{margin:.25rem 0;}
+.help-sheet .help-term{font-family:var(--serif);color:var(--ink);margin-right:.35rem;}
+
+/* 設定覆蓋層:沿用 .help-sheet 外觀,僅補背景層與控制列 */
+#settings-overlay{
+  position:fixed;inset:0;background:rgba(28,24,19,.55);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:2rem 1rem;overflow:auto;z-index:62;
+}
+#settings-overlay[hidden]{display:none;}
+.set-options{display:flex;gap:.5rem;flex-wrap:wrap;margin:.3rem 0 .2rem;}
+.set-options button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+/* 字體大小三級(class 掛 <html>,rem 全站等比縮放) */
+html.fs-sm{font-size:93.75%;}   /* 15px */
+html.fs-lg{font-size:112.5%;}   /* 18px */
+/* 疑義覆蓋層(沿用 .help-sheet 外觀) */
+#feedback-overlay{
+  position:fixed;inset:0;background:rgba(28,24,19,.55);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:2rem 1rem;overflow:auto;z-index:64;
+}
+#feedback-overlay[hidden]{display:none;}
+.fb-context{font-size:.86rem;color:var(--ink-soft);background:var(--paper-deep);border-radius:var(--r);padding:.35rem .6rem;margin:.5rem 0;}
+.fb-field{margin:.7rem 0;}
+.fb-field label{display:block;font-size:.88rem;color:var(--ink-soft);margin-bottom:.25rem;}
+.fb-field select,.fb-field textarea,.fb-field input{font:inherit;width:100%;padding:.4rem .55rem;border:1px solid var(--rule);border-radius:var(--r);background:var(--paper-card);color:var(--ink);}
+.fb-field textarea{resize:vertical;}
+.fb-link{font-size:.8rem;padding:.15rem .6rem;}
+
+/* 命名:masthead 名牌 + 取名覆蓋層 */
+.name-tag{font-size:.86rem;color:var(--ink-soft);margin-top:.5rem;display:flex;align-items:center;gap:.5rem;}
+.name-edit{font-size:.78rem;padding:.18rem .7rem;}
+#name-overlay,#backup-overlay{
+  position:fixed;inset:0;background:rgba(28,24,19,.55);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  display:flex;align-items:flex-start;justify-content:center;padding:2.5rem 1rem;overflow:auto;z-index:65;
+}
+#name-overlay[hidden],#backup-overlay[hidden]{display:none;}
+.name-sheet{
+  background:var(--paper);max-width:32rem;width:100%;border:1px solid var(--rule);
+  border-radius:var(--r-lg);padding:1.7rem 1.7rem 1.9rem;box-shadow:0 16px 50px rgba(28,24,19,.28);
+}
+.name-sheet h2{border:none;padding:0;margin:0 0 .3rem;font-size:1.3rem;}
+.name-sheet .subtitle{text-align:justify;text-justify:inter-character;}
+.name-sheet input[type="text"]{
+  font:inherit;font-size:1.05rem;width:100%;margin:.4rem 0 .2rem;
+  border:1px solid var(--rule);border-radius:var(--r);background:var(--paper);color:var(--ink);padding:.55rem .8rem;
+}
+
+/* 三段確認覆蓋層(重置進度)——「確認」鈕每步落點不同,避免在同處連點三下 */
+#confirm-overlay{
+  position:fixed;inset:0;background:rgba(28,24,19,.55);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;padding:2rem 1rem;z-index:70;
+}
+#confirm-overlay[hidden]{display:none;}
+.confirm-box{
+  background:var(--paper);max-width:30rem;width:100%;border:1px solid var(--bad-ink);
+  border-radius:var(--r-lg);padding:1.5rem 1.6rem;box-shadow:0 16px 50px rgba(28,24,19,.28);
+}
+.confirm-box h3{margin:0 0 .5rem;color:var(--bad-ink);border:none;padding:0;}
+.confirm-msg{font-size:.95rem;line-height:1.85;white-space:pre-line;}
+.confirm-row{display:flex;gap:.6rem;margin-top:1.3rem;}
+.confirm-pos-0{justify-content:flex-start;}
+.confirm-pos-1{justify-content:center;transform:translateY(.35rem);}
+.confirm-pos-2{justify-content:flex-end;transform:translateY(-.2rem);}
+.confirm-ok{border-color:var(--bad-ink);color:var(--bad-ink);}
+.confirm-ok:hover{background:var(--bad-ink);color:#fff;border-color:var(--bad-ink);}
+
+/* 單題練習空狀態:做入學測驗行動鈕 */
+.hint-actions{margin:.7rem 0 0;}
+.diag-sheet{
+  background:var(--paper);max-width:42rem;width:100%;border:1px solid var(--rule);
+  border-radius:var(--r-lg);padding:1.9rem 1.7rem 2rem;box-shadow:0 16px 50px rgba(28,24,19,.28);
+}
+.diag-sheet h2{border:none;padding:0;margin:0 0 .2rem;font-size:1.42rem;}
+.diag-sheet .seal{
+  float:right;border:1.5px solid var(--seal);color:var(--seal);border-radius:var(--r);
+  font-family:var(--serif);font-size:.74rem;letter-spacing:.1em;background:var(--accent-wash);
+  padding:.35rem .4rem;line-height:1.4;text-align:center;writing-mode:vertical-rl;margin-left:1rem;
+}
+.diag-lead{font-size:.93rem;color:var(--ink-soft);line-height:1.75;}
+.diag-choices{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.4rem 0 .6rem;}
+.diag-choice{
+  border:1px solid var(--rule);border-radius:var(--r);background:var(--paper-card);padding:1.1rem 1.2rem;
+  text-align:left;display:flex;flex-direction:column;gap:.3rem;align-items:stretch;
+  transition:background .15s var(--ease),border-color .15s var(--ease),transform .08s var(--ease);
+}
+.diag-choice:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
+.diag-choice:active{transform:translateY(1px);}
+.diag-choice:hover .dc-name,.diag-choice:hover .dc-sub,.diag-choice:hover .dc-meta{color:#fff;}
+.diag-choice .dc-name{font-family:var(--serif);font-size:1.14rem;}
+.diag-choice .dc-sub{font-size:.85rem;color:var(--ink-soft);line-height:1.65;white-space:pre-line;}
+.diag-choice .dc-meta{font-size:.8rem;color:var(--ink-faint);margin-top:.3rem;}
+.diag-skip{font-size:.85rem;color:var(--ink-soft);margin-top:.7rem;}
+.diag-skip button{border:none;background:transparent;border-bottom:1px solid var(--accent);border-radius:0;padding:0 0 1px;color:var(--accent);}
+.diag-skip button:hover{background:transparent;color:var(--ink);border-color:var(--ink);}
+.diag-honest{font-size:.83rem;color:var(--bad-ink);border-left:3px solid var(--bad-ink);border-radius:0 var(--r) var(--r) 0;padding:.4rem .8rem;margin-top:1rem;line-height:1.7;white-space:pre-line;}
+.diag-result-line{font-family:var(--serif);font-size:1.08rem;border:1px solid var(--accent);border-radius:var(--r);padding:.8rem 1.1rem;margin:.9rem 0;background:var(--accent-wash);}
+
+/* ---- 分段控制(數量 / 計時 等切換)---- */
+.segmented{display:inline-flex;border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;}
+.segmented button{border:none;border-right:1px solid var(--rule);border-radius:0;padding:.32rem .9rem;background:var(--paper-card);}
+.segmented button:last-child{border-right:none;}
+.segmented button:hover{background:var(--accent-wash);color:var(--ink);}
+.segmented button[aria-pressed="true"]{background:var(--accent);color:#fff;}
+.field-row{display:flex;flex-wrap:wrap;gap:.5rem 1rem;align-items:center;font-size:.92rem;margin:.7rem 0;}
+.field-row label{color:var(--ink-soft);}
+.subj-checks{display:flex;flex-wrap:wrap;gap:.25rem .9rem;}
+.chk-inline{margin:.1rem 0;white-space:nowrap;}
+.btn-sm{padding:.22rem .7rem;font-size:.85rem;}
+.subj-note{color:var(--ink-faint);font-size:.85rem;}
+.order-pref{margin:.6rem 0;}
+.order-pref .field-label{display:block;color:var(--ink-soft);font-size:.92rem;margin:.3rem 0 .35rem;}
+.order-why{font-size:.84rem;line-height:1.75;color:var(--ink-soft);background:var(--accent-wash);border-left:3px solid var(--accent);border-radius:0 var(--r) var(--r) 0;padding:.45rem .75rem;margin:.45rem 0 0;}
+.order-why-alt{background:var(--paper-deep);border-left-color:var(--rule);}
+select{font:inherit;font-size:.92rem;border:1px solid var(--rule);border-radius:var(--r);background:var(--paper-card);padding:.32rem .55rem;color:var(--ink);cursor:pointer;}
+
+/* ---- 表格(藍圖/雷達數據)---- */
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin:.6rem 0 1rem;}
+th,td{border-bottom:1px solid var(--rule-faint);padding:.4rem .55rem;text-align:left;font-weight:400;}
+thead th{border-bottom:1.5px solid var(--ink);font-family:var(--serif);}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+tr.is-weak td{color:var(--bad-ink);}
+
+/* ---- 題目附圖／表(考選部原卷裁出的 PNG;線描圖固定白底,深色模式也清晰) ---- */
+.q-figure{display:block;max-width:100%;height:auto;margin:.7rem auto;border:1px solid var(--rule-faint);border-radius:var(--r);background:#fff;padding:.4rem;box-shadow:var(--shadow-sm);cursor:zoom-in;}
+/* 全站圖片點擊放大 lightbox */
+#fig-lightbox{position:fixed;inset:0;background:rgba(20,16,12,.9);display:none;z-index:1000;overflow:auto;align-items:flex-start;justify-content:center;padding:1.2rem;}
+#fig-lightbox.on{display:flex;}
+#fig-lightbox img{max-width:96vw;height:auto;background:#fff;border-radius:var(--r);cursor:zoom-in;}
+#fig-lightbox img.actual{max-width:none;width:auto;cursor:zoom-out;}
+.fig-lb-x{position:fixed;top:.6rem;right:1rem;font-size:1.5rem;line-height:1;color:#fff;background:none;border:none;cursor:pointer;padding:.2rem .5rem;}
+.fig-lb-x:hover{background:none;color:#fff;border:none;transform:none;}
+
+/* ---- 結構化資料表(比較表／數值表／非選填表;bank 存 {headers,rows} → HTML <table>,可選取／搜尋／隨字級縮放) ---- */
+.q-table-wrap{overflow-x:auto;margin:.8rem 0;}
+.q-table{border-collapse:collapse;min-width:100%;font-size:.95em;background:var(--paper-card);}
+.q-table th,.q-table td{border:1px solid var(--rule-faint);padding:.4rem .65rem;text-align:left;vertical-align:top;}
+.q-table thead th{border-bottom:1.5px solid var(--ink);font-family:var(--serif);font-weight:600;background:var(--paper-deep);}
+
+/* ---- 純 SVG 圖 ---- */
+.figure{border:1px solid var(--rule-faint);border-radius:var(--r);background:var(--paper-card);padding:.7rem;margin:.8rem 0;box-shadow:var(--shadow-sm);}
+.figure svg{display:block;width:100%;height:auto;}
+/* 雷達近正方形,放滿全寬會過高;收住寬度(趨勢/年量為寬圖,維持滿版) */
+#radar-box,.radar-figure{max-width:24rem;}
+.svg-grid{fill:none;stroke:var(--rule);stroke-width:1;}
+.svg-spoke{stroke:var(--rule-faint);stroke-width:1;}
+.svg-data{fill:rgba(47,107,64,.16);stroke:var(--ok-ink);stroke-width:1.5;}
+.svg-data-2{fill:none;stroke:var(--bad-ink);stroke-width:1.2;stroke-dasharray:4 3;}
+.svg-dot{fill:var(--ok-ink);}
+.svg-line{fill:none;stroke:var(--accent);stroke-width:1.5;}
+.svg-label{font-size:12px;fill:var(--ink);}
+.svg-axis{font-size:11px;fill:var(--ink-soft);}
+.svg-bar{fill:var(--accent);opacity:.85;}
+.svg-bar-best{fill:var(--ok-ink);opacity:.95;}   /* 時段表現:最佳時段強調 */
+
+/* ---- 歷史紀錄瀏覽器 ---- */
+.hist-list{margin:.5rem 0;}
+.hist-item{border-bottom:1px solid var(--rule-faint);}
+.hist-head{
+  display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .8rem;width:100%;text-align:left;
+  background:transparent;border:none;border-radius:0;padding:.6rem .3rem;font:inherit;
+}
+.hist-head:hover{background:var(--paper-card);color:var(--ink);border:none;transform:none;}
+.hist-badge{font-size:.76rem;border:1px solid var(--rule);border-radius:999px;padding:.05rem .55rem;flex:0 0 auto;white-space:nowrap;}
+.hist-badge.ok{border-color:var(--ok-ink);color:var(--ok-ink);background:var(--ok-wash);}
+.hist-badge.bad{border-color:var(--bad-ink);color:var(--bad-ink);background:var(--bad-wash);}
+.hist-when{font-size:.8rem;color:var(--ink-faint);flex:0 0 auto;font-variant-numeric:tabular-nums;}
+.hist-stem{font-size:.9rem;color:var(--ink-soft);flex:1 1 12rem;min-width:8rem;}
+.hist-detail{padding:.4rem .7rem 1rem;border-left:3px solid var(--rule-faint);margin:0 0 .6rem .3rem;}
+.hist-detail[hidden]{display:none;}
+.hist-detail .options{list-style:none;margin:.4rem 0;padding:0;}
+.hist-detail .opt{display:block;border:1px solid var(--rule);border-radius:var(--r);padding:.4rem .7rem;line-height:1.7;background:var(--paper);}
+.hist-detail .opt .letter{font-family:var(--serif);margin-right:.5rem;color:var(--ink-soft);}
+.hist-detail .opt.is-correct{border-color:var(--ok-ink);background:var(--ok-wash);color:var(--ok-ink);}
+.hist-detail .opt.is-wrong{border-color:var(--bad-ink);background:var(--bad-wash);color:var(--bad-ink);}
+.hist-detail .opt.is-dim{opacity:.55;}
+
+/* ---- 圓形進度圖(落點儀表)+ 完成度進度條 ---- */
+.gauge-row{display:flex;gap:1.4rem;flex-wrap:wrap;justify-content:center;margin:.6rem 0 .4rem;}
+.gauge-card{flex:0 0 auto;width:122px;}
+.gauge-card svg{width:122px;height:122px;display:block;}
+.gauge-track{fill:none;stroke:var(--rule-faint);stroke-width:9;}
+.gauge-fill{fill:none;stroke:var(--accent);stroke-width:9;stroke-linecap:round;transition:stroke-dasharray .5s var(--ease);}
+.gauge-fill.gauge-ok{stroke:var(--ok-ink);}
+.gauge-fill.gauge-low{stroke:var(--bad-ink);}
+.gauge-fill.gauge-empty{stroke:var(--rule);}
+.gauge-big{font-family:var(--serif);font-size:1.5rem;fill:var(--ink);font-variant-numeric:tabular-nums;}
+.gauge-small{font-size:.72rem;fill:var(--ink-soft);}
+.progress-label{font-size:.88rem;color:var(--ink-soft);margin:.9rem 0 .3rem;}
+.progress-wrap{height:.7rem;background:var(--paper-deep);border:1px solid var(--rule-faint);border-radius:999px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--accent);border-radius:999px;}
+
+/* ---- 藍圖其餘 ---- */
+.mode-pick-row{display:flex;flex-wrap:wrap;gap:.7rem .6rem;align-items:center;font-size:.92rem;}
+.mode-pick-row button{flex:0 0 auto;}   /* 防呆:按鈕不縮、不被擠到重疊（縮放/窄寬皆穩） */
+.mode-pick-row button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent);}
+/* P4 預計考試日期 */
+.date-input{font:inherit;font-size:.9rem;padding:.18rem .5rem;border:1px solid var(--rule);border-radius:var(--r);background:var(--paper-card);color:var(--ink);}
+.exam-countdown{font-size:.86rem;color:var(--accent);}
+.exam-countdown.past{color:var(--ink-faint);}
+#weekly-target{
+  font-family:var(--serif);font-size:1.08rem;border:1px solid var(--accent);border-radius:var(--r);
+  padding:.8rem 1.1rem;margin:.9rem 0 .3rem;background:var(--accent-wash);
+}
+#plan-detail{font-size:.88rem;color:var(--ink-soft);line-height:1.7;}
+.honest{font-size:.88rem;color:var(--bad-ink);border-left:3px solid var(--bad-ink);border-radius:0 var(--r) var(--r) 0;padding:.4rem .8rem;line-height:1.7;}
+.note-block{font-size:.92rem;}
+.note-block dt{font-family:var(--serif);margin-top:.7rem;}
+.note-block dd{margin:0 0 .2rem;color:var(--ink-soft);}
+label.chk{font-size:.88rem;color:var(--ink-soft);display:inline-block;margin:.4rem 0;}
+
+footer.colophon{
+  margin-top:3rem;border-top:2px solid var(--ink);padding-top:.8rem;
+  font-size:.82rem;color:var(--ink-soft);line-height:1.7;
+}
+input[type="file"]{font-size:.85rem;}
+.visually-file{display:none;}
+/* 螢幕報讀器專用:視覺隱藏但仍可被 AT 讀取(用於 #sr-announce 即時回饋朗讀)。 */
+.visually-hidden{
+  position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;
+  clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;
+}
+
+/* ============================================================
+   閱讀體驗:長篇文字左右對齊(齊頭齊尾)+ 優化斷句
+   中文以方塊字均分,justify 不會像西文產生空洞;對長題幹/選項/解析/申論
+   特別有感。同時:CJK 嚴格斷行(標點不落行首尾由瀏覽器處理)、英文長詞
+   (理論名、英文術語)可斷避免溢出、text-wrap:pretty 減少孤字殘行。
+   標題與短標籤(.subtitle/.q-meta/表格)維持靠左,避免短行被拉開。
+   ============================================================ */
+.question-stem,
+ol.options button.opt,
+.reason,
+.daily-line.focus,
+.essay-frame li,
+.essay-pitfalls li,
+.essay-ref-summary,
+.essay-laws,
+.note-block dd,
+.honest,
+.diag-lead,
+.diag-honest{
+  text-align:justify;
+  text-justify:inter-character;   /* 中英混排時字元級均分 */
+  line-break:strict;
+  overflow-wrap:anywhere;         /* 超長英文術語可斷,不撐破版面 */
+}
+/* 段落與標題的斷行更聰明(漸進增強,不支援的瀏覽器忽略) */
+p,li,.question-stem{text-wrap:pretty;}
+h1,h2,h3,h4,.mode-name,.daily-line.strong{text-wrap:balance;}
+
+/* ---- RWD ---- */
+@media (max-width:560px){
+  .page{padding:1.4rem .85rem 3rem;}
+  h1{font-size:1.4rem;}
+  .question-card{padding:1rem .9rem 1.1rem;}
+  .question-stem{font-size:1.06rem;}
+  nav#nav button{flex:1 1 30%;min-height:44px;}        /* 觸控目標 */
+  ol.options button.opt{min-height:44px;}
+  .diag-choice{min-height:44px;}
+  .nav-label{width:100%;}
+  .diag-choices{grid-template-columns:1fr;}
+  .mode-item{grid-template-columns:1.8rem 1fr;}
+  .mode-tags{grid-column:2;justify-self:start;margin-top:.3rem;}
+}
+
+/* ---- 尊重 reduced-motion(不強加動態)---- */
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important;animation:none !important;scroll-behavior:auto !important;}
+}
