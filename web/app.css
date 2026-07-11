@@ -446,6 +446,13 @@ html.fs-lg{font-size:112.5%;}   /* 18px */
 .chk-inline{margin:.1rem 0;white-space:nowrap;}
 .btn-sm{padding:.22rem .7rem;font-size:.85rem;}
 .subj-note{color:var(--ink-faint);font-size:.85rem;}
+/* 教師檢定等「類科・科目」兩級選科:類科 chips + 跨域開關 + 該類科科目 */
+.cat-seg{flex-wrap:wrap;margin:.15rem 0 .45rem;}
+.cat-seg[hidden]{display:none;}   /* 跨域模式隱藏類科列;需覆寫 .segmented 的 display:inline-flex */
+.subj-checks-area{margin:.1rem 0 .2rem;}
+.subj-group-hd{font-weight:600;font-size:.82rem;color:var(--ink);opacity:.72;margin:.5rem 0 .15rem;}
+.subj-group-hd:first-child{margin-top:.1rem;}
+.xd-toggle{margin-right:.6rem;}
 .order-pref{margin:.6rem 0;}
 .order-pref .field-label{display:block;color:var(--ink-soft);font-size:.92rem;margin:.3rem 0 .35rem;}
 .order-why{font-size:.84rem;line-height:1.75;color:var(--ink-soft);background:var(--accent-wash);border-left:3px solid var(--accent);border-radius:0 var(--r) var(--r) 0;padding:.45rem .75rem;margin:.45rem 0 0;}

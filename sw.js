@@ -19,7 +19,7 @@
       SW 不把失敗回應存進 cache、也不視為錯誤。
    ============================================================ */
 
-var CACHE_VERSION = 'v3';  /* P1 改了 progress.js/settings.js(app shell) → bump 汰舊快取 */
+var CACHE_VERSION = 'v5';  /* v5:教師檢定模擬考類科兩級選科(modes.js/exams.js/app.css app shell)。v4=教師檢定改名+setExam 導航修正 */
 var SHELL_CACHE = 'obig-shell-' + CACHE_VERSION;
 var DATA_CACHE = 'obig-data-' + CACHE_VERSION;
 

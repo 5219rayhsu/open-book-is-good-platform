@@ -151,6 +151,11 @@ var EXAMS = [
   },
   {
     key: 'teacher', prefix: 'tea_', name: '教師檢定', short: '教師檢定', hasEssay: false,
+    /* 科目為「類科・科目」二維:模擬考先選類科(幼兒園/特教身障/特教資優/國小/中等)
+       再選科目、可跨域。subjectGroupSep 一設,引擎自動長出兩級選單;其他考試無此欄=平面清單。
+       subjectGroupLabels:類科顯示名覆寫(中等學校含國中與高中/職,共用同一份卷)。 */
+    subjectGroupSep: '・',
+    subjectGroupLabels: { '中等': '中等（國中・高中/職）' },
     authority: '教育部',
     jurisdiction: '教育法規與課綱',
     sourceName: '教育部教師資格考試歷屆試題（受託國立臺灣師範大學心理與教育測驗研究發展中心）',
@@ -327,6 +332,33 @@ var EXAM = pickExam();
    不同考試(3~多科)、甚至單科都語意正確。 */
 function subjectCountLabel() { return EXAM.subjects.length + ' 科'; }
 
+/* 科目分組:manifest 設 subjectGroupSep(如教師檢定的「・」)才啟用,把 subjects 依前綴
+   分成類科群組 [{name,subjects:[...]}];無此欄回 null(=不分組、平面清單)。 */
+function subjectGroups() {
+  var sep = EXAM.subjectGroupSep;
+  if (!sep) { return null; }
+  var groups = [], by = {};
+  EXAM.subjects.forEach(function (s) {
+    var i = s.indexOf(sep);
+    var g = (i >= 0) ? s.slice(0, i) : s;
+    if (!by[g]) { by[g] = { name: g, subjects: [] }; groups.push(by[g]); }
+    by[g].subjects.push(s);
+  });
+  return groups;
+}
+/* 類科顯示名(可覆寫,如 中等 → 中等（國中・高中/職));無覆寫回原名。 */
+function subjectGroupLabel(name) {
+  var m = EXAM.subjectGroupLabels;
+  return (m && m[name]) || name;
+}
+/* 科目短名(去類科前綴):'幼兒園・國語文能力測驗' → '國語文能力測驗';不分組時原樣回。 */
+function subjectShortLabel(s) {
+  var sep = EXAM.subjectGroupSep;
+  if (!sep) { return s; }
+  var i = s.indexOf(sep);
+  return (i >= 0) ? s.slice(i + sep.length) : s;
+}
+
 /* 紀年標籤:題卡 meta、年份選單、歷史紀錄一律呼叫此 helper,別寫死「民國」。
    台灣國考預設「民國」;不同國家在該考試 manifest 設 eraLabel 覆寫
    (設 '' = 西元無前綴,例如日本可設 '' 或 '令和')。 */
@@ -335,12 +367,12 @@ function yearLabel(y) {
   return era ? (era + ' ' + y + ' 年') : (y + ' 年');
 }
 
-/* 切換考試:記住選擇 → 重載(最簡單可靠,避免跨科狀態殘留)。 */
+/* 切換考試:改用 query 帶(與 landing 深連結一致、pickExam 優先序最高),直接導到新網址。
+   舊寫法只改 hash + reload,會被網址殘留的 ?exam= 蓋回原科 → 點其他職業切不動。 */
 function setExam(key) {
   if (!examByKey(key) || key === EXAM.key) { return; }
-  try { localStorage.setItem(CURRENT_EXAM_KEY, key); } catch (e) { /* 容量/權限失敗則靠 hash 帶 */ }
-  location.hash = 'exam=' + key;
-  location.reload();
+  try { localStorage.setItem(CURRENT_EXAM_KEY, key); } catch (e) { /* 容量/權限失敗則靠 URL 帶 */ }
+  location.assign(location.pathname + '?exam=' + encodeURIComponent(key));
 }
 
 /* 資料 URL:每科一個子目錄,檔名不變(bank/relations/explanations/essays/essay_samples)。 */

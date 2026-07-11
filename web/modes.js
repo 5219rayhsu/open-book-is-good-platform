@@ -148,23 +148,82 @@ function renderMockPicker() {
   row1.appendChild(el('span', { 'class': 'subj-note' }, '預設＝本考試整卷題數（' + realN + ' 題）'));
   box.appendChild(row1);
 
-  /* 科目:單科 / 複數 / 全部 自由勾選 */
+  /* 科目:平面(一般考試)或兩級類科(教師檢定等有 subjectGroupSep)。
+     兩級=先選類科(只顯示該類科 4-5 科),另有「跨域」開關可跨類科混選。 */
   var subRow = el('div', { 'class': 'field-row' });
   subRow.appendChild(el('label', null, '科目：'));
-  var subWrap = el('div', { 'class': 'subj-checks' });
-  var checks = [];
-  SUBJECTS.forEach(function (s) {
-    var lab = el('label', { 'class': 'chk chk-inline' });
-    var cb = el('input', { type: 'checkbox', value: s });
-    if (mockOpts.subjects.indexOf(s) >= 0) { cb.checked = true; }
-    cb.addEventListener('change', syncSubjects);
-    checks.push(cb);
-    lab.appendChild(cb);
-    lab.appendChild(document.createTextNode(' ' + s));
-    subWrap.appendChild(lab);
-  });
-  subRow.appendChild(subWrap);
-  box.appendChild(subRow);
+  var checks = [];                                        /* 目前顯示中的科目 checkbox(切類科/跨域會重建) */
+  var selNote = el('span', { 'class': 'subj-note' }, '');
+  var groups = (typeof subjectGroups === 'function') ? subjectGroups() : null;
+  var checksArea = null;
+
+  function curGroup() {
+    for (var i = 0; groups && i < groups.length; i++) { if (groups[i].name === mockOpts.category) { return groups[i]; } }
+    return groups ? groups[0] : null;
+  }
+  function renderChecks() {                               /* 依 類科/跨域 重建科目 checkbox */
+    checksArea.textContent = ''; checks = [];
+    var show = mockOpts.crossDomain ? groups : [curGroup()];
+    show.forEach(function (g) {
+      if (mockOpts.crossDomain) { checksArea.appendChild(el('div', { 'class': 'subj-group-hd' }, subjectGroupLabel(g.name))); }
+      var wrap = el('div', { 'class': 'subj-checks' });
+      g.subjects.forEach(function (s) {
+        var lab = el('label', { 'class': 'chk chk-inline' });
+        var cb = el('input', { type: 'checkbox', value: s });
+        if (mockOpts.subjects.indexOf(s) >= 0) { cb.checked = true; }
+        cb.addEventListener('change', syncSubjects);
+        checks.push(cb);
+        lab.appendChild(cb); lab.appendChild(document.createTextNode(' ' + subjectShortLabel(s)));
+        wrap.appendChild(lab);
+      });
+      checksArea.appendChild(wrap);
+    });
+  }
+
+  if (groups) {
+    if (!mockOpts.category || !groups.some(function (g) { return g.name === mockOpts.category; })) { mockOpts.category = groups[0].name; }
+    if (!mockOpts._grouped) { mockOpts.subjects = curGroup().subjects.slice(); mockOpts._grouped = true; }  /* 首次進分組:收斂成當前類科,不一進來就跨全類科 */
+    var xdLab = el('label', { 'class': 'chk chk-inline xd-toggle' });
+    var xdCb = el('input', { type: 'checkbox' });
+    xdCb.checked = !!mockOpts.crossDomain;
+    xdLab.appendChild(xdCb); xdLab.appendChild(document.createTextNode(' 跨域考（跨類科混合）'));
+    subRow.appendChild(xdLab);
+    var catSeg = el('div', { 'class': 'segmented cat-seg' });
+    groups.forEach(function (g) {
+      var b = el('button', { type: 'button' }, subjectGroupLabel(g.name));
+      b.setAttribute('aria-pressed', String(g.name === mockOpts.category));
+      b.addEventListener('click', function () {
+        mockOpts.category = g.name; mockOpts.subjects = g.subjects.slice();   /* 換類科=改看該類科(預設全選) */
+        Array.prototype.forEach.call(catSeg.children, function (x, i) { x.setAttribute('aria-pressed', String(groups[i].name === g.name)); });
+        renderChecks(); syncSubjects();
+      });
+      catSeg.appendChild(b);
+    });
+    subRow.appendChild(catSeg);
+    checksArea = el('div', { 'class': 'subj-checks-area' });
+    subRow.appendChild(checksArea);
+    xdCb.addEventListener('change', function () {
+      mockOpts.crossDomain = xdCb.checked; catSeg.hidden = xdCb.checked;
+      if (!xdCb.checked) { mockOpts.subjects = curGroup().subjects.slice(); }   /* 回單類科:重置為該類科全選 */
+      renderChecks(); syncSubjects();
+    });
+    catSeg.hidden = xdCb.checked;
+    box.appendChild(subRow);
+    renderChecks();
+  } else {
+    var subWrap = el('div', { 'class': 'subj-checks' });
+    SUBJECTS.forEach(function (s) {
+      var lab = el('label', { 'class': 'chk chk-inline' });
+      var cb = el('input', { type: 'checkbox', value: s });
+      if (mockOpts.subjects.indexOf(s) >= 0) { cb.checked = true; }
+      cb.addEventListener('change', syncSubjects);
+      checks.push(cb);
+      lab.appendChild(cb); lab.appendChild(document.createTextNode(' ' + s));
+      subWrap.appendChild(lab);
+    });
+    subRow.appendChild(subWrap);
+    box.appendChild(subRow);
+  }
 
   var selRow = el('div', { 'class': 'field-row' });
   var allBtn = el('button', { type: 'button', 'class': 'btn-quiet btn-sm' }, '全選');
@@ -172,7 +231,6 @@ function renderMockPicker() {
   var noneBtn = el('button', { type: 'button', 'class': 'btn-quiet btn-sm' }, '全不選');
   noneBtn.addEventListener('click', function () { checks.forEach(function (cb) { cb.checked = false; }); syncSubjects(); });
   selRow.appendChild(allBtn); selRow.appendChild(document.createTextNode(' ')); selRow.appendChild(noneBtn);
-  var selNote = el('span', { 'class': 'subj-note' }, '');
   selRow.appendChild(selNote);
   box.appendChild(selRow);
 
@@ -201,12 +259,12 @@ function renderMockPicker() {
   box.appendChild(orderWrap);
 
   function syncSubjects() {
-    mockOpts.subjects = SUBJECTS.filter(function (s) {
-      for (var i = 0; i < checks.length; i++) { if (checks[i].value === s && checks[i].checked) { return true; } }
-      return false;
-    });
+    var picked = [];
+    checks.forEach(function (cb) { if (cb.checked) { picked.push(cb.value); } });   /* 只讀目前顯示的 checkbox(分組時=當前類科) */
+    mockOpts.subjects = SUBJECTS.filter(function (s) { return picked.indexOf(s) >= 0; });   /* 標準順序 */
     var k = mockOpts.subjects.length;
-    selNote.textContent = k === 0 ? '（至少選一科）' : (k === SUBJECTS.length ? ('（全 ' + SUBJECTS.length + ' 科）') : ('（已選 ' + k + ' 科）'));
+    selNote.textContent = k === 0 ? '（至少選一科）'
+      : (!groups && k === SUBJECTS.length ? ('（全 ' + SUBJECTS.length + ' 科）') : ('（已選 ' + k + ' 科）'));
     orderWrap.hidden = (k < 2);
   }
 
