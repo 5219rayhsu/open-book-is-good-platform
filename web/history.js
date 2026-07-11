@@ -100,7 +100,7 @@ function _histRow(e) {
     : el('span', { 'class': 'hist-badge ' + (e.correct ? 'ok' : 'bad') }, e.correct ? '答對' : '答錯');
   head.appendChild(badge);
   head.appendChild(el('span', { 'class': 'hist-when' }, (e.ts || e.t || '') + ' ・ ' + _histModeName(e.mode)));
-  var stem = q ? (q.stem || q.prompt || '') : '（題目已不在可載入範圍）';
+  var stem = q ? stemPlain(q.stem || q.prompt || '') : '（題目已不在可載入範圍）';
   head.appendChild(el('span', { 'class': 'hist-stem' }, stem.slice(0, 36) + (stem.length > 36 ? '…' : '')));
   var detail = el('div', { 'class': 'hist-detail', hidden: 'hidden' });
   var built = false;
@@ -120,7 +120,9 @@ function _histDetail(detail, e, q, isEssay) {
     return;
   }
   detail.appendChild(el('p', { 'class': 'q-meta' }, yearLabel(q.year) + '・' + q.subject + '・第 ' + q.no + ' 題'));
-  detail.appendChild(el('p', { 'class': 'question-stem' }, (q.stem || q.prompt)));
+  var histStem = el('div', { 'class': 'question-stem' });   /* div:題幹可能含 inline <table>,就地渲染 */
+  appendStemRich(histStem, (q.stem || q.prompt || ''));
+  detail.appendChild(histStem);
   if (!isEssay && q.options) {
     var ansIdx = LETTERS.indexOf(q.answer);
     var pickIdx = LETTERS.indexOf(e.pick);
@@ -162,4 +164,5 @@ function _histDetail(detail, e, q, isEssay) {
       detail.appendChild(box);
     }
   }
+  renderMath(detail);   /* 題幹/選項/表格內的 \(…\) 公式(與作答卡一致;此前歷史詳情漏渲染) */
 }

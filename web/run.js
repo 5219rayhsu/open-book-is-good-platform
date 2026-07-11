@@ -50,6 +50,44 @@ function buildTable(t) {
   return wrap;
 }
 
+/* 有些題幹在 PDF 抽取時把原卷表格保留成 inline <table>…</table>(比較表、雙向細目表、數值表),
+   位置常夾在題幹文字中間(「解法如下：<表> …何者正確?」),故就地渲染、保留原位,而非搬到題幹下方。
+   資料來自本站題庫(可信),但站台可被 fork → 仍走白名單 clone:只放行表格家族標籤、不複製任何屬性,
+   等於天然消毒(擋掉 fork 的 bank.json 夾帶 <script>/<img onerror>);不碰 innerHTML。 */
+var Q_TABLE_TAGS = { TABLE: 1, THEAD: 1, TBODY: 1, TFOOT: 1, TR: 1, TD: 1, TH: 1, CAPTION: 1, COLGROUP: 1, COL: 1 };
+function sanitizeTableNode(src) {
+  if (src.nodeType === 3) { return document.createTextNode(src.nodeValue); }   /* 文字節點:原樣保留(含 \(…\) 供 KaTeX 事後渲染) */
+  if (src.nodeType !== 1 || !Q_TABLE_TAGS[src.tagName]) { return null; }        /* 非白名單元素(script/img/…)整個丟棄 */
+  var out = document.createElement(src.tagName.toLowerCase());
+  for (var c = src.firstChild; c; c = c.nextSibling) {
+    var cl = sanitizeTableNode(c); if (cl) { out.appendChild(cl); }
+  }
+  return out;
+}
+function appendStemRich(container, str) {
+  /* 把字串切成 [文字, <table>…</table>, 文字, …],文字→text node(逃逸安全),表格→消毒後的真表格。 */
+  String(str).split(/(<table[\s\S]*?<\/table>)/i).forEach(function (part) {
+    if (!part) { return; }
+    if (/^<table/i.test(part)) {
+      var tbl = new DOMParser().parseFromString(part, 'text/html').querySelector('table');
+      var clean = tbl ? sanitizeTableNode(tbl) : null;
+      if (clean) {
+        clean.className = 'q-table';
+        var wrap = el('div', { 'class': 'q-table-wrap' }); wrap.appendChild(clean); container.appendChild(wrap);
+        return;
+      }
+    }
+    container.appendChild(document.createTextNode(part));   /* 純文字,或表格解析失敗 → 顯示原文(可見,不靜默吞) */
+  });
+}
+/* 摘要／清單情境(錯題列表、歷史預覽):題幹的 inline <table> 不宜展開整張 → 收成「〔表〕」佔位,並清掉零星表格標籤。 */
+function stemPlain(s) {
+  return String(s || '')
+    .replace(/<table[\s\S]*?<\/table>/gi, '〔表〕')
+    .replace(/<\/?(?:thead|tbody|tfoot|tr|td|th|caption|colgroup|col)\b[^>]*>/gi, ' ')
+    .replace(/\s+/g, ' ').trim();
+}
+
 /* 題組共用本體(passage):閱讀題組／非選的甲乙引文等,過去未渲染→題組題缺上下文。
    依 group_id 每組只畫一次(見 startSheet/startDrill),非選文言文本體也靠這裡顯示。 */
 /* 題組路徑指示:group_id 編碼首末題號(g23_25／會考_111_國文_g28_29)→ 解出範圍,
@@ -147,7 +185,10 @@ function buildMCQCard(q, meta) {
   var flag = (q.parse === 'review') ? '（待校題）' : '';
   card.appendChild(el('div', { 'class': 'q-meta' },
     yearLabel(q.year) + '・' + q.subject + '・第 ' + q.no + ' 題' + (isMulti ? '（多選）' : '') + flag));
-  card.appendChild(el('p', { 'class': 'question-stem' }, q.no + '. ' + q.stem));
+  /* 題幹用 div(非 p):題幹可能夾帶 inline <table>(表格是 block 元素,放進 p 不合法)。 */
+  var stemBox = el('div', { 'class': 'question-stem' });
+  appendStemRich(stemBox, q.no + '. ' + q.stem);
+  card.appendChild(stemBox);
   /* 題目附圖／表(語意差別量表、家系圖、長條圖等)。線上以檔案載入,不做 base64 內嵌;
      檔名見 bank 的 figure 欄,路徑同 dataUrl 規則(../data/<考試>/figures/<檔名>)。 */
   if (q.figure) {

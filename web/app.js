@@ -562,7 +562,7 @@ function renderWrongbook() {
     var ul = el('ul');
     group.slice(0, 12).forEach(function (qid) {
       var q = byQid[qid];
-      ul.appendChild(el('li', null, '【誤 ' + wm[qid] + ' 次】' + q.year + ' 年第 ' + q.no + ' 題：' + q.stem));
+      ul.appendChild(el('li', null, '【誤 ' + wm[qid] + ' 次】' + q.year + ' 年第 ' + q.no + ' 題：' + stemPlain(q.stem)));
     });
     if (group.length > 12) { ul.appendChild(el('li', null, '……其餘 ' + (group.length - 12) + ' 題重練時會出現。')); }
     sec.appendChild(ul); box.appendChild(sec);
