@@ -120,6 +120,11 @@ function _histDetail(detail, e, q, isEssay) {
     return;
   }
   detail.appendChild(el('p', { 'class': 'q-meta' }, yearLabel(q.year) + '・' + q.subject + '・第 ' + q.no + ' 題'));
+  if (!isEssay) {
+    if (typeof groupHeaderEl === 'function') { var _gh = groupHeaderEl(q); if (_gh) { detail.appendChild(_gh); } }
+    if (typeof passageEl === 'function') { var _pg = passageEl(q.passage); if (_pg) { detail.appendChild(_pg); } }
+    if (typeof carryContextEl === 'function') { var _cc = carryContextEl(q); if (_cc) { detail.appendChild(_cc); } }
+  }
   var histStem = el('div', { 'class': 'question-stem' });   /* div:題幹可能含 inline <table>,就地渲染 */
   appendStemRich(histStem, (q.stem || q.prompt || ''));
   detail.appendChild(histStem);

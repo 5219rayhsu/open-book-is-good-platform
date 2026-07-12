@@ -14,9 +14,9 @@ var FONT_LEVELS = [
   { v: '', label: '標準', cls: '' },
   { v: 'lg', label: '大', cls: 'fs-lg' }
 ];
-var THEME_KEY = 'obig:theme';                  /* ''暖紙 | 'light'白底 */
+var THEME_KEY = 'obig:theme';                  /* 'warm'暖紙 | 'light'白底(預設) */
 var THEME_LEVELS = [
-  { v: '', label: '暖紙', cls: '' },
+  { v: 'warm', label: '暖紙', cls: '' },
   { v: 'light', label: '白底', cls: 'theme-light' }
 ];
 
@@ -34,12 +34,14 @@ function _applyChoice(levels, key, v) {
 function applyFontScale(v) { return _applyChoice(FONT_LEVELS, FONT_KEY, v); }
 function applyTheme(v) { return _applyChoice(THEME_LEVELS, THEME_KEY, v); }
 
-/* 開機套用已存偏好（app.js 初始化呼叫）。讀失敗 = 預設。 */
+/* 開機套用已存偏好（app.js 初始化呼叫）。讀失敗 = 預設。
+   主題預設白底:未設定(null)或舊資料的空字串('')都視為「沒選過」→ 套白底;
+   只有明確存過 'warm' 才顯示暖紙。 */
 function initSettingsPrefs() {
-  var f = '', t = '';
-  try { f = localStorage.getItem(FONT_KEY) || ''; t = localStorage.getItem(THEME_KEY) || ''; } catch (e) { /* 預設 */ }
+  var f = '', t = null;
+  try { f = localStorage.getItem(FONT_KEY) || ''; t = localStorage.getItem(THEME_KEY); } catch (e) { /* 預設 */ }
   applyFontScale(f);
-  applyTheme(t);
+  applyTheme(t ? t : 'light');
 }
 
 /* 一段「標題 + 控制列」設定區塊。 */
@@ -51,10 +53,12 @@ function _setSection(title, desc, controlNode) {
   return frag;
 }
 
-/* 一組單選按鈕（當前 aria-pressed=true）。點擊即套用 + 更新高亮。 */
-function _choiceSection(title, desc, levels, key, applyFn) {
-  var cur = '';
-  try { cur = localStorage.getItem(key) || ''; } catch (e) { cur = ''; }
+/* 一組單選按鈕（當前 aria-pressed=true）。點擊即套用 + 更新高亮。
+   defaultVal:讀不到已存值(null/'')時要高亮哪個選項;省略則沿用該選項組自己的預設值('')。 */
+function _choiceSection(title, desc, levels, key, applyFn, defaultVal) {
+  var cur = null;
+  try { cur = localStorage.getItem(key); } catch (e) { cur = null; }
+  if (!cur) { cur = defaultVal || ''; }
   var row = el('div', { 'class': 'set-options', role: 'group', 'aria-label': title });
   levels.forEach(function (lv) {
     var b = el('button', { type: 'button', 'aria-pressed': lv.v === cur ? 'true' : 'false' }, lv.label);
@@ -86,8 +90,8 @@ function renderSettings() {
     FONT_LEVELS, FONT_KEY, applyFontScale));
 
   sheet.appendChild(_choiceSection('主題',
-    '暖紙＝預設護眼米色；白底＝高對比純白。偏好會記住。',
-    THEME_LEVELS, THEME_KEY, applyTheme));
+    '白底＝預設高對比純白；暖紙＝護眼米色。偏好會記住。',
+    THEME_LEVELS, THEME_KEY, applyTheme, 'light'));
 
   /* 顯示名稱：沿用既有命名覆蓋層（不重寫改名邏輯）。 */
   var nameBtn = el('button', { type: 'button', 'class': 'btn-quiet' }, '設定顯示名稱');

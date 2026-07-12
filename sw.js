@@ -19,7 +19,7 @@
       SW 不把失敗回應存進 cache、也不視為錯誤。
    ============================================================ */
 
-var CACHE_VERSION = 'v5';  /* v5:教師檢定模擬考類科兩級選科(modes.js/exams.js/app.css app shell)。v4=教師檢定改名+setExam 導航修正 */
+var CACHE_VERSION = 'v6';  /* v6:預快取改 {cache:'reload'} 繞過 HTTP 快取,修「v5 殼烤進 HTTP 快取裡的舊 exams.js → 切換走舊 hash 版 → reload 跳回原科」。v5=類科兩級選科。v4=教師檢定改名+setExam 導航修正 */
 var SHELL_CACHE = 'obig-shell-' + CACHE_VERSION;
 var DATA_CACHE = 'obig-data-' + CACHE_VERSION;
 
@@ -83,7 +83,15 @@ var OPTIONAL_DATA_FILES = ['relations.json', 'essay_samples.json'];
 self.addEventListener('install', function (event) {
   event.waitUntil(
     caches.open(SHELL_CACHE).then(function (cache) {
-      return cache.addAll(APP_SHELL_FILES);
+      /* {cache:'reload'} 強制繞過瀏覽器 HTTP 快取 —— 避免把 max-age(JS 快取一天)內的舊資產烤進殼。
+         經典 PWA 陷阱:修正發佈後 SW 重裝,cache.addAll 卻從 HTTP 快取抓到舊 JS,SW 從此餵舊碼。
+         逐檔 fetch+put,任一失敗即整體 reject(維持 addAll 的原子性:不裝半殘的殼)。 */
+      return Promise.all(APP_SHELL_FILES.map(function (u) {
+        return fetch(new Request(u, { cache: 'reload' })).then(function (resp) {
+          if (!resp || !resp.ok) { throw new Error('precache 失敗: ' + u); }
+          return cache.put(u, resp);
+        });
+      }));
     }).then(function () {
       return self.skipWaiting();
     })

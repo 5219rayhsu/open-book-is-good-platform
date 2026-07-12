@@ -126,6 +126,34 @@ function passageEl(text) {
   return box;
 }
 
+var CARRY_RE = /承上題|依前文|依上文|承前題?|同上題|依前題|根據上題|接上題/;
+/* 承上題但無 passage/group:找同卷前一題(走回情境錨題)當「前題情境」顯示。純前端,不改資料。 */
+function carryContextEl(q) {
+  if (!q || q.group_id || q.passage) { return null; }          /* 已有本體就不用 */
+  if (!q.stem || !CARRY_RE.test(String(q.stem))) { return null; }
+  if (typeof papersIndex === 'undefined' || typeof byQid === 'undefined') { return null; }
+  var paper = null, i;
+  for (i = 0; i < papersIndex.length; i++) { if (papersIndex[i].qids.indexOf(q.qid) >= 0) { paper = papersIndex[i]; break; } }
+  var box = el('div', { 'class': 'q-passage q-carry' });
+  if (!paper) { box.appendChild(el('p', { 'class': 'q-passage-p' }, '【承上題】此題承接前一題，建議到「歷屆原卷」看整卷以取得完整情境。')); return box; }
+  var idx = paper.qids.indexOf(q.qid);
+  /* 走回到「情境錨題」:往前找第一個 stem 不含承上標記的題 */
+  var anchor = null, j;
+  for (j = idx - 1; j >= 0; j--) {
+    var pq = byQid[paper.qids[j]];
+    if (!pq) { continue; }
+    anchor = pq;
+    if (!CARRY_RE.test(String(pq.stem || ''))) { break; }       /* 找到錨題就停 */
+  }
+  if (!anchor) { box.appendChild(el('p', { 'class': 'q-passage-p' }, '【承上題】此題承接前一題，建議到「歷屆原卷」看整卷以取得完整情境。')); return box; }
+  box.appendChild(el('p', { 'class': 'q-carry-label' }, '【承上題】以下為情境所在的前題（第 ' + anchor.no + ' 題），據此作答：'));
+  var body = el('div');
+  if (typeof appendStemRich === 'function') { appendStemRich(body, String(anchor.stem || '')); }
+  else { body.appendChild(el('p', null, String(anchor.stem || ''))); }
+  box.appendChild(body);
+  return box;
+}
+
 /* ===================== 非選(簡答)作答 =====================
    非選題與選擇同卷同時間(題組可選擇＋簡答混合),inline 出現在原卷。
    作答＝textarea;即時字數計數「含標點符號」(學測/會考規則:標點占字數),不計空白換行。 */
@@ -343,6 +371,7 @@ function startDrill(items, meta) {
     var _gh = groupHeaderEl(it.q); if (_gh) { panel.appendChild(_gh); }   /* 題組路徑指示(拆單題也帶) */
     var _pg = passageEl(it.q.passage);   /* 題組本體(閱讀引文等),逐題單卡每張都顯示 */
     if (_pg) { panel.appendChild(_pg); }
+    var _cc = carryContextEl(it.q); if (_cc) { panel.appendChild(_cc); }   /* 承上題(無 passage)→ 補前題情境 */
     var card = buildMCQCard(it.q, { reason: it.reason, reasonTag: it.reasonTag });
     wireAnswerCard(card, it.q, function (picked) { answer(card, it.q, picked); });
     panel.appendChild(card);

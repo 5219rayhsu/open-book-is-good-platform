@@ -416,6 +416,7 @@ function renderToday() {
   /* 題組題拆到單題練習時,仍帶題組路徑指示＋本體,單看一題也答得了。 */
   if (typeof groupHeaderEl === 'function') { var _gh = groupHeaderEl(current.q); if (_gh) { host.appendChild(_gh); } }
   if (typeof passageEl === 'function') { var _pg = passageEl(current.q.passage); if (_pg) { host.appendChild(_pg); } }
+  if (typeof carryContextEl === 'function') { var _cc = carryContextEl(current.q); if (_cc) { host.appendChild(_cc); } }
   var card = buildMCQCard(current.q, null);
   wireAnswerCard(card, current.q, function (picked) { todayAnswer(card, picked); });
   host.appendChild(card);
@@ -533,40 +534,117 @@ function renderPracticeHead() {
   $('session-stats').textContent = '本次：' + session.n + ' 題，答對 ' + session.ok + ' 題';
 }
 
-/* ===================== 錯題複習(科目為概念代理) ===================== */
+/* ===================== 錯題複習(可篩選＋可勾選,整包隨機／複選複習) ===================== */
 function wrongMap() {
   var m = {};
   state.log.forEach(function (e) { if (!e.correct && byQid[e.qid]) { m[e.qid] = (m[e.qid] || 0) + 1; } });
   return m;
 }
+var wrongbookYear = '__all__';      /* 篩選:年份(換篩選重繪,不清空已勾選) */
+var wrongbookSubject = '__all__';   /* 篩選:科目 */
+var wrongbookChecked = {};          /* qid → true,已勾選集合(跨篩選/重繪記憶;「複習選取」後清空) */
+
 function renderWrongbook() {
   var box = $('wrongbook-list');
   box.textContent = '';
   var wm = wrongMap();
-  var qids = Object.keys(wm);
-  $('wrongbook-empty').hidden = qids.length > 0;
-  if (qids.length === 0) { return; }
-  SUBJECTS.forEach(function (sub) {
-    var group = qids.filter(function (qid) { return byQid[qid].subject === sub; });
-    if (group.length === 0) { return; }
-    var sec = el('div', { 'class': 'wrong-group' });
-    var head = el('header');
-    head.appendChild(el('span', { 'class': 'gname' }, sub + '(' + group.length + ' 題)'));
-    var btn = el('button', { type: 'button' }, '重練此組');
-    btn.addEventListener('click', function () {
-      overrideQueue = shuffle(group.slice());
-      showPanel('practice'); startToday();
-      announce('開始重練「' + sub + '」的錯題組，共 ' + group.length + ' 題。');
-    });
-    head.appendChild(btn); sec.appendChild(head);
-    var ul = el('ul');
-    group.slice(0, 12).forEach(function (qid) {
-      var q = byQid[qid];
-      ul.appendChild(el('li', null, '【誤 ' + wm[qid] + ' 次】' + q.year + ' 年第 ' + q.no + ' 題：' + stemPlain(q.stem)));
-    });
-    if (group.length > 12) { ul.appendChild(el('li', null, '……其餘 ' + (group.length - 12) + ' 題重練時會出現。')); }
-    sec.appendChild(ul); box.appendChild(sec);
+  var allQids = Object.keys(wm);
+  $('wrongbook-empty').hidden = allQids.length > 0;
+  if (allQids.length === 0) { wrongbookChecked = {}; return; }
+
+  /* 篩選候選值:只列錯題實際涉及的年份／科目(而非全題庫)。年份新到舊;科目照 SUBJECTS 順序。 */
+  var years = [];
+  allQids.forEach(function (qid) { var y = byQid[qid].year; if (years.indexOf(y) < 0) { years.push(y); } });
+  years.sort(function (a, b) { return Number(b) - Number(a); });
+  var subjectsPresent = SUBJECTS.filter(function (s) {
+    return allQids.some(function (qid) { return byQid[qid].subject === s; });
   });
+
+  var filterRow = el('div', { 'class': 'wrong-filters' });
+  filterRow.appendChild(el('label', { 'for': 'wrong-filter-year' }, '年份：'));
+  var yearSel = el('select', { id: 'wrong-filter-year' });
+  yearSel.appendChild(el('option', { value: '__all__' }, '全部'));
+  years.forEach(function (y) { yearSel.appendChild(el('option', { value: String(y) }, yearLabel(y))); });
+  yearSel.value = wrongbookYear;
+  yearSel.addEventListener('change', function () { wrongbookYear = yearSel.value; renderWrongbook(); });
+  filterRow.appendChild(yearSel);
+
+  filterRow.appendChild(el('label', { 'for': 'wrong-filter-subject' }, '科目：'));
+  var subSel = el('select', { id: 'wrong-filter-subject' });
+  subSel.appendChild(el('option', { value: '__all__' }, '全部'));
+  subjectsPresent.forEach(function (s) { subSel.appendChild(el('option', { value: s }, s)); });
+  subSel.value = wrongbookSubject;
+  subSel.addEventListener('change', function () { wrongbookSubject = subSel.value; renderWrongbook(); });
+  filterRow.appendChild(subSel);
+
+  var filtered = allQids.filter(function (qid) {
+    var q = byQid[qid];
+    if (wrongbookYear !== '__all__' && String(q.year) !== wrongbookYear) { return false; }
+    if (wrongbookSubject !== '__all__' && q.subject !== wrongbookSubject) { return false; }
+    return true;
+  });
+
+  var randBtn = el('button', { type: 'button' }, '整包隨機重練（' + filtered.length + ' 題）');
+  if (filtered.length === 0) { randBtn.disabled = true; }
+  randBtn.addEventListener('click', function () {
+    if (filtered.length === 0) { return; }
+    overrideQueue = shuffle(filtered.slice());
+    showPanel('practice'); startToday();
+    announce('開始整包隨機重練，共 ' + filtered.length + ' 題。');
+  });
+  filterRow.appendChild(randBtn);
+
+  var selAllBtn = el('button', { type: 'button' }, '全選');
+  var selNoneBtn = el('button', { type: 'button' }, '全不選');
+  filterRow.appendChild(selAllBtn); filterRow.appendChild(selNoneBtn);
+  box.appendChild(filterRow);
+
+  /* 排序:誤次數多的優先;同次數再年份新到舊。 */
+  var sorted = filtered.slice().sort(function (a, b) {
+    if (wm[b] !== wm[a]) { return wm[b] - wm[a]; }
+    return Number(byQid[b].year) - Number(byQid[a].year);
+  });
+
+  var scroll = el('div', { 'class': 'wrong-list-scroll' });
+  var boxes = [];   /* {qid, input} 供全選/全不選/複習選取讀取 */
+  sorted.forEach(function (qid) {
+    var q = byQid[qid];
+    var row = el('div', { 'class': 'wrong-row' });
+    var cbId = 'wrong-cb-' + qid;
+    var cb = el('input', { type: 'checkbox', id: cbId });
+    cb.checked = !!wrongbookChecked[qid];
+    cb.addEventListener('change', function () {
+      if (cb.checked) { wrongbookChecked[qid] = true; } else { delete wrongbookChecked[qid]; }
+    });
+    row.appendChild(cb);
+    var stem = stemPlain(q.stem);
+    var labelText = '【誤 ' + wm[qid] + ' 次】' + yearLabel(q.year) + ' 第 ' + q.no + ' 題・' + q.subject + '：' +
+      stem.slice(0, 30) + (stem.length > 30 ? '…' : '');
+    row.appendChild(el('label', { 'for': cbId }, labelText));
+    scroll.appendChild(row);
+    boxes.push({ qid: qid, input: cb });
+  });
+  box.appendChild(scroll);
+
+  selAllBtn.addEventListener('click', function () {
+    boxes.forEach(function (c) { c.input.checked = true; wrongbookChecked[c.qid] = true; });
+  });
+  selNoneBtn.addEventListener('click', function () {
+    boxes.forEach(function (c) { c.input.checked = false; delete wrongbookChecked[c.qid]; });
+  });
+
+  var reviewRow = el('div', { 'class': 'wrong-filters' });
+  var reviewBtn = el('button', { type: 'button' }, '複習選取');
+  reviewBtn.addEventListener('click', function () {
+    var picked = boxes.filter(function (c) { return c.input.checked; }).map(function (c) { return c.qid; });
+    if (!picked.length) { announce('請先勾選要複習的錯題。'); return; }
+    overrideQueue = picked.slice();   /* 維持勾選(顯示)順序,不 shuffle */
+    wrongbookChecked = {};
+    showPanel('practice'); startToday();
+    announce('開始複習選取的 ' + picked.length + ' 題錯題。');
+  });
+  reviewRow.appendChild(reviewBtn);
+  box.appendChild(reviewRow);
 }
 
 /* ===================== 學習藍圖 =====================

@@ -252,6 +252,12 @@ kbd{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:.8em;border:1px
   font-size:.9rem;color:var(--ink-soft);white-space:nowrap;overflow:hidden;
   text-overflow:ellipsis;border-bottom:1px dotted var(--rule-faint);padding:.2rem 0;
 }
+/* 錯題複習(可篩選＋可勾選):篩選列、捲動清單、逐列 checkbox。 */
+.wrong-filters{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-bottom:.6rem;}
+.wrong-list-scroll{max-height:60vh;overflow-y:auto;border:1px solid var(--rule-faint);border-radius:var(--r);padding:.2rem .7rem;background:var(--paper-card);}
+.wrong-row{display:flex;gap:.5rem;align-items:flex-start;padding:.3rem 0;border-bottom:1px dotted var(--rule-faint);}
+.wrong-row:last-child{border-bottom:none;}
+.wrong-row label{font-size:.9rem;color:var(--ink-soft);}
 
 /* ---- 申論題作答 ---- */
 textarea{
@@ -266,6 +272,10 @@ textarea{
   padding:.7rem 1.05rem;margin:.3rem 0 .9rem;}
 .q-passage-p{margin:0 0 .75rem;text-align:justify;}
 .q-passage-p:last-child{margin-bottom:0;}
+/* 承上題(無 group_id/passage,情境在同卷前一題)→ 前端補顯示前題。沿用 .q-passage 外觀,
+   加淡底色與虛線邊與正題本體區別開,別自創色票、用既有 --accent-wash。 */
+.q-carry{border-left-color:var(--accent);background:var(--accent-wash);}
+.q-carry-label{font-weight:600;margin:0 0 .5rem;}
 /* 非選(簡答)作答:字數規定、textarea、即時字數計數(超上限轉紅)。 */
 .essay-limit{margin:.3rem 0 .4rem;}
 .essay-answer-input{margin:.2rem 0 .35rem;}
