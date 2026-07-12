@@ -19,7 +19,7 @@
       SW 不把失敗回應存進 cache、也不視為錯誤。
    ============================================================ */
 
-var CACHE_VERSION = 'v6';  /* v6:預快取改 {cache:'reload'} 繞過 HTTP 快取,修「v5 殼烤進 HTTP 快取裡的舊 exams.js → 切換走舊 hash 版 → reload 跳回原科」。v5=類科兩級選科。v4=教師檢定改名+setExam 導航修正 */
+var CACHE_VERSION = 'v7';  /* v7:封面／選科主題切換 theme-boot.js（預設白底、與內部考科共用 obig:theme 偏好）。v6:預快取改 {cache:'reload'} 繞過 HTTP 快取,修「v5 殼烤進舊 exams.js → 切換跳回原科」。v5=類科兩級選科。v4=教師檢定改名+setExam 導航修正 */
 var SHELL_CACHE = 'obig-shell-' + CACHE_VERSION;
 var DATA_CACHE = 'obig-data-' + CACHE_VERSION;
 
@@ -51,6 +51,7 @@ var APP_SHELL_FILES = [
   'web/settings.js',
   'web/srs.js',
   'web/stats.js',
+  'web/theme-boot.js',
   'web/manifest.webmanifest',
   'web/katex/katex.min.css',
   'web/katex/katex.min.js',

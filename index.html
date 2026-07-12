@@ -20,6 +20,8 @@
 <meta name="twitter:image" content="https://open-book-is-good-platform.1003ray1003.workers.dev/og-image.png">
 <!-- 沿用統一站引擎的設計語言(紙感、襯線、墨線、沉穩藍),landing 只補版面專屬樣式 -->
 <link rel="stylesheet" href="web/app.css">
+<!-- 主題開機:首繪前套用偏好主題（預設白底）+ 渲染封面主題切換;須非 defer -->
+<script src="web/theme-boot.js"></script>
 <style>
   .landing{max-width:60rem;margin:0 auto;padding:clamp(1.5rem,4vw,3.5rem) 1.1rem 3rem;}
   .landing-hero{border-bottom:2px solid var(--ink);padding-bottom:1.4rem;margin-bottom:1.8rem;}
@@ -44,6 +46,8 @@
 </head>
 <body>
 <div class="landing">
+
+  <div class="landing-topbar"><div id="theme-toggle" class="theme-toggle" role="group" aria-label="主題切換"></div></div>
 
   <header class="landing-hero">
     <h1>開卷有益</h1>
