@@ -83,6 +83,60 @@ function shuffle(arr) { /* Fisher–Yates(就地洗,呼叫端先 copy)*/
   }
   return arr;
 }
+/* 題目內容指紋:題幹＋選項(去空白、選項排序後)組成,用來判斷「內容是否相同」而非只看 qid——
+   跨年重複收錄的考古題(換年份/題號但文字相同)也能被認出。pickNext 冷卻與模擬考去重共用。 */
+function qFingerprint(q) {
+  if (!q) { return ''; }
+  var stem = String(q.stem || '').replace(/\s+/g, '');
+  var opts = (q.options || []).slice().map(function (o) { return String(o).replace(/\s+/g, ''); }).sort();
+  return stem + '|' + opts.join('|');
+}
+/* 題幹指紋(模擬考同場互斥用):題幹去除所有空白;回傳 null 不參與互斥。門檻 <13 字
+   涵蓋兩層豁免:(1) 空／極短題幹(如 gsat 詞彙單題),(2) 通用萬用題幹——真實考卷本就
+   常見多題共用同一句泛用問法(如「下列敘述何者錯誤？」僅 10 字,社工庫組1／組4 等
+   同場共用 10 題屬合法情形,不該被互斥擋下);實質孿生題幹(同題幹、不同選項
+   的跨年孿生題)跨庫最短為 13 字(律師庫),恰落在互斥側、餘裕為零;通用萬用題幹最長
+   12 字——調整此門檻前先重跑十庫孿生分析,別假設有緩衝。同一題幹、不同選項的跨年
+   孿生題(社工庫等常見)技術上是不同題,dedupByContent 的內容指紋擋不住,但考生
+   同場遇到體感就是重複,故另立此指紋在抽題時做「同場不得出現兩題同指紋」的互斥
+   (見 modes.js)。 */
+function stemFingerprint(q) {
+  if (!q) { return null; }
+  var stem = String(q.stem || '').replace(/\s+/g, '');
+  if (stem.length < 13) { return null; }
+  return stem;
+}
+/* 內容指紋(模擬考/完整診斷同場互斥第二層):題幹去空白長度 <8 回 null——護欄,與
+   dedupByContent 同款,避免 gsat 克漏字共用選項題組被誤塌成同一把指紋;否則回
+   qFingerprint(q)(題幹＋選項全內容)。與 stemFingerprint 是兩種粒度的同場互斥:
+   stemFingerprint 擋「同題幹、不同選項」的孿生題,這裡擋「內容完全相同」的跨年
+   重複收錄題。兩層都只保證「同一場不重複出現」,不同場之間仍各自有機會被抽到——
+   即輪替,不像舊版直接用 dedupByContent 把舊年份整個砍出候選池(見 modes.js／
+   diagnostic.js 的呼叫端)。 */
+function contentFingerprint(q) {
+  if (!q) { return null; }
+  var stemLen = String(q.stem || '').replace(/\s+/g, '').length;
+  if (stemLen < 8) { return null; }
+  return qFingerprint(q);
+}
+/* 內容去重(單題練習冷卻等仍在用;模擬考/完整診斷已改走「同場互斥＋跨場輪替」,
+   見 contentFingerprint／stemFingerprint，此函式目前無呼叫端，保留供工具使用):同內容題(跨年重複收錄,換年份/題號但文字相同)
+   只留一筆,避免同一次抽題裡出現兩份「同一題」。先依年份新到舊排序(留最新版本),
+   短題幹(去空白後 <8 字,如 gsat 詞彙單題)不受去重影響——護欄,避免誤殺合法的短題。 */
+function dedupByContent(list) {
+  var src = (list || []).slice();
+  src.sort(function (a, b) { return String(b.year).localeCompare(String(a.year)); });
+  var seen = {}, out = [];
+  src.forEach(function (q) {
+    var stemLen = String(q.stem || '').replace(/\s+/g, '').length;
+    if (stemLen < 8) { out.push(q); return; }   /* 護欄:短題幹一律保留,不判重 */
+    var key = qFingerprint(q);
+    if (seen[key]) { return; }
+    seen[key] = true;
+    out.push(q);
+  });
+  return out;
+}
 
 /* ===================== 狀態(localStorage,不可變更新) ===================== */
 function defaultState() {
@@ -91,12 +145,15 @@ function defaultState() {
     log: [],        /* {t,ts,qid,subject,correct,mode}(ts=24h 時間戳,供時段分析/歷史) */
     drill: [],      /* {qid,why,from} 答錯觸發的關聯補強佇列 */
     exams: [],      /* 考試形式整卷成績 {ts,mode,total,ok}:落點/平均唯一來源(原卷/完整模擬/完整診斷才入) */
+    flags: {},      /* qid → true,使用者手動標記(與對錯無關) */
+    saved: {},      /* qid → 時間戳字串,使用者手動收進「儲存專練」 */
     settings: {
       /* 備考模式 2×2:程度 planBasis(影響精熟門檻)× 時程 planWeeks(每週量分母),兩維獨立。 */
       planBasis: 'has', planWeeks: 26, start: todayStr(), includeReview: false,
       includeLegacy: false,  /* 舊年度(101-109)歷史題庫:預設不計入正式練習 */
       diagnosedAt: null, examGoal: null,  /* 入學診斷後寫入 */
-      userName: '', namePromptedAt: null  /* 命名功能(naming.js):學習者名字、是否問過 */
+      userName: '', namePromptedAt: null,  /* 命名功能(naming.js):學習者名字、是否問過 */
+      examCategories: []  /* 應考類科(空=全部類科,向下相容);僅分組考試(subjectGroupSep)生效 */
     }
   };
 }
@@ -128,10 +185,57 @@ function loadState() {
     migrateModeSettings(st.settings);   /* 舊版單維 mode → 新版 (planBasis, planWeeks) */
     if (!Array.isArray(st.drill)) { st.drill = []; }
     if (!Array.isArray(st.exams)) { st.exams = []; }   /* 舊資料無 exams → 補空 */
+    if (!st.flags || typeof st.flags !== 'object') { st.flags = {}; }   /* 舊存檔無 flags → 補空物件 */
+    if (!st.saved || typeof st.saved !== 'object') { st.saved = {}; }   /* 舊存檔無 saved → 補空物件 */
     return st;
   } catch (e) { return defaultState(); }
 }
 var state = loadState();
+
+/* ===================== 應考類科(分組考試如教師檢定,可複選要報考的類科) =====================
+   只在 EXAM.subjectGroupSep 有設(allCategoryNames() 非 null)的考試生效;其餘考試恆回 null
+   (=不過濾、全部科目),向下相容。examCategories 空陣列(預設,見 defaultState)＝全部類科。 */
+function activeCategories() {
+  var all = (typeof allCategoryNames === 'function') ? allCategoryNames() : null;
+  if (all === null) { return null; }   /* 非分組考試:不套用類科過濾 */
+  var sel = state.settings.examCategories;
+  if (!Array.isArray(sel) || sel.length === 0) { return null; }   /* 未設定/清空 = 全部類科 */
+  var valid = sel.filter(function (c) { return all.indexOf(c) >= 0; });   /* 濾掉已不存在的舊值 */
+  return valid.length ? valid : null;
+}
+/* 依 activeCategories() 收斂 EXAM.subjects:null 回全部科目;否則只留類科前綴落在生效類科內者。 */
+function computeActiveSubjects() {
+  var cats = activeCategories();
+  if (cats === null) { return EXAM.subjects.slice(); }
+  var sep = EXAM.subjectGroupSep;
+  return EXAM.subjects.filter(function (s) {
+    var i = s.indexOf(sep);
+    var g = (i >= 0) ? s.slice(0, i) : s;
+    return cats.indexOf(g) >= 0;
+  });
+}
+/* SUBJECTS 依應考類科收斂後的實際生效清單(載入期算定一次;設定頁儲存後靠 reload 重算,
+   不做執行期動態切換 —— 各面板/圖表在載入時已讀 SUBJECTS,reload 最簡單可靠)。
+   ACTIVE_SUBJ_SET:qid 對應科目是否在生效範圍內的查表,供 inScope() 用。 */
+var ACTIVE_SUBJ_SET = {};
+function refreshActiveSubjects() {
+  SUBJECTS = computeActiveSubjects();
+  ACTIVE_SUBJ_SET = {};
+  SUBJECTS.forEach(function (s) { ACTIVE_SUBJ_SET[s] = true; });
+}
+refreshActiveSubjects();
+/* 某 qid 是否落在目前生效的應考類科範圍內(byQid 仍是全量題庫,查完再判斷科目)。 */
+function inScope(qid) {
+  var q = byQid[qid];
+  return !!(q && ACTIVE_SUBJ_SET[q.subject]);
+}
+/* 科目顯示名:只在「恰選一個類科」時省去類科前綴(同分組內科目已無混淆之虞);
+   其餘情況(全部類科／選多個類科／非分組考試)照原樣顯示,避免同名科目混淆(如「國語文能力測驗」)。 */
+function subjectDisplayLabel(sub) {
+  var cats = activeCategories();
+  if (cats && cats.length === 1 && typeof subjectShortLabel === 'function') { return subjectShortLabel(sub); }
+  return sub;
+}
 
 function saveState(next) {
   state = next;
@@ -142,6 +246,24 @@ function patchState(patch) { saveState(Object.assign({}, state, patch)); }
 function patchSettings(patch) {
   patchState({ settings: Object.assign({}, state.settings, patch) });
 }
+
+/* ===================== 標記／儲存(qid→旗標,不可變更新) =====================
+   標記:單純旗標(與對錯無關,使用者自己覺得「這題要注意」);儲存:收進「儲存專練」包,
+   saved 存時間戳(qid → 首次儲存時間),供之後可能的排序/顯示用,目前功能面只用其存在與否。 */
+function toggleFlag(qid) {
+  var next = Object.assign({}, state.flags);
+  if (next[qid]) { delete next[qid]; } else { next[qid] = true; }
+  saveState(Object.assign({}, state, { flags: next }));
+  return !!next[qid];
+}
+function toggleSaved(qid) {
+  var next = Object.assign({}, state.saved);
+  if (next[qid]) { delete next[qid]; } else { next[qid] = nowStamp(); }
+  saveState(Object.assign({}, state, { saved: next }));
+  return !!next[qid];
+}
+function isFlagged(qid) { return !!(state.flags && state.flags[qid]); }
+function isSaved(qid) { return !!(state.saved && state.saved[qid]); }
 
 /* ===================== SRS 引擎(簡化 SM-2)=====================
    說明:web 端實際採用此內建引擎(可重現、已驗證可運作)。scripts/srs.py 與
@@ -176,6 +298,7 @@ function rebuildUsable() {
   if (!bank) { return; }
   bank.questions.forEach(function (q) {
     byQid[q.qid] = q;   /* byQid 保留全題庫,讓歷史紀錄能還原已答過的舊年題 */
+    if (!ACTIVE_SUBJ_SET[q.subject]) { return; }   /* 應考類科過濾;byQid 仍全量 */
     if (q.legacy === true && !inclLegacy) { return; }   /* 預設排除 101-109 歷史題庫 */
     var parseOk = (q.parse === 'ok') || (inclReview && q.parse === 'review');
     /* 可練＝有答案＋至少 2 選項。寫死「恰 4 選項」會誤排 5 選項自然/社會、10 選項英文
@@ -247,6 +370,7 @@ function recordEssay(q, coverage, selfRating) {
   }]);
   saveState(Object.assign({}, state, { log: logNext }));
 }
+/* TODO:未來若出現「分組＋申論」考試,essayStats/essaySubjects 需一併按應考類科 scope(今日無此組合,無害)。 */
 function essayStats() {
   /* covN 與 n 分開:平均涵蓋度 = cov / covN(只算有涵蓋度的);平均自評 = rateSum / rated */
   var by = {}; SUBJECTS.forEach(function (s) { by[s] = { n: 0, cov: 0, covN: 0, rated: 0, rateSum: 0 }; });
@@ -259,10 +383,12 @@ function essayStats() {
   return by;
 }
 function weakWeights() {
+  /* Laplace 平滑(ok+1)/(n+2) ＋ .15 保底權重:沒答過的科不會權重無限大(比照 n 很大時的中庸值),
+     強科(ok≈n)仍保有 .15 底,偶爾出現維持敏銳度。 */
   var s = subjectStats(true), w = {};
   SUBJECTS.forEach(function (sub) {
     var t = s[sub];
-    w[sub] = (t.n === 0) ? 1.0 : (1 - t.ok / t.n) + 0.15;
+    w[sub] = (1 - (t.ok + 1) / (t.n + 2)) + 0.15;
   });
   return w;
 }
@@ -355,26 +481,54 @@ function enqueueRelated(q) {
 var overrideQueue = [];   /* 錯題本「重練此組」的臨時佇列 */
 var current = null;
 var session = { n: 0, ok: 0 };
+var pickCounter = 0;      /* 回鍋機制計數器:每 5 次成功配題,安排一題已練過但未精熟的回鍋複習(見 pickNext) */
 
 function dueCards() {
   var t = todayStr();
   return Object.keys(state.srs).filter(function (qid) {
-    return byQid[qid] && state.srs[qid].due <= t;
+    return inScope(qid) && state.srs[qid].due <= t;
   }).sort(function (a, b) { return state.srs[a].due < state.srs[b].due ? -1 : 1; });
 }
 function unseenPool() { return usable.filter(function (q) { return !state.srs[q.qid]; }); }
 
+/* 回鍋複習候選:練過(state.srs 有紀錄)、未精熟(reps < masterRepsFor())、且不在最近 20 筆 log。 */
+function backReviewCandidates() {
+  var recentQids = {};
+  state.log.slice(-20).forEach(function (e) { recentQids[e.qid] = true; });
+  return usable.filter(function (q) {
+    return state.srs[q.qid] && state.srs[q.qid].reps < masterRepsFor() && !recentQids[q.qid];
+  });
+}
+/* 回鍋複習挑題:弱科優先(沿用 weakWeights 加權挑科),科內隨機一題。無候選回 null(呼叫端走原路徑)。 */
+function pickBackReview() {
+  var cand = backReviewCandidates();
+  if (cand.length === 0) { return null; }
+  var sub = weightedSubjectPick(weakWeights(), cand);
+  var subset = sub ? cand.filter(function (q) { return q.subject === sub; }) : cand;
+  var q = subset[Math.floor(Math.random() * subset.length)];
+  return { q: q, reasonTag: '回鍋複習', reason: '每五題安排一題已練過但未精熟的舊題，鞏固比只刷新題記得牢。' };
+}
 function pickNext() {
   if (overrideQueue.length > 0) {
     var oq = overrideQueue.shift();
-    if (byQid[oq]) { return { q: byQid[oq], reasonTag: '錯題重練', reason: '你在錯題複習點了「重練此組」，趁印象重新提取。' }; }
+    if (inScope(oq)) {
+      pickCounter += 1;
+      return { q: byQid[oq], reasonTag: '錯題重練', reason: '你在錯題複習點了「重練此組」，趁印象重新提取。' };
+    }
   }
-  var drill = state.drill.filter(function (d) { return byQid[d.qid]; });
+  var drill = state.drill.filter(function (d) { return inScope(d.qid); });
   if (drill.length > 0) {
     var d0 = drill[0];
     saveState(Object.assign({}, state, { drill: drill.slice(1) }));
+    pickCounter += 1;
     return { q: byQid[d0.qid], reasonTag: '弱點補強',
       reason: '關聯補強(' + d0.why + ')：剛答錯「' + shortStem(d0.from) + '」，趁記憶熱複習相關概念。' };
+  }
+  /* 回鍋機制:每五題安排一題已練過但未精熟的舊題(單純刷新題容易記不牢);無候選就走原路徑。
+     優先順位排在 overrideQueue／state.drill 之後、新題之前。 */
+  if (pickCounter % 5 === 4) {
+    var back = pickBackReview();
+    if (back) { pickCounter += 1; return back; }
   }
   /* SRS 到期複習不在單題練習搶位(時間有限);集中於弱點殲滅,此處以弱項加權新題為主。 */
   var pool = unseenPool();
@@ -384,8 +538,21 @@ function pickNext() {
     var reps = function (qid) { return (state.srs[qid] && state.srs[qid].reps) || 0; };
     all.sort(function (a, b) { return reps(a.qid) - reps(b.qid); });
     var weakest = all[Math.floor(Math.random() * Math.min(20, all.length))];
+    pickCounter += 1;
     return { q: weakest, reasonTag: '弱點補強', reason: '全題庫皆已練過：挑掌握度最低的題再鞏固。' };
   }
+  /* 跨年重複考古題冷卻:排除指紋出現在最近 30 筆 log 對應題目的候選;排除後空了就退回原本候選,避免題池枯竭卡死。 */
+  var recentFP = {};
+  state.log.slice(-30).forEach(function (e) {
+    var eq = byQid[e.qid];
+    if (eq) { recentFP[qFingerprint(eq)] = true; }
+  });
+  var freshPool = pool.filter(function (q) {
+    var stemLen = String(q.stem || '').replace(/\s+/g, '').length;
+    if (stemLen < 8) { return true; }   /* 短題幹護欄:不受冷卻排除(保護 gsat 詞彙題) */
+    return !recentFP[qFingerprint(q)];
+  });
+  if (freshPool.length > 0) { pool = freshPool; }
   var w = weakWeights();
   var sub = weightedSubjectPick(w, pool);
   var subset = pool.filter(function (q) { return q.subject === sub; });
@@ -394,6 +561,7 @@ function pickNext() {
   var why = (s.n === 0)
     ? '新題：此科尚無作答紀錄，先建立基準（先量出起點）。'
     : '弱項加權：「' + sub + '」近期正確率 ' + pct(s.ok / Math.max(s.n, 1)) + '，加重練習（弱點優先）。';
+  pickCounter += 1;
   return { q: q, reasonTag: (s.n === 0 ? '建立基準' : '弱點補強'), reason: why };
 }
 function shortStem(qid) {
@@ -515,7 +683,20 @@ function renderDailySummary() {
   box.appendChild(card);
 }
 
+/* 應考類科 chip(#exam-category):只在分組考試(allCategoryNames() 非 null)顯示,
+   標示目前生效的類科範圍(全部類科 或 選定的幾個);非分組考試恆隱藏。與 usable 是否
+   已載入無關,故獨立於下方的早退回傳之外。 */
+function renderExamCategoryChip() {
+  var chip = $('exam-category');
+  if (!chip) { return; }
+  var allCats = (typeof allCategoryNames === 'function') ? allCategoryNames() : null;
+  if (!allCats) { chip.hidden = true; return; }
+  var cats = activeCategories();
+  chip.textContent = '應考類科：' + (cats ? cats.map(subjectGroupLabel).join('、') : '全部類科');
+  chip.hidden = false;
+}
 function renderPracticeHead() {
+  renderExamCategoryChip();
   if (usable.length === 0) {
     $('daily-goal').textContent = '題庫未載入';
     $('due-count').textContent = ''; $('session-stats').textContent = '';
@@ -529,7 +710,8 @@ function renderPracticeHead() {
   $('daily-goal').textContent = '今日建議 ' + daily + ' 題' + paperish +
     '・週目標約 ' + wt.perWeek + ' 題（未掌握 ÷ 剩餘週數）';
   var _due = dueCards().length;   /* 單題練習不以 SRS 到期為主;只留輕量提醒導向弱點殲滅 */
-  $('due-count').textContent = '補強佇列 ' + state.drill.length + ' 題' +
+  var _drillN = state.drill.filter(function (d) { return inScope(d.qid); }).length;
+  $('due-count').textContent = '補強佇列 ' + _drillN + ' 題' +
     (_due > 0 ? '・到期複習 ' + _due + ' 題（在「弱點殲滅」）' : '');
   $('session-stats').textContent = '本次：' + session.n + ' 題，答對 ' + session.ok + ' 題';
 }
@@ -537,17 +719,45 @@ function renderPracticeHead() {
 /* ===================== 錯題複習(可篩選＋可勾選,整包隨機／複選複習) ===================== */
 function wrongMap() {
   var m = {};
-  state.log.forEach(function (e) { if (!e.correct && byQid[e.qid]) { m[e.qid] = (m[e.qid] || 0) + 1; } });
+  state.log.forEach(function (e) { if (!e.correct && inScope(e.qid)) { m[e.qid] = (m[e.qid] || 0) + 1; } });
+  return m;
+}
+/* qid → 該題所有錯誤紀錄的日期('YYYY-MM-DD',取 ts 前 10 碼),供「時間窗」篩選用。 */
+function wrongDates() {
+  var m = {};
+  state.log.forEach(function (e) {
+    if (e.correct || !inScope(e.qid)) { return; }
+    var d = String(e.ts || e.t || '').slice(0, 10);
+    if (!d) { return; }
+    (m[e.qid] || (m[e.qid] = [])).push(d);
+  });
+  return m;
+}
+/* qid → 該題最近一次答錯的時間戳(ts 字串,'YYYY-MM-DD HH:MM'),供錯題本「最新優先」排序用。 */
+function wrongLastTs() {
+  var m = {};
+  state.log.forEach(function (e) {
+    if (e.correct || !inScope(e.qid)) { return; }
+    var ts = String(e.ts || e.t || '');
+    if (!ts) { return; }
+    if (!m[e.qid] || ts > m[e.qid]) { m[e.qid] = ts; }
+  });
   return m;
 }
 var wrongbookYear = '__all__';      /* 篩選:年份(換篩選重繪,不清空已勾選) */
 var wrongbookSubject = '__all__';   /* 篩選:科目 */
+var wrongbookWindow = '__all__';    /* 篩選:時間窗(全部/今天/近3日/近7日/本月) */
+var wrongbookMin2 = false;          /* 篩選:誤 2 次以上 */
+var wrongbookSort = 'recent';       /* 排序:recent(最新優先,預設) | count(誤最多優先) */
 var wrongbookChecked = {};          /* qid → true,已勾選集合(跨篩選/重繪記憶;「複習選取」後清空) */
 
 function renderWrongbook() {
   var box = $('wrongbook-list');
   box.textContent = '';
+
   var wm = wrongMap();
+  var wd = wrongDates();
+  var wl = wrongLastTs();
   var allQids = Object.keys(wm);
   $('wrongbook-empty').hidden = allQids.length > 0;
   if (allQids.length === 0) { wrongbookChecked = {}; return; }
@@ -577,10 +787,59 @@ function renderWrongbook() {
   subSel.addEventListener('change', function () { wrongbookSubject = subSel.value; renderWrongbook(); });
   filterRow.appendChild(subSel);
 
+  /* 時間窗:依錯誤紀錄的日期篩選(全部／今天／近 3 日／近 7 日／本月),比照 modes.js 的 .segmented 用法。 */
+  var WRONG_WINDOWS = [
+    { key: '__all__', name: '全部' }, { key: 'today', name: '今天' },
+    { key: '3d', name: '近 3 日' }, { key: '7d', name: '近 7 日' }, { key: 'month', name: '本月' }
+  ];
+  var winSeg = el('div', { 'class': 'segmented' });
+  WRONG_WINDOWS.forEach(function (win) {
+    var b = el('button', { type: 'button' }, win.name);
+    b.setAttribute('aria-pressed', String(wrongbookWindow === win.key));
+    b.addEventListener('click', function () { wrongbookWindow = win.key; renderWrongbook(); });
+    winSeg.appendChild(b);
+  });
+  filterRow.appendChild(winSeg);
+
+  var min2Lab = el('label', { 'class': 'chk chk-inline' });
+  var min2Cb = el('input', { type: 'checkbox' });
+  min2Cb.checked = wrongbookMin2;
+  min2Cb.addEventListener('change', function () { wrongbookMin2 = min2Cb.checked; renderWrongbook(); });
+  min2Lab.appendChild(min2Cb); min2Lab.appendChild(document.createTextNode(' 誤 2 次以上'));
+  filterRow.appendChild(min2Lab);
+
+  /* 排序:最新優先(預設,依最近一次答錯時間)｜誤最多優先(依誤次數,同次數再依最近錯誤時間)。 */
+  var SORT_OPTS = [{ key: 'recent', name: '最新優先（預設）' }, { key: 'count', name: '誤最多優先' }];
+  var sortSeg = el('div', { 'class': 'segmented' });
+  SORT_OPTS.forEach(function (opt) {
+    var b = el('button', { type: 'button' }, opt.name);
+    b.setAttribute('aria-pressed', String(wrongbookSort === opt.key));
+    b.addEventListener('click', function () { wrongbookSort = opt.key; renderWrongbook(); });
+    sortSeg.appendChild(b);
+  });
+  filterRow.appendChild(el('label', null, '排序：'));
+  filterRow.appendChild(sortSeg);
+
+  /* 時間窗是否命中:全部一律通過;否則錯誤紀錄至少一筆落在窗內即算命中。 */
+  function inWindow(qid) {
+    if (wrongbookWindow === '__all__') { return true; }
+    var dates = wd[qid] || [];
+    var today = todayStr();
+    return dates.some(function (d) {
+      if (wrongbookWindow === 'today') { return d === today; }
+      var diff = diffDays(d, today);
+      if (wrongbookWindow === '3d') { return diff >= 0 && diff < 3; }
+      if (wrongbookWindow === '7d') { return diff >= 0 && diff < 7; }
+      if (wrongbookWindow === 'month') { return d.slice(0, 7) === today.slice(0, 7); }
+      return true;
+    });
+  }
   var filtered = allQids.filter(function (qid) {
     var q = byQid[qid];
     if (wrongbookYear !== '__all__' && String(q.year) !== wrongbookYear) { return false; }
     if (wrongbookSubject !== '__all__' && q.subject !== wrongbookSubject) { return false; }
+    if (!inWindow(qid)) { return false; }
+    if (wrongbookMin2 && wm[qid] < 2) { return false; }
     return true;
   });
 
@@ -599,17 +858,21 @@ function renderWrongbook() {
   filterRow.appendChild(selAllBtn); filterRow.appendChild(selNoneBtn);
   box.appendChild(filterRow);
 
-  /* 排序:誤次數多的優先;同次數再年份新到舊。 */
+  /* 排序:'recent'(預設)依最近一次答錯時間降冪;'count' 依誤次數降冪,同次數再依最近錯誤時間降冪。 */
+  function cmpRecent(a, b) {
+    var ta = wl[a] || '', tb = wl[b] || '';
+    return tb < ta ? -1 : (tb > ta ? 1 : 0);
+  }
   var sorted = filtered.slice().sort(function (a, b) {
-    if (wm[b] !== wm[a]) { return wm[b] - wm[a]; }
-    return Number(byQid[b].year) - Number(byQid[a].year);
+    if (wrongbookSort === 'count' && wm[b] !== wm[a]) { return wm[b] - wm[a]; }
+    return cmpRecent(a, b);
   });
 
   var scroll = el('div', { 'class': 'wrong-list-scroll' });
   var boxes = [];   /* {qid, input} 供全選/全不選/複習選取讀取 */
   sorted.forEach(function (qid) {
     var q = byQid[qid];
-    var row = el('div', { 'class': 'wrong-row' });
+    var row = el('div', { 'class': 'wrong-row' + (isFlagged(qid) ? ' is-flagged' : '') });
     var cbId = 'wrong-cb-' + qid;
     var cb = el('input', { type: 'checkbox', id: cbId });
     cb.checked = !!wrongbookChecked[qid];
@@ -618,7 +881,11 @@ function renderWrongbook() {
     });
     row.appendChild(cb);
     var stem = stemPlain(q.stem);
-    var labelText = '【誤 ' + wm[qid] + ' 次】' + yearLabel(q.year) + ' 第 ' + q.no + ' 題・' + q.subject + '：' +
+    /* 縮圖前綴:有 group_id(真題組)→〔題組〕;無 group_id 但題幹命中承上標記(CARRY_RE,run.js
+       全域)→〔承上〕——讓錯題本一眼看出這題脫離原本情境會看不懂,建議到原卷複習。 */
+    var chainTag = q.group_id ? '〔題組〕'
+      : ((typeof CARRY_RE !== 'undefined' && CARRY_RE.test(String(q.stem || ''))) ? '〔承上〕' : '');
+    var labelText = '【誤 ' + wm[qid] + ' 次】' + yearLabel(q.year) + ' 第 ' + q.no + ' 題・' + q.subject + '：' + chainTag +
       stem.slice(0, 30) + (stem.length > 30 ? '…' : '');
     row.appendChild(el('label', { 'for': cbId }, labelText));
     scroll.appendChild(row);
@@ -647,6 +914,50 @@ function renderWrongbook() {
   box.appendChild(reviewRow);
 }
 
+/* ===================== 儲存題(獨立頁) =====================
+   作答時按「儲存」收藏的題,集中在這裡專練——與「標記」分工:標記已降級為
+   作答當下的輕量記號(不再有獨立頁面/篩選),真正想收集起來反覆練的題交給這裡。 */
+function renderSaved() {
+  var box = $('saved-list');
+  box.textContent = '';
+  /* 依儲存時間(nowStamp 字串,可字典序比較)由舊到新排序,即「儲存順序」。 */
+  var savedQids = Object.keys(state.saved || {}).filter(function (qid) { return inScope(qid); })
+    .sort(function (a, b) {
+      var ta = state.saved[a] || '', tb = state.saved[b] || '';
+      return ta < tb ? -1 : (ta > tb ? 1 : 0);
+    });
+  $('saved-count').textContent = savedQids.length ? ('已儲存 ' + savedQids.length + ' 題') : '';
+  $('saved-empty').hidden = savedQids.length > 0;
+  if (savedQids.length === 0) { return; }
+
+  var drillBtn = el('button', { type: 'button' }, '專練這包（' + savedQids.length + ' 題）');
+  drillBtn.addEventListener('click', function () {
+    var items = savedQids.map(function (qid) {
+      return { q: byQid[qid], reasonTag: '儲存專練', reason: '你儲存起來要特別練的題。' };
+    });
+    startDrill(items, { title: '儲存專練', mode: 'saved', backTo: 'saved' });
+  });
+  var p = el('p'); p.appendChild(drillBtn); box.appendChild(p);
+
+  var scroll = el('div', { 'class': 'wrong-list-scroll' });
+  savedQids.forEach(function (qid) {
+    var q = byQid[qid];
+    var row = el('div', { 'class': 'wrong-row' + (isFlagged(qid) ? ' is-flagged' : '') });
+    var stem = stemPlain(q.stem);
+    /* 縮圖前綴同錯題本:有 group_id(真題組)→〔題組〕;命中承上標記(CARRY_RE,run.js 全域)→〔承上〕。 */
+    var chainTag = q.group_id ? '〔題組〕'
+      : ((typeof CARRY_RE !== 'undefined' && CARRY_RE.test(String(q.stem || ''))) ? '〔承上〕' : '');
+    var labelText = yearLabel(q.year) + ' 第 ' + q.no + ' 題・' + q.subject + '：' + chainTag +
+      stem.slice(0, 30) + (stem.length > 30 ? '…' : '');
+    row.appendChild(el('span', { 'class': 'saved-row-text' }, labelText));
+    var rmBtn = el('button', { type: 'button', 'class': 'btn-quiet btn-sm' }, '移除');
+    rmBtn.addEventListener('click', function () { toggleSaved(qid); renderSaved(); });
+    row.appendChild(rmBtn);
+    scroll.appendChild(row);
+  });
+  box.appendChild(scroll);
+}
+
 /* ===================== 學習藍圖 =====================
    masteredSet / weeklyTarget / planPolicyText / renderBlueprint /
    renderCoverage / renderSubjectNotes / setBasis / setWeeks 已切至 blueprint.js
@@ -670,9 +981,9 @@ function handleDataFile(file) {
 }
 
 /* ===================== 導覽與整體渲染 ===================== */
-var PANELS = ['practice', 'paper', 'mock', 'cluster', 'essay', 'wrongbook',
+var PANELS = ['practice', 'paper', 'mock', 'cluster', 'essay', 'wrongbook', 'saved',
   'radar', 'trend', 'history', 'blueprint', 'run', 'sheet'];
-var NAV_TABS = ['practice', 'paper', 'mock', 'cluster', 'essay', 'wrongbook', 'radar', 'trend', 'history', 'blueprint'];
+var NAV_TABS = ['practice', 'paper', 'mock', 'cluster', 'essay', 'wrongbook', 'saved', 'radar', 'trend', 'history', 'blueprint'];
 
 function showPanel(name) {
   PANELS.forEach(function (p) {
@@ -694,6 +1005,7 @@ function showPanel(name) {
   if (name === 'cluster') { renderClusterPicker(); }
   if (name === 'essay') { resolveEssays(renderEssayPicker); }
   if (name === 'wrongbook') { renderWrongbook(); }
+  if (name === 'saved') { renderSaved(); }
   if (name === 'radar') { renderRadar(); renderCoachAdvice($('coach-advice')); }
   if (name === 'trend') { renderTrend(); }
   if (name === 'history') { renderHistory(); }

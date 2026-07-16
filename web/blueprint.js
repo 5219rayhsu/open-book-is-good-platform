@@ -101,7 +101,9 @@ function renderCoverage() {
     var seen = can.filter(function (q) { return state.srs[q.qid]; }).length;
     var mas = can.filter(function (q) { return mset[q.qid]; }).length;
     var row = el('tr');
-    row.appendChild(el('td', null, sub));
+    /* 顯示名依應考類科收斂(subjectDisplayLabel,app.js);篩選用的 sub 本身不變。 */
+    var dispSub = (typeof subjectDisplayLabel === 'function') ? subjectDisplayLabel(sub) : sub;
+    row.appendChild(el('td', null, dispSub));
     [total, can.length, seen, mas].forEach(function (v) { row.appendChild(el('td', { 'class': 'num' }, String(v))); });
     row.appendChild(el('td', { 'class': 'num' }, can.length > 0 ? pct(seen / can.length) : '—'));
     tb.appendChild(row);
@@ -112,7 +114,9 @@ function renderSubjectNotes() {
   var dl = $('subject-notes');
   dl.textContent = '';
   SUBJECTS.forEach(function (sub) {
-    dl.appendChild(el('dt', null, sub));
+    /* 顯示名依應考類科收斂(subjectDisplayLabel,app.js);SUBJECT_NOTES 的鍵仍用原始 sub。 */
+    var dispSub = (typeof subjectDisplayLabel === 'function') ? subjectDisplayLabel(sub) : sub;
+    dl.appendChild(el('dt', null, dispSub));
     dl.appendChild(el('dd', null, SUBJECT_NOTES[sub]));
   });
 }

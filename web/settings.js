@@ -73,6 +73,46 @@ function _choiceSection(title, desc, levels, key, applyFn, defaultVal) {
   return _setSection(title, desc, row);
 }
 
+/* 應考類科區塊(僅分組考試,如教師檢定,allCategoryNames() 非 null 時渲染):複選要報考的
+   類科(未設定＝全勾＝全部類科)。「儲存並套用」寫入 state.settings.examCategories 後
+   reload——SUBJECTS/ACTIVE_SUBJ_SET(app.js)在載入期算定一次,靠 reload 最簡單可靠。 */
+function _examCategorySection() {
+  var allCats = (typeof allCategoryNames === 'function') ? allCategoryNames() : null;
+  if (!allCats) { return null; }   /* 非分組考試:不顯示此區塊 */
+  var curSel = (state.settings.examCategories && state.settings.examCategories.length)
+    ? state.settings.examCategories.slice() : allCats.slice();   /* 未設定＝全勾 */
+
+  var wrap = el('div', { 'class': 'subj-checks' });
+  var checks = [];
+  allCats.forEach(function (c) {
+    var lab = el('label', { 'class': 'chk chk-inline' });
+    var cb = el('input', { type: 'checkbox', value: c });
+    cb.checked = curSel.indexOf(c) >= 0;
+    checks.push(cb);
+    lab.appendChild(cb);
+    lab.appendChild(document.createTextNode(' ' + ((typeof subjectGroupLabel === 'function') ? subjectGroupLabel(c) : c)));
+    wrap.appendChild(lab);
+  });
+
+  var hint = el('p', { 'class': 'subtitle' }, '');
+  var saveBtn = el('button', { type: 'button' }, '儲存並套用');
+  saveBtn.addEventListener('click', function () {
+    var picked = checks.filter(function (cb) { return cb.checked; }).map(function (cb) { return cb.value; });
+    if (picked.length === 0) { hint.textContent = '至少選一個類科。'; return; }
+    var next = (picked.length === allCats.length) ? [] : picked;   /* 全選存空陣列(=全部類科) */
+    patchSettings({ examCategories: next });
+    location.reload();
+  });
+
+  var box = el('div', null);
+  box.appendChild(wrap);
+  box.appendChild(hint);
+  box.appendChild(saveBtn);
+  return _setSection('應考類科',
+    '選擇你要報考的類科（可複選、至少一個）。設定後進度、雷達、出題、藍圖只看選定類科的科目；' +
+    '歷史紀錄仍保留全部；儲存題與錯題本暫時只顯示選定類科，改回即復原。變更會重新整理頁面。', box);
+}
+
 function renderSettings() {
   var ov = $('settings-overlay');
   ov.textContent = '';
@@ -92,6 +132,10 @@ function renderSettings() {
   sheet.appendChild(_choiceSection('主題',
     '白底＝預設高對比純白；暖紙＝護眼米色。偏好會記住。',
     THEME_LEVELS, THEME_KEY, applyTheme, 'light'));
+
+  /* 應考類科(僅分組考試,如教師檢定,才顯示):篩選進度/雷達/出題/藍圖/模擬選科的科目範圍。 */
+  var catSection = _examCategorySection();
+  if (catSection) { sheet.appendChild(catSection); }
 
   /* 顯示名稱：沿用既有命名覆蓋層（不重寫改名邏輯）。 */
   var nameBtn = el('button', { type: 'button', 'class': 'btn-quiet' }, '設定顯示名稱');

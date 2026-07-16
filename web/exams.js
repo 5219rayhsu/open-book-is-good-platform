@@ -44,7 +44,11 @@ var EXAMS = [
       '社會工作研究方法': '量化與質性設計、抽樣、測量、信效度、基礎統計判讀、研究倫理。',
       '社會政策與社會立法': '福利政策理念與現行法規：社會救助、社會保險、各類福利服務法。',
       '社會工作管理': '組織理論、方案設計與評估、督導、人力資源與財務管理。'
-    }
+    },
+    /* 通用欄位(其他考試無此欄):科目名 → 停考說明。目前僅社工師「社會工作管理」
+       115 年起停考(應試科目由 7 科減為 5 科),題庫仍保留供練歷屆,模擬考預設不勾選
+       (見 modes.js renderMockPicker),但使用者可手動勾回；診斷／雷達／單題練習不受影響。 */
+    deprecatedSubjects: { '社會工作管理': '115 年起停考' }
   },
   {
     key: 'lawyer', prefix: 'law_', name: '律師', short: '律師',
@@ -332,6 +336,12 @@ var EXAM = pickExam();
    不同考試(3~多科)、甚至單科都語意正確。 */
 function subjectCountLabel() { return EXAM.subjects.length + ' 科'; }
 
+/* 科目停考說明(通用欄位,manifest 無 deprecatedSubjects 或該科未列入則回 null)。
+   目前僅 social-worker 的「社會工作管理」115 年起停考,其餘考試恆回 null。 */
+function subjectDeprecationNote(s) {
+  return (EXAM.deprecatedSubjects && EXAM.deprecatedSubjects[s]) || null;
+}
+
 /* 科目分組:manifest 設 subjectGroupSep(如教師檢定的「・」)才啟用,把 subjects 依前綴
    分成類科群組 [{name,subjects:[...]}];無此欄回 null(=不分組、平面清單)。 */
 function subjectGroups() {
@@ -350,6 +360,11 @@ function subjectGroups() {
 function subjectGroupLabel(name) {
   var m = EXAM.subjectGroupLabels;
   return (m && m[name]) || name;
+}
+/* 該考試全部類科名(未過濾,結構性)。供設定頁複選與「是否分組考試」判斷。無分組回 null。 */
+function allCategoryNames() {
+  var g = subjectGroups();
+  return g ? g.map(function (x) { return x.name; }) : null;
 }
 /* 科目短名(去類科前綴):'幼兒園・國語文能力測驗' → '國語文能力測驗';不分組時原樣回。 */
 function subjectShortLabel(s) {

@@ -119,6 +119,7 @@ function _histDetail(detail, e, q, isEssay) {
       isEssay ? '申論題目尚未載入；切到「申論題」分頁一次後再回來即可還原。' : '此題目前不在可載入範圍（可能為待校題）。'));
     return;
   }
+  if (isFlagged(q.qid)) { detail.classList.add('is-flagged'); }   /* 使用者曾標記此題(與對錯無關) */
   detail.appendChild(el('p', { 'class': 'q-meta' }, yearLabel(q.year) + '・' + q.subject + '・第 ' + q.no + ' 題'));
   if (!isEssay) {
     if (typeof groupHeaderEl === 'function') { var _gh = groupHeaderEl(q); if (_gh) { detail.appendChild(_gh); } }

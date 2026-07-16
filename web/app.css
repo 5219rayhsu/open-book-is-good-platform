@@ -170,6 +170,8 @@ section.panel{padding-top:.4rem;}
   display:flex;flex-wrap:wrap;align-items:center;gap:.4rem 1.4rem;font-size:.88rem;color:var(--ink-soft);
   border-bottom:1px solid var(--rule-faint);padding-bottom:.5rem;margin-bottom:1rem;
 }
+/* 應考類科 chip(分組考試如教師檢定,#exam-category):輕量標示目前生效的類科範圍 */
+.exam-cat-chip{display:inline-block;font-size:.85em;opacity:.75;margin-inline-start:.5em;}
 /* 倒數計時(見 ADR-0001):等寬數字防跳動;過建議時間轉紅;暫停鈕小一號 */
 #sheet-timer{font-variant-numeric:tabular-nums;font-weight:600;}
 #sheet-timer.over-suggest{color:var(--bad-ink);font-weight:700;}
@@ -184,7 +186,7 @@ section.panel{padding-top:.4rem;}
   padding:.55rem .9rem;margin:.5rem 0 .9rem;
 }
 .explain-head{font-family:var(--serif);font-size:.92rem;color:var(--accent);letter-spacing:.04em;}
-.explain-body{margin:.25rem 0 0;font-size:.95rem;line-height:1.78;color:var(--ink);}
+.explain-body{margin:.25rem 0 0;font-size:.95rem;line-height:1.78;color:var(--ink);white-space:pre-line;}
 .explain-note{margin:.4rem 0 0;font-size:.78rem;color:var(--ink-faint);}
 /* IFRS／稅法等時效提示(staleness=ifrs_sensitive / law_sensitive):紅字一行,作答以現行為準 */
 .stale-note{margin:.5rem 0 .2rem;font-size:.82rem;line-height:1.7;color:var(--bad-ink);border-left:3px solid var(--bad-ink);border-radius:0 var(--r) var(--r) 0;background:var(--bad-wash);padding:.35rem .7rem;}
@@ -195,9 +197,16 @@ section.panel{padding-top:.4rem;}
 /* 申論篇幅提示:正式考場約 900–1100 字,範本只示範架構,提醒自行擴寫 */
 .essay-len-note{margin:.2rem 0 .8rem;font-size:.9rem;line-height:1.7;color:var(--ink);background:var(--accent-wash);border-left:3px solid var(--accent);border-radius:0 var(--r) var(--r) 0;padding:.5rem .8rem;}
 .question-card{
+  position:relative;
   border:1px solid var(--rule);border-radius:var(--r-lg);background:var(--paper-card);
   padding:1.3rem 1.5rem 1.5rem;box-shadow:var(--shadow);
 }
+/* 標記(旗標,與對錯無關):右上角橘色折角提示「這題你標記過」。 */
+.question-card.is-flagged::after{content:'';position:absolute;top:0;right:0;border-style:solid;border-width:0 1.35rem 1.35rem 0;border-color:transparent #d97706 transparent transparent;border-top-right-radius:var(--r-lg);}
+/* 標記／儲存列(卡片最上方):兩顆小圓角按鈕,靠右對齊。 */
+.q-mark-row{display:flex;justify-content:flex-end;gap:.4rem;margin:0 0 .3rem;}
+.q-mark-btn{font-size:.72rem;padding:.1rem .55rem;border:1px solid var(--rule);border-radius:999px;background:transparent;color:var(--ink-soft);cursor:pointer;}
+.q-mark-btn.active{border-color:#d97706;color:#b45309;background:rgba(217,119,6,.08);}
 .q-meta{font-size:.85rem;color:var(--ink-soft);letter-spacing:.03em;border-bottom:1px solid var(--rule-faint);padding-bottom:.45rem;}
 .question-stem{font-size:1.1rem;line-height:1.75;margin:1rem 0 1.1rem;}
 ol.options{list-style:none;margin:0;padding:0;}
@@ -267,6 +276,11 @@ kbd{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:.8em;border:1px
 .wrong-row{display:flex;gap:.5rem;align-items:flex-start;padding:.3rem 0;border-bottom:1px dotted var(--rule-faint);}
 .wrong-row:last-child{border-bottom:none;}
 .wrong-row label{font-size:.9rem;color:var(--ink-soft);}
+/* 標記過的列（錯題回顧／儲存題頁）:右上角小折角(同 .question-card 語意,尺寸縮小配合列高)。 */
+.wrong-row.is-flagged{position:relative;}
+.wrong-row.is-flagged::after{content:'';position:absolute;top:0;right:0;border-style:solid;border-width:0 .8rem .8rem 0;border-color:transparent #d97706 transparent transparent;}
+/* 儲存題頁:每列一段文字＋「移除」鈕(比照 .wrong-row 版面,無 checkbox)。 */
+.saved-row-text{font-size:.9rem;color:var(--ink-soft);flex:1;}
 
 /* ---- 申論題作答 ---- */
 textarea{
@@ -530,8 +544,10 @@ tr.is-weak td{color:var(--bad-ink);}
 .hist-badge.bad{border-color:var(--bad-ink);color:var(--bad-ink);background:var(--bad-wash);}
 .hist-when{font-size:.8rem;color:var(--ink-faint);flex:0 0 auto;font-variant-numeric:tabular-nums;}
 .hist-stem{font-size:.9rem;color:var(--ink-soft);flex:1 1 12rem;min-width:8rem;}
-.hist-detail{padding:.4rem .7rem 1rem;border-left:3px solid var(--rule-faint);margin:0 0 .6rem .3rem;}
+.hist-detail{position:relative;padding:.4rem .7rem 1rem;border-left:3px solid var(--rule-faint);margin:0 0 .6rem .3rem;}
 .hist-detail[hidden]{display:none;}
+/* 標記(旗標,與對錯無關):比照 .question-card.is-flagged 的右上角橘色折角,尺寸縮小(1rem)配合歷史列較窄的高度。 */
+.hist-detail.is-flagged::after{content:'';position:absolute;top:0;right:0;border-style:solid;border-width:0 1rem 1rem 0;border-color:transparent #d97706 transparent transparent;}
 .hist-detail .options{list-style:none;margin:.4rem 0;padding:0;}
 .hist-detail .opt{display:block;border:1px solid var(--rule);border-radius:var(--r);padding:.4rem .7rem;line-height:1.7;background:var(--paper);}
 .hist-detail .opt .letter{font-family:var(--serif);margin-right:.5rem;color:var(--ink-soft);}
@@ -602,6 +618,7 @@ ol.options button.opt,
 .essay-laws,
 .note-block dd,
 .honest,
+.explain-body,
 .diag-lead,
 .diag-honest{
   text-align:justify;

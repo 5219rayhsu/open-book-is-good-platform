@@ -44,6 +44,7 @@
     <button type="button" id="tab-mock" data-panel="mock">模擬考</button>
     <button type="button" id="tab-essay" data-panel="essay">申論題</button>
     <button type="button" id="tab-wrongbook" data-panel="wrongbook">錯題複習</button>
+    <button type="button" id="tab-saved" data-panel="saved">儲存題</button>
     <button type="button" id="tab-cluster" data-panel="cluster">弱點殲滅</button>
   </div>
   <div class="nav-row">
@@ -75,6 +76,7 @@
       <span id="daily-goal">—</span>
       <span id="due-count">—</span>
       <span id="session-stats">本次：0 題</span>
+      <span id="exam-category" class="exam-cat-chip" hidden></span>
     </div>
     <div id="today-card"></div>
     <p id="practice-empty" class="empty-note" hidden>題庫載入後即可開始。</p>
@@ -110,6 +112,15 @@
     <p class="subtitle">目前以「科目」作為概念分組；答錯的題會自動收錄，點「重練此組」即可回到單題練習重新提取。</p>
     <div id="wrongbook-list"></div>
     <p id="wrongbook-empty" class="empty-note" hidden>尚無錯題。答錯的題目會自動收錄於此。</p>
+  </section>
+
+  <!-- 五之二、儲存題(獨立頁;作答時按「儲存」收藏的題目集中於此) -->
+  <section class="panel" id="panel-saved" hidden>
+    <h2>儲存題</h2>
+    <p class="subtitle">作答時按「儲存」收藏的題目，在這裡集中專練。</p>
+    <p id="saved-count"></p>
+    <div id="saved-list"></div>
+    <p id="saved-empty" class="empty-note" hidden>尚未儲存任何題目——作答時點題卡右上的「儲存」。</p>
   </section>
 
   <!-- 動態:逐題練習(弱點/診斷) -->

@@ -9,7 +9,8 @@
 純靜態站（Cloudflare Pages 可直接部署）：一套引擎（`web/run.js` 等）＋
 資料檔（`data/<exam>/bank.json`／`explanations.json`／`figures/`）。
 進度存 localStorage、不追蹤、免登入。弱點：進度脆弱（清瀏覽器＝歸零）、
-無跨裝置、疑義回報無處可去。
+無跨裝置、疑義回報無處可去。題組／承上題的情境引入規則見
+`docs/adr/0002-question-group-carry-context.md`。
 
 ## 1. 六條產品承諾 → 架構決策
 

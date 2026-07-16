@@ -45,7 +45,9 @@ function drawRadarInto(box, stats) {
     var t = stats[sub];
     var acc = (t.n > 0) ? t.ok / t.n : 0;
     var label = svgEl('text', { x: lp[0], y: lp[1] + 4, 'text-anchor': anchor, 'class': 'svg-label' });
-    label.textContent = sub + ' ' + (t.n > 0 ? pct(acc) : '—');
+    /* 顯示名依應考類科收斂(subjectDisplayLabel,app.js);stats 的鍵仍用原始 sub,不受影響。 */
+    var dispSub = (typeof subjectDisplayLabel === 'function') ? subjectDisplayLabel(sub) : sub;
+    label.textContent = dispSub + ' ' + (t.n > 0 ? pct(acc) : '—');
     svg.appendChild(label);
     dataPts.push(radarPoint(cx, cy, R * acc, i).join(','));
   });

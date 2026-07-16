@@ -70,12 +70,33 @@ function skipDiagnostic() {
   showPanel('practice');
 }
 
-/* 每科抽 perN 題(隨機、不重複);跨科交錯,避免同科連續 */
-function sampleBySubject(perN) {
+/* 每科抽 perN 題(隨機、不重複);跨科交錯,避免同科連續。
+   dedup=true(完整模擬用):不再前置 dedupByContent 砍掉舊年份,改套同場雙層互斥——
+   stemFingerprint(同題幹、不同選項的跨年孿生題)＋ contentFingerprint(內容完全相同的
+   跨年重複收錄題),seen={stem:{},content:{}} 跨全科共用同一個狀態物件(與 modes.js
+   模擬考同一套指紋函式);兩份同內容題本次診斷同場只留一份,但下次診斷/模擬考仍可
+   輪替抽到另一份,不像舊版直接把舊年份砍出候選池。 */
+function sampleBySubject(perN, dedup) {
+  var src = usable;
   var bySub = {};
   SUBJECTS.forEach(function (s) { bySub[s] = []; });
-  shuffle(usable.slice()).forEach(function (q) { if (bySub[q.subject]) { bySub[q.subject].push(q); } });
-  var buckets = SUBJECTS.map(function (s) { return bySub[s].slice(0, perN); });
+  shuffle(src.slice()).forEach(function (q) { if (bySub[q.subject]) { bySub[q.subject].push(q); } });
+  var seen = { stem: {}, content: {} };
+  var buckets = SUBJECTS.map(function (s) {
+    if (!dedup) { return bySub[s].slice(0, perN); }
+    var picked = [];
+    for (var i = 0; i < bySub[s].length && picked.length < perN; i++) {
+      var q = bySub[s][i];
+      var stemFp = (typeof stemFingerprint === 'function') ? stemFingerprint(q) : null;
+      if (stemFp !== null && seen.stem[stemFp]) { continue; }
+      var contentFp = (typeof contentFingerprint === 'function') ? contentFingerprint(q) : null;
+      if (contentFp !== null && seen.content[contentFp]) { continue; }
+      if (stemFp !== null) { seen.stem[stemFp] = true; }
+      if (contentFp !== null) { seen.content[contentFp] = true; }
+      picked.push(q);
+    }
+    return picked;
+  });
   var out = [];
   for (var i = 0; i < perN; i++) {
     buckets.forEach(function (b) { if (b[i]) { out.push(b[i]); } });
@@ -86,7 +107,7 @@ function sampleBySubject(perN) {
 function startDiagnostic(kind) {
   closeDiagOverlay();
   if (kind === 'full') {
-    var qs = sampleBySubject(DIAG_FULL_PER);
+    var qs = sampleBySubject(DIAG_FULL_PER, true);
     startSheet(qs, {
       title: '入學診斷・完整模擬', mode: 'diagnostic', backTo: 'practice', graded: true,
       timing: examTiming(qs),   /* 倒數計時(見 ADR-0001) */

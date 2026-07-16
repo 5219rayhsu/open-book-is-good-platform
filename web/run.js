@@ -127,8 +127,11 @@ function passageEl(text) {
 }
 
 var CARRY_RE = /承上題|依前文|依上文|承前題?|同上題|依前題|根據上題|接上題/;
-/* 承上題但無 passage/group:找同卷前一題(走回情境錨題)當「前題情境」顯示。純前端,不改資料。 */
-function carryContextEl(q) {
+/* 承上題但無 passage/group:找同卷前面的題(走回情境錨題,鏈可能長於 2 題)當「前題情境」
+   依序全部顯示。純前端,不改資料。
+   prevQid(可選):畫面上一張卡的 qid——若就是本題在原卷的直接前一題,代表整條鏈(錨題到
+   本題前)都已依序顯示在畫面上,不必重複框出(整卷模式混卷抽到承上題時常見)。 */
+function carryContextEl(q, prevQid) {
   if (!q || q.group_id || q.passage) { return null; }          /* 已有本體就不用 */
   if (!q.stem || !CARRY_RE.test(String(q.stem))) { return null; }
   if (typeof papersIndex === 'undefined' || typeof byQid === 'undefined') { return null; }
@@ -137,20 +140,29 @@ function carryContextEl(q) {
   var box = el('div', { 'class': 'q-passage q-carry' });
   if (!paper) { box.appendChild(el('p', { 'class': 'q-passage-p' }, '【承上題】此題承接前一題，建議到「歷屆原卷」看整卷以取得完整情境。')); return box; }
   var idx = paper.qids.indexOf(q.qid);
-  /* 走回到「情境錨題」:往前找第一個 stem 不含承上標記的題 */
-  var anchor = null, j;
+  /* 相鄰抑制:畫面上一張卡就是本題在原卷的直接前一題(而非只看它是不是錨題本身)
+     → 代表錨題到本題前的整條鏈都已依序顯示在畫面上,不必重複框出。 */
+  if (idx > 0 && prevQid && paper.qids[idx - 1] === prevQid) { return null; }
+  /* 走回到「情境錨題」:往前找第一個 stem 不含承上標記的題,記下其索引 jA */
+  var jA = -1, j;
   for (j = idx - 1; j >= 0; j--) {
     var pq = byQid[paper.qids[j]];
     if (!pq) { continue; }
-    anchor = pq;
+    jA = j;
     if (!CARRY_RE.test(String(pq.stem || ''))) { break; }       /* 找到錨題就停 */
   }
-  if (!anchor) { box.appendChild(el('p', { 'class': 'q-passage-p' }, '【承上題】此題承接前一題，建議到「歷屆原卷」看整卷以取得完整情境。')); return box; }
-  box.appendChild(el('p', { 'class': 'q-carry-label' }, '【承上題】以下為情境所在的前題（第 ' + anchor.no + ' 題），據此作答：'));
-  var body = el('div');
-  if (typeof appendStemRich === 'function') { appendStemRich(body, String(anchor.stem || '')); }
-  else { body.appendChild(el('p', null, String(anchor.stem || ''))); }
-  box.appendChild(body);
+  if (jA < 0) { box.appendChild(el('p', { 'class': 'q-passage-p' }, '【承上題】此題承接前一題，建議到「歷屆原卷」看整卷以取得完整情境。')); return box; }
+  box.appendChild(el('p', { 'class': 'q-carry-label' }, '【承上題】以下為情境所在的前題，據此作答：'));
+  /* 鏈式堆疊:從錨題 jA 到本題前一題 idx-1,依序全部顯示(承上題鏈可能長於 2 題)。 */
+  for (j = jA; j < idx; j++) {
+    var pj = byQid[paper.qids[j]];
+    if (!pj) { continue; }
+    box.appendChild(el('p', { 'class': 'q-carry-label' }, '第 ' + pj.no + ' 題' + (j === jA ? '' : '（承上）') + '：'));
+    var body = el('div');
+    if (typeof appendStemRich === 'function') { appendStemRich(body, String(pj.stem || '')); }
+    else { body.appendChild(el('p', null, String(pj.stem || ''))); }
+    box.appendChild(body);
+  }
   return box;
 }
 
@@ -206,6 +218,33 @@ function revealEssay(card, q) {
 /* ===================== 共用題卡(逐題即時回饋) ===================== */
 function buildMCQCard(q, meta) {
   var card = el('article', { 'class': 'question-card' });
+  /* 標記／儲存:卡片最上方一列,讓使用者手動標「這題要注意」或收進「儲存專練」。
+     toggleFlag 拿不到(理論上不會,防呆)就整列不渲染,不擋作答。 */
+  if (typeof toggleFlag === 'function') {
+    var markRow = el('div', { 'class': 'q-mark-row' });
+    var flagged0 = isFlagged(q.qid);
+    var flagBtn = el('button', { type: 'button', 'class': 'q-mark-btn' + (flagged0 ? ' active' : ''),
+      'aria-pressed': String(flagged0) }, '標記');
+    flagBtn.addEventListener('click', function () {
+      var on = toggleFlag(q.qid);
+      card.classList.toggle('is-flagged', on);
+      flagBtn.classList.toggle('active', on);
+      flagBtn.setAttribute('aria-pressed', String(on));
+    });
+    markRow.appendChild(flagBtn);
+    var saved0 = isSaved(q.qid);
+    var saveBtn = el('button', { type: 'button', 'class': 'q-mark-btn' + (saved0 ? ' active' : ''),
+      'aria-pressed': String(saved0) }, saved0 ? '已儲存' : '儲存');
+    saveBtn.addEventListener('click', function () {
+      var on = toggleSaved(q.qid);
+      saveBtn.textContent = on ? '已儲存' : '儲存';
+      saveBtn.classList.toggle('active', on);
+      saveBtn.setAttribute('aria-pressed', String(on));
+    });
+    markRow.appendChild(saveBtn);
+    card.appendChild(markRow);
+    if (flagged0) { card.classList.add('is-flagged'); }
+  }
   /* 多選題:type=多選,或官方答案為多字母(如 BD/ADE)。送分題(#)非多選。
      多選 UI／集合評分見 wireMultiToggle / pickedLetters / markMCQCard / recordAnswer。 */
   var isMulti = (q.type === '多選') || (q.answer !== '#' && String(q.answer).length > 1);
@@ -454,6 +493,9 @@ function startSheet(questions, meta) {
         var _pg = passageEl(q.passage); if (_pg) { panel.appendChild(_pg); }
       }
       lastGroup = q.group_id || null;
+      /* 承上題(無 passage/group)→ 補前題情境;混卷抽到承上題時,畫面上一張卡未必是它的錨題(見 carryContextEl)。 */
+      var _cc = (typeof carryContextEl === 'function') ? carryContextEl(q, qi > 0 ? questions[qi - 1].qid : null) : null;
+      if (_cc) { panel.appendChild(_cc); }
       var card = buildMCQCard(q, null);
       if (card._isEssay) {
         card._essayInput.addEventListener('input', function () { if (!graded) { updateProgress(); } });
