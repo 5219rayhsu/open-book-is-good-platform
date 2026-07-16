@@ -113,6 +113,39 @@ function _examCategorySection() {
     '歷史紀錄仍保留全部；儲存題與錯題本暫時只顯示選定類科，改回即復原。變更會重新整理頁面。', box);
 }
 
+/* 停考科目區塊(僅該考試 manifest 有 deprecatedSubjects 才顯示,如社工「社會工作管理」):
+   二元開關「排除（預設）」／「納入練習」,寫入 state.settings.includeDeprecated 後 reload——
+   computeActiveSubjects()(app.js)在載入期算定一次,靠 reload 最簡單可靠。 */
+function _deprecatedSubjectsSection() {
+  var names = (typeof deprecatedSubjectNames === 'function') ? deprecatedSubjectNames() : [];
+  if (!names.length) { return null; }   /* 該考試無停考科目:不顯示此區塊 */
+
+  var listTxt = names.map(function (n) {
+    var note = (typeof subjectDeprecationNote === 'function') ? subjectDeprecationNote(n) : null;
+    return '「' + n + '」' + (note ? '（' + note + '）' : '');
+  }).join('、');
+
+  var cur = !!(state.settings && state.settings.includeDeprecated);
+  var opts = [
+    { v: false, label: '排除（預設）' },
+    { v: true, label: '納入練習' }
+  ];
+  var row = el('div', { 'class': 'set-options', role: 'group', 'aria-label': '停考科目' });
+  opts.forEach(function (o) {
+    var b = el('button', { type: 'button', 'aria-pressed': (o.v === cur) ? 'true' : 'false' }, o.label);
+    b.addEventListener('click', function () {
+      if (o.v === cur) { return; }   /* 點擊未變不動作 */
+      patchSettings({ includeDeprecated: o.v });
+      location.reload();
+    });
+    row.appendChild(b);
+  });
+
+  var desc = listTxt + ' 預設不出現在單題練習、弱點殲滅、診斷、雷達、藍圖、模擬考、歷屆原卷與各項統計。' +
+    '想複習歷屆或把它練回來，切到「納入練習」即可 —— 錯題本、儲存題裡的相關紀錄也會一併復原。變更會重新整理頁面。';
+  return _setSection('停考科目', desc, row);
+}
+
 function renderSettings() {
   var ov = $('settings-overlay');
   ov.textContent = '';
@@ -136,6 +169,10 @@ function renderSettings() {
   /* 應考類科(僅分組考試,如教師檢定,才顯示):篩選進度/雷達/出題/藍圖/模擬選科的科目範圍。 */
   var catSection = _examCategorySection();
   if (catSection) { sheet.appendChild(catSection); }
+
+  /* 停考科目(僅該考試 manifest 有 deprecatedSubjects 才顯示;社工無類科區,此區自成一段)。 */
+  var depSection = _deprecatedSubjectsSection();
+  if (depSection) { sheet.appendChild(depSection); }
 
   /* 顯示名稱：沿用既有命名覆蓋層（不重寫改名邏輯）。 */
   var nameBtn = el('button', { type: 'button', 'class': 'btn-quiet' }, '設定顯示名稱');

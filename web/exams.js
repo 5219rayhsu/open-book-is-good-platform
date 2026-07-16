@@ -342,6 +342,12 @@ function subjectDeprecationNote(s) {
   return (EXAM.deprecatedSubjects && EXAM.deprecatedSubjects[s]) || null;
 }
 
+/* 該考試所有停考科目名(manifest deprecatedSubjects 的 key;無則空陣列)。
+   供設定頁「停考科目」區塊判斷是否渲染＋列名。 */
+function deprecatedSubjectNames() {
+  return EXAM.deprecatedSubjects ? Object.keys(EXAM.deprecatedSubjects) : [];
+}
+
 /* 科目分組:manifest 設 subjectGroupSep(如教師檢定的「・」)才啟用,把 subjects 依前綴
    分成類科群組 [{name,subjects:[...]}];無此欄回 null(=不分組、平面清單)。 */
 function subjectGroups() {

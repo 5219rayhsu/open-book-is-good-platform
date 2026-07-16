@@ -151,6 +151,7 @@ function defaultState() {
       /* 備考模式 2×2:程度 planBasis(影響精熟門檻)× 時程 planWeeks(每週量分母),兩維獨立。 */
       planBasis: 'has', planWeeks: 26, start: todayStr(), includeReview: false,
       includeLegacy: false,  /* 舊年度(101-109)歷史題庫:預設不計入正式練習 */
+      includeDeprecated: false,  /* 停考科目(manifest deprecatedSubjects):預設排除出練習/統計/歷屆,打開即全站復原 */
       diagnosedAt: null, examGoal: null,  /* 入學診斷後寫入 */
       userName: '', namePromptedAt: null,  /* 命名功能(naming.js):學習者名字、是否問過 */
       examCategories: []  /* 應考類科(空=全部類科,向下相容);僅分組考試(subjectGroupSep)生效 */
@@ -206,13 +207,25 @@ function activeCategories() {
 /* 依 activeCategories() 收斂 EXAM.subjects:null 回全部科目;否則只留類科前綴落在生效類科內者。 */
 function computeActiveSubjects() {
   var cats = activeCategories();
-  if (cats === null) { return EXAM.subjects.slice(); }
-  var sep = EXAM.subjectGroupSep;
-  return EXAM.subjects.filter(function (s) {
-    var i = s.indexOf(sep);
-    var g = (i >= 0) ? s.slice(0, i) : s;
-    return cats.indexOf(g) >= 0;
-  });
+  var base;
+  if (cats === null) { base = EXAM.subjects.slice(); }
+  else {
+    var sep = EXAM.subjectGroupSep;
+    base = EXAM.subjects.filter(function (s) {
+      var i = s.indexOf(sep);
+      var g = (i >= 0) ? s.slice(0, i) : s;
+      return cats.indexOf(g) >= 0;
+    });
+  }
+  /* 停考科目過濾:includeDeprecated 為假(預設)時,把 manifest 標了 deprecatedSubjects 的科目
+     移出生效 SUBJECTS —— 單題練習/弱點/診斷/雷達/藍圖/模擬/統計/歷屆全站自動排除;
+     為真時全部保留(模擬考選科器仍會標註並預設不勾,見 modes.js 既有邏輯)。 */
+  if (!(state.settings && state.settings.includeDeprecated)) {
+    base = base.filter(function (s) {
+      return !(typeof subjectDeprecationNote === 'function' && subjectDeprecationNote(s));
+    });
+  }
+  return base;
 }
 /* SUBJECTS 依應考類科收斂後的實際生效清單(載入期算定一次;設定頁儲存後靠 reload 重算,
    不做執行期動態切換 —— 各面板/圖表在載入時已讀 SUBJECTS,reload 最簡單可靠)。
