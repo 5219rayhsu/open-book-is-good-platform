@@ -260,23 +260,53 @@ function patchSettings(patch) {
   patchState({ settings: Object.assign({}, state.settings, patch) });
 }
 
-/* ===================== 標記／儲存(qid→旗標,不可變更新) =====================
-   標記:單純旗標(與對錯無關,使用者自己覺得「這題要注意」);儲存:收進「儲存專練」包,
-   saved 存時間戳(qid → 首次儲存時間),供之後可能的排序/顯示用,目前功能面只用其存在與否。 */
-function toggleFlag(qid) {
-  var next = Object.assign({}, state.flags);
-  if (next[qid]) { delete next[qid]; } else { next[qid] = true; }
-  saveState(Object.assign({}, state, { flags: next }));
-  return !!next[qid];
+/* ===================== 儲存(收藏,長期資料;見 ADR-0003) =====================
+   儲存只在詳解檢視按「儲存」,收進「儲存題」清單長期保留。
+   key 依考試隔離:obig_saved_<考試 key>,值＝qid 陣列,陣列順序＝儲存順序(新的在後)。
+   （「標記」是另一件事——卷內暫時記號,只存在 run.js 的 startSheet() 內部記憶體,
+   交卷即棄,不寫 localStorage、不在這裡管理。） */
+var SAVED_KEY = 'obig_saved_' + EXAM.key;
+function _loadSavedIds() {
+  try {
+    var raw = localStorage.getItem(SAVED_KEY);
+    if (raw) { var arr = JSON.parse(raw); if (Array.isArray(arr)) { return arr; } }
+  } catch (e) { /* 壞資料當作沒有,不擋作答 */ }
+  /* 舊版相容:改版前 saved 曾夾在大 state blob 裡(qid→時間戳),沒有專屬 key 時取一次舊資料當初始值。 */
+  if (state.saved && typeof state.saved === 'object') {
+    return Object.keys(state.saved).sort(function (a, b) {
+      return (state.saved[a] || '') < (state.saved[b] || '') ? -1 : 1;
+    });
+  }
+  return [];
+}
+var savedIds = _loadSavedIds();
+function _persistSaved() {
+  try { localStorage.setItem(SAVED_KEY, JSON.stringify(savedIds)); }
+  catch (e) { /* 容量滿時靜默失敗 */ }
 }
 function toggleSaved(qid) {
-  var next = Object.assign({}, state.saved);
-  if (next[qid]) { delete next[qid]; } else { next[qid] = nowStamp(); }
-  saveState(Object.assign({}, state, { saved: next }));
-  return !!next[qid];
+  var i = savedIds.indexOf(qid);
+  if (i >= 0) { savedIds.splice(i, 1); } else { savedIds.push(qid); }
+  _persistSaved();
+  return savedIds.indexOf(qid) >= 0;
 }
-function isFlagged(qid) { return !!(state.flags && state.flags[qid]); }
-function isSaved(qid) { return !!(state.saved && state.saved[qid]); }
+function isSaved(qid) { return savedIds.indexOf(qid) >= 0; }
+/* 詳解檢視的「儲存」按鈕(唯一出處;見 ADR-0003:標記與儲存永不同畫面出現)。
+   掛在 explEl() 之後——本題解釋出現的當下就是「詳解檢視」那一刻。 */
+function saveButtonEl(qid) {
+  var saved0 = isSaved(qid);
+  var b = el('button', { type: 'button', 'class': 'q-mark-btn q-save-btn' + (saved0 ? ' active' : ''),
+    'aria-pressed': String(saved0) }, saved0 ? '已儲存' : '儲存這題');
+  b.addEventListener('click', function () {
+    var on = toggleSaved(qid);
+    b.textContent = on ? '已儲存' : '儲存這題';
+    b.classList.toggle('active', on);
+    b.setAttribute('aria-pressed', String(on));
+  });
+  var p = el('p', { 'class': 'q-save-row' });
+  p.appendChild(b);
+  return p;
+}
 
 /* ===================== SRS 引擎(簡化 SM-2)=====================
    說明:web 端實際採用此內建引擎(可重現、已驗證可運作)。scripts/srs.py 與
@@ -616,6 +646,7 @@ function todayAnswer(card, picked) {
   announce(fbText);
   var _ex = (typeof explEl === 'function') ? explEl(q.qid) : null;
   if (_ex) { card.appendChild(_ex); }   /* 本題解釋(AI 整理,explain.js) */
+  if (typeof saveButtonEl === 'function') { card.appendChild(saveButtonEl(q.qid)); }   /* 詳解檢視:儲存(見 ADR-0003) */
   var nextBtn = el('button', { type: 'button' }, '下一題');
   nextBtn.addEventListener('click', function () { startToday(); });
   card.appendChild(qaActionRow(q.qid, nextBtn));   /* 左疑義回報、右下一題,同列 */
@@ -885,7 +916,7 @@ function renderWrongbook() {
   var boxes = [];   /* {qid, input} 供全選/全不選/複習選取讀取 */
   sorted.forEach(function (qid) {
     var q = byQid[qid];
-    var row = el('div', { 'class': 'wrong-row' + (isFlagged(qid) ? ' is-flagged' : '') });
+    var row = el('div', { 'class': 'wrong-row' });
     var cbId = 'wrong-cb-' + qid;
     var cb = el('input', { type: 'checkbox', id: cbId });
     cb.checked = !!wrongbookChecked[qid];
@@ -928,17 +959,12 @@ function renderWrongbook() {
 }
 
 /* ===================== 儲存題(獨立頁) =====================
-   作答時按「儲存」收藏的題,集中在這裡專練——與「標記」分工:標記已降級為
-   作答當下的輕量記號(不再有獨立頁面/篩選),真正想收集起來反覆練的題交給這裡。 */
+   詳解檢視按「儲存」收藏的題,集中在這裡專練(見 ADR-0003:儲存只在詳解檢視出現、
+   與作答中的「標記」分屬兩件事,永不同畫面)。savedIds 陣列順序即儲存順序。 */
 function renderSaved() {
   var box = $('saved-list');
   box.textContent = '';
-  /* 依儲存時間(nowStamp 字串,可字典序比較)由舊到新排序,即「儲存順序」。 */
-  var savedQids = Object.keys(state.saved || {}).filter(function (qid) { return inScope(qid); })
-    .sort(function (a, b) {
-      var ta = state.saved[a] || '', tb = state.saved[b] || '';
-      return ta < tb ? -1 : (ta > tb ? 1 : 0);
-    });
+  var savedQids = savedIds.filter(function (qid) { return byQid[qid] && inScope(qid); });
   $('saved-count').textContent = savedQids.length ? ('已儲存 ' + savedQids.length + ' 題') : '';
   $('saved-empty').hidden = savedQids.length > 0;
   if (savedQids.length === 0) { return; }
@@ -955,7 +981,7 @@ function renderSaved() {
   var scroll = el('div', { 'class': 'wrong-list-scroll' });
   savedQids.forEach(function (qid) {
     var q = byQid[qid];
-    var row = el('div', { 'class': 'wrong-row' + (isFlagged(qid) ? ' is-flagged' : '') });
+    var row = el('div', { 'class': 'wrong-row' });
     var stem = stemPlain(q.stem);
     /* 縮圖前綴同錯題本:有 group_id(真題組)→〔題組〕;命中承上標記(CARRY_RE,run.js 全域)→〔承上〕。 */
     var chainTag = q.group_id ? '〔題組〕'

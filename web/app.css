@@ -207,6 +207,16 @@ section.panel{padding-top:.4rem;}
 .q-mark-row{display:flex;justify-content:flex-end;gap:.4rem;margin:0 0 .3rem;}
 .q-mark-btn{font-size:.72rem;padding:.1rem .55rem;border:1px solid var(--rule);border-radius:999px;background:transparent;color:var(--ink-soft);cursor:pointer;}
 .q-mark-btn.active{border-color:#d97706;color:#b45309;background:rgba(217,119,6,.08);}
+/* 儲存鈕(詳解檢視專用;見 ADR-0003):藍色系,與標記的橘色折角區隔語意(收藏 vs 待查記號)。 */
+.q-save-row{margin:.6rem 0 0;}
+.q-save-btn.q-mark-btn{font-size:.85rem;padding:.28rem .95rem;}
+.q-save-btn.active{border-color:var(--accent);color:var(--accent);background:var(--accent-wash);}
+/* 題號導覽列(僅整卷作答表面;見 ADR-0003):點題號捲到該題,被標記的題號右上角有橘折角提示。 */
+.sheet-qnav{display:flex;flex-wrap:wrap;gap:.35rem;margin:0 0 1rem;}
+.sheet-qnav-btn{position:relative;min-width:2.2rem;padding:.2rem .3rem;border:1px solid var(--rule);border-radius:.35rem;background:var(--paper-card);color:var(--ink-soft);font-size:.82rem;cursor:pointer;}
+.sheet-qnav-btn:hover{border-color:var(--accent);color:var(--accent);}
+.sheet-qnav-btn.is-flagged{position:relative;}
+.sheet-qnav-btn.is-flagged::after{content:'';position:absolute;top:0;right:0;border-style:solid;border-width:0 .7rem .7rem 0;border-color:transparent #d97706 transparent transparent;}
 .q-meta{font-size:.85rem;color:var(--ink-soft);letter-spacing:.03em;border-bottom:1px solid var(--rule-faint);padding-bottom:.45rem;}
 .question-stem{font-size:1.1rem;line-height:1.75;margin:1rem 0 1.1rem;}
 ol.options{list-style:none;margin:0;padding:0;}
@@ -276,9 +286,6 @@ kbd{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:.8em;border:1px
 .wrong-row{display:flex;gap:.5rem;align-items:flex-start;padding:.3rem 0;border-bottom:1px dotted var(--rule-faint);}
 .wrong-row:last-child{border-bottom:none;}
 .wrong-row label{font-size:.9rem;color:var(--ink-soft);}
-/* 標記過的列（錯題回顧／儲存題頁）:右上角小折角(同 .question-card 語意,尺寸縮小配合列高)。 */
-.wrong-row.is-flagged{position:relative;}
-.wrong-row.is-flagged::after{content:'';position:absolute;top:0;right:0;border-style:solid;border-width:0 .8rem .8rem 0;border-color:transparent #d97706 transparent transparent;}
 /* 儲存題頁:每列一段文字＋「移除」鈕(比照 .wrong-row 版面,無 checkbox)。 */
 .saved-row-text{font-size:.9rem;color:var(--ink-soft);flex:1;}
 
@@ -546,8 +553,6 @@ tr.is-weak td{color:var(--bad-ink);}
 .hist-stem{font-size:.9rem;color:var(--ink-soft);flex:1 1 12rem;min-width:8rem;}
 .hist-detail{position:relative;padding:.4rem .7rem 1rem;border-left:3px solid var(--rule-faint);margin:0 0 .6rem .3rem;}
 .hist-detail[hidden]{display:none;}
-/* 標記(旗標,與對錯無關):比照 .question-card.is-flagged 的右上角橘色折角,尺寸縮小(1rem)配合歷史列較窄的高度。 */
-.hist-detail.is-flagged::after{content:'';position:absolute;top:0;right:0;border-style:solid;border-width:0 1rem 1rem 0;border-color:transparent #d97706 transparent transparent;}
 .hist-detail .options{list-style:none;margin:.4rem 0;padding:0;}
 .hist-detail .opt{display:block;border:1px solid var(--rule);border-radius:var(--r);padding:.4rem .7rem;line-height:1.7;background:var(--paper);}
 .hist-detail .opt .letter{font-family:var(--serif);margin-right:.5rem;color:var(--ink-soft);}

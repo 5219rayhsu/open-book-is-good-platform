@@ -218,33 +218,9 @@ function revealEssay(card, q) {
 /* ===================== 共用題卡(逐題即時回饋) ===================== */
 function buildMCQCard(q, meta) {
   var card = el('article', { 'class': 'question-card' });
-  /* 標記／儲存:卡片最上方一列,讓使用者手動標「這題要注意」或收進「儲存專練」。
-     toggleFlag 拿不到(理論上不會,防呆)就整列不渲染,不擋作答。 */
-  if (typeof toggleFlag === 'function') {
-    var markRow = el('div', { 'class': 'q-mark-row' });
-    var flagged0 = isFlagged(q.qid);
-    var flagBtn = el('button', { type: 'button', 'class': 'q-mark-btn' + (flagged0 ? ' active' : ''),
-      'aria-pressed': String(flagged0) }, '標記');
-    flagBtn.addEventListener('click', function () {
-      var on = toggleFlag(q.qid);
-      card.classList.toggle('is-flagged', on);
-      flagBtn.classList.toggle('active', on);
-      flagBtn.setAttribute('aria-pressed', String(on));
-    });
-    markRow.appendChild(flagBtn);
-    var saved0 = isSaved(q.qid);
-    var saveBtn = el('button', { type: 'button', 'class': 'q-mark-btn' + (saved0 ? ' active' : ''),
-      'aria-pressed': String(saved0) }, saved0 ? '已儲存' : '儲存');
-    saveBtn.addEventListener('click', function () {
-      var on = toggleSaved(q.qid);
-      saveBtn.textContent = on ? '已儲存' : '儲存';
-      saveBtn.classList.toggle('active', on);
-      saveBtn.setAttribute('aria-pressed', String(on));
-    });
-    markRow.appendChild(saveBtn);
-    card.appendChild(markRow);
-    if (flagged0) { card.classList.add('is-flagged'); }
-  }
+  /* 標記(橘折角)／儲存按鈕不在這裡:兩者依 ADR-0003 永不同時出現、也非每個作答表面都有——
+     標記只在整卷作答(startSheet)加,由呼叫端插入;儲存只在詳解檢視(答完/交卷後)插入,
+     見 app.js 的 saveButtonEl()。 */
   /* 多選題:type=多選,或官方答案為多字母(如 BD/ADE)。送分題(#)非多選。
      多選 UI／集合評分見 wireMultiToggle / pickedLetters / markMCQCard / recordAnswer。 */
   var isMulti = (q.type === '多選') || (q.answer !== '#' && String(q.answer).length > 1);
@@ -428,6 +404,7 @@ function startDrill(items, meta) {
     announce(fbText);
     var _ex = (typeof explEl === 'function') ? explEl(q.qid) : null;
     if (_ex) { card.appendChild(_ex); }   /* 本題解釋(AI 整理,explain.js) */
+    if (typeof saveButtonEl === 'function') { card.appendChild(saveButtonEl(q.qid)); }   /* 詳解檢視:儲存(見 ADR-0003) */
     var nextBtn = el('button', { type: 'button' }, idx + 1 < items.length ? '下一題' : '看本組總結');
     nextBtn.addEventListener('click', function () { idx += 1; renderOne(); });
     card.appendChild(qaActionRow(q.qid, nextBtn));   /* 左疑義回報、右下一題,同列 */
@@ -459,6 +436,35 @@ function startSheet(questions, meta) {
   var startedAt = Date.now();
   var timing = meta.timing || null;          /* {fullMins, suggestMins} 或 null(不計時);見 ADR-0001 */
   var elapsedSecs = 0, paused = false, tickId = null;
+  /* 標記(橘折角,見 ADR-0003):只在整卷作答(本引擎)出現,供作答中「先跳過、待會回來檢查」。
+     卷內暫時記號——只存這個函式的區域變數,離開/交卷後隨畫面重繪自然丟棄,不寫 localStorage。 */
+  var flags = {};
+  var cardRefs = [], qnavBtns = [];
+  function toggleSheetFlag(qi, q) {
+    flags[q.qid] = !flags[q.qid];
+    var on = !!flags[q.qid];
+    cardRefs[qi].classList.toggle('is-flagged', on);
+    if (cardRefs[qi]._flagBtn) {
+      cardRefs[qi]._flagBtn.classList.toggle('active', on);
+      cardRefs[qi]._flagBtn.setAttribute('aria-pressed', String(on));
+    }
+    if (qnavBtns[qi]) { qnavBtns[qi].classList.toggle('is-flagged', on); }
+    return on;
+  }
+  /* 題號導覽列:一排題號鈕,點了捲到該題;被標記的題號鈕右上角有橘折角提示,方便交卷前巡一輪。 */
+  function buildQNav() {
+    var nav = el('div', { 'class': 'sheet-qnav', role: 'navigation', 'aria-label': '題號導覽' });
+    questions.forEach(function (q, qi) {
+      var b = el('button', { type: 'button', 'class': 'sheet-qnav-btn' + (flags[q.qid] ? ' is-flagged' : '') },
+        String(qi + 1));
+      b.addEventListener('click', function () {
+        if (cardRefs[qi]) { cardRefs[qi].scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+      qnavBtns[qi] = b;
+      nav.appendChild(b);
+    });
+    return nav;
+  }
   function render() {
     panel.textContent = '';
     panel.appendChild(backLink(meta.backTo || 'practice'));
@@ -484,6 +490,8 @@ function startSheet(questions, meta) {
           ? ('選擇題建議 ' + timing.suggestMins + ' 分・全科完整 ' + timing.fullMins + ' 分（含申論；超過建議時間數字轉紅，全時間到才強制交卷）')
           : ('全卷時間 ' + timing.fullMins + ' 分（到 0 強制交卷）')));
     }
+    panel.appendChild(el('p', { 'class': 'subtitle sheet-qnav-hint' }, '點題號可捲到該題；「標記」可先跳過、待會回來檢查（僅此次作答有效，交卷後不保留）。'));
+    panel.appendChild(buildQNav());
     var lastGroup = null;
     questions.forEach(function (q, qi) {
       /* 題組:每組畫一次「路徑指示標頭＋本體」;無 group_id 但有 passage 的題各自顯示 passage。 */
@@ -497,6 +505,17 @@ function startSheet(questions, meta) {
       var _cc = (typeof carryContextEl === 'function') ? carryContextEl(q, qi > 0 ? questions[qi - 1].qid : null) : null;
       if (_cc) { panel.appendChild(_cc); }
       var card = buildMCQCard(q, null);
+      cardRefs[qi] = card;
+      /* 標記列(僅整卷作答表面;見 ADR-0003):加在卡片最上方,交卷後於 grade() 移除、換成儲存鈕。 */
+      var markRow = el('div', { 'class': 'q-mark-row' });
+      var flagBtn = el('button', { type: 'button', 'class': 'q-mark-btn' + (flags[q.qid] ? ' active' : ''),
+        'aria-pressed': String(!!flags[q.qid]) }, '標記');
+      flagBtn.addEventListener('click', function () { toggleSheetFlag(qi, q); });
+      markRow.appendChild(flagBtn);
+      card.insertBefore(markRow, card.firstChild);
+      card._markRow = markRow;
+      card._flagBtn = flagBtn;
+      if (flags[q.qid]) { card.classList.add('is-flagged'); }
       if (card._isEssay) {
         card._essayInput.addEventListener('input', function () { if (!graded) { updateProgress(); } });
       } else if (card._isMulti) {
@@ -575,7 +594,13 @@ function startSheet(questions, meta) {
     var cards = panel.querySelectorAll('.question-card');
     Array.prototype.forEach.call(cards, function (card, qi) {
       var q = card._qref; if (!q) { return; }
-      if (card._isEssay) { revealEssay(card, q); return; }   /* 非選:不自動評分,揭示官方參考答案/評分原則 */
+      /* 交卷＝進入詳解檢視:標記(作答中的橘折角)在此收掉,換成儲存鈕(見 ADR-0003,兩者永不同畫面)。 */
+      if (card._markRow) { card._markRow.remove(); card._markRow = null; }
+      if (card._isEssay) {
+        revealEssay(card, q);   /* 非選:不自動評分,揭示官方參考答案/評分原則 */
+        if (typeof saveButtonEl === 'function') { card.appendChild(saveButtonEl(q.qid)); }
+        return;
+      }
       mcqTotal += 1;
       var picked = pickedLetters(card) || '_';   /* 單選一字母／多選排序字串／未作答 '_' */
       var correct = recordAnswer(q, picked, { mode: meta.mode || 'mock' });
@@ -583,6 +608,7 @@ function startSheet(questions, meta) {
       markMCQCard(card, q, picked);
       var _ex = (typeof explEl === 'function') ? explEl(q.qid) : null;
       if (_ex) { card.appendChild(_ex); }   /* 交卷後每題顯示本題解釋(AI 整理) */
+      if (typeof saveButtonEl === 'function') { card.appendChild(saveButtonEl(q.qid)); }   /* 詳解檢視:儲存(見 ADR-0003) */
       if (typeof feedbackLink === 'function') {   /* 交卷後每題各一顆疑義與建議回報鈕(非整份一顆) */
         var _fbp = el('p', { 'class': 'review-fb' }); _fbp.appendChild(feedbackLink(q.qid)); card.appendChild(_fbp);
       }
