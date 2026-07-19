@@ -218,7 +218,7 @@ function revealEssay(card, q) {
 /* ===================== 共用題卡(逐題即時回饋) ===================== */
 function buildMCQCard(q, meta) {
   var card = el('article', { 'class': 'question-card' });
-  /* 標記(橘折角)／儲存按鈕不在這裡:兩者依 ADR-0003 永不同時出現、也非每個作答表面都有——
+  /* 標記(橘折角)／儲存按鈕不在這裡:兩者依 ADR-0009 永不同時出現、也非每個作答表面都有——
      標記只在整卷作答(startSheet)加,由呼叫端插入;儲存只在詳解檢視(答完/交卷後)插入,
      見 app.js 的 saveButtonEl()。 */
   /* 多選題:type=多選,或官方答案為多字母(如 BD/ADE)。送分題(#)非多選。
@@ -404,7 +404,7 @@ function startDrill(items, meta) {
     announce(fbText);
     var _ex = (typeof explEl === 'function') ? explEl(q.qid) : null;
     if (_ex) { card.appendChild(_ex); }   /* 本題解釋(AI 整理,explain.js) */
-    if (typeof saveButtonEl === 'function') { card.appendChild(saveButtonEl(q.qid)); }   /* 詳解檢視:儲存(見 ADR-0003) */
+    if (typeof saveButtonEl === 'function') { card.appendChild(saveButtonEl(q.qid)); }   /* 詳解檢視:儲存(見 ADR-0009) */
     var nextBtn = el('button', { type: 'button' }, idx + 1 < items.length ? '下一題' : '看本組總結');
     nextBtn.addEventListener('click', function () { idx += 1; renderOne(); });
     card.appendChild(qaActionRow(q.qid, nextBtn));   /* 左疑義回報、右下一題,同列 */
@@ -436,8 +436,9 @@ function startSheet(questions, meta) {
   var startedAt = Date.now();
   var timing = meta.timing || null;          /* {fullMins, suggestMins} 或 null(不計時);見 ADR-0001 */
   var elapsedSecs = 0, paused = false, tickId = null;
-  /* 標記(橘折角,見 ADR-0003):只在整卷作答(本引擎)出現,供作答中「先跳過、待會回來檢查」。
-     卷內暫時記號——只存這個函式的區域變數,離開/交卷後隨畫面重繪自然丟棄,不寫 localStorage。 */
+  /* 標記(橘折角,見 ADR-0009):只在整卷作答(本引擎)出現,供作答中「先跳過、待會回來檢查」。
+     作答中只存這個函式的區域變數(不寫 localStorage);交卷(grade)時隨每題的 recordAnswer
+     一併寫進該題的歷史紀錄(entry.flags),之後可在「歷史紀錄」詳情回看/編輯——見 history.js。 */
   var flags = {};
   var cardRefs = [], qnavBtns = [];
   function toggleSheetFlag(qi, q) {
@@ -490,7 +491,7 @@ function startSheet(questions, meta) {
           ? ('選擇題建議 ' + timing.suggestMins + ' 分・全科完整 ' + timing.fullMins + ' 分（含申論；超過建議時間數字轉紅，全時間到才強制交卷）')
           : ('全卷時間 ' + timing.fullMins + ' 分（到 0 強制交卷）')));
     }
-    panel.appendChild(el('p', { 'class': 'subtitle sheet-qnav-hint' }, '點題號可捲到該題；「標記」可先跳過、待會回來檢查（僅此次作答有效，交卷後不保留）。'));
+    panel.appendChild(el('p', { 'class': 'subtitle sheet-qnav-hint' }, '點題號可捲到該題；「標記」可先跳過、待會回來檢查（隨這次作答存入歷史紀錄，之後仍可在「歷史紀錄」回看與編輯）。'));
     panel.appendChild(buildQNav());
     var lastGroup = null;
     questions.forEach(function (q, qi) {
@@ -506,7 +507,7 @@ function startSheet(questions, meta) {
       if (_cc) { panel.appendChild(_cc); }
       var card = buildMCQCard(q, null);
       cardRefs[qi] = card;
-      /* 標記列(僅整卷作答表面;見 ADR-0003):加在卡片最上方,交卷後於 grade() 移除、換成儲存鈕。 */
+      /* 標記列(僅整卷作答表面;見 ADR-0009):加在卡片最上方,交卷後於 grade() 移除、換成儲存鈕。 */
       var markRow = el('div', { 'class': 'q-mark-row' });
       var flagBtn = el('button', { type: 'button', 'class': 'q-mark-btn' + (flags[q.qid] ? ' active' : ''),
         'aria-pressed': String(!!flags[q.qid]) }, '標記');
@@ -594,7 +595,7 @@ function startSheet(questions, meta) {
     var cards = panel.querySelectorAll('.question-card');
     Array.prototype.forEach.call(cards, function (card, qi) {
       var q = card._qref; if (!q) { return; }
-      /* 交卷＝進入詳解檢視:標記(作答中的橘折角)在此收掉,換成儲存鈕(見 ADR-0003,兩者永不同畫面)。 */
+      /* 交卷＝進入詳解檢視:標記(作答中的橘折角)在此收掉,換成儲存鈕(見 ADR-0009,兩者永不同畫面)。 */
       if (card._markRow) { card._markRow.remove(); card._markRow = null; }
       if (card._isEssay) {
         revealEssay(card, q);   /* 非選:不自動評分,揭示官方參考答案/評分原則 */
@@ -603,12 +604,12 @@ function startSheet(questions, meta) {
       }
       mcqTotal += 1;
       var picked = pickedLetters(card) || '_';   /* 單選一字母／多選排序字串／未作答 '_' */
-      var correct = recordAnswer(q, picked, { mode: meta.mode || 'mock' });
+      var correct = recordAnswer(q, picked, { mode: meta.mode || 'mock', flagged: !!flags[q.qid] });   /* 標記隨這次歷史紀錄一併存(見 ADR-0009) */
       if (correct) { ok += 1; }
       markMCQCard(card, q, picked);
       var _ex = (typeof explEl === 'function') ? explEl(q.qid) : null;
       if (_ex) { card.appendChild(_ex); }   /* 交卷後每題顯示本題解釋(AI 整理) */
-      if (typeof saveButtonEl === 'function') { card.appendChild(saveButtonEl(q.qid)); }   /* 詳解檢視:儲存(見 ADR-0003) */
+      if (typeof saveButtonEl === 'function') { card.appendChild(saveButtonEl(q.qid)); }   /* 詳解檢視:儲存(見 ADR-0009) */
       if (typeof feedbackLink === 'function') {   /* 交卷後每題各一顆疑義與建議回報鈕(非整份一顆) */
         var _fbp = el('p', { 'class': 'review-fb' }); _fbp.appendChild(feedbackLink(q.qid)); card.appendChild(_fbp);
       }

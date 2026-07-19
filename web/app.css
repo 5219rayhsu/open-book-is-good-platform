@@ -553,6 +553,8 @@ tr.is-weak td{color:var(--bad-ink);}
 .hist-stem{font-size:.9rem;color:var(--ink-soft);flex:1 1 12rem;min-width:8rem;}
 .hist-detail{position:relative;padding:.4rem .7rem 1rem;border-left:3px solid var(--rule-faint);margin:0 0 .6rem .3rem;}
 .hist-detail[hidden]{display:none;}
+/* 當次標記(可編輯;見 ADR-0003 修訂版):比照 .question-card.is-flagged 的右上角橘色折角,尺寸縮小配合較窄的詳情框。 */
+.hist-detail.is-flagged::after{content:'';position:absolute;top:0;right:0;border-style:solid;border-width:0 1rem 1rem 0;border-color:transparent #d97706 transparent transparent;}
 .hist-detail .options{list-style:none;margin:.4rem 0;padding:0;}
 .hist-detail .opt{display:block;border:1px solid var(--rule);border-radius:var(--r);padding:.4rem .7rem;line-height:1.7;background:var(--paper);}
 .hist-detail .opt .letter{font-family:var(--serif);margin-right:.5rem;color:var(--ink-soft);}

@@ -260,11 +260,12 @@ function patchSettings(patch) {
   patchState({ settings: Object.assign({}, state.settings, patch) });
 }
 
-/* ===================== 儲存(收藏,長期資料;見 ADR-0003) =====================
+/* ===================== 儲存(收藏,長期資料;見 ADR-0009) =====================
    儲存只在詳解檢視按「儲存」,收進「儲存題」清單長期保留。
    key 依考試隔離:obig_saved_<考試 key>,值＝qid 陣列,陣列順序＝儲存順序(新的在後)。
-   （「標記」是另一件事——卷內暫時記號,只存在 run.js 的 startSheet() 內部記憶體,
-   交卷即棄,不寫 localStorage、不在這裡管理。） */
+   （「標記」是另一件事:作答中只存在 run.js 的 startSheet() 內部記憶體,
+   交卷時隨那次的 log 歷史紀錄一併存(recordAnswer 的 opts.flagged,見 history.js
+   可回看/編輯),不是獨立的全域 key,不在這裡管理。） */
 var SAVED_KEY = 'obig_saved_' + EXAM.key;
 function _loadSavedIds() {
   try {
@@ -291,7 +292,7 @@ function toggleSaved(qid) {
   return savedIds.indexOf(qid) >= 0;
 }
 function isSaved(qid) { return savedIds.indexOf(qid) >= 0; }
-/* 詳解檢視的「儲存」按鈕(唯一出處;見 ADR-0003:標記與儲存永不同畫面出現)。
+/* 詳解檢視的「儲存」按鈕(唯一出處;見 ADR-0009:標記與儲存永不同畫面出現)。
    掛在 explEl() 之後——本題解釋出現的當下就是「詳解檢視」那一刻。 */
 function saveButtonEl(qid) {
   var saved0 = isSaved(qid);
@@ -474,10 +475,14 @@ function recordAnswer(q, pickedLetter, opts) {
     srsNext = Object.assign({}, state.srs);
     srsNext[q.qid] = card;
   }
-  var logNext = state.log.concat([{
+  var entry = {
     t: todayStr(), ts: nowStamp(), qid: q.qid, subject: q.subject,
     correct: correct, pick: pickedLetter, mode: opts.mode || 'practice'
-  }]);
+  };
+  /* 標記(見 ADR-0009):該次作答若標記過此題,隨這筆歷史紀錄一併存(qid 陣列,跟其餘欄位一樣扁平);
+     未標記則省略欄位,舊紀錄沒有這個欄位時讀取端一律當空處理。 */
+  if (opts.flagged) { entry.flags = [q.qid]; }
+  var logNext = state.log.concat([entry]);
   saveState(Object.assign({}, state, { srs: srsNext, log: logNext }));
   if (!correct && opts.enqueueRel !== false) { enqueueRelated(q); }
   return correct;
@@ -646,7 +651,7 @@ function todayAnswer(card, picked) {
   announce(fbText);
   var _ex = (typeof explEl === 'function') ? explEl(q.qid) : null;
   if (_ex) { card.appendChild(_ex); }   /* 本題解釋(AI 整理,explain.js) */
-  if (typeof saveButtonEl === 'function') { card.appendChild(saveButtonEl(q.qid)); }   /* 詳解檢視:儲存(見 ADR-0003) */
+  if (typeof saveButtonEl === 'function') { card.appendChild(saveButtonEl(q.qid)); }   /* 詳解檢視:儲存(見 ADR-0009) */
   var nextBtn = el('button', { type: 'button' }, '下一題');
   nextBtn.addEventListener('click', function () { startToday(); });
   card.appendChild(qaActionRow(q.qid, nextBtn));   /* 左疑義回報、右下一題,同列 */
@@ -959,7 +964,7 @@ function renderWrongbook() {
 }
 
 /* ===================== 儲存題(獨立頁) =====================
-   詳解檢視按「儲存」收藏的題,集中在這裡專練(見 ADR-0003:儲存只在詳解檢視出現、
+   詳解檢視按「儲存」收藏的題,集中在這裡專練(見 ADR-0009:儲存只在詳解檢視出現、
    與作答中的「標記」分屬兩件事,永不同畫面)。savedIds 陣列順序即儲存順序。 */
 function renderSaved() {
   var box = $('saved-list');
