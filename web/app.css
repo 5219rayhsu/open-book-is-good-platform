@@ -12,6 +12,17 @@
    class 名稱與 SVG token 全保留(JS / charts.js 不動),只重寫樣式。
    build_app.py 會把本檔整段內嵌進單檔版。
    ============================================================ */
+/* 漢字是全形、拉丁數字是 cap-height，混排時數字天生比漢字矮一截
+   （實測 16px 明體：0 的 ascent 11.1px、題 12.1px ＝ 0.92），
+   「今天 0 題」的 0 就會被看成「小字」。這不是字型堆疊挑錯，換 Times New Roman
+   反而更矮（0.90）。正解是只對「數字」這段 unicode 做 size-adjust 補回高度差，
+   漢字完全不受影響。只掛在 --serif（標題與數據行），內文 sans 不動。 */
+@font-face{
+  font-family:"NumFit";
+  src:local("Songti TC"),local("Noto Serif TC"),local("Times New Roman");
+  unicode-range:U+0030-0039;   /* 僅阿拉伯數字 0-9 */
+  size-adjust:109%;            /* 12.06 / 11.12 ≈ 1.085，取 109% 讓數字與漢字視覺等高 */
+}
 :root{
   --paper:#f5f1e6;            /* 暖紙底 */
   --paper-deep:#ece6d6;       /* 下沉 / hover */
@@ -28,7 +39,7 @@
   --accent:#2f5d8a;           /* 導航 / 連結 / 對焦(沉穩藍)*/
   --accent-wash:#e6edf3;
   --seal:#2f5d8a;
-  --serif:"Noto Serif TC","Songti TC",PMingLiU,"Times New Roman",serif;
+  --serif:"NumFit","Noto Serif TC","Songti TC",PMingLiU,"Times New Roman",serif;
   --sans:"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;
   --r:8px;                    /* 控制 / 卡片圓角 */
   --r-lg:12px;                /* 大面 */
@@ -656,3 +667,15 @@ h1,h2,h3,h4,.mode-name,.daily-line.strong{text-wrap:balance;}
 @media (prefers-reduced-motion:reduce){
   *{transition:none !important;animation:none !important;scroll-behavior:auto !important;}
 }
+
+/* 儲存空間已滿的警示條(saveState 失敗時才插入;沉默失敗＝當天作答會不見) */
+.storage-warn{
+  position:sticky; top:0; z-index:99;
+  padding:10px 14px; font-size:14px; line-height:1.5;
+  background:#fdf3d8; color:#5a4412; border-bottom:1px solid #e5cf9a;
+}
+
+/* 入學測驗的應考科目勾選（兩層設計第一層；第二層在設定頁） */
+.diag-subjects{margin:.2rem 0 1rem;padding:.7rem .9rem;border:1px solid var(--rule-faint);
+  border-radius:var(--r);background:var(--paper);}
+.diag-subjects .diag-lead{margin:0 0 .45rem;font-size:.94rem;}

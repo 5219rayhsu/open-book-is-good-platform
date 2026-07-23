@@ -44,11 +44,13 @@
     <button type="button" id="tab-mock" data-panel="mock">模擬考</button>
     <button type="button" id="tab-essay" data-panel="essay">申論題</button>
     <button type="button" id="tab-wrongbook" data-panel="wrongbook">錯題複習</button>
-    <button type="button" id="tab-saved" data-panel="saved">儲存題</button>
     <button type="button" id="tab-cluster" data-panel="cluster">弱點殲滅</button>
   </div>
   <div class="nav-row">
     <span class="nav-label">進度</span>
+    <!-- 儲存題移到本列:練習列 7 顆會擠到換行,搬走一顆後 6 顆同列;
+         儲存題本來就是「長期收藏的清單」,性質接近回顧而非當下練習。 -->
+    <button type="button" id="tab-saved" data-panel="saved">儲存題</button>
     <button type="button" id="tab-radar" data-panel="radar">能力雷達</button>
     <button type="button" id="tab-trend" data-panel="trend">學習趨勢</button>
     <button type="button" id="tab-history" data-panel="history">歷史紀錄</button>

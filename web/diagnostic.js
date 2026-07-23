@@ -37,9 +37,19 @@ function showDiagOverlay() {
     '在開始之前，花點時間量一下你目前的程度。系統會據此畫出你的各科能力雷達，' +
     '並建議一條備考路線。你隨時可以略過，之後也能在「學習藍圖」重做。'));
 
+  /* 兩層設計的第一層:自選組合的考試(學測/分科)先問應考科目,再決定診斷份量。
+     只在這裡問是不夠的——診斷可以略過,所以設定頁有獨立且隨時可改的同一個欄位。 */
   var choices = el('div', { 'class': 'diag-choices' });
-  choices.appendChild(diagChoice('簡短診斷', '每科 ' + DIAG_SHORT_PER + ' 題，共 ' + (DIAG_SHORT_PER * SUBJECTS.length) + ' 題', '逐題即時對錯，約 10 分鐘。\n快速抓出強弱輪廓。', function () { startDiagnostic('short'); }));
-  choices.appendChild(diagChoice('完整模擬', '每科 ' + DIAG_FULL_PER + ' 題，共 ' + (DIAG_FULL_PER * SUBJECTS.length) + ' 題', '整卷計時、交卷評分。\n最接近真實考試手感。', function () { startDiagnostic('full'); }));
+  var counts = el('div', null);
+  function renderChoices() {
+    choices.textContent = '';
+    var n = SUBJECTS.length;
+    choices.appendChild(diagChoice('簡短診斷', '每科 ' + DIAG_SHORT_PER + ' 題，共 ' + (DIAG_SHORT_PER * n) + ' 題', '逐題即時對錯，約 10 分鐘。\n快速抓出強弱輪廓。', function () { startDiagnostic('short'); }));
+    choices.appendChild(diagChoice('完整模擬', '每科 ' + DIAG_FULL_PER + ' 題，共 ' + (DIAG_FULL_PER * n) + ' 題', '整卷計時、交卷評分。\n最接近真實考試手感。', function () { startDiagnostic('full'); }));
+  }
+  if (EXAM.elective) { sheet.appendChild(diagSubjectPicker(renderChoices)); }
+  renderChoices();
+  sheet.appendChild(counts);
   sheet.appendChild(choices);
 
   var skip = el('p', { 'class': 'diag-skip' });
@@ -53,6 +63,38 @@ function showDiagOverlay() {
     '說明：診斷給的是「起點估計」，不是上榜預測。六個月/十二個月是為上榜而設計的工作量目標，\n' +
     '會依你實際作答每天滾動重算 —— 沒有任何系統能保證考試結果。'));
   ov.appendChild(sheet);
+}
+/* 診斷前的應考科目勾選。與設定頁寫同一個 state.settings.subjects,不是第二份資料;
+   差別只在這裡是「新使用者第一次遇到它」的入口。改動即時反映在下方題數,
+   不 reload(overlay 還開著),而是就地重算 SUBJECTS 供本次診斷使用。 */
+function diagSubjectPicker(onChange) {
+  var all = EXAM.subjects.slice();
+  var cur = (state.settings.subjects && state.settings.subjects.length)
+    ? state.settings.subjects.slice() : all.slice();
+  var box = el('div', { 'class': 'diag-subjects' });
+  box.appendChild(el('p', { 'class': 'diag-lead' }, '你要考哪幾科？（之後可在「設定」隨時增減）'));
+  var wrap = el('div', { 'class': 'subj-checks' });
+  var checks = [];
+  all.forEach(function (s) {
+    var lab = el('label', { 'class': 'chk chk-inline' });
+    var cb = el('input', { type: 'checkbox', value: s });
+    cb.checked = cur.indexOf(s) >= 0;
+    cb.addEventListener('change', function () {
+      var picked = checks.filter(function (c) { return c.checked; }).map(function (c) { return c.value; });
+      if (picked.length === 0) { cb.checked = true; return; }   /* 至少一科 */
+      patchSettings({ subjects: picked.length === all.length ? [] : picked });
+      refreshActiveSubjects();
+      var spans = syncSubjectSpans(state.settings);
+      if (spans) { patchSettings({ subjectSpans: spans }); }
+      onChange();
+    });
+    checks.push(cb);
+    lab.appendChild(cb);
+    lab.appendChild(document.createTextNode(' ' + s));
+    wrap.appendChild(lab);
+  });
+  box.appendChild(wrap);
+  return box;
 }
 function diagChoice(name, meta, sub, onClick) {
   var b = el('button', { type: 'button', 'class': 'diag-choice' });

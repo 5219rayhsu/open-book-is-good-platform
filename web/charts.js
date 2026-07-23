@@ -44,12 +44,16 @@ function drawRadarInto(box, stats) {
     var anchor = (Math.abs(lp[0] - cx) < 8) ? 'middle' : (lp[0] > cx ? 'start' : 'end');
     var t = stats[sub];
     var acc = (t.n > 0) ? t.ok / t.n : 0;
+    /* 未測繪的科(剛加入／資料太少)不畫成 0 ——把「還沒練」畫成「能力 0」會讓
+       剛選的科目在雷達上看起來是最大破口,人與機器都會被誤導去猛攻它。
+       標「校準中」,頂點暫時落在及格線(0.6)位置,等有資料再顯示真值。 */
+    var unmapped = (typeof subjectPhase === 'function') && subjectPhase(sub) === 'unmapped';
     var label = svgEl('text', { x: lp[0], y: lp[1] + 4, 'text-anchor': anchor, 'class': 'svg-label' });
     /* 顯示名依應考類科收斂(subjectDisplayLabel,app.js);stats 的鍵仍用原始 sub,不受影響。 */
     var dispSub = (typeof subjectDisplayLabel === 'function') ? subjectDisplayLabel(sub) : sub;
-    label.textContent = dispSub + ' ' + (t.n > 0 ? pct(acc) : '—');
+    label.textContent = dispSub + ' ' + (unmapped ? '校準中' : (t.n > 0 ? pct(acc) : '—'));
     svg.appendChild(label);
-    dataPts.push(radarPoint(cx, cy, R * acc, i).join(','));
+    dataPts.push(radarPoint(cx, cy, R * (unmapped ? 0.6 : acc), i).join(','));
   });
   svg.appendChild(svgEl('polygon', { points: dataPts.join(' '), 'class': 'svg-data' }));
   box.appendChild(svg);

@@ -24,6 +24,11 @@
    jurisdiction             作答查證對象的法規體系(地域可配置)
    sourceName               題庫出處全名(footer/landing)
    category/count/blurb     landing 卡片:類別、歷屆題數、一句簡述
+   status(選)               'soon' = 已宣告、題庫未齊:landing 卡片渲染成不可點的灰卡
+                            (仍計入類科數與科數,見 _buildExamCard)。宣告新科時「當天」
+                            就加這筆 + status:'soon',題庫齊了再把 status 刪掉即可。
+                            data/<key>/ 未就緒也不會壞——卡片不連過去。
+   soonNote(選)             覆寫灰卡上的「準備中」字樣(如「2026 秋上線」)
    hasEra(選)               題庫含法規時效題(舊年度 legacy + 時效提示),目前僅 cpa
    hasEssay:false(選)       純測驗題考試(無申論),隱藏申論分頁,目前僅 nursing
    coverageNote/staleNote(選) 該考試專屬說明(選擇題涵蓋範圍、時效提醒),有才顯示
@@ -205,6 +210,9 @@ var EXAMS = [
     sourceLicense: '大考中心公開試題・著作權法 §9 法定豁免',
     category: '升學', count: 1258,
     blurb: '國綜、數學 A／B、社會、自然、英文 —— 111–115 年學測歷屆，含國寫申論。',
+    /* elective：考生自選科目組合（數 A／數 B 擇一、社會自然未必都考），
+       故設定頁與入學測驗提供「應考科目」勾選。國考與會考皆為全科必考，不設此旗標。 */
+    elective: true,
     subjects: ['國綜', '數學A', '數學B', '社會', '自然', '英文'],
     notes: {
       '國綜': '國語文綜合能力測驗：閱讀理解、文意推論、語文知識與跨領域素養題。',
@@ -417,17 +425,20 @@ function _examFieldMap() {
   };
 }
 
-/* 從 manifest 生成一張 landing 考試卡片(用 createElement,避免 innerHTML)。 */
+/* 從 manifest 生成一張 landing 考試卡片(用 createElement,避免 innerHTML)。
+   status:'soon' 的考試(已宣告、題庫未齊)渲染成不可點的灰卡:仍計入類科數與科數,
+   但不連到練習頁——避免帶使用者撞空題庫。題庫齊了就把 status 拿掉,無須改引擎。 */
 function _buildExamCard(e) {
-  var a = document.createElement('a');
-  a.className = 'exam-card';
-  a.href = 'web/index.html?exam=' + e.key;
+  var soon = (e.status === 'soon');
+  var a = document.createElement(soon ? 'div' : 'a');
+  a.className = soon ? 'exam-card is-soon' : 'exam-card';
+  if (soon) { a.setAttribute('aria-disabled', 'true'); } else { a.href = 'web/index.html?exam=' + e.key; }
   function add(tag, cls, text) { var n = document.createElement(tag); if (cls) { n.className = cls; } n.textContent = text; a.appendChild(n); return n; }
   add('span', 'cat', e.category);
   add('h2', null, e.name);
   add('p', 'meta', e.subjects.length + ' 科 ・ 歷屆 ' + _comma(e.count) + ' 題');
   add('p', 'desc', e.blurb);
-  add('span', 'go', '進入練習 →');
+  add('span', 'go', soon ? (e.soonNote || '準備中') : '進入練習 →');
   return a;
 }
 

@@ -225,6 +225,14 @@ function computeActiveSubjects() {
       return !(typeof subjectDeprecationNote === 'function' && subjectDeprecationNote(s));
     });
   }
+  /* 應考科目(升學自選組合):settings.subjects 為陣列且非空時只留勾選的科。
+     未設定／空陣列＝全部(向下相容,且日後某考試新增科目時不會被舊設定靜默擋掉);
+     一律先濾掉「已不存在於本考試」的舊值(制度改版、科目更名後的殘留)。 */
+  var picked = state.settings && state.settings.subjects;
+  if (Array.isArray(picked) && picked.length) {
+    var keep = picked.filter(function (s) { return base.indexOf(s) >= 0; });
+    if (keep.length) { base = base.filter(function (s) { return keep.indexOf(s) >= 0; }); }
+  }
   return base;
 }
 /* SUBJECTS 依應考類科收斂後的實際生效清單(載入期算定一次;設定頁儲存後靠 reload 重算,
@@ -237,6 +245,36 @@ function refreshActiveSubjects() {
   SUBJECTS.forEach(function (s) { ACTIVE_SUBJ_SET[s] = true; });
 }
 refreshActiveSubjects();
+
+/* 把「目前生效科目」寫進啟用時段帳本(settings.subjectSpans):
+   新生效→開一段;不再生效→把最後一段收尾。**只記錄、不刪任何作答資料**——
+   退選只是把該科移出練習視野,三年內再加回來時舊紀錄與 SRS 都還在,
+   靠 subjectExposure() 的 gap 判定成 stale、走提取複習而非從零重練。
+   回傳 true 代表帳本有變動(呼叫端負責存檔)。 */
+function syncSubjectSpans(settings) {
+  var today = todayStr();
+  var spans = Object.assign({}, (settings && settings.subjectSpans) || {});
+  var changed = false;
+  EXAM.subjects.forEach(function (sub) {
+    var list = Array.isArray(spans[sub]) ? spans[sub].slice() : [];
+    var open = list.length && !list[list.length - 1].to;
+    var on = !!ACTIVE_SUBJ_SET[sub];
+    if (on && !open) { list.push({ from: today, to: null }); changed = true; }
+    else if (!on && open) {
+      list[list.length - 1] = Object.assign({}, list[list.length - 1], { to: today });
+      changed = true;
+    }
+    if (list.length) { spans[sub] = list; }
+  });
+  return changed ? spans : null;
+}
+/* 載入期對帳一次:第一次使用會替目前生效的科開場,之後每次改設定 reload 也會自動收尾／開場。
+   放在這裡而非設定頁,是因為科目也可能因「停考科目開關」「應考類科」而變動,
+   帳本要對的是**實際生效清單**,不是使用者在哪個面板按的。 */
+(function bootstrapSubjectSpans() {
+  var spans = syncSubjectSpans(state.settings);
+  if (spans) { patchSettings({ subjectSpans: spans }); }
+})();
 /* 某 qid 是否落在目前生效的應考類科範圍內(byQid 仍是全量題庫,查完再判斷科目)。 */
 function inScope(qid) {
   var q = byQid[qid];
@@ -250,10 +288,39 @@ function subjectDisplayLabel(sub) {
   return sub;
 }
 
+/* localStorage 寫入是唯一的持久化路徑,配額滿時「靜默失敗」＝當天作答全部不見:
+   記憶體裡的 state 有、重整後回到上次寫成功的版本,畫面就會出現
+   「累計學習 N 天(舊資料)但今天 0 題」——看起來像統計壞掉,其實是存檔早就失敗了。
+   故:① 失敗先修剪最舊的作答紀錄再試(log 是唯一會無限成長的欄位);
+       ② 仍失敗才放棄,並且**明講**,不再吞掉。 */
+var LOG_KEEP_ON_FULL = 2000;   /* 配額滿時保留的最近作答筆數 */
+var _storageWarned = false;
+
+function _persistState(obj) {
+  try { localStorage.setItem(STATE_KEY, JSON.stringify(obj)); return true; }
+  catch (e) { return false; }
+}
+
+function warnStorageFull() {
+  if (_storageWarned) { return; }
+  _storageWarned = true;
+  var bar = el('div', { 'class': 'storage-warn', role: 'alert' },
+    '⚠️ 這台裝置的瀏覽器儲存空間已滿，最新的作答沒有存進去（今天/本週題數會停在舊數字）。' +
+    '請到「設定」匯出備份，再清掉舊紀錄。');
+  if (document.body && !document.querySelector('.storage-warn')) {
+    document.body.insertBefore(bar, document.body.firstChild);
+  }
+}
+
 function saveState(next) {
   state = next;
-  try { localStorage.setItem(STATE_KEY, JSON.stringify(next)); }
-  catch (e) { /* 容量滿時靜默失敗,匯出按鈕仍可救資料 */ }
+  if (_persistState(next)) { return; }
+  var log = next.log || [];
+  if (log.length > LOG_KEEP_ON_FULL) {
+    var trimmed = Object.assign({}, next, { log: log.slice(-LOG_KEEP_ON_FULL) });
+    if (_persistState(trimmed)) { state = trimmed; return; }
+  }
+  warnStorageFull();
 }
 function patchState(patch) { saveState(Object.assign({}, state, patch)); }
 function patchSettings(patch) {
@@ -426,21 +493,87 @@ function essayStats() {
   });
   return by;
 }
+/* ===================== 科目啟用時段與「測繪階段」 =====================
+   備考可長達三年,中途加科／退科是常態。只看「累計答了幾題」會把
+   「上週才加進來」和「兩年都在卻沒練」判成同一件事——前者是沒測繪、後者才是荒廢。
+   故記錄每科的實際啟用時段(settings.subjectSpans),用「在檔天數」當分母。
+
+   分三態(判準:先問「有沒有公平的練習機會」,再問「表現如何」):
+   · unmapped 未測繪 —— Drilldown「集中火力打最弱環節」的前提是**已辨識出的**瓶頸;
+     剛加入的科目是「沒資料」不是「能力低」,先給固定的小額校準量把地圖畫出來,
+     **不進弱項排名、不進雷達評分**。校準期取 14 天(實驗週期 2-4 週的下限)或 12 題,
+     先到者為準。
+   · stale 重啟 —— 曾經在檔、停掉一陣子又加回來。舊學習有衰退但不是從零,
+     應走「提取複習」(錯題／SRS)而不是當新科灌新題。
+   · mapped 已測繪 —— 才套用正常的弱項加權。 */
+var CALIB_DAYS = 14, CALIB_N = 12, STALE_GAP_DAYS = 30;
+var CALIB_WEIGHT = 0.35;   /* 介於精熟科(~0.26)與最弱科(~0.65)之間:穩定出現但不搶量 */
+
+/* 回傳該科的啟用時段陣列;沒有紀錄的舊使用者視為「自備考起始日就在檔」(最佳可得代理值)。 */
+function subjectSpans(sub) {
+  var all = (state.settings && state.settings.subjectSpans) || {};
+  var spans = all[sub];
+  if (!Array.isArray(spans) || spans.length === 0) {
+    var from = (state.settings && state.settings.start) || todayStr();
+    return ACTIVE_SUBJ_SET[sub] ? [{ from: from, to: null }] : [];
+  }
+  return spans;
+}
+/* {days:在檔總天數, gap:距上次在檔結束幾天(仍在檔為 0), everActive:是否曾在檔} */
+function subjectExposure(sub) {
+  var today = todayStr(), days = 0, lastEnd = null, open = false;
+  subjectSpans(sub).forEach(function (sp) {
+    var to = sp.to || today;
+    days += Math.max(0, diffDays(sp.from, to)) + 1;
+    if (!sp.to) { open = true; }
+    else if (lastEnd === null || sp.to > lastEnd) { lastEnd = sp.to; }
+  });
+  return {
+    days: days, everActive: days > 0,
+    gap: open ? 0 : (lastEnd ? Math.max(0, diffDays(lastEnd, today)) : 0)
+  };
+}
+/* 判準只看「有沒有公平的練習機會」,不看題數多寡:
+   在檔不足 CALIB_DAYS ＝ 還沒機會被測繪 → unmapped;
+   在檔夠久卻練得少 ＝ **荒廢**,那正是要被拉起來的對象,絕不能歸到校準期
+   (實測:英文在檔 723 天只練 8 題,用「題數不足也算未測繪」會把它誤判成新科而壓低出題)。
+   題數少造成的估計不穩,改用 weakWeights() 裡的權重上限緩升處理,不改變階段。 */
+function subjectPhase(sub) {
+  var ex = subjectExposure(sub);
+  if (ex.days < CALIB_DAYS) { return 'unmapped'; }
+  if (ex.gap > STALE_GAP_DAYS) { return 'stale'; }
+  return 'mapped';
+}
 function weakWeights() {
-  /* Laplace 平滑(ok+1)/(n+2) ＋ .15 保底權重:沒答過的科不會權重無限大(比照 n 很大時的中庸值),
-     強科(ok≈n)仍保有 .15 底,偶爾出現維持敏銳度。 */
+  /* mapped:Laplace 平滑(ok+1)/(n+2) ＋ .15 保底(強科仍偶爾出現、維持敏銳度),
+     再乘「服務量公平係數」——以在檔天數換算該科**應得**的題量,實際偏少才加權。
+     這樣「兩年沒練」會被拉起來,「上週才加入所以題少」不會被誤判成荒廢。
+     unmapped:固定校準權重,不參加弱項競賽。stale:走提取複習,權重略提但不灌量。 */
   var s = subjectStats(true), w = {};
+  var totalDays = 0, totalN = 0;
+  SUBJECTS.forEach(function (sub) { totalDays += subjectExposure(sub).days; totalN += s[sub].n; });
   SUBJECTS.forEach(function (sub) {
-    var t = s[sub];
-    w[sub] = (1 - (t.ok + 1) / (t.n + 2)) + 0.15;
+    var t = s[sub], phase = subjectPhase(sub);
+    if (phase === 'unmapped') { w[sub] = CALIB_WEIGHT; return; }
+    var weakness = (1 - (t.ok + 1) / (t.n + 2)) + 0.15;
+    var share = totalDays > 0 ? (subjectExposure(sub).days / totalDays) : 0;
+    var expected = totalN * share;
+    var served = expected > 0 ? (t.n / expected) : 1;
+    var fairness = Math.max(0.6, Math.min(1.6, 1 / Math.max(served, 0.3)));
+    var val = weakness * fairness * (phase === 'stale' ? 1.15 : 1);
+    /* 題數還太少時估計不穩,設上限緩升——避免只答 2 題就把整個出題池吃掉。 */
+    if (t.n < CALIB_N) { val = Math.min(val, CALIB_WEIGHT * 2); }
+    w[sub] = val;
   });
   return w;
 }
 function weakestSubject() {
-  /* 有作答資料中正確率最低者;全無資料 → 回傳 null(交由呼叫端處理) */
+  /* 正確率最低者。**未測繪的科不參賽**——沒資料不等於弱,把它排進來會讓剛選的科
+     立刻被當成最弱項而灌題(Drilldown 的前提是已辨識的瓶頸)。 */
   var s = subjectStats(true), worst = null, worstAcc = 2;
   SUBJECTS.forEach(function (sub) {
     var t = s[sub];
+    if (subjectPhase(sub) === 'unmapped') { return; }
     if (t.n >= 3) { var acc = t.ok / t.n; if (acc < worstAcc) { worstAcc = acc; worst = sub; } }
   });
   return worst;

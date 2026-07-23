@@ -40,6 +40,10 @@
   .exam-card .meta{font-size:.84rem;color:var(--ink-faint);margin:.1rem 0 .5rem;}
   .exam-card .desc{font-size:.9rem;color:var(--ink-soft);line-height:1.55;margin:0;}
   .exam-card .go{display:inline-block;margin-top:.7rem;font-size:.88rem;color:var(--accent);font-weight:600;}
+  /* 已宣告但題庫未齊的類科:灰卡、不可點、無 hover 位移(status:'soon',見 web/exams.js)。 */
+  .exam-card.is-soon{opacity:.62;cursor:default;border-style:dashed;box-shadow:none;}
+  .exam-card.is-soon:hover{transform:none;box-shadow:none;border-color:var(--rule);}
+  .exam-card.is-soon .go{color:var(--ink-faint);font-weight:500;}
   .landing-note{font-size:.9rem;color:var(--ink-soft);line-height:1.7;border-top:1px solid var(--rule-faint);padding-top:1.2rem;margin-top:1.5rem;}
   .landing-note b{color:var(--ink);}
 </style>

@@ -119,11 +119,29 @@ function formatPassage(text) {
   flush();
   return paras;
 }
+/* 附圖元素(題幹附圖與題組本體圖共用):圖檔尚未整備時優雅退化成佔位字,不顯示破圖 icon。 */
+function figureImg(name, alt) {
+  var fig = el('img', { 'class': 'q-figure', src: dataUrl('figures/' + name), alt: alt, loading: 'lazy' });
+  fig.onerror = function () {
+    if (fig.parentNode) {
+      fig.parentNode.replaceChild(el('p', { 'class': 'q-figure-pending' }, '（此題附圖整備中）'), fig);
+    }
+  };
+  return fig;
+}
+
+/* passage 可為字串(純文字)或**區塊陣列**——原卷題組常是「說明文字→圖→補充文字→圖」交錯,
+   單靠「文字全放前、圖全放後」會打亂原卷順序。陣列元素:字串＝文字段;{img:'檔名'}＝圖。 */
 function passageEl(text) {
-  if (!text || !String(text).trim()) { return null; }
+  if (!text) { return null; }
   var box = el('div', { 'class': 'q-passage' });
-  formatPassage(String(text)).forEach(function (p) { box.appendChild(el('p', { 'class': 'q-passage-p' }, p)); });
-  return box;
+  var n = 0;
+  (Array.isArray(text) ? text : [text]).forEach(function (b) {
+    if (b && b.img) { box.appendChild(figureImg(b.img, '題組附圖')); n++; return; }
+    if (!b || !String(b).trim()) { return; }
+    formatPassage(String(b)).forEach(function (p) { box.appendChild(el('p', { 'class': 'q-passage-p' }, p)); n++; });
+  });
+  return n ? box : null;
 }
 
 var CARRY_RE = /承上題|依前文|依上文|承前題?|同上題|依前題|根據上題|接上題/;
@@ -235,15 +253,11 @@ function buildMCQCard(q, meta) {
   /* 題目附圖／表(語意差別量表、家系圖、長條圖等)。線上以檔案載入,不做 base64 內嵌;
      檔名見 bank 的 figure 欄,路徑同 dataUrl 規則(../data/<考試>/figures/<檔名>)。 */
   if (q.figure) {
-    var fig = el('img', { 'class': 'q-figure', src: dataUrl('figures/' + q.figure),
-      alt: '第 ' + q.no + ' 題附圖', loading: 'lazy' });
-    /* 圖檔尚未整備(升學重抽圖進行中)時優雅退化:換成佔位字、不顯示破圖 icon。 */
-    fig.onerror = function () {
-      if (fig.parentNode) {
-        fig.parentNode.replaceChild(el('p', { 'class': 'q-figure-pending' }, '（此題附圖整備中）'), fig);
-      }
-    };
-    card.appendChild(fig);
+    /* q.figure 可為單一檔名或多圖陣列(如題組「說明框＋甲乙各一張卡牌圖」),依序渲染。 */
+    (Array.isArray(q.figure) ? q.figure : [q.figure]).forEach(function (name, i, arr) {
+      var alt = '第 ' + q.no + ' 題附圖' + (arr.length > 1 ? '（' + (i + 1) + '／' + arr.length + '）' : '');
+      card.appendChild(figureImg(name, alt));
+    });
   }
   if (q.table) {
     /* q.table 可為單一 {headers,rows} 或多表陣列(如「表一、表二」同題)。 */

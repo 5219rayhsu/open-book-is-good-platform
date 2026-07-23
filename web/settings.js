@@ -113,6 +113,49 @@ function _examCategorySection() {
     '歷史紀錄仍保留全部；儲存題與錯題本暫時只顯示選定類科，改回即復原。變更會重新整理頁面。', box);
 }
 
+/* 應考科目區塊(僅 EXAM.elective 的考試,如學測/分科——考生自選科目組合)。
+   與「應考類科」的差別:類科是官方分組(前綴)、科目是任意子集。
+   兩層設計的第二層:入學測驗可以跳過,所以設定頁必須是獨立且隨時可改的入口——
+   備考長達三年,中途加科／退科是常態,這裡改完 reload 即全站生效。 */
+function _examSubjectSection() {
+  if (!EXAM.elective) { return null; }
+  var all = EXAM.subjects.slice();   /* 一律列**全部**科目,含目前沒勾的,才能加回來 */
+  var curSel = (state.settings.subjects && state.settings.subjects.length)
+    ? state.settings.subjects.slice() : all.slice();   /* 未設定＝全勾 */
+
+  var wrap = el('div', { 'class': 'subj-checks' });
+  var checks = [];
+  all.forEach(function (s) {
+    var lab = el('label', { 'class': 'chk chk-inline' });
+    var cb = el('input', { type: 'checkbox', value: s });
+    cb.checked = curSel.indexOf(s) >= 0;
+    checks.push(cb);
+    lab.appendChild(cb);
+    lab.appendChild(document.createTextNode(' ' + s));
+    wrap.appendChild(lab);
+  });
+
+  var hint = el('p', { 'class': 'subtitle' }, '');
+  var saveBtn = el('button', { type: 'button' }, '儲存並套用');
+  saveBtn.addEventListener('click', function () {
+    var picked = checks.filter(function (cb) { return cb.checked; }).map(function (cb) { return cb.value; });
+    if (picked.length === 0) { hint.textContent = '至少選一科。'; return; }
+    var next = (picked.length === all.length) ? [] : picked;   /* 全選存空陣列(=全部科目) */
+    patchSettings({ subjects: next });
+    location.reload();   /* 啟用時段帳本由 app.js 載入期的 bootstrapSubjectSpans 對帳 */
+  });
+
+  var box = el('div', null);
+  box.appendChild(wrap);
+  box.appendChild(hint);
+  box.appendChild(saveBtn);
+  return _setSection('應考科目',
+    '勾選你要考的科目（可複選、至少一科）。之後出題、能力雷達、弱點殲滅、學習藍圖只看選定科目。' +
+    '中途加科或退科都可以：**作答紀錄一律保留不刪**，退掉的科只是先移出視野，加回來時舊紀錄還在。' +
+    '新加入的科目會先進入「校準期」，系統只給少量題目把程度測出來，不會把「還沒練過」當成「特別弱」而灌題。' +
+    '變更會重新整理頁面。', box);
+}
+
 /* 停考科目區塊(僅該考試 manifest 有 deprecatedSubjects 才顯示,如社工「社會工作管理」):
    二元開關「排除（預設）」／「納入練習」,寫入 state.settings.includeDeprecated 後 reload——
    computeActiveSubjects()(app.js)在載入期算定一次,靠 reload 最簡單可靠。 */
@@ -169,6 +212,10 @@ function renderSettings() {
   /* 應考類科(僅分組考試,如教師檢定,才顯示):篩選進度/雷達/出題/藍圖/模擬選科的科目範圍。 */
   var catSection = _examCategorySection();
   if (catSection) { sheet.appendChild(catSection); }
+
+  /* 應考科目(僅自選組合的考試,如學測):兩層設計的第二層,獨立於入學測驗、隨時可改。 */
+  var subjSection = _examSubjectSection();
+  if (subjSection) { sheet.appendChild(subjSection); }
 
   /* 停考科目(僅該考試 manifest 有 deprecatedSubjects 才顯示;社工無類科區,此區自成一段)。 */
   var depSection = _deprecatedSubjectsSection();
