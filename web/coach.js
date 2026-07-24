@@ -80,7 +80,7 @@ function coachComment(ctx) {
 
   var wtext = weak
     ? _pick([
-        '又錯在這科(目前 ' + accTxt + ')—— 不要繞過它，這裡每多對一題，CP 值最高。',
+        '又錯在這科（目前 ' + accTxt + '）—— 不要繞過它，這裡每多對一題，CP 值最高。',
         '答錯。' + (accTxt ? '這科 ' + accTxt + ',' : '') + '把它標起來，等一下去「弱點殲滅」集中拆解。'], idx)
     : _pick([
         '答錯。先別急著看下一題 —— 把為什麼選錯、正解為什麼對，各講一句給自己聽。',
@@ -124,7 +124,7 @@ function coachAdvice() {
   if (ranked.length > 0) {
     var best = ranked[ranked.length - 1];
     if (best.acc >= 0.8) {
-      out.push({ title: best.s + ' 已相對穩(' + pct(best.acc) + ')', master: 'Ericsson·刻意練習',
+      out.push({ title: best.s + ' 已相對穩（' + pct(best.acc) + '）', master: 'Ericsson·刻意練習',
         body: '別在已經會的地方耗時間。維持間隔複習即可，把省下的時間投到弱科，進步最快。' });
     }
   }

@@ -87,7 +87,9 @@ function essaySamplesEl(qid) {
 /* ---- 文字正規化 + 涵蓋度比對 ----
    刻意不用 regex 字面值(全專案約定,讓煙測的括號掃描器可靠);
    以字元過濾去除空白與標點,比對才不受標點差異影響。 */
-var _STRIP = ' \t\n\r　,.;:、，。；：!?！？「」『』（）()【】[]{}/\\-_~·…．「」';
+/* 半形與全形標點分兩段字面值:半形段不含 CJK/全形字元,全形段不含半形標點——
+   兩段皆不觸發「半形標點緊鄰中文」的文案 lint(此為字元集資料、非文案),集合不變。 */
+var _STRIP = ' \t\n\r,.;:!?()[]{}/\\-_~' + '　、，。；：！？「」『』（）【】·…．';
 function _norm(s) {
   s = String(s || '').toLowerCase();
   var out = '';
@@ -173,7 +175,7 @@ function renderEssayPicker() {
   if (essayPick.year == null || years.indexOf(essayPick.year) < 0) { essayPick.year = years[0]; }
 
   var row = el('div', { 'class': 'field-row' });
-  row.appendChild(el('label', { 'for': 'essay-year' }, '年份:'));
+  row.appendChild(el('label', { 'for': 'essay-year' }, '年份：'));
   var ysel = el('select', { id: 'essay-year' });
   years.forEach(function (y) { ysel.appendChild(el('option', { value: String(y) }, y + ' 年')); });
   ysel.value = String(essayPick.year);

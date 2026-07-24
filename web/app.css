@@ -183,6 +183,20 @@ section.panel{padding-top:.4rem;}
 }
 /* 應考類科 chip(分組考試如教師檢定,#exam-category):輕量標示目前生效的類科範圍 */
 .exam-cat-chip{display:inline-block;font-size:.85em;opacity:.75;margin-inline-start:.5em;}
+/* 單題練習的出題範圍列(#practice-scope):科目下拉 + 節奏標示。
+   下拉一直可見 —— 篩選狀態若藏起來,使用者會忘了自己還鎖在單一科目。 */
+#practice-scope{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin:-.4rem 0 1rem;}
+#practice-scope select{
+  font:inherit;font-size:.88rem;color:var(--ink-soft);background:transparent;
+  border:1px solid var(--rule-faint);border-radius:4px;padding:.2rem .4rem;
+}
+#practice-scope .scope-on{font-size:.8rem;color:var(--accent);}
+.tempo-chip{
+  font-size:.8rem;padding:.1rem .5rem;border-radius:999px;
+  border:1px solid var(--rule-faint);opacity:.85;cursor:help;
+}
+.tempo-hold{color:var(--ink-soft);}
+.tempo-push{color:var(--accent);border-color:currentColor;}
 /* 倒數計時(見 ADR-0001):等寬數字防跳動;過建議時間轉紅;暫停鈕小一號 */
 #sheet-timer{font-variant-numeric:tabular-nums;font-weight:600;}
 #sheet-timer.over-suggest{color:var(--bad-ink);font-weight:700;}
@@ -546,6 +560,8 @@ tr.is-weak td{color:var(--bad-ink);}
 .svg-line{fill:none;stroke:var(--accent);stroke-width:1.5;}
 .svg-label{font-size:12px;fill:var(--ink);}
 .svg-axis{font-size:11px;fill:var(--ink-soft);}
+/* 樣本不足的數值調淡:讀起來像「暫估」而非「事實」(如某時段只練過 1 題) */
+.svg-axis-weak{opacity:.42;}
 .svg-bar{fill:var(--accent);opacity:.85;}
 .svg-bar-best{fill:var(--ok-ink);opacity:.95;}   /* 時段表現:最佳時段強調 */
 

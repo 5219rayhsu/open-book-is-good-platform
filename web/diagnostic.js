@@ -174,7 +174,7 @@ function finishDiagnostic(kind, res, panelId) {
   SUBJECTS.forEach(function (s) { totN += stats[s].n; totOk += stats[s].ok; });
   var overall = totN > 0 ? totOk / totN : 0;
   var recBasis = overall >= DIAG_GOOD_LINE ? 'has' : 'none';
-  var recLabel = '建議程度：' + (recBasis === 'has' ? '有基礎' : '無基礎') + '(時程請依你可用時間自選)';
+  var recLabel = '建議程度：' + (recBasis === 'has' ? '有基礎' : '無基礎') + '（時程請依你可用時間自選）';
   patchSettings({
     diagnosedAt: todayStr(),
     examGoal: { kind: kind, recommendedBasis: recBasis, overallAcc: Math.round(overall * 100) / 100, diagnosedDate: todayStr() }
@@ -184,7 +184,7 @@ function finishDiagnostic(kind, res, panelId) {
   var block = el('div');
   block.appendChild(el('h3', null, '入學診斷結果'));
   var resultText = '整體正確率 ' + pct(overall) + '(' + totOk + ' / ' + totN +
-    ' 題)。' + recLabel + '。';
+    ' 題）。' + recLabel + '。';
   block.appendChild(el('div', { 'class': 'diag-result-line' }, resultText));
   announce('入學診斷完成。' + resultText);   /* 螢幕報讀器朗讀診斷結果 */
 
@@ -203,7 +203,7 @@ function finishDiagnostic(kind, res, panelId) {
   if (typeof drawRadarInto === 'function') { drawRadarInto(fig, stats); }
 
   block.appendChild(el('p', { 'class': 'diag-honest' },
-    '這是「起點」，不是「結果」。雷達會隨你每天作答改變；備考量是為上榜而設計的工作量推估，不是保證。時程由你在學習藍圖自選(半年／一年)。'));
+    '這是「起點」，不是「結果」。雷達會隨你每天作答改變；備考量是為上榜而設計的工作量推估，不是保證。時程由你在學習藍圖自選（半年／一年）。'));
 
   var recBasisLabel = recBasis === 'has' ? '有基礎' : '無基礎';
   var b1 = el('button', { type: 'button' }, '採用「' + recBasisLabel + '」並開始');

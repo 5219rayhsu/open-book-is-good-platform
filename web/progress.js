@@ -34,7 +34,7 @@ function importProgress(file) {
       if (!obj || typeof obj.srs !== 'object' || !Array.isArray(obj.log)) {
         alert('檔案格式不符：需要先前由本系統匯出的進度 JSON。'); return;
       }
-      if (!confirm('匯入會覆蓋目前進度(作答 ' + state.log.length + ' 筆)。確定？')) { return; }
+      if (!confirm('匯入會覆蓋目前進度（作答 ' + state.log.length + ' 筆）。確定？')) { return; }
       var def = defaultState();
       obj.settings = Object.assign({}, def.settings, obj.settings || {});
       if (!Array.isArray(obj.drill)) { obj.drill = []; }
@@ -390,7 +390,7 @@ function openBackup() {
   box.appendChild(el('h2', null, '匯出／匯入進度程式碼'));
   box.appendChild(el('p', { 'class': 'subtitle' },
     '把進度匯出成一小段「進度程式碼」檔收好；換電腦、清資料或不小心重置前先匯出最保險，' +
-    '需要時再匯入還原。（這個檔只含你的作答進度、不含題庫，很小。)'));
+    '需要時再匯入還原。（這個檔只含你的作答進度、不含題庫，很小。）'));
   box.appendChild(el('p', { 'class': 'subtitle' },
     '建議每天練習後按一次備份；檔名已含日期，平常留最新一份即可。'));
   box.appendChild(el('p', { 'class': 'subtitle' },

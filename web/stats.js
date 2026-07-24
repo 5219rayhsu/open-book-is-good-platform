@@ -18,13 +18,19 @@ function nowStamp() {
   var d = new Date();
   return todayStr() + ' ' + pad2(d.getHours()) + ':' + pad2(d.getMinutes());
 }
-/* 從時間戳取「時段」:上午(05–11)/下午(12–17)/晚上(18–04)。無 ts 回 null。 */
+/* 從時間戳取「時段」:上午(05–11)/下午(12–17)/晚上(18–21)/深夜(22–04)。無 ts 回 null。
+   深夜單獨切出來(2026-07-24):把 22:00 和 19:00 併成「晚上」會把最可能有疲勞效應的
+   時段稀釋掉——那正是這個分桶存在的目的。代價是多一桶、達到樣本門檻更慢。 */
 function dayPart(ts) {
-  if (!ts || ts.indexOf(' ') < 0) { return null; }
+  /* 一律先轉字串:state 可由「匯入進度」載入外部 JSON(progress.js),ts 不保證是字串。
+     舊版直接 ts.indexOf() 遇到數字型 ts 會整個 TypeError,連帶讓時段圖白畫面。 */
+  if (!ts || typeof ts !== 'string' || ts.indexOf(' ') < 0) { return null; }
   var h = Number(ts.split(' ')[1].split(':')[0]);
+  if (!(h >= 0 && h <= 23)) { return null; }
   if (h >= 5 && h < 12) { return '上午'; }
   if (h >= 12 && h < 18) { return '下午'; }
-  return '晚上';
+  if (h >= 18 && h < 22) { return '晚上'; }
+  return '深夜';
 }
 
 /* 「考試形式整卷」成績登錄(只有原卷 / 完整模擬 / 完整診斷呼叫)→ state.exams */

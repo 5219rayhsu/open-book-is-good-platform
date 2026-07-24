@@ -80,6 +80,7 @@
       <span id="session-stats">本次：0 題</span>
       <span id="exam-category" class="exam-cat-chip" hidden></span>
     </div>
+    <div id="practice-scope"></div>
     <div id="today-card"></div>
     <p id="practice-empty" class="empty-note" hidden>題庫載入後即可開始。</p>
   </section>
@@ -194,7 +195,7 @@
     <label class="chk"><input type="checkbox" id="include-review">
     把 <span id="review-count">—</span> 題「待校題」(parse=review，解析可能不完整）也納入練習</label>
     <label class="chk" id="legacy-row"><input type="checkbox" id="include-legacy">
-    納入舊年度歷史題庫（準則／法規可能已過時,僅供題型熟悉）</label>
+    納入舊年度歷史題庫（準則／法規可能已過時，僅供題型熟悉）</label>
     <div id="coverage-table"></div>
 
     <h3>歷年題量分布</h3>
@@ -238,6 +239,8 @@
 <script src="exams.js" defer></script>
 <script src="srs.js" defer></script>
 <script src="stats.js" defer></script>
+<script src="tempo2.js" defer></script>
+<script src="tempo.js" defer></script>
 <script src="charts.js" defer></script>
 <script src="loader.js" defer></script>
 <script src="run.js" defer></script>

@@ -34,7 +34,7 @@ function renderPaperPicker() {
   var years = [];
   papersIndex.forEach(function (p) { if (years.indexOf(p.year) < 0) { years.push(p.year); } });
   var row = el('div', { 'class': 'field-row' });
-  row.appendChild(el('label', { 'for': 'paper-year' }, '選擇年份:'));
+  row.appendChild(el('label', { 'for': 'paper-year' }, '選擇年份：'));
   var sel = el('select', { id: 'paper-year' });
   years.forEach(function (y) { sel.appendChild(el('option', { value: String(y) }, y + ' 年')); });
   row.appendChild(sel);
@@ -521,7 +521,7 @@ function renderClusterPicker() {
   if (weakest) {
     var s = subjectStats(true)[weakest];
     box.appendChild(el('div', { 'class': 'diag-result-line' },
-      '目前最弱：' + weakest + '(近期正確率 ' + pct(s.ok / Math.max(s.n, 1)) + '，作答 ' + s.n + ' 題)。'));
+      '目前最弱：' + weakest + '（近期正確率 ' + pct(s.ok / Math.max(s.n, 1)) + '，作答 ' + s.n + ' 題）。'));
   } else {
     box.appendChild(el('p', { 'class': 'subtitle' }, '尚無足夠作答資料判斷最弱科，可先做一輪「單題練習」或入學診斷；以下可手動選科。'));
   }

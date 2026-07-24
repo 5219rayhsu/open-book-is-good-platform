@@ -40,13 +40,13 @@ function weeklyTarget() {
 function planPolicyText() {
   var basis = state.settings.planBasis, weeks = state.settings.planWeeks, lead;
   if (basis === 'has' && weeks === 52) {
-    lead = '一年・有基礎(最從容)：從容精練。間隔重複拉長、深掘直覺，以作答練習為主、弱點殲滅補強。';
+    lead = '一年・有基礎（最從容）：從容精練。間隔重複拉長、深掘直覺，以作答練習為主、弱點殲滅補強。';
   } else if (basis === 'has') {
-    lead = '半年・有基礎：高效複習衝刺。80% 時間打最弱環節(弱點殲滅)＋易混淆題組，補洞為輔。';
+    lead = '半年・有基礎：高效複習衝刺。80% 時間打最弱環節（弱點殲滅）＋易混淆題組，補洞為輔。';
   } else if (basis === 'none' && weeks === 52) {
     lead = '一年・無基礎：穩健打底。前期先弄清楚怎麼準備這個考試、用基礎題補齊前置概念建立直覺，中後期轉以作答練習與弱點殲滅。';
   } else {
-    lead = '半年・無基礎(最重)：高強度衝刺，誠實提醒——每週量很大、適合背水一戰，務必排固定休息防倦怠，並先找出最短路徑、別平均撒網。';
+    lead = '半年・無基礎（最重）：高強度衝刺，誠實提醒——每週量很大、適合背水一戰，務必排固定休息防倦怠，並先找出最短路徑、別平均撒網。';
   }
   return lead + '先照這個量試 2–4 週，再依實際正確率調整。這是為上榜而設計的工作量推估，不是上榜保證；進度依實際作答每天滾動重算。';
 }
@@ -68,10 +68,10 @@ function renderBlueprint() {
       cd.classList.add('past');
     } else { cd.textContent = ''; cd.classList.remove('past'); }
   }
-  $('weekly-target').textContent = '每週應完成約 ' + wt.perWeek + ' 題(未掌握 ' +
+  $('weekly-target').textContent = '每週應完成約 ' + wt.perWeek + ' 題（未掌握 ' +
     wt.remain + ' 題 ÷ 剩餘 ' + wt.left + ' 週' + (wt.byExamDate ? '，依考試日' : '') + ')';
   $('plan-detail').textContent = '公式：每週題數 = 未掌握題數 ÷ 剩餘週數。「已掌握」= 同一題連續答對 ' +
-    masterRepsFor() + ' 次(無基礎門檻較高)。起算日 ' + state.settings.start + '，全程 ' + wt.weeks +
+    masterRepsFor() + ' 次（無基礎門檻較高）。起算日 ' + state.settings.start + '，全程 ' + wt.weeks +
     ' 週，已掌握 ' + wt.mastered + ' 題。' + planPolicyText();
   $('include-review').checked = !!state.settings.includeReview;
   var legacyChk = $('include-legacy');

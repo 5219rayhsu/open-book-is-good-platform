@@ -84,7 +84,7 @@ function renderHistory() {
   });
   var recent = items.slice(Math.max(0, items.length - HISTORY_LIMIT)).reverse();
   box.appendChild(el('p', { 'class': 'subtitle' },
-    '顯示最近 ' + recent.length + ' 筆(共 ' + items.length + ' 筆，全部保留)。點任一筆可展開當時題目與評語。'));
+    '顯示最近 ' + recent.length + ' 筆（共 ' + items.length + ' 筆，全部保留）。點任一筆可展開當時題目與評語。'));
   var list = el('div', { 'class': 'hist-list' });
   recent.forEach(function (e) { list.appendChild(_histRow(e)); });
   box.appendChild(list);

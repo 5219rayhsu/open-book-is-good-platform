@@ -100,8 +100,8 @@ function renderLandingStats(box) {
   box.appendChild(row);
   if (es && es.n > 0) {
     box.appendChild(el('p', { 'class': 'subtitle' },
-      '單卷最佳 ' + pct(es.best) + '、最低 ' + pct(es.worst) + '(共 ' + es.n +
-      ' 份考試形式整卷；「近況」取最近湊滿 ' + es.rollingN + ' 題的滾動正確率)。' +
+      '單卷最佳 ' + pct(es.best) + '、最低 ' + pct(es.worst) + '（共 ' + es.n +
+      ' 份考試形式整卷；「近況」取最近湊滿 ' + es.rollingN + ' 題的滾動正確率）。' +
       '長期平均分母大、動得慢，所以另看「近況」才看得出近期的進步。'));
   } else {
     box.appendChild(el('p', { 'class': 'subtitle' },
@@ -111,8 +111,8 @@ function renderLandingStats(box) {
   var done = (typeof completionCount === 'function') ? completionCount() : 0;
   var tot = (typeof usable !== 'undefined') ? usable.length : 0;
   box.appendChild(el('div', { 'class': 'progress-label' },
-    '題庫完成度：已練過 ' + done + ' / 共 ' + tot + ' 題(' + (tot ? pct(done / tot) : '—') +
-    ')；此處不分練習形式，碰過就算覆蓋。'));
+    '題庫完成度：已練過 ' + done + ' / 共 ' + tot + ' 題（' + (tot ? pct(done / tot) : '—') +
+    '）；此處不分練習形式，碰過就算覆蓋。'));
   var wrap = el('div', { 'class': 'progress-wrap' });
   wrap.appendChild(el('div', { 'class': 'progress-fill',
     style: 'width:' + (tot ? Math.round(done / tot * 100) : 0) + '%' }));
@@ -184,9 +184,14 @@ function renderTrend() {
   renderDailyTrend();
 }
 
-/* 上午(05–11)/下午(12–17)/晚上(18–04)各自的選擇題正確率(看你哪個時段狀態最好) */
+/* 各時段的選擇題原始正確率(描述用的長條)。**注意:原始正確率不能拿來判斷「哪個
+   時段狀態好」**——你在哪個時段練哪些科並不均勻,科目難度差異會整個蓋過時段效應。
+   要下判斷一律走 tempo.js 的 dayPartProfile()(殘差 + 樣本門檻 + 顯著性)。 */
+/* 低於此題數的百分比只當參考,調淡顯示——1 題答錯就寫「0%」會被讀成事實。 */
+var TIMEPART_SOLID_N = 20;
 function timePartStats() {
-  var by = { '上午': { n: 0, ok: 0 }, '下午': { n: 0, ok: 0 }, '晚上': { n: 0, ok: 0 } };
+  var by = { '上午': { n: 0, ok: 0 }, '下午': { n: 0, ok: 0 },
+             '晚上': { n: 0, ok: 0 }, '深夜': { n: 0, ok: 0 } };
   state.log.forEach(function (e) {
     if (e.mode === 'essay' || typeof e.correct !== 'boolean') { return; }
     var p = (typeof dayPart === 'function') ? dayPart(e.ts) : null;
@@ -198,37 +203,65 @@ function renderTimeParts() {
   var box = $('trend-box');
   box.textContent = '';
   var by = timePartStats();
-  var order = ['上午', '下午', '晚上'];
+  var order = ['上午', '下午', '晚上', '深夜'];
   var anyData = order.some(function (k) { return by[k].n > 0; });
   var W = 640, H = 240, T = 24, B = 42, L = 46;
-  var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': '上午下午晚上正確率長條圖' });
+  var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': '各時段正確率長條圖' });
   [0, 0.5, 1].forEach(function (v) {
     var y = T + (1 - v) * (H - T - B);
     svg.appendChild(svgEl('line', { x1: L, y1: y, x2: W - 12, y2: y, 'class': 'svg-spoke' }));
     var lbl = svgEl('text', { x: L - 6, y: y + 4, 'text-anchor': 'end', 'class': 'svg-axis' });
     lbl.textContent = pct(v); svg.appendChild(lbl);
   });
-  var best = null, bestAcc = -1;
-  order.forEach(function (k) { if (by[k].n > 0) { var a = by[k].ok / by[k].n; if (a > bestAcc) { bestAcc = a; best = k; } } });
+  /* 「哪個時段最好」只能由殘差檢定認定,不能看長條高低(舊版就是直接比原始正確率,
+     一題答對的時段也會被宣告成黃金時段)。沒過門檻就不指名,只講還差多少樣本。 */
+  var prof = (typeof dayPartProfile === 'function') ? dayPartProfile(state.log) : null;
+  var best = null, bestMean = 0;
+  if (prof) {
+    order.forEach(function (k) {
+      if (prof[k] && prof[k].sig && prof[k].mean > bestMean) { bestMean = prof[k].mean; best = k; }
+    });
+  }
   var bw = (W - L - 12) / order.length;
   order.forEach(function (k, i) {
     var d = by[k], acc = d.n ? d.ok / d.n : 0, x = L + i * bw, h = acc * (H - T - B);
     if (d.n > 0) {
       svg.appendChild(svgEl('rect', { x: x + bw * 0.28, y: H - B - h, width: bw * 0.44, height: h,
         'class': 'svg-bar' + (k === best ? ' svg-bar-best' : '') }));
-      var v = svgEl('text', { x: x + bw / 2, y: H - B - h - 6, 'text-anchor': 'middle', 'class': 'svg-axis' });
-      v.textContent = pct(acc); svg.appendChild(v);
     }
+    /* 數值一律畫,四欄才會對齊(舊版把數值包在 n>0 裡,無紀錄的欄位連位置都空著,
+       看起來像「這一欄壞了」)。無紀錄畫「—」而非 0%——0% 是「全錯」的意思,
+       跟「沒資料」是兩件事,寫成 0% 是說謊。樣本太少的數值調淡,不讓它讀起來像事實。 */
+    var v = svgEl('text', { x: x + bw / 2, y: H - B - h - 6, 'text-anchor': 'middle',
+      'class': 'svg-axis' + (d.n > 0 && d.n < TIMEPART_SOLID_N ? ' svg-axis-weak' : '') });
+    v.textContent = d.n > 0 ? pct(acc) : '—';
+    svg.appendChild(v);
     var lbl = svgEl('text', { x: x + bw / 2, y: H - 22, 'text-anchor': 'middle', 'class': 'svg-label' });
     lbl.textContent = k; svg.appendChild(lbl);
     var cnt = svgEl('text', { x: x + bw / 2, y: H - 6, 'text-anchor': 'middle', 'class': 'svg-axis' });
     cnt.textContent = d.n > 0 ? (d.n + ' 題') : '無紀錄'; svg.appendChild(cnt);
   });
   box.appendChild(svg);
+  /* 長條是原始正確率(描述);結論句只在殘差檢定通過時才敢指名時段。
+     未達門檻時明講還差多少題,不要讓使用者以為系統「還沒算」。 */
+  var need = null;
+  if (prof && !best) {
+    var closest = null;
+    order.forEach(function (k) {
+      if (by[k].n > 0 && (closest === null || by[k].n > by[closest].n)) { closest = k; }
+    });
+    if (closest) { need = Math.max(0, 120 - by[closest].n); }
+  }
   $('trend-summary').textContent = anyData
-    ? '依作答時間分上午（05–11）、下午（12–17）、晚上（18–04）;' +
-      (best ? '目前「' + best + '」表現最好(' + pct(bestAcc) + ')。' : '') + '只計有時間紀錄的選擇題。'
-    : '還沒有帶時間的作答紀錄；之後作答會自動記錄時段，在此比較你哪個時段表現最好。';
+    ? '依作答時間分上午（05–11）、下午（12–17）、晚上（18–21）、深夜（22–04）。' +
+      (best
+        ? '排除各科難度差異後，你在「' + best + '」確實比自己平常水準高 ' +
+          Math.round(bestMean * 100) + ' 個百分點。'
+        : '長條只是各時段的原始正確率——它會被「你在哪個時段練哪些科」帶偏，' +
+          '還不足以判斷你哪個時段狀態好' +
+          (need !== null && need > 0 ? '（樣本最多的時段還差約 ' + need + ' 題）' : '') + '。') +
+      '長條計入所有有時間紀錄的選擇題；上面那句結論只採單題練習（其他模式的難度分佈不同）。'
+    : '還沒有帶時間的作答紀錄；之後作答會自動記錄時段，在此比較你各時段的表現。';
 }
 
 function renderDailyTrend() {

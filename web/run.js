@@ -410,8 +410,8 @@ function startDrill(items, meta) {
     if (correct) { ok += 1; }
     markMCQCard(card, q, picked);
     var fbText = (q.answer === '#') ? '本題送分（考選部公告一律給分）。'
-      : (correct ? '答對。正解(' + q.answer + ')。'
-        : '答錯。正解(' + q.answer + ')。');
+      : (correct ? '答對。正解（' + q.answer + '）。'
+        : '答錯。正解（' + q.answer + '）。');
     var fb = el('p', { 'class': 'feedback ' + (correct ? 'good' : 'bad') }, fbText);
     card.appendChild(fb);
     /* 螢幕報讀器朗讀對錯。作答畫面只列對錯與正解,不掛教練金句(金句只在能力雷達/學習藍圖出現) */
@@ -426,8 +426,8 @@ function startDrill(items, meta) {
     renderPracticeHead();
   }
   function done() {
-    var doneText = '本組 ' + items.length + ' 題，答對 ' + ok + ' 題(' +
-      pct(ok / Math.max(items.length, 1)) + ')。';
+    var doneText = '本組 ' + items.length + ' 題，答對 ' + ok + ' 題（' +
+      pct(ok / Math.max(items.length, 1)) + '）。';
     panel.appendChild(el('div', { 'class': 'diag-result-line' }, doneText));
     announce('本組完成。' + doneText);   /* 螢幕報讀器朗讀本組總結 */
     if (meta.onDone) { meta.onDone({ total: items.length, ok: ok }); }
@@ -645,8 +645,8 @@ function startSheet(questions, meta) {
   function showSheetResult(ok, sub, mins, mcqTotal, essayN) {
     mcqTotal = mcqTotal || questions.length;
     var box = el('div');
-    var scoreText = '總分：' + ok + ' / ' + mcqTotal + ' 題正確(' +
-      pct(ok / mcqTotal) + ')；作答約 ' + mins + ' 分鐘。';
+    var scoreText = '總分：' + ok + ' / ' + mcqTotal + ' 題正確（' +
+      pct(ok / mcqTotal) + '）；作答約 ' + mins + ' 分鐘。';
     box.appendChild(el('div', { 'class': 'diag-result-line' }, scoreText));
     if (essayN) {
       box.appendChild(el('p', { 'class': 'subtitle' },

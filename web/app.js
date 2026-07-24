@@ -146,6 +146,7 @@ function defaultState() {
     drill: [],      /* {qid,why,from} 答錯觸發的關聯補強佇列 */
     exams: [],      /* 考試形式整卷成績 {ts,mode,total,ok}:落點/平均唯一來源(原卷/完整模擬/完整診斷才入) */
     flags: {},      /* qid → true,使用者手動標記(與對錯無關) */
+    tempo2: { claims: {} },  /* 時段×科目宣稱帳本(tempo2.js §2.8):cellKey → {dir,since}。只在作答後更新,渲染只讀 */
     saved: {},      /* qid → 時間戳字串,使用者手動收進「儲存專練」 */
     settings: {
       /* 備考模式 2×2:程度 planBasis(影響精熟門檻)× 時程 planWeeks(每週量分母),兩維獨立。 */
@@ -187,6 +188,8 @@ function loadState() {
     if (!Array.isArray(st.drill)) { st.drill = []; }
     if (!Array.isArray(st.exams)) { st.exams = []; }   /* 舊資料無 exams → 補空 */
     if (!st.flags || typeof st.flags !== 'object') { st.flags = {}; }   /* 舊存檔無 flags → 補空物件 */
+    if (!st.tempo2 || typeof st.tempo2 !== 'object') { st.tempo2 = { claims: {} }; }   /* 舊存檔無 tempo2 → 補空帳本 */
+    if (!st.tempo2.claims || typeof st.tempo2.claims !== 'object') { st.tempo2.claims = {}; }
     if (!st.saved || typeof st.saved !== 'object') { st.saved = {}; }   /* 舊存檔無 saved → 補空物件 */
     return st;
   } catch (e) { return defaultState(); }
@@ -618,6 +621,9 @@ function recordAnswer(q, pickedLetter, opts) {
   var logNext = state.log.concat([entry]);
   saveState(Object.assign({}, state, { srs: srsNext, log: logNext }));
   if (!correct && opts.enqueueRel !== false) { enqueueRelated(q); }
+  /* 作答後更新時段×科目宣稱帳本(tempo2.js §2.8 遲滯)。只在單題練習後重算——這是
+     推論層唯一吃的 mode;渲染路徑一律不呼叫此函式,保持純函式。 */
+  if (entry.mode === 'practice' && typeof tempoUpdateClaims === 'function') { tempoUpdateClaims(); }
   return correct;
 }
 
@@ -682,7 +688,7 @@ function backReviewCandidates() {
 }
 /* 回鍋複習挑題:弱科優先(沿用 weakWeights 加權挑科),科內隨機一題。無候選回 null(呼叫端走原路徑)。 */
 function pickBackReview() {
-  var cand = backReviewCandidates();
+  var cand = backReviewCandidates().filter(inPracticeSubject);
   if (cand.length === 0) { return null; }
   var sub = weightedSubjectPick(weakWeights(), cand);
   var subset = sub ? cand.filter(function (q) { return q.subject === sub; }) : cand;
@@ -697,24 +703,33 @@ function pickNext() {
       return { q: byQid[oq], reasonTag: '錯題重練', reason: '你在錯題複習點了「重練此組」，趁印象重新提取。' };
     }
   }
-  var drill = state.drill.filter(function (d) { return inScope(d.qid); });
+  var drill = state.drill.filter(function (d) {
+    return inScope(d.qid) && inPracticeSubject(byQid[d.qid]);
+  });
   if (drill.length > 0) {
     var d0 = drill[0];
-    saveState(Object.assign({}, state, { drill: drill.slice(1) }));
+    /* 依 qid 移除,不是 drill.slice(1) —— 後者會把「這次被 scope／科目篩掉」的項目
+       一併寫掉。退選一科只該移出視野,不該靜默刪掉它的補強佇列(見 ADR-0012)。 */
+    saveState(Object.assign({}, state, {
+      drill: state.drill.filter(function (d) { return d.qid !== d0.qid; })
+    }));
     pickCounter += 1;
     return { q: byQid[d0.qid], reasonTag: '弱點補強',
-      reason: '關聯補強(' + d0.why + ')：剛答錯「' + shortStem(d0.from) + '」，趁記憶熱複習相關概念。' };
+      reason: '關聯補強（' + d0.why + '）：剛答錯「' + shortStem(d0.from) + '」，趁記憶熱複習相關概念。' };
   }
-  /* 回鍋機制:每五題安排一題已練過但未精熟的舊題(單純刷新題容易記不牢);無候選就走原路徑。
-     優先順位排在 overrideQueue／state.drill 之後、新題之前。 */
-  if (pickCounter % 5 === 4) {
+  /* 回鍋機制:安排已練過但未精熟的舊題(單純刷新題容易記不牢);無候選就走原路徑。
+     優先順位排在 overrideQueue／state.drill 之後、新題之前。
+     間隔隨「節奏」浮動(tempo.js):疲勞時排密(每 3 題)、狀態好時排疏(每 6 題)。 */
+  var tempo = (typeof tempoTilt === 'function') ? tempoTilt() : { tilt: 0 };
+  var every = (typeof tempoReviewEvery === 'function') ? tempoReviewEvery(tempo.tilt) : 5;
+  if (pickCounter % every === every - 1) {
     var back = pickBackReview();
     if (back) { pickCounter += 1; return back; }
   }
   /* SRS 到期複習不在單題練習搶位(時間有限);集中於弱點殲滅,此處以弱項加權新題為主。 */
-  var pool = unseenPool();
+  var pool = unseenPool().filter(inPracticeSubject);
   if (pool.length === 0) {
-    var all = usable.slice();
+    var all = usable.filter(inPracticeSubject);
     if (all.length === 0) { return null; }
     var reps = function (qid) { return (state.srs[qid] && state.srs[qid].reps) || 0; };
     all.sort(function (a, b) { return reps(a.qid) - reps(b.qid); });
@@ -734,7 +749,15 @@ function pickNext() {
     return !recentFP[qFingerprint(q)];
   });
   if (freshPool.length > 0) { pool = freshPool; }
-  var w = weakWeights();
+  /* 節奏塑形:狀態好→弱項更集中(啃難的);疲勞→攤平(不硬壓最弱科)。tilt 為 0 時原樣返回。 */
+  var w = (typeof tempoShapeWeights === 'function')
+    ? tempoShapeWeights(weakWeights(), tempo.tilt) : weakWeights();
+  /* 時段×科目乘數(tempo2.js §2.9):現在這個時段特別吃力的科少出新題,改由表現正常的
+     時段補回(時間錯位、非減量)。只動新題的科目抽籤;drill/SRS/回鍋佇列不受影響(在前面已 return)。 */
+  if (typeof cellMultiplier === 'function' && typeof dayPart === 'function' && typeof nowStamp === 'function') {
+    var nowDaypart = dayPart(nowStamp());
+    if (nowDaypart) { Object.keys(w).forEach(function (s) { w[s] *= cellMultiplier(nowDaypart, s); }); }
+  }
   var sub = weightedSubjectPick(w, pool);
   var subset = pool.filter(function (q) { return q.subject === sub; });
   var q = subset[Math.floor(Math.random() * subset.length)];
@@ -759,7 +782,14 @@ function startToday() {
 function renderToday() {
   var host = $('today-card');
   host.textContent = '';
-  if (!current) { $('practice-empty').hidden = false; return; }
+  if (!current) {
+    var only = (typeof practiceSubject === 'function') ? practiceSubject() : '';
+    $('practice-empty').textContent = only
+      ? '「' + only + '」目前沒有可出的題目。把上方範圍改回「混合出題」即可繼續。'
+      : '題庫載入後即可開始。';
+    $('practice-empty').hidden = false;
+    return;
+  }
   $('practice-empty').hidden = true;
   /* 作答畫面保持乾淨:不顯示「為何出這題」等提示(自適應邏輯照常運作,只是不外露) */
   /* 題組題拆到單題練習時,仍帶題組路徑指示＋本體,單看一題也答得了。 */
@@ -776,8 +806,8 @@ function todayAnswer(card, picked) {
   session = { n: session.n + 1, ok: session.ok + (correct ? 1 : 0) };
   markMCQCard(card, q, picked);
   var fbText = (q.answer === '#') ? '本題送分（考選部公告一律給分）。'
-    : (correct ? '答對。正解(' + q.answer + ')。'
-      : '答錯。正解(' + q.answer + ')。');
+    : (correct ? '答對。正解（' + q.answer + '）。'
+      : '答錯。正解（' + q.answer + '）。');
   var fb = el('p', { 'class': 'feedback ' + (correct ? 'good' : 'bad') }, fbText);
   card.appendChild(fb);
   /* 螢幕報讀器朗讀對錯。作答畫面只列對錯與正解,不掛教練金句(金句只在能力雷達/學習藍圖出現),避免壓力與干擾 */
@@ -829,7 +859,7 @@ function renderDailySummary() {
     return;
   }
   var line1 = '今天 ' + (todayN + todayEssay) + ' 題';
-  if (todayN > 0) { line1 += '(選擇題 ' + todayN + '，答對 ' + todayOk + ',' + pct(todayOk / todayN) + ')'; }
+  if (todayN > 0) { line1 += '（選擇題 ' + todayN + '，答對 ' + todayOk + '，' + pct(todayOk / todayN) + '）'; }
   if (todayEssay > 0) { line1 += '・申論 ' + todayEssay + ' 題'; }
   var topSub = null, topN = 0;
   SUBJECTS.forEach(function (s) { if (subjCount[s] > topN) { topN = subjCount[s]; topSub = s; } });
@@ -847,8 +877,12 @@ function renderDailySummary() {
     focus = '今日重點：先把各科各練幾題（或做入學診斷），系統才能準確找出你的弱項。';
   } else if (weak) {
     var s = subjectStats(true)[weak];
-    focus = '今日重點：你最弱的是「' + weak + '」(' + pct(s.ok / Math.max(s.n, 1)) + ')—— 直擊弱點 CP 值最高。';
+    focus = '今日重點：你最弱的是「' + weak + '」（' + pct(s.ok / Math.max(s.n, 1)) + '）—— 直擊弱點 CP 值最高。';
     focusBtn = { label: '去弱點殲滅', panel: 'cluster' };
+  } else if (SUBJECTS.every(function (s) { return subjectPhase(s) === 'unmapped'; })) {
+    /* weakestSubject() 回 null 有兩種完全相反的原因,不能都講「各科都在水準之上」——
+       全部還在校準期(剛開始備考／剛改科)時那句話是錯的:今天答對 2/12 也會被恭喜。 */
+    focus = '今日重點：各科都還在校準期（先把地圖畫出來），照常練即可，過幾天就會開始指出弱項。';
   } else {
     focus = '今日重點：各科都在水準之上，維持間隔複習，並用模擬考檢驗實戰手感。';
     focusBtn = { label: '去模擬考', panel: 'mock' };
@@ -879,6 +913,7 @@ function renderExamCategoryChip() {
 }
 function renderPracticeHead() {
   renderExamCategoryChip();
+  if (typeof renderPracticeScope === 'function') { renderPracticeScope(); }
   if (usable.length === 0) {
     $('daily-goal').textContent = '題庫未載入';
     $('due-count').textContent = ''; $('session-stats').textContent = '';
@@ -1192,8 +1227,8 @@ function renderStatus() {
   var parts = [];
   if (bank) {
     var reviewN = bank.questions.filter(function (q) { return q.parse === 'review'; }).length;
-    parts.push('題庫可練 ' + usable.length + ' 題(全 ' + bank.questions.length +
-      ' 題；另 ' + reviewN + ' 題因無官方答案或解析不完整，暫不列入)');
+    parts.push('題庫可練 ' + usable.length + ' 題（全 ' + bank.questions.length +
+      ' 題；另 ' + reviewN + ' 題因無官方答案或解析不完整，暫不列入）');
   } else { parts.push('題庫未載入'); }
   parts.push(relations ? '關聯資料：已載入' : '關聯資料：未載入（答錯改以同科補強）');
   $('status-line').textContent = parts.join('｜');
