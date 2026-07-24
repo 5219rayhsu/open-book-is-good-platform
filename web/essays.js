@@ -257,7 +257,7 @@ function gradeEssay(e, userText, card, submitBtn) {
 
   if (ref && Array.isArray(ref.keywords) && ref.keywords.length > 0) {
     cov = coverageScore(userText, ref.keywords);
-    var covText = '關鍵概念涵蓋度：' + cov.hit.length + ' / ' + cov.total + '(' + pct(cov.ratio) + ')';
+    var covText = '關鍵概念涵蓋度：' + cov.hit.length + ' / ' + cov.total + '（' + pct(cov.ratio) + '）';
     result.appendChild(el('div', { 'class': 'diag-result-line' }, covText));
     result.appendChild(el('p', { 'class': 'subtitle' }, '說明：這是「你的作答有沒有寫到關鍵概念/法規」的涵蓋度，非語意批改；論述深度與舉例請自評。'));
     result.appendChild(_chips('已寫到', cov.hit, 'hit'));

@@ -183,7 +183,7 @@ function finishDiagnostic(kind, res, panelId) {
   var panel = $(panelId);
   var block = el('div');
   block.appendChild(el('h3', null, '入學診斷結果'));
-  var resultText = '整體正確率 ' + pct(overall) + '(' + totOk + ' / ' + totN +
+  var resultText = '整體正確率 ' + pct(overall) + '（' + totOk + ' / ' + totN +
     ' 題）。' + recLabel + '。';
   block.appendChild(el('div', { 'class': 'diag-result-line' }, resultText));
   announce('入學診斷完成。' + resultText);   /* 螢幕報讀器朗讀診斷結果 */

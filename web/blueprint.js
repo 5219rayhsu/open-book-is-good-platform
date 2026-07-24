@@ -69,7 +69,7 @@ function renderBlueprint() {
     } else { cd.textContent = ''; cd.classList.remove('past'); }
   }
   $('weekly-target').textContent = '每週應完成約 ' + wt.perWeek + ' 題（未掌握 ' +
-    wt.remain + ' 題 ÷ 剩餘 ' + wt.left + ' 週' + (wt.byExamDate ? '，依考試日' : '') + ')';
+    wt.remain + ' 題 ÷ 剩餘 ' + wt.left + ' 週' + (wt.byExamDate ? '，依考試日' : '') + '）';
   $('plan-detail').textContent = '公式：每週題數 = 未掌握題數 ÷ 剩餘週數。「已掌握」= 同一題連續答對 ' +
     masterRepsFor() + ' 次（無基礎門檻較高）。起算日 ' + state.settings.start + '，全程 ' + wt.weeks +
     ' 週，已掌握 ' + wt.mastered + ' 題。' + planPolicyText();

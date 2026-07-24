@@ -70,7 +70,7 @@ function coachComment(ctx) {
     var ctext = weak
       ? _pick([
           '答對了！這科你整體還在 ' + accTxt + '，趁這股手感把同類題多練幾題。',
-          '對的。' + (accTxt ? '這科目前 ' + accTxt + ',' : '') + '一題一題把弱科墊起來，很實在。'], idx)
+          '對的。' + (accTxt ? '這科目前 ' + accTxt + '，' : '') + '一題一題把弱科墊起來，很實在。'], idx)
       : _pick(['答對。穩。',
           '正確。' + (accTxt ? '這科 ' + accTxt + '，維持住。' : '基礎穩固，維持住。'),
           '對了 —— 別停在已會的，挑戰沒把握的題更划算。'], idx);
@@ -81,7 +81,7 @@ function coachComment(ctx) {
   var wtext = weak
     ? _pick([
         '又錯在這科（目前 ' + accTxt + '）—— 不要繞過它，這裡每多對一題，CP 值最高。',
-        '答錯。' + (accTxt ? '這科 ' + accTxt + ',' : '') + '把它標起來，等一下去「弱點殲滅」集中拆解。'], idx)
+        '答錯。' + (accTxt ? '這科 ' + accTxt + '，' : '') + '把它標起來，等一下去「弱點殲滅」集中拆解。'], idx)
     : _pick([
         '答錯。先別急著看下一題 —— 把為什麼選錯、正解為什麼對，各講一句給自己聽。',
         '錯了。這題的相關易混淆題已排進補強佇列，等下會再遇到。'], idx);
@@ -110,7 +110,7 @@ function coachAdvice() {
     .sort(function (a, b) { return a.acc - b.acc; });
 
   if (ranked.length > 0 && ranked[0].acc < 0.6) {
-    out.push({ title: '直擊最大弱點：' + ranked[0].s + '(' + pct(ranked[0].acc) + ')',
+    out.push({ title: '直擊最大弱點：' + ranked[0].s + '（' + pct(ranked[0].acc) + '）',
       master: '弱點優先',
       body: '把練習時間集中在這一科，別平均分配。去「弱點殲滅」會把相似、易混淆的題擺在一起，拆解你最常錯的陷阱。' });
   }
