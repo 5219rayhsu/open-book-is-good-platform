@@ -6,6 +6,11 @@
 <title>開卷有益｜國考與升學</title>
 <!-- 統一站:一份引擎跑多科。標題與科名由 exams.js 依當前考試動態設定;
      資料用 fetch 載 ../data/<考試>/*.json(Cloudflare Pages 線上)。 -->
+<!-- noindex,follow:這是應用程式外殼,不是內容頁。?exam= 的十個網址回傳的 HTML
+     完全相同,且不執行 JS 的爬蟲只看得到「題庫載入中」與載入失敗說明——被收錄
+     只會得到十筆重複且文案難看的結果。可被索引的內容在 /exam/<考試>/,
+     follow 保留讓爬蟲沿站內連結繼續走。 -->
+<meta name="robots" content="noindex,follow">
 <!-- PWA:manifest(可安裝)+ theme-color(工具列/分頁色)+ apple-touch-icon(iOS 加入主畫面)。
      顏色沿用 app.css 既有暖紙/沉穩藍變數值,不自創。 -->
 <link rel="manifest" href="manifest.webmanifest">

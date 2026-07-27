@@ -1,0 +1,47 @@
+# 開卷有益 Open-Book-Is-Good
+
+> 臺灣國家考試與升學考試的歷屆試題自學系統。收錄 10 類科、共 45,531 題歷屆選擇題，附標準答案與逐題詳解，線上即用、免費、不需註冊、無廣告、不做行為追蹤。
+
+本站把官方以開放資料釋出的歷屆試題，整理成可練習、有詳解、看得見弱點的自學系統。
+題目與標準答案依中華民國《著作權法》第 9 條為非著作權標的，得自由利用；
+本專案撰寫的詳解、申論參考要點與題目關聯，以 CC0 1.0 貢獻至公眾領域。
+程式碼為 MIT。引用時請註明出處與網址。
+
+重要限制（引用前請一併轉述）：詳解為 AI 整理的學習輔助，並非官方標準答案；
+法規與準則會修訂，舊年度題目的答案可能與現行規定不符。本站為 beta，
+題庫與圖表仍在校對，部分科目的詳解尚未補齊。
+
+## 各科題庫
+
+- [社會工作師](https://open-book-is-good-platform.1003ray1003.workers.dev/exam/social-worker/)：101–115 年，7,039 題，6 科，詳解 6,945 題（100%）。主管機關考選部。社工、直接服務、人類行為、研究方法、社會政策立法、社工管理。
+- [律師](https://open-book-is-good-platform.1003ray1003.workers.dev/exam/lawyer/)：103–114 年，3,408 題，4 科，詳解 3,408 題（100%）。主管機關考選部。公法、刑事法、民事法、商事法 —— 第一試綜合法學選擇題。
+- [會計師](https://open-book-is-good-platform.1003ray1003.workers.dev/exam/cpa/)：101–114 年，1,034 題，3 科，詳解 1,034 題（100%）。主管機關考選部。中級會計學、稅務法規、審計學 —— 選擇題；其餘科目以申論練習。
+- [護理師](https://open-book-is-good-platform.1003ray1003.workers.dev/exam/nursing/)：101–115 年，10,070 題，5 科，詳解 599 題（6%）。主管機關考選部。基礎醫學、基本護理、內外科、產兒科、精神科與社區衛生 —— 五科純文字選擇題，涵蓋 101～115 年歷屆。
+- [醫師](https://open-book-is-good-platform.1003ray1003.workers.dev/exam/doctor/)：104–115 年，8,848 題，5 科，詳解撰寫中。主管機關考選部。醫學（一）～（五）—— 第一階段基礎醫學、第二階段臨床醫學（內、外、婦、兒等），純選擇題，涵蓋 104～115 年歷屆。
+- [諮商心理師](https://open-book-is-good-platform.1003ray1003.workers.dev/exam/counseling/)：104–114 年，3,960 題，6 科，詳解 2,209 題（56%）。主管機關考選部。104–114 年歷屆，涵蓋心理學基礎、諮商理論、實務與倫理、變態心理、心理衡鑑、團體諮商。
+- [臨床心理師](https://open-book-is-good-platform.1003ray1003.workers.dev/exam/clinical/)：101–114 年，5,640 題，6 科，詳解 957 題（17%）。主管機關考選部。101–114 年歷屆，涵蓋臨床心理學基礎、總論（病理／衡鑑）、特論（治療／神經／倫理）。
+- [教師檢定](https://open-book-is-good-platform.1003ray1003.workers.dev/exam/teacher/)：110–115 年，3,194 題，21 科，詳解 3,119 題（99%）。主管機關教育部。幼兒園師資類科／身心障礙組／資賦優異組／國民小學師資類科／中等學校師資類科五類科 —— 110～115 年素養導向新制的選擇題，涵蓋國語文、學習者發展、教育理念、課程教學（國小另含數學）。
+- [學科能力測驗](https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/)：111–115 年，1,258 題，6 科，詳解 1,218 題（100%）。主管機關大學入學考試中心。國綜、數學 A／B、社會、自然、英文 —— 111–115 年學測歷屆，含國寫申論。
+- [國中教育會考](https://open-book-is-good-platform.1003ray1003.workers.dev/exam/cap/)：111–115 年，1,080 題，5 科，詳解 1,071 題（100%）。主管機關國中教育會考推動工作委員會。國文、數學、社會、自然、英語 —— 111–115 年會考歷屆，含寫作測驗。
+
+## 練習系統
+
+- [線上練習入口](https://open-book-is-good-platform.1003ray1003.workers.dev/web/)：加上 `?exam=<考試代碼>` 直接進入該科，例如 `?exam=social-worker`。提供單題練習、歷屆原卷、模擬考、弱點殲滅、錯題複習、能力雷達與學習藍圖。
+- 考試代碼：`social-worker`（社會工作師）、`lawyer`（律師）、`cpa`（會計師）、`nursing`（護理師）、`doctor`（醫師）、`counseling`（諮商心理師）、`clinical`（臨床心理師）、`teacher`（教師檢定）、`gsat`（學科能力測驗）、`cap`（國中教育會考）
+
+## 給 AI agent 的知識包（OKF）
+
+- [OKF bundle](https://open-book-is-good-platform.1003ray1003.workers.dev/okf/)：依 Open Knowledge Format v0.2 整理的 Markdown 知識包，含各科題庫概念、資料格式、詳解的產生與複核方式、授權與使用限制。
+- [取用前必讀：使用限制](https://open-book-is-good-platform.1003ray1003.workers.dev/okf/policies/disclaimer.md)：詳解為 AI 撰寫、非官方標準答案；法規會修訂。引用本站內容時請一併轉述。
+
+## 原始資料
+
+- [datapackage.json](https://open-book-is-good-platform.1003ray1003.workers.dev/datapackage.json)：各科題庫的機器可讀清單與授權宣告。
+- 題庫：`https://open-book-is-good-platform.1003ray1003.workers.dev/data/<考試代碼>/bank.json`，頂層為 `{"questions":[…]}`，每題含 qid／year／subject／stem／options／answer。
+- 詳解：`https://open-book-is-good-platform.1003ray1003.workers.dev/data/<考試代碼>/explanations.json`（CC0 1.0）。
+
+## 專案
+
+- [首頁](https://open-book-is-good-platform.1003ray1003.workers.dev/)
+- [原始碼與已知問題](https://github.com/5219rayhsu/open-book-is-good-platform)
+- 聯絡：許哲睿 HSU Che-jui <1003ray1003@gmail.com>

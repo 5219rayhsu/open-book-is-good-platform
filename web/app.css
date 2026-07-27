@@ -212,6 +212,9 @@ section.panel{padding-top:.4rem;}
 }
 .explain-head{font-family:var(--serif);font-size:.92rem;color:var(--accent);letter-spacing:.04em;}
 .explain-body{margin:.25rem 0 0;font-size:.95rem;line-height:1.78;color:var(--ink);white-space:pre-line;}
+/* 段距:explain.js 已把 \n\n 拆成獨立 <p>,此處控段間距。用相鄰選擇器而非 margin-bottom,
+   末段才不會多出一截空白頂到誠實小字。.42rem 約為空行(1.78em)的四分之一。 */
+.explain-body + .explain-body{margin-top:.42rem;}
 .explain-note{margin:.4rem 0 0;font-size:.78rem;color:var(--ink-faint);}
 /* IFRS／稅法等時效提示(staleness=ifrs_sensitive / law_sensitive):紅字一行,作答以現行為準 */
 .stale-note{margin:.5rem 0 .2rem;font-size:.82rem;line-height:1.7;color:var(--bad-ink);border-left:3px solid var(--bad-ink);border-radius:0 var(--r) var(--r) 0;background:var(--bad-wash);padding:.35rem .7rem;}

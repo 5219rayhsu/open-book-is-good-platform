@@ -141,6 +141,10 @@ function passageEl(text) {
     if (!b || !String(b).trim()) { return; }
     formatPassage(String(b)).forEach(function (p) { box.appendChild(el('p', { 'class': 'q-passage-p' }, p)); n++; });
   });
+  /* 題組本體也要渲染 LaTeX:本體是掛在卡片外的,吃不到 buildMCQCard 末尾的 renderMath(card)。
+     實測 gsat 有 31 題的 passage 含 \(…\)(自然/數學題組的共同敘述),原本整段以原始碼示人。
+     渲染放在這裡而非各呼叫端,整卷/逐題/承上題三條路徑一次覆蓋。 */
+  if (n) { renderMath(box); }
   return n ? box : null;
 }
 

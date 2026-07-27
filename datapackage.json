@@ -1,0 +1,169 @@
+{
+ "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+ "name": "open-book-is-good",
+ "title": "開卷有益｜臺灣國家考試與升學考試歷屆試題題庫",
+ "description": "臺灣國家考試與升學考試的歷屆選擇題、標準答案與詳解。試題依《著作權法》第 9 條為非著作權標的；詳解等衍生物為 CC0 1.0。",
+ "homepage": "https://open-book-is-good-platform.1003ray1003.workers.dev/",
+ "version": "beta",
+ "licenses": [
+  {
+   "name": "CC0-1.0",
+   "path": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "title": "CC0 1.0 Universal（詳解、申論要點、題目關聯等衍生物）"
+  },
+  {
+   "name": "notspecified",
+   "path": "https://open-book-is-good-platform.1003ray1003.workers.dev/NOTICE",
+   "title": "試題本文：中華民國著作權法 §9 非著作權標的，得自由利用"
+  }
+ ],
+ "contributors": [
+  {
+   "title": "許哲睿 HSU Che-jui",
+   "email": "1003ray1003@gmail.com",
+   "role": "author"
+  }
+ ],
+ "resources": [
+  {
+   "name": "social-worker",
+   "title": "社會工作師歷屆試題",
+   "path": "data/social-worker/bank.json",
+   "format": "json",
+   "mediatype": "application/json",
+   "description": "社會工作師（考選部）民國 101–115 年歷屆選擇題 7039 題。",
+   "sources": [
+    {
+     "title": "考選部「國家考試試題及測驗式試題答案」開放資料",
+     "path": "https://wwwq.moex.gov.tw/exam/wFrmExamQandASearch.aspx"
+    }
+   ]
+  },
+  {
+   "name": "lawyer",
+   "title": "律師歷屆試題",
+   "path": "data/lawyer/bank.json",
+   "format": "json",
+   "mediatype": "application/json",
+   "description": "律師（考選部）民國 103–114 年歷屆選擇題 3408 題。",
+   "sources": [
+    {
+     "title": "考選部「國家考試試題及測驗式試題答案」開放資料",
+     "path": "https://wwwq.moex.gov.tw/exam/wFrmExamQandASearch.aspx"
+    }
+   ]
+  },
+  {
+   "name": "cpa",
+   "title": "會計師歷屆試題",
+   "path": "data/cpa/bank.json",
+   "format": "json",
+   "mediatype": "application/json",
+   "description": "會計師（考選部）民國 101–114 年歷屆選擇題 1034 題。",
+   "sources": [
+    {
+     "title": "考選部「國家考試試題及測驗式試題答案」開放資料",
+     "path": "https://wwwq.moex.gov.tw/exam/wFrmExamQandASearch.aspx"
+    }
+   ]
+  },
+  {
+   "name": "nursing",
+   "title": "護理師歷屆試題",
+   "path": "data/nursing/bank.json",
+   "format": "json",
+   "mediatype": "application/json",
+   "description": "護理師（考選部）民國 101–115 年歷屆選擇題 10070 題。",
+   "sources": [
+    {
+     "title": "考選部「國家考試試題及測驗式試題答案」開放資料",
+     "path": "https://wwwq.moex.gov.tw/exam/wFrmExamQandASearch.aspx"
+    }
+   ]
+  },
+  {
+   "name": "doctor",
+   "title": "醫師歷屆試題",
+   "path": "data/doctor/bank.json",
+   "format": "json",
+   "mediatype": "application/json",
+   "description": "醫師（考選部）民國 104–115 年歷屆選擇題 8848 題。",
+   "sources": [
+    {
+     "title": "考選部「國家考試試題及測驗式試題答案」開放資料",
+     "path": "https://wwwq.moex.gov.tw/exam/wFrmExamQandASearch.aspx"
+    }
+   ]
+  },
+  {
+   "name": "counseling",
+   "title": "諮商心理師歷屆試題",
+   "path": "data/counseling/bank.json",
+   "format": "json",
+   "mediatype": "application/json",
+   "description": "諮商心理師（考選部）民國 104–114 年歷屆選擇題 3960 題。",
+   "sources": [
+    {
+     "title": "考選部「國家考試試題及測驗式試題答案」開放資料",
+     "path": "https://wwwq.moex.gov.tw/exam/wFrmExamQandASearch.aspx"
+    }
+   ]
+  },
+  {
+   "name": "clinical",
+   "title": "臨床心理師歷屆試題",
+   "path": "data/clinical/bank.json",
+   "format": "json",
+   "mediatype": "application/json",
+   "description": "臨床心理師（考選部）民國 101–114 年歷屆選擇題 5640 題。",
+   "sources": [
+    {
+     "title": "考選部「國家考試試題及測驗式試題答案」開放資料",
+     "path": "https://wwwq.moex.gov.tw/exam/wFrmExamQandASearch.aspx"
+    }
+   ]
+  },
+  {
+   "name": "teacher",
+   "title": "教師檢定歷屆試題",
+   "path": "data/teacher/bank.json",
+   "format": "json",
+   "mediatype": "application/json",
+   "description": "教師檢定（教育部）民國 110–115 年歷屆選擇題 3194 題。",
+   "sources": [
+    {
+     "title": "教育部教師資格考試歷屆試題（受託國立臺灣師範大學心理與教育測驗研究發展中心）",
+     "path": "https://tqa.rcpet.edu.tw/"
+    }
+   ]
+  },
+  {
+   "name": "gsat",
+   "title": "學科能力測驗歷屆試題",
+   "path": "data/gsat/bank.json",
+   "format": "json",
+   "mediatype": "application/json",
+   "description": "學科能力測驗（大學入學考試中心）民國 111–115 年歷屆選擇題 1258 題。",
+   "sources": [
+    {
+     "title": "大考中心 學測歷年試題（依著作權法 §9，考試試題不受著作權保護）",
+     "path": "https://www.ceec.edu.tw/"
+    }
+   ]
+  },
+  {
+   "name": "cap",
+   "title": "國中教育會考歷屆試題",
+   "path": "data/cap/bank.json",
+   "format": "json",
+   "mediatype": "application/json",
+   "description": "國中教育會考（國中教育會考推動工作委員會）民國 111–115 年歷屆選擇題 1080 題。",
+   "sources": [
+    {
+     "title": "心測中心 會考歷屆試題（依著作權法 §9，考試試題不受著作權保護）",
+     "path": "https://cap.rcpet.edu.tw/"
+    }
+   ]
+  }
+ ]
+}

@@ -12,14 +12,14 @@
       install 時整批存好,離線時 app 殼 100% 可用。改版時把 CACHE_VERSION
       的數字往上加一,啟用(activate)時會自動刪掉舊版本 cache。
    2) data/(題庫,單科可達數十 MB、全站 328MB,絕不整批抓):
-      runtime cache-first + network fallback,「造訪過的科目才離線
+      runtime stale-while-revalidate,「造訪過的科目才離線
       可用」——使用者打開某科練習時,fetch 到的 bank.json /
       explanations.json / figures/*.png 才會被存進 DATA_CACHE。
       選配檔(relations.json / essay_samples.json)缺檔時,
       SW 不把失敗回應存進 cache、也不視為錯誤。
    ============================================================ */
 
-var CACHE_VERSION = 'v14';  /* v14:ADR-0009 標記／儲存分階段——標記(橘折角)只在整卷作答＋題號導覽列,交卷隨歷史紀錄保存,歷史詳情可增刪;儲存只在詳解檢視,遷出至 obig_saved_<考試key> 專屬 key。v13:停考科目全域開關(state.settings.includeDeprecated,預設排除)——manifest 標 deprecatedSubjects 的科目預設移出練習/統計/歷屆,設定頁「停考科目」區可切「納入練習」全站復原;社工「社會工作管理」比照。v12:完全同題改同場輪替互斥(跨場可練到不同年份的同題)、社工「社會工作管理」115 年起停考標示(模擬考預設不勾)。v11:應考類科個人設定(教師檢定等分組考試可複選類科,過濾進度/雷達/出題/藍圖/模擬選科,reload 生效)。v10:標記折角回歸回顧介面（錯題列表／歷史詳情／儲存題頁），整卷與逐題卡片折角天然沿用；同題幹互斥加通用題幹豁免。v9:儲存題獨立頁、模擬考同題幹互斥、錯題排序與本月窗、標記降級為作答內記號。v8:詳解 justify＋pre-line、模擬考內容去重、題組鏈聚攏與鏈式情境框、標記／儲存、錯題篩選、單題出題演算法升級。v7:封面／選科主題切換 theme-boot.js（預設白底、與內部考科共用 obig:theme 偏好）。v6:預快取改 {cache:'reload'} 繞過 HTTP 快取,修「v5 殼烤進舊 exams.js → 切換跳回原科」。v5=類科兩級選科。v4=教師檢定改名+setExam 導航修正 */
+var CACHE_VERSION = 'v15';  /* v15:data/ 快取由 cache-first 改 stale-while-revalidate(＋_headers 的 /data/* no-cache)——資料更新此後**免升版**即可在下次載入收斂;本次升版是一次性清掉舊資料快取,讓全體使用者立即拿到最新詳解。v14:ADR-0009 標記／儲存分階段——標記(橘折角)只在整卷作答＋題號導覽列,交卷隨歷史紀錄保存,歷史詳情可增刪;儲存只在詳解檢視,遷出至 obig_saved_<考試key> 專屬 key。v13:停考科目全域開關(state.settings.includeDeprecated,預設排除)——manifest 標 deprecatedSubjects 的科目預設移出練習/統計/歷屆,設定頁「停考科目」區可切「納入練習」全站復原;社工「社會工作管理」比照。v12:完全同題改同場輪替互斥(跨場可練到不同年份的同題)、社工「社會工作管理」115 年起停考標示(模擬考預設不勾)。v11:應考類科個人設定(教師檢定等分組考試可複選類科,過濾進度/雷達/出題/藍圖/模擬選科,reload 生效)。v10:標記折角回歸回顧介面（錯題列表／歷史詳情／儲存題頁），整卷與逐題卡片折角天然沿用；同題幹互斥加通用題幹豁免。v9:儲存題獨立頁、模擬考同題幹互斥、錯題排序與本月窗、標記降級為作答內記號。v8:詳解 justify＋pre-line、模擬考內容去重、題組鏈聚攏與鏈式情境框、標記／儲存、錯題篩選、單題出題演算法升級。v7:封面／選科主題切換 theme-boot.js（預設白底、與內部考科共用 obig:theme 偏好）。v6:預快取改 {cache:'reload'} 繞過 HTTP 快取,修「v5 殼烤進舊 exams.js → 切換跳回原科」。v5=類科兩級選科。v4=教師檢定改名+setExam 導航修正 */
 var SHELL_CACHE = 'obig-shell-' + CACHE_VERSION;
 var DATA_CACHE = 'obig-data-' + CACHE_VERSION;
 
@@ -78,8 +78,6 @@ var APP_SHELL_FILES = [
   'web/katex/fonts/KaTeX_Typewriter-Regular.woff2'
 ];
 
-/* 選配、可能缺檔的資料檔名——命中就不視為錯誤、也不快取失敗回應。 */
-var OPTIONAL_DATA_FILES = ['relations.json', 'essay_samples.json'];
 
 self.addEventListener('install', function (event) {
   event.waitUntil(
@@ -117,25 +115,42 @@ function isDataRequest(url) {
   return url.pathname.indexOf('/data/') !== -1;
 }
 
-function isOptionalDataFile(url) {
-  return OPTIONAL_DATA_FILES.some(function (name) {
-    return url.pathname.slice(-name.length) === name;
-  });
-}
 
-/* data/ 的 cache-first:先看本機有沒有,沒有才打網路,打到才存起來。
-   選配檔缺檔時直接把「找不到」往上丟給呼叫端的 fetchJson 去吞
-   (它本來就有 .catch 容錯),不快取這個失敗回應、也不印額外錯誤。 */
-function handleDataRequest(request, url) {
+/* data/ 的 stale-while-revalidate:命中先回快取(首屏速度與 cache-first 相同),
+   同時在背景重新驗證並更新快取(下次載入即最新);未命中才等網路。離線行為不變。
+
+   為何從 cache-first 改過來(2026-07-25):cache-first 命中即回、永不 revalidate,
+   資料一進 DATA_CACHE 就凍結到升 CACHE_VERSION 為止——更新詳解後重整仍看到舊版,
+   誤以為「無詳解」。SWR 讓資料更新此後免升版自然收斂。
+
+   三個不可省略的細節(Fable 裁決 2026-07-25,原提案漏了全部三個):
+   ① event.waitUntil 保命——respondWith 一回快取,瀏覽器隨時可終止 SW(行動裝置尤甚),
+      不掛 waitUntil 的背景 fetch 會被砍在半途,更新靜默丟失。
+   ② {cache:'no-cache'} 強制條件式驗證——SW 內 fetch 預設走 HTTP 快取,新鮮期內
+      「驗證」會直接拿回舊副本、一個 byte 都沒上網,SWR 形同虛設。帶此旗標後每次都發
+      If-None-Match:內容沒變回 304(近零流量)、由 HTTP 快取層重組成 200 交給 SW
+      (304 不會傳進來,response.ok 檢查照常有效);真的變了才傳全檔。
+      與 _headers 的 no-cache 互補:header 管所有非 SW 路徑,此旗標管 SW 自己、不依賴部署狀態。
+   ③ 背景失敗吞錯——離線時背景驗證必然 reject,快取版照常服務,不噴 console 錯、
+      也不讓 waitUntil 收到 rejected promise 而記為 SW 錯誤。
+
+   選配檔(relations.json / essay_samples.json)缺檔:404 不通過 response.ok,不存進
+   cache,由呼叫端 fetchJson 的 .catch 接手,行為與原版一致。 */
+function handleDataRequest(event, request) {
   return caches.open(DATA_CACHE).then(function (cache) {
     return cache.match(request).then(function (cached) {
-      if (cached) { return cached; }
-      return fetch(request).then(function (response) {
-        if (response && response.ok) {
-          cache.put(request, response.clone());
-        }
-        return response;
-      }).catch(function () {
+      var revalidate = fetch(new Request(request.url, { cache: 'no-cache' }))
+        .then(function (response) {
+          if (response && response.ok) {
+            cache.put(request, response.clone());
+          }
+          return response;
+        });
+      if (cached) {
+        event.waitUntil(revalidate.catch(function () { /* 離線/伺服器錯:下次再驗 */ }));
+        return cached;
+      }
+      return revalidate.catch(function () {
         /* 離線且本機無快取:回一個 404,讓呼叫端 fetchJson 的 .catch 接手
            (必要檔如 bank.json 走既有 load-error fallback;選配檔安靜略過)。 */
         return new Response(null, { status: 404, statusText: 'offline, not cached' });
@@ -172,7 +187,7 @@ self.addEventListener('fetch', function (event) {
   }
 
   if (isDataRequest(url)) {
-    event.respondWith(handleDataRequest(request, url));
+    event.respondWith(handleDataRequest(event, request));
     return;
   }
 

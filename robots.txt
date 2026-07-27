@@ -1,0 +1,16 @@
+# 開卷有益｜國考與升學 —— robots.txt
+# 本站內容刻意開放：試題依《著作權法》第 9 條非著作權標的，
+# 本專案撰寫的詳解以 CC0 1.0 貢獻至公眾領域。歡迎索引、引用與取材。
+
+User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Allow: /
+# 題庫 JSON 體積大且非給人讀的頁面，排除以免浪費檢索預算；
+# 需要原始資料請直接取 /data/<考試>/bank.json（見 llms.txt 與 datapackage.json）。
+Disallow: /data/
+
+Sitemap: https://open-book-is-good-platform.1003ray1003.workers.dev/sitemap.xml
+
+# 給 AI agent 的取材指引與知識包：
+#   https://open-book-is-good-platform.1003ray1003.workers.dev/llms.txt
+#   https://open-book-is-good-platform.1003ray1003.workers.dev/okf/          （Open Knowledge Format v0.2）

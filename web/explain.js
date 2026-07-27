@@ -45,7 +45,13 @@ function explEl(qid) {
   var box = el('div', { 'class': 'explain' });
   box.appendChild(el('div', { 'class': 'explain-head' },
     '本題解釋' + (e.c === 'low' ? '（把握度較低，請務必查證）' : '')));
-  box.appendChild(el('p', { 'class': 'explain-body' }, e.t));
+  /* 三段式詳解以空行(\n\n)分段。早期靠 white-space:pre-line 讓空行自己撐開,
+     但空行高度＝一整個 line-height(1.78),段距過大。改成逐段各自成 <p>,
+     段距交給 CSS 的相鄰選擇器控制;資料端的 \n\n 語意分隔維持不動。 */
+  e.t.split(/\n{2,}/).forEach(function (para) {
+    var s = para.trim();
+    if (s) { box.appendChild(el('p', { 'class': 'explain-body' }, s)); }
+  });
   box.appendChild(el('p', { 'class': 'explain-note' },
     'AI 整理的學習輔助，非官方標準答案；請對照現行' + EXAM.jurisdiction + '與課本查證。'));
   return box;

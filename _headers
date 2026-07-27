@@ -25,6 +25,7 @@
 /web/*.css
   Cache-Control: public, max-age=86400
 
-# 題庫資料:偶爾更新,快取一小時 + 需重新驗證
+# 題庫資料:改 no-cache＝每次都發條件式請求驗證(未變回 304、近零流量),不是不快取。
+# 原本的 max-age=3600 讓改完資料最長 1 小時仍吃舊版;配合 sw.js 的 SWR 一起根治。
 /data/*
-  Cache-Control: public, max-age=3600, must-revalidate
+  Cache-Control: no-cache
