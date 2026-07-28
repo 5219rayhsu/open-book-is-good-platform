@@ -13,7 +13,7 @@
 
 ## 各科題庫
 
-- [社會工作師](https://open-book-is-good-platform.1003ray1003.workers.dev/exam/social-worker/)：101–115 年，7,039 題，6 科，詳解 6,945 題（100%）。主管機關考選部。社工、直接服務、人類行為、研究方法、社會政策立法、社工管理。
+- [社會工作師](https://open-book-is-good-platform.1003ray1003.workers.dev/exam/social-worker/)：101–115 年，7,039 題，6 科，詳解 6,945 題（99%）。主管機關考選部。社工、直接服務、人類行為、研究方法、社會政策立法、社工管理。
 - [律師](https://open-book-is-good-platform.1003ray1003.workers.dev/exam/lawyer/)：103–114 年，3,408 題，4 科，詳解 3,408 題（100%）。主管機關考選部。公法、刑事法、民事法、商事法 —— 第一試綜合法學選擇題。
 - [會計師](https://open-book-is-good-platform.1003ray1003.workers.dev/exam/cpa/)：101–114 年，1,034 題，3 科，詳解 1,034 題（100%）。主管機關考選部。中級會計學、稅務法規、審計學 —— 選擇題；其餘科目以申論練習。
 - [護理師](https://open-book-is-good-platform.1003ray1003.workers.dev/exam/nursing/)：101–115 年，10,070 題，5 科，詳解 599 題（6%）。主管機關考選部。基礎醫學、基本護理、內外科、產兒科、精神科與社區衛生 —— 五科純文字選擇題，涵蓋 101～115 年歷屆。
