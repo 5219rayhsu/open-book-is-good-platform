@@ -301,12 +301,6 @@ function buildMCQCard(q, meta) {
 }
 /* picked 可為單選字母字串('A')、多選排序字串('BD'/'_')或單選索引(數字,向後相容)。
    標記:所有正解綠、誤選紅、其餘 dim;送分題(#)不標紅綠。 */
-function letterSetOf(s) {
-  var set = {};
-  if (s === '#' || s == null) { return set; }
-  String(s).split('').forEach(function (ch) { if (ch >= 'A' && ch <= 'E') { set[ch] = true; } });
-  return set;
-}
 function pickedSetOf(picked) {
   if (typeof picked === 'number') {
     var s = {}; if (picked >= 0 && LETTERS[picked]) { s[LETTERS[picked]] = true; } return s;
@@ -315,7 +309,8 @@ function pickedSetOf(picked) {
 }
 function markMCQCard(card, q, picked) {
   var given = (q.answer === '#'); // 送分題：無單一正解，不標紅綠
-  var ansSet = letterSetOf(q.answer), pickSet = pickedSetOf(picked);
+  /* accept 題把所有官方認可字母都標綠（acceptListOf 見 app.js） */
+  var ansSet = correctLetterSet(q), pickSet = pickedSetOf(picked);
   card._optButtons.forEach(function (b, i) {
     b.disabled = true;
     var L = LETTERS[i];
@@ -325,6 +320,8 @@ function markMCQCard(card, q, picked) {
   });
   var note = staleNoteEl(q);
   if (note) { card.appendChild(note); }
+  var src = sourceNoteEl(q);
+  if (src) { card.appendChild(src); }
 }
 
 /* IFRS／稅法等時效提示:只有 staleness 為 ifrs_sensitive / law_sensitive 的題目才掛,
@@ -333,6 +330,13 @@ function staleNoteEl(q) {
   if (!q || (q.staleness !== 'ifrs_sensitive' && q.staleness !== 'law_sensitive')) { return null; }
   return el('p', { 'class': 'stale-note' },
     '此題涉時效性法規或專業準則，內容會修訂，作答與引用請以現行版本為準。');
+}
+
+/* 原卷校勘註(q.note):官方試題本身的瑕疵(如 (A)(C) 選項原文即相同)逐字忠實保留,
+   作答後說明清楚,否則學生會以為是本站抄錯而回報。只在有 note 的題出現。 */
+function sourceNoteEl(q) {
+  if (!q || !q.note) { return null; }
+  return el('p', { 'class': 'stale-note' }, '原卷校勘：' + q.note);
 }
 
 /* 作答後動作列:同一列,左「🚩 疑義回報」右「下一題／看本組總結」(.qa-actions)。 */
@@ -414,8 +418,8 @@ function startDrill(items, meta) {
     if (correct) { ok += 1; }
     markMCQCard(card, q, picked);
     var fbText = (q.answer === '#') ? '本題送分（考選部公告一律給分）。'
-      : (correct ? '答對。正解（' + q.answer + '）。'
-        : '答錯。正解（' + q.answer + '）。');
+      : (correct ? '答對。正解（' + answerLabelOf(q) + '）。'
+        : '答錯。正解（' + answerLabelOf(q) + '）。');
     var fb = el('p', { 'class': 'feedback ' + (correct ? 'good' : 'bad') }, fbText);
     card.appendChild(fb);
     /* 螢幕報讀器朗讀對錯。作答畫面只列對錯與正解,不掛教練金句(金句只在能力雷達/學習藍圖出現) */

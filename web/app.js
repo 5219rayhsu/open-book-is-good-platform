@@ -601,11 +601,11 @@ function weightedSubjectPick(weights, pool) {
    錯題本、藍圖一致。countSrs=false 時只記 log 不排程(目前未使用,保留彈性)。 */
 /* 評分:送分題(#)一律給分;其餘排序後比對 → 單選('A'=='A')與多選('DB'→'BD'=='BD')共用,
    未作答('_')自然不等。pickedLetter 一律字母字串(單選一字、多選排序字串)。 */
-function sortLetters(s) { return String(s).split('').sort().join(''); }
 function recordAnswer(q, pickedLetter, opts) {
   opts = opts || {};
-  // 送分題（官方答案 #）：一律給分，計為答對，不污染統計與弱項佇列。
-  var correct = (q.answer === '#') ? true : (sortLetters(pickedLetter) === sortLetters(q.answer));
+  /* 判分一律走 grading.js 的 isCorrectPick（送分 # 一律給分、accept 多重答案均給分），
+     計為答對者不污染統計與弱項佇列。 */
+  var correct = isCorrectPick(q, pickedLetter);
   var srsNext = state.srs;
   if (opts.countSrs !== false) {
     var card = reviewCard(state.srs[q.qid], correct);
@@ -1228,8 +1228,9 @@ function renderStatus() {
   var parts = [];
   if (bank) {
     var reviewN = bank.questions.filter(function (q) { return q.parse === 'review'; }).length;
-    parts.push('題庫可練 ' + usable.length + ' 題（全 ' + bank.questions.length +
-      ' 題；另 ' + reviewN + ' 題因無官方答案或解析不完整，暫不列入）');
+    /* 待校為 0 時不寫「另 0 題…」——那句是解釋落差用的,沒有落差就別佔位。 */
+    parts.push('題庫可練 ' + usable.length + ' 題（全 ' + bank.questions.length + ' 題' +
+      (reviewN ? '；另 ' + reviewN + ' 題因無官方答案或解析不完整，暫不列入' : '') + '）');
   } else { parts.push('題庫未載入'); }
   parts.push(relations ? '關聯資料：已載入' : '關聯資料：未載入（答錯改以同科補強）');
   $('status-line').textContent = parts.join('｜');

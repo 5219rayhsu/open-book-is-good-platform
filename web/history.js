@@ -170,13 +170,13 @@ function _histDetail(detail, e, q, isEssay) {
   appendStemRich(histStem, (q.stem || q.prompt || ''));
   detail.appendChild(histStem);
   if (!isEssay && q.options) {
-    var ansIdx = LETTERS.indexOf(q.answer);
+    var ansSet = correctLetterSet(q);   /* accept 題把每個官方認可字母都標綠（grading.js） */
     var pickIdx = LETTERS.indexOf(e.pick);
     var ol = el('ol', { 'class': 'options' });
     q.options.forEach(function (opt, i) {
       var li = el('li');
       var cls = 'opt';
-      if (i === ansIdx) { cls += ' is-correct'; }
+      if (ansSet[LETTERS[i]]) { cls += ' is-correct'; }
       else if (i === pickIdx) { cls += ' is-wrong'; }
       else { cls += ' is-dim'; }
       var b = el('span', { 'class': cls });
@@ -186,7 +186,7 @@ function _histDetail(detail, e, q, isEssay) {
     });
     detail.appendChild(ol);
     detail.appendChild(el('p', { 'class': 'subtitle' },
-      '你的作答：' + (e.pick && e.pick !== '_' ? e.pick : '未作答') + '・正解：' + q.answer +
+      '你的作答：' + (e.pick && e.pick !== '_' ? e.pick : '未作答') + '・正解：' + answerLabelOf(q) +
       '・結果：' + (e.correct ? '答對' : '答錯')));
   } else if (isEssay) {
     detail.appendChild(el('p', { 'class': 'subtitle' },

@@ -54,5 +54,8 @@ function explEl(qid) {
   });
   box.appendChild(el('p', { 'class': 'explain-note' },
     'AI 整理的學習輔助，非官方標準答案；請對照現行' + EXAM.jurisdiction + '與課本查證。'));
+  /* 詳解內的 \(…\) LaTeX 也要渲染(數學科詳解會寫式子);與作答卡、歷史詳情一致。
+     此前只有題幹/選項渲染,詳解漏掉 → 學生看到的是原始的 \(x=y+z\)。 */
+  renderMath(box);
   return box;
 }
