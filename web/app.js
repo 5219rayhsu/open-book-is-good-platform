@@ -155,7 +155,8 @@ function defaultState() {
       includeDeprecated: false,  /* 停考科目(manifest deprecatedSubjects):預設排除出練習/統計/歷屆,打開即全站復原 */
       diagnosedAt: null, examGoal: null,  /* 入學診斷後寫入 */
       userName: '', namePromptedAt: null,  /* 命名功能(naming.js):學習者名字、是否問過 */
-      examCategories: []  /* 應考類科(空=全部類科,向下相容);僅分組考試(subjectGroupSep)生效 */
+      examCategories: [],  /* 應考類科(空=全部類科,向下相容);僅分組考試(subjectGroupSep)生效 */
+      essayElective: ''   /* 申論選試科目(空=全部列出,向下相容);僅 manifest 設 essayElectives 的考試生效 */
     }
   };
 }

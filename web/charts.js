@@ -18,6 +18,35 @@ function radarPoint(cx, cy, r, i) {
   return [cx + r * Math.cos(ang), cy + r * Math.sin(ang)];
 }
 
+/* 標籤估寬(px)。SVG 的 getBBox／getComputedTextLength 在隱藏面板裡回 0
+   (雷達常畫在未顯示的分頁),量不到,所以改用字寬估算:CJK 與全形標點約 1em、
+   其餘(數字/英文/空白/%)約 0.55em。只用來決定留白,估寬略寬無害。 */
+var RADAR_FS = 12;   /* 必須與 app.css 的 .svg-label font-size 一致 */
+
+/* 未測繪的科(剛加入／資料太少)不畫成 0 ——把「還沒練」畫成「能力 0」會讓剛選的科目
+   在雷達上看起來是最大破口,人與機器都會被誤導去猛攻它。標「校準中」,頂點暫時落在
+   及格線(0.6)位置,等有資料再顯示真值。 */
+function radarUnmapped(sub) {
+  return (typeof subjectPhase === 'function') && subjectPhase(sub) === 'unmapped';
+}
+
+/* 雷達標籤文字。量寬與畫字共用同一個來源,否則兩邊一旦漂移就又會截字。
+   顯示名依應考類科收斂(subjectDisplayLabel,app.js);stats 的鍵仍用原始 sub,不受影響。 */
+function radarLabelText(sub, stats) {
+  var t = stats[sub] || { n: 0, ok: 0 };
+  var dispSub = (typeof subjectDisplayLabel === 'function') ? subjectDisplayLabel(sub) : sub;
+  if (radarUnmapped(sub)) { return dispSub + ' 校準中'; }
+  return dispSub + ' ' + (t.n > 0 ? pct(t.ok / t.n) : '—');
+}
+
+function labelWidth(s) {
+  var w = 0;
+  for (var i = 0; i < s.length; i++) {
+    w += /[⺀-鿿　-〿＀-￯]/.test(s.charAt(i)) ? RADAR_FS : RADAR_FS * 0.55;
+  }
+  return w;
+}
+
 /* 把各科雷達畫進指定容器(能力雷達面板與入學診斷結果共用)。
    雷達至少要 3 軸才有意義;科數 <3(例如單科考試)時不畫雷達,改提示看下方各科表格。 */
 function drawRadarInto(box, stats) {
@@ -27,7 +56,20 @@ function drawRadarInto(box, stats) {
     return;
   }
   var W = 380, H = 330, cx = 190, cy = 168, R = 110;
-  var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img',
+  /* viewBox 依實際標籤長度撐開,不寫死。
+     🔴 2026-07-30 實測 bug:律師「商事法 校準中」落在左側(text-anchor:end、x=64),
+     需約 75px 但只有 64px 可用 → SVG 預設裁掉 viewBox 外的內容,第一個字被切掉,
+     手機上尤其明顯。桌機當時沒事只是碰巧左側是較短的科名——把科名縮寫是治症狀,
+     真正的治法是讓畫布配合標籤,這樣換任何考試/科名/字級都不會再截字。 */
+  var pad = 6, minX = 0, maxX = W;
+  SUBJECTS.forEach(function (sub, i) {
+    var lp = radarPoint(cx, cy, R + 16, i);
+    var w = labelWidth(radarLabelText(sub, stats));
+    var x0 = (Math.abs(lp[0] - cx) < 8) ? lp[0] - w / 2 : (lp[0] > cx ? lp[0] : lp[0] - w);
+    minX = Math.min(minX, x0 - pad);
+    maxX = Math.max(maxX, x0 + w + pad);
+  });
+  var svg = svgEl('svg', { viewBox: minX + ' 0 ' + (maxX - minX) + ' ' + H, role: 'img',
     'aria-label': '各科正確率雷達圖' });
   [0.25, 0.5, 0.75, 1].forEach(function (k) {
     var pts = SUBJECTS.map(function (_, i) { return radarPoint(cx, cy, R * k, i).join(','); });
@@ -44,14 +86,9 @@ function drawRadarInto(box, stats) {
     var anchor = (Math.abs(lp[0] - cx) < 8) ? 'middle' : (lp[0] > cx ? 'start' : 'end');
     var t = stats[sub];
     var acc = (t.n > 0) ? t.ok / t.n : 0;
-    /* 未測繪的科(剛加入／資料太少)不畫成 0 ——把「還沒練」畫成「能力 0」會讓
-       剛選的科目在雷達上看起來是最大破口,人與機器都會被誤導去猛攻它。
-       標「校準中」,頂點暫時落在及格線(0.6)位置,等有資料再顯示真值。 */
-    var unmapped = (typeof subjectPhase === 'function') && subjectPhase(sub) === 'unmapped';
+    var unmapped = radarUnmapped(sub);
     var label = svgEl('text', { x: lp[0], y: lp[1] + 4, 'text-anchor': anchor, 'class': 'svg-label' });
-    /* 顯示名依應考類科收斂(subjectDisplayLabel,app.js);stats 的鍵仍用原始 sub,不受影響。 */
-    var dispSub = (typeof subjectDisplayLabel === 'function') ? subjectDisplayLabel(sub) : sub;
-    label.textContent = dispSub + ' ' + (unmapped ? '校準中' : (t.n > 0 ? pct(acc) : '—'));
+    label.textContent = radarLabelText(sub, stats);
     svg.appendChild(label);
     dataPts.push(radarPoint(cx, cy, R * (unmapped ? 0.6 : acc), i).join(','));
   });

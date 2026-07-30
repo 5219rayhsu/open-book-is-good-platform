@@ -114,8 +114,33 @@ function coverageScore(userText, keywords) {
    讓歷史紀錄能還原已答過的舊年申論。 */
 function essaysUsable() {
   var inclLegacy = !!(typeof state !== 'undefined' && state.settings && state.settings.includeLegacy);
-  if (inclLegacy) { return ESSAYS; }
-  return ESSAYS.filter(function (e) { return e.legacy !== true; });
+  var pool = inclLegacy ? ESSAYS : ESSAYS.filter(function (e) { return e.legacy !== true; });
+  return applyElective(pool);
+}
+
+/* ===================== 申論選試科目 =====================
+   有些考試的申論科目分「共同」與「選試」:共同科目人人要考,選試科目只考其中一科
+   (律師第二試:智慧財產法／勞動社會法／財稅法／海商法與海洋法 四選一)。
+   manifest 設 essayElectives 才啟用;其餘考試恆回原樣,向下相容。
+   刻意只作用在申論分頁——律師第一試的 4 卷選擇題是全員同一份,沒有選擇可言,
+   把選試混進選擇題科目會讓使用者以為自己可以不考某一卷。 */
+function electiveCfg() {
+  return (typeof EXAM !== 'undefined' && EXAM && EXAM.essayElectives) || null;
+}
+function electiveChoice() {
+  var cfg = electiveCfg();
+  if (!cfg) { return ''; }
+  var v = (typeof state !== 'undefined' && state.settings) ? state.settings.essayElective : '';
+  /* 濾掉已不存在的舊值(選項改名／移除時),避免申論列表整頁空白 */
+  return (v && cfg.options.indexOf(v) >= 0) ? v : '';
+}
+/* 未選(空值)＝全部列出。選了就只留該科,其他選試科目移除;共同科目一律保留。 */
+function applyElective(pool) {
+  var cfg = electiveCfg(), pick = electiveChoice();
+  if (!cfg || !pick) { return pool; }
+  return pool.filter(function (e) {
+    return cfg.options.indexOf(e.subject) < 0 || e.subject === pick;
+  });
 }
 
 /* 申論科目清單:取自實際可練申論資料(細科),與選擇題科目清單(SUBJECTS)不同。 */
@@ -154,6 +179,32 @@ function essayOverviewEl() {
   return box;
 }
 
+/* 選試科目選單。整份重繪(onChange 回呼)而非只重繪列表,因為換選試會連帶影響
+   年份清單與上方的練習概況——只重繪列表會留下與新選擇不符的年份。 */
+function renderElectivePicker(box, onChange) {
+  var cfg = electiveCfg();
+  if (!cfg) { return; }
+  var wrap = el('div', { 'class': 'field-row' });
+  wrap.appendChild(el('label', { 'for': 'essay-elective' }, cfg.label + '：'));
+  var sel = el('select', { id: 'essay-elective' });
+  sel.appendChild(el('option', { value: '' }, '尚未決定（全部列出）'));
+  cfg.options.forEach(function (s) {
+    var n = ESSAYS.filter(function (e) { return e.subject === s; }).length;
+    sel.appendChild(el('option', { value: s }, s + '（' + n + ' 題）'));
+  });
+  sel.value = electiveChoice();
+  sel.addEventListener('change', function () {
+    /* 🔴 一定要走 patchSettings:saveState(next) 是 setter(state = next),
+       無參數呼叫會把全域 state 設成 undefined ——等於一點選單就清空整份學習紀錄。
+       patchSettings 同時符合本站的不可變更新慣例,不直接改 state.settings。 */
+    patchSettings({ essayElective: sel.value });
+    onChange();
+  });
+  wrap.appendChild(sel);
+  box.appendChild(wrap);
+  box.appendChild(el('p', { 'class': 'subtitle' }, cfg.note));
+}
+
 /* ---- 選單 ---- */
 function renderEssayPicker() {
   var box = $('essay-picker');
@@ -167,6 +218,8 @@ function renderEssayPicker() {
 
   var ov = essayOverviewEl();
   if (ov) { box.appendChild(ov); }
+
+  renderElectivePicker(box, function () { renderEssayPicker(); });
 
   var years = [];
   pool.forEach(function (e) { if (years.indexOf(e.year) < 0) { years.push(e.year); } });
@@ -184,7 +237,13 @@ function renderEssayPicker() {
   row.appendChild(el('label', { 'for': 'essay-subj' }, '科目：'));
   var ssel = el('select', { id: 'essay-subj' });
   ssel.appendChild(el('option', { value: '__all__' }, '全部'));
-  essaySubjects().forEach(function (s) { ssel.appendChild(el('option', { value: s }, s)); });
+  var subs = essaySubjects();
+  subs.forEach(function (s) { ssel.appendChild(el('option', { value: s }, s)); });
+  /* 切換選試科目(或 includeLegacy)後,原先選的科目可能已不在清單內 → 退回「全部」,
+     否則下拉會顯示空白、列表也空,看起來像壞掉。與上面年份的退回同一個道理。 */
+  if (essayPick.subject !== '__all__' && subs.indexOf(essayPick.subject) < 0) {
+    essayPick.subject = '__all__';
+  }
   ssel.value = essayPick.subject;
   ssel.addEventListener('change', function () { essayPick.subject = ssel.value; renderList(); });
   row.appendChild(ssel);
