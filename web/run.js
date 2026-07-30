@@ -613,7 +613,7 @@ function startSheet(questions, meta) {
         !confirm('還有 ' + (questions.length - answered) + ' 題未作答，確定交卷？')) { return; }
     graded = true;
     stopTimer();
-    var sub = {}, ok = 0, mcqTotal = 0;   /* mcqTotal＝可自動評分的選擇題數(非選不計入分數/落點) */
+    var sub = {}, ok = 0, mcqTotal = 0, freeN = 0;   /* mcqTotal＝可自動評分的選擇題數(非選不計入分數/落點);freeN＝其中的送分題數 */
     var cards = panel.querySelectorAll('.question-card');
     Array.prototype.forEach.call(cards, function (card, qi) {
       var q = card._qref; if (!q) { return; }
@@ -635,6 +635,7 @@ function startSheet(questions, meta) {
       if (typeof feedbackLink === 'function') {   /* 交卷後每題各一顆疑義與建議回報鈕(非整份一顆) */
         var _fbp = el('p', { 'class': 'review-fb' }); _fbp.appendChild(feedbackLink(q.qid)); card.appendChild(_fbp);
       }
+      if (q.answer === '#') { freeN += 1; }   /* 送分題:分數含它,落點/平均扣它(stats.js) */
       if (!sub[q.subject]) { sub[q.subject] = { n: 0, ok: 0 }; }
       sub[q.subject].n += 1; if (correct) { sub[q.subject].ok += 1; }
     });
@@ -644,7 +645,7 @@ function startSheet(questions, meta) {
     if (head) { head.classList.remove('over-suggest'); head.textContent = (forcedSubmit ? '時間到・' : '') + '作答約 ' + mins + ' 分鐘'; }
     /* 只有「考試形式整卷」(meta.graded)才登錄落點;短卷/練習不入,避免計分壓力。耗時(秒)一併入歷史(P5/ADR-0001 校準) */
     if (meta.graded && typeof recordExam === 'function') {
-      recordExam(meta.mode || 'mock', mcqTotal, ok, elapsed);   /* 落點只計選擇題,非選不汙染 */
+      recordExam(meta.mode || 'mock', mcqTotal, ok, elapsed, freeN);   /* 落點只計選擇題,非選不汙染;送分題另記,由 examStats 扣除 */
     }
     if (forcedSubmit) { announce('時間到，已自動交卷。'); }
     showSheetResult(ok, sub, mins, mcqTotal, questions.length - mcqTotal);

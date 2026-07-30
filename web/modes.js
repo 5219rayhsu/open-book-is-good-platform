@@ -600,7 +600,9 @@ function launchCluster(subject) {
   function add(list, cap, tag, why) {
     (list || []).slice(0, cap).forEach(function (x) {
       var qid = x && x.qid ? x.qid : x;
-      if (qid && !used[qid] && byQid[qid]) {
+      /* 同 enqueueRelated:新題必須在池內,已答過的才准許來自範圍外(ADR-0014 決策四)。 */
+      if (qid && !used[qid] && byQid[qid] &&
+          (typeof inPool !== 'function' || inPool(qid) || state.srs[qid])) {
         used[qid] = true; addedRel += 1;
         items.push({ q: byQid[qid], reasonTag: tag, reason: why });
       }

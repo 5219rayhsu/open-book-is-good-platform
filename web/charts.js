@@ -49,12 +49,35 @@ function labelWidth(s) {
 
 /* 把各科雷達畫進指定容器(能力雷達面板與入學診斷結果共用)。
    雷達至少要 3 軸才有意義;科數 <3(例如單科考試)時不畫雷達,改提示看下方各科表格。 */
+/* 軸數超過此值,雷達的形狀就不再有判讀價值——正 N 邊形逼近圓,而「圓」看起來像
+   「每科一樣強」,那是視覺假象不是結論。教檢未選類科時攤開全部 21 軸即為此況。 */
+var RADAR_READABLE_AXES = 8;
+
+/* 分組考試(教檢:類科・科目)未選類科時,提示唯一能讓雷達變好讀的動作。
+   不隱藏圖表——資料照畫,只是明講形狀此刻不可讀,以及怎麼讓它可讀。 */
+function radarScopeHint(box) {
+  var grouped = (typeof EXAM !== 'undefined') && EXAM && EXAM.subjectGroupSep;
+  var noCat = (typeof activeCategories === 'function') && activeCategories() === null;
+  if (!grouped || !noCat || SUBJECTS.length <= RADAR_READABLE_AXES) { return; }
+  var p = el('p', { 'class': 'subtitle' });
+  p.appendChild(document.createTextNode(
+    '目前未選應考類科，雷達攤開全部 ' + SUBJECTS.length + ' 個「類科・科目」軸。' +
+    '軸一多，正多邊形就逼近圓形，看起來像「每科一樣強」——那是軸數造成的視覺假象，不是你的能力輪廓。' +
+    '選定類科後只會留下 4–5 軸，形狀才讀得出強弱。'));
+  var b = el('button', { type: 'button', 'class': 'btn-quiet' }, '到設定選應考類科');
+  b.addEventListener('click', function () { if (typeof openSettings === 'function') { openSettings(); } });
+  p.appendChild(document.createTextNode(' '));
+  p.appendChild(b);
+  box.appendChild(p);
+}
+
 function drawRadarInto(box, stats) {
   box.textContent = '';
   if (SUBJECTS.length < 3) {
     box.appendChild(el('p', { 'class': 'subtitle' }, '科目數少於 3，雷達圖不適用；各科正確率請見下方表格。'));
     return;
   }
+  radarScopeHint(box);
   var W = 380, H = 330, cx = 190, cy = 168, R = 110;
   /* viewBox 依實際標籤長度撐開,不寫死。
      🔴 2026-07-30 實測 bug:律師「商事法 校準中」落在左側(text-anchor:end、x=64),
@@ -71,6 +94,15 @@ function drawRadarInto(box, stats) {
   });
   var svg = svgEl('svg', { viewBox: minX + ' 0 ' + (maxX - minX) + ' ' + H, role: 'img',
     'aria-label': '各科正確率雷達圖' });
+  /* 🔴 2026-07-31：畫布會為了容納標籤而變寬，但 CSS 把渲染寬度**寫死**在 24rem
+     (`app.css` #radar-box)，於是「標籤愈長 → viewBox 愈寬 → 同樣 24rem 要塞更多內容
+     → 整張圖被縮小」。教檢 21 科、科名又長，viewBox 657 單位只渲染成 359px（縮到
+     0.55 倍，半徑只剩 60px），比學測的 92px 小三成——使用者看到的「教檢雷達特別小」
+     就是這個。**治法是讓渲染寬度跟著 viewBox 走**，這樣不論幾科、科名多長，
+     圖形本身都是同一個物理大小；窄螢幕仍靠 width:100% 自然縮。 */
+  var REM_PER_UNIT = 24 / W;      /* 以原始 380 單位 = 24rem 為基準，維持既有觀感 */
+  svg.style.width = '100%';
+  svg.style.maxWidth = ((maxX - minX) * REM_PER_UNIT).toFixed(2) + 'rem';
   [0.25, 0.5, 0.75, 1].forEach(function (k) {
     var pts = SUBJECTS.map(function (_, i) { return radarPoint(cx, cy, R * k, i).join(','); });
     svg.appendChild(svgEl('polygon', { points: pts.join(' '), 'class': 'svg-grid' }));
@@ -188,6 +220,7 @@ function renderRadarTable(stats) {
 function dailySeries() {
   var byDate = {};
   state.log.forEach(function (e) {
+    if (typeof countsForStats === 'function' && !countsForStats(e)) { return; }
     if (!byDate[e.t]) { byDate[e.t] = { n: 0, ok: 0 }; }
     byDate[e.t].n += 1;
     if (e.correct) { byDate[e.t].ok += 1; }
@@ -230,7 +263,7 @@ function timePartStats() {
   var by = { '上午': { n: 0, ok: 0 }, '下午': { n: 0, ok: 0 },
              '晚上': { n: 0, ok: 0 }, '深夜': { n: 0, ok: 0 } };
   state.log.forEach(function (e) {
-    if (e.mode === 'essay' || typeof e.correct !== 'boolean') { return; }
+    if (typeof countsForStats === 'function' && !countsForStats(e)) { return; }
     var p = (typeof dayPart === 'function') ? dayPart(e.ts) : null;
     if (p && by[p]) { by[p].n += 1; if (e.correct) { by[p].ok += 1; } }
   });

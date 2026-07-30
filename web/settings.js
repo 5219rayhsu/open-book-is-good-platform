@@ -156,6 +156,70 @@ function _examSubjectSection() {
     '變更會重新整理頁面。', box);
 }
 
+/* 年份範圍(要練哪幾年的考卷)。與「應考科目」同一套資料契約:
+   空陣列/全選 ＝ 全部年份;只縮題池,不動作答紀錄與雷達(見 app.js 的 ACTIVE_YEAR_SET 註解、ADR-0014)。 */
+function _examYearSection() {
+  var all = (typeof allYears === 'function') ? allYears() : [];
+  if (all.length < 2) { return null; }   /* 只有一年可選 ＝ 沒有選擇可言,不顯示 */
+  var curSel = (state.settings.years && state.settings.years.length)
+    ? state.settings.years.map(Number) : all.slice();
+
+  var wrap = el('div', { 'class': 'subj-checks' });
+  var checks = [];
+  all.forEach(function (y) {
+    var lab = el('label', { 'class': 'chk chk-inline' });
+    var cb = el('input', { type: 'checkbox', value: String(y) });
+    cb.checked = curSel.indexOf(y) >= 0;
+    checks.push(cb);
+    lab.appendChild(cb);
+    lab.appendChild(document.createTextNode(' ' + y + ' 年'));
+    wrap.appendChild(lab);
+  });
+
+  var hint = el('p', { 'class': 'subtitle' }, '');
+  /* 即時算出「這樣選會剩幾題」——選擇的後果要當場看得見,而不是存檔 reload 之後才發現
+     題池小到不夠練。也順帶點出哪些科在此範圍內沒題目(縮年份可能讓某科整個空掉)。 */
+  function preview() {
+    if (!bank) { hint.textContent = ''; return; }
+    var picked = checks.filter(function (c) { return c.checked; }).map(function (c) { return Number(c.value); });
+    if (!picked.length) { hint.textContent = '至少選一年。'; return; }
+    /* 🔴 走 `isPracticable` 這支正本,不要在這裡抄一份過濾條件。抄一半的實測後果:
+       只看 `parse === 'ok'` 而漏看 legacy 與 includeReview → 預覽的數字跟存檔後
+       真正拿到的題數不一樣,使用者按下去才發現沒題可練。 */
+    var n = 0, bySub = {};
+    bank.questions.forEach(function (q) {
+      if (picked.indexOf(Number(q.year)) < 0) { return; }
+      if (!isPracticable(q, { ignoreYear: true })) { return; }
+      n += 1; bySub[q.subject] = (bySub[q.subject] || 0) + 1;
+    });
+    var empty = SUBJECTS.filter(function (s) { return !bySub[s]; });
+    hint.textContent = '此範圍共 ' + n + ' 題可練。' +
+      (empty.length ? '（' + empty.length + ' 個科目在這些年份沒有題目：' +
+        empty.slice(0, 3).join('、') + (empty.length > 3 ? ' 等' : '') + '）' : '');
+  }
+  checks.forEach(function (c) { c.addEventListener('change', preview); });
+  preview();
+
+  var saveBtn = el('button', { type: 'button' }, '儲存並套用');
+  saveBtn.addEventListener('click', function () {
+    var picked = checks.filter(function (c) { return c.checked; }).map(function (c) { return Number(c.value); });
+    if (picked.length === 0) { hint.textContent = '至少選一年。'; return; }
+    patchSettings({ years: (picked.length === all.length) ? [] : picked });   /* 全選存空陣列 ＝ 全部 */
+    location.reload();
+  });
+
+  var box = el('div', null);
+  box.appendChild(wrap);
+  box.appendChild(hint);
+  box.appendChild(saveBtn);
+  return _setSection('年份範圍',
+    '勾選你要練哪幾年的考卷（可複選、至少一年）。之後出題、歷屆原卷、模擬考、學習藍圖的題數都只看選定年份。' +
+    '中途增減年份都可以：**作答紀錄與能力雷達一律保留不變**——年份不是能力的一個面向，' +
+    '少練某一年並不會讓你在該科已展現的程度失效，所以**不像新增科目那樣需要校準期**，加了就能直接練。' +
+    '真正會跟著動的是「學習藍圖」的每週題數：題池變小，未掌握題數就變少，每週工作量隨之下修。' +
+    '變更會重新整理頁面。', box);
+}
+
 /* 停考科目區塊(僅該考試 manifest 有 deprecatedSubjects 才顯示,如社工「社會工作管理」):
    二元開關「排除（預設）」／「納入練習」,寫入 state.settings.includeDeprecated 後 reload——
    computeActiveSubjects()(app.js)在載入期算定一次,靠 reload 最簡單可靠。 */
@@ -216,6 +280,10 @@ function renderSettings() {
   /* 應考科目(僅自選組合的考試,如學測):兩層設計的第二層,獨立於入學測驗、隨時可改。 */
   var subjSection = _examSubjectSection();
   if (subjSection) { sheet.appendChild(subjSection); }
+
+  /* 年份範圍(所有考試皆適用,不限 elective——「只練近三年」是每一科都會有的需求)。 */
+  var yearSection = _examYearSection();
+  if (yearSection) { sheet.appendChild(yearSection); }
 
   /* 停考科目(僅該考試 manifest 有 deprecatedSubjects 才顯示;社工無類科區,此區自成一段)。 */
   var depSection = _deprecatedSubjectsSection();

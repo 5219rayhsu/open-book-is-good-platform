@@ -34,9 +34,13 @@ function resolveExpl(onReady) {
 function explFor(qid) {
   var e = EXPL[qid];
   if (!e) { return null; }
-  if (typeof e === 'string') { return { t: e, c: 'med' }; }
+  if (typeof e === 'string') { return { t: e, c: 'watch' }; }
   return (e && e.t) ? e : null;
 }
+
+/* 要不要掛「請務必查證」的小字。新制 hold、舊制 low 都算——舊值要繼續認,
+   因為使用者裝置上的離線快取可能還是遷移前的 explanations.json。 */
+function needsCaveat(c) { return c === 'hold' || c === 'low'; }
 
 /* 答完後掛在題卡下的「本題解釋」區塊:一段解釋 + 一行誠實小字。保持乾淨。 */
 function explEl(qid) {
@@ -44,7 +48,10 @@ function explEl(qid) {
   if (!e || !e.t) { return null; }
   var box = el('div', { 'class': 'explain' });
   box.appendChild(el('div', { 'class': 'explain-head' },
-    '本題解釋' + (e.c === 'low' ? '（把握度較低，請務必查證）' : '')));
+    /* 分級制 2026-07-30 換新：pass／watch／hold,字面自帶方向,不再用 high／med／low
+       ——舊制的 high 在詳解是「好」、在資料缺陷是「壞」,同一個詞兩個方向,人眼會讀反。
+       舊值一併認,因為離線快取的舊 explanations.json 可能還在使用者裝置上。 */
+    '本題解釋' + (needsCaveat(e.c) ? '（把握度較低，請務必查證）' : '')));
   /* 三段式詳解以空行(\n\n)分段。早期靠 white-space:pre-line 讓空行自己撐開,
      但空行高度＝一整個 line-height(1.78),段距過大。改成逐段各自成 <p>,
      段距交給 CSS 的相鄰選擇器控制;資料端的 \n\n 語意分隔維持不動。 */

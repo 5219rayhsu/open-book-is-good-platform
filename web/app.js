@@ -250,6 +250,47 @@ function refreshActiveSubjects() {
 }
 refreshActiveSubjects();
 
+/* ===================== 年份範圍(考卷份數) =====================
+   🔴 年份與科目是**不同種類的範圍**,這個區別決定了分析要怎麼反應(見 ADR-0014):
+
+     科目是雷達的一根軸。新增一科 → 多一個「沒有資料的能力維度」→ 需要校準期
+       (ADR-0012 的 unmapped),否則系統會把「還沒練過」誤讀成「特別弱」而灌題。
+     年份不是任何一根軸。多收 111 年的考卷,並不會讓你對「國綜」的估計失效——
+       那一科早就測繪過了。所以**年份增減不需要校準期**,加了就直接能練。
+
+   年份唯一影響的是**題池**:出題來源、學習藍圖的未掌握題數、覆蓋率分母。
+   雷達與正確率一律讀既有作答紀錄,不因為某年退出視野就把已展現的能力抹掉
+   ——與 ADR-0012「退選只移出視野,絕不刪資料」同一條原則。 */
+var ACTIVE_YEAR_SET = null;   /* null ＝ 全部年份(未設定/空陣列/全選) */
+/* 可勾選的年份：只列「**忽略年份條件後仍有題可練**」的年份。
+   直接掃全題庫會列出 legacy 年份(101-109),使用者勾了卻一題都練不到——
+   選單本身就不該提供一個必定落空的選項。 */
+function allYears() {
+  if (!bank || !bank.questions) { return []; }
+  var seen = {};
+  bank.questions.forEach(function (q) {
+    if (q.year != null && isPracticable(q, { ignoreYear: true })) { seen[String(q.year)] = true; }
+  });
+  return Object.keys(seen).map(Number).sort(function (a, b) { return b - a; });
+}
+function activeYears() {
+  var sel = state.settings && state.settings.years;
+  if (!Array.isArray(sel) || !sel.length) { return null; }
+  var all = allYears();
+  /* 濾掉「已不存在於本題庫」的舊值(新增年份、下架年份後的殘留),與 activeCategories 同紀律 */
+  var valid = sel.map(Number).filter(function (y) { return all.indexOf(y) >= 0; });
+  return valid.length ? valid : null;
+}
+function refreshActiveYears() {
+  var ys = activeYears();
+  if (!ys) { ACTIVE_YEAR_SET = null; return; }
+  ACTIVE_YEAR_SET = {};
+  ys.forEach(function (y) { ACTIVE_YEAR_SET[String(y)] = true; });
+}
+function yearInScope(q) {
+  return !ACTIVE_YEAR_SET || !!ACTIVE_YEAR_SET[String(q.year)];
+}
+
 /* 把「目前生效科目」寫進啟用時段帳本(settings.subjectSpans):
    新生效→開一段;不再生效→把最後一段收尾。**只記錄、不刪任何作答資料**——
    退選只是把該科移出練習視野,三年內再加回來時舊紀錄與 SRS 都還在,
@@ -284,6 +325,18 @@ function inScope(qid) {
   var q = byQid[qid];
   return !!(q && ACTIVE_SUBJ_SET[q.subject]);
 }
+/* 🔴 「可以**當成新題端出來**嗎」——出題側專用,與 inScope(視野)刻意分開。
+
+   關聯補強、弱點題組這兩條路徑是直接查 `byQid`(全量)拿題的,繞過了 usable 這個池子。
+   科目退選時它們碰巧被 inScope 擋住,年份卻沒有——於是把年份縮到只剩 115 年之後,
+   答錯一題仍會把 111 年的題塞進佇列,與設定頁「之後出題只看選定年份」的承諾相牴觸。
+
+   分界訂在**新題 vs 複習**(ADR-0014 決策四):
+     - 已答過的題(SRS 到期、錯題本、儲存題)照舊可複習——「退選只移出視野,不刪資料」,
+       把已經在你腦子裡的複習排程砍掉,只會讓間隔複習斷掉,那不是使用者要的。
+     - **尚未答過的新題必須在 usable 內**,否則等於從你已排除的範圍裡挖題給你練。 */
+var POOL_SET = {};
+function inPool(qid) { return !!POOL_SET[qid]; }
 /* 科目顯示名:只在「恰選一個類科」時省去類科前綴(同分組內科目已無混淆之虞);
    其餘情況(全部類科／選多個類科／非分組考試)照原樣顯示,避免同名科目混淆(如「國語文能力測驗」)。 */
 function subjectDisplayLabel(sub) {
@@ -406,21 +459,32 @@ var usable = [];        /* 可練題(parse ok + 有答案;設定可納入待校�
 var byQid = {};
 var papersIndex = [];   /* [{year,round,subject,qids:[...]}] 供「歷屆原卷」 */
 
+/* 「這題現在可不可以練」——**唯一正本**。
+   🔴 設定頁的年份預覽、`allYears()` 都必須走這支,不可以各抄一份條件。實測抄一半的
+   後果:預覽只看 `parse === 'ok'`、不看 legacy,於是社工只勾 105 年時預覽說「共 N 題可練」,
+   存檔 reload 後 legacy 全被踢掉 → 整站 0 題可練,而且沒有任何解釋。
+   `opts.ignoreYear` 供設定頁預覽用(它要自己帶當下勾選的年份,而非已存檔的那組)。 */
+function isPracticable(q, opts) {
+  opts = opts || {};
+  if (!ACTIVE_SUBJ_SET[q.subject]) { return false; }
+  if (!opts.ignoreYear && !yearInScope(q)) { return false; }
+  if (q.legacy === true && !state.settings.includeLegacy) { return false; }
+  var parseOk = (q.parse === 'ok') || (state.settings.includeReview && q.parse === 'review');
+  /* 可練＝有答案＋至少 2 選項。寫死「恰 4 選項」會誤排 5 選項自然/社會、10 選項英文
+     克漏字等「非 4 選項的單選題」(gsat 約 258 題);多選題(type=多選,gsat 213 題)亦納入
+     ——多選 UI／集合評分已支援(run.js wireMultiToggle/markMCQCard、recordAnswer 排序比對)。 */
+  return !!(parseOk && q.answer && q.options && q.options.length >= 2);
+}
 function rebuildUsable() {
-  var inclReview = state.settings.includeReview;
-  var inclLegacy = !!state.settings.includeLegacy;   /* 舊存檔無此欄 → false */
   usable = []; byQid = {};
   if (!bank) { return; }
+  refreshActiveYears();
   bank.questions.forEach(function (q) {
     byQid[q.qid] = q;   /* byQid 保留全題庫,讓歷史紀錄能還原已答過的舊年題 */
-    if (!ACTIVE_SUBJ_SET[q.subject]) { return; }   /* 應考類科過濾;byQid 仍全量 */
-    if (q.legacy === true && !inclLegacy) { return; }   /* 預設排除 101-109 歷史題庫 */
-    var parseOk = (q.parse === 'ok') || (inclReview && q.parse === 'review');
-    /* 可練＝有答案＋至少 2 選項。寫死「恰 4 選項」會誤排 5 選項自然/社會、10 選項英文
-       克漏字等「非 4 選項的單選題」(gsat 約 258 題);多選題(type=多選,gsat 213 題)亦納入
-       ——多選 UI／集合評分已支援(run.js wireMultiToggle/markMCQCard、recordAnswer 排序比對)。 */
-    if (parseOk && q.answer && q.options.length >= 2) { usable.push(q); }
+    if (isPracticable(q)) { usable.push(q); }
   });
+  POOL_SET = {};
+  usable.forEach(function (q) { POOL_SET[q.qid] = true; });
   buildPapersIndex();
 }
 function buildPapersIndex() {
@@ -438,6 +502,7 @@ function buildPapersIndex() {
     bank.questions.forEach(function (q) {
       if (q.type !== '非選' || q.parse !== 'ok') { return; }
       if (q.legacy === true && !inclLegacy) { return; }
+      if (!ACTIVE_SUBJ_SET[q.subject] || !yearInScope(q)) { return; }   /* 非選也要吃同一組範圍 */
       add(q);
     });
   }
@@ -461,13 +526,18 @@ function setBank(obj) {
 }
 function setRelations(map) { relations = map; renderStatus(); }
 
-/* ===================== 統計:科目正確率、弱項權重 ===================== */
+/* ===================== 統計:科目正確率、弱項權重 =====================
+   單一判準:這筆作答能不能用來推論「能力」。申論走涵蓋度、送分題對所有人都給分,
+   兩者都不能進正確率;整卷分數是另一回事(見 recordAnswer 的 entry.free 註解)。 */
+function countsForStats(e) {
+  return e.mode !== 'essay' && !e.free && typeof e.correct === 'boolean';
+}
 function subjectStats(recentOnly) {
   var slice = recentOnly ? state.log.slice(-RECENT_LOG) : state.log;
   var s = {};
   SUBJECTS.forEach(function (sub) { s[sub] = { n: 0, ok: 0 }; });
   slice.forEach(function (e) {
-    if (e.mode === 'essay') { return; }  /* 申論以涵蓋度計分,不混入選擇題正確率雷達 */
+    if (!countsForStats(e)) { return; }  /* 申論以涵蓋度計分、送分題不具鑑別度,皆不進雷達 */
     if (!s[e.subject]) { return; }       /* 略過非預期科目(匯入的舊紀錄),避免冒出意外鍵 */
     s[e.subject].n += 1;
     if (e.correct) { s[e.subject].ok += 1; }
@@ -616,6 +686,10 @@ function recordAnswer(q, pickedLetter, opts) {
     t: todayStr(), ts: nowStamp(), qid: q.qid, subject: q.subject,
     correct: correct, pick: pickedLetter, mode: opts.mode || 'practice'
   };
+  /* 送分題(#)標記出來:整卷分數要算它(39/40 對卻報 39 題是錯的),但**能力雷達、
+     正確率、趨勢、時段一律不算**——它對所有人都是「對」,加進分母分子只會把每個人的
+     正確率往同一個方向推,是雜訊不是訊號。舊紀錄沒有這個欄位,讀取端一律當 false。 */
+  if (q.answer === '#') { entry.free = true; }
   /* 標記(見 ADR-0009):該次作答若標記過此題,隨這筆歷史紀錄一併存(qid 陣列,跟其餘欄位一樣扁平);
      未標記則省略欄位,舊紀錄沒有這個欄位時讀取端一律當空處理。 */
   if (opts.flagged) { entry.flags = [q.qid]; }
@@ -636,7 +710,10 @@ function enqueueRelated(q) {
   }
   function push(ids, why) {
     ids.forEach(function (qid) {
-      if (qid && qid !== q.qid && byQid[qid]) { adds.push({ qid: qid, why: why, from: q.qid }); }
+      /* 新題必須在池內;已答過的(有 SRS 卡)才准許來自範圍外——複習不砍,新題不挖。 */
+      if (qid && qid !== q.qid && byQid[qid] && (inPool(qid) || state.srs[qid])) {
+        adds.push({ qid: qid, why: why, from: q.qid });
+      }
     });
   }
   if (rel) {

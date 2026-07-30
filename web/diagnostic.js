@@ -26,6 +26,19 @@ function maybeStartDiagnostic() {
   showDiagOverlay();
 }
 
+/* 診斷所需時間，由**題數**推導，不寫死。
+   🔴 原本兩張卡片寫死「約 10 分鐘」，而它跟實際題數完全脫鉤——這在**每一個考試**都是錯的，
+   不只教檢：學測 6 科 ×4 ＝ 24 題其實約 29 分鐘；教檢未選類科時是 84 題、約 101 分鐘，
+   卻同樣寫著「約 10 分鐘」，差了十倍。使用者是照這個數字決定要不要做的，寫死等於騙他。
+   係數用本專案既有的 **1.2 分/題**（ADR-0001：官方時間 ÷ 官方題數，實證 ≈1.2），
+   不另立一套。 */
+var DIAG_MIN_PER_Q = 1.2;
+function diagMins(n) {
+  var m = Math.max(1, Math.round(n * DIAG_MIN_PER_Q));
+  return m < 60 ? ('約 ' + m + ' 分鐘')
+    : ('約 ' + Math.floor(m / 60) + ' 小時' + (m % 60 ? ' ' + (m % 60) + ' 分' : ''));
+}
+
 function showDiagOverlay() {
   var ov = $('diag-overlay');
   ov.hidden = false;
@@ -44,8 +57,20 @@ function showDiagOverlay() {
   function renderChoices() {
     choices.textContent = '';
     var n = SUBJECTS.length;
-    choices.appendChild(diagChoice('簡短診斷', '每科 ' + DIAG_SHORT_PER + ' 題，共 ' + (DIAG_SHORT_PER * n) + ' 題', '逐題即時對錯，約 10 分鐘。\n快速抓出強弱輪廓。', function () { startDiagnostic('short'); }));
-    choices.appendChild(diagChoice('完整模擬', '每科 ' + DIAG_FULL_PER + ' 題，共 ' + (DIAG_FULL_PER * n) + ' 題', '整卷計時、交卷評分。\n最接近真實考試手感。', function () { startDiagnostic('full'); }));
+    choices.appendChild(diagChoice('簡短診斷',
+      '每科 ' + DIAG_SHORT_PER + ' 題，共 ' + (DIAG_SHORT_PER * n) + ' 題（' + diagMins(DIAG_SHORT_PER * n) + '）',
+      '逐題即時對錯。\n快速抓出強弱輪廓。', function () { startDiagnostic('short'); }));
+    choices.appendChild(diagChoice('完整模擬',
+      '每科 ' + DIAG_FULL_PER + ' 題，共 ' + (DIAG_FULL_PER * n) + ' 題（' + diagMins(DIAG_FULL_PER * n) + '）',
+      '整卷計時、交卷評分。\n最接近真實考試手感。', function () { startDiagnostic('full'); }));
+  }
+  /* 分組考試(教檢:類科・科目)必須在這裡先問類科,否則診斷會用**全部** 21 科出題:
+     簡短 84 題、完整 210 題——沒有人會做完，而且遠超過該科正式考試的規模。
+     選定類科後收斂成 4–5 科（教檢正式考試就是考 4 科），份量才對得上真實考試。
+     年份不在這裡問（見 ADR-0016）：年份是「練習範圍」不是「應考身分」，
+     放進第一次見面的畫面只會多一個此刻無從判斷的選擇。 */
+  if (typeof allCategoryNames === 'function' && allCategoryNames()) {
+    sheet.appendChild(diagCategoryPicker(renderChoices));
   }
   if (EXAM.elective) { sheet.appendChild(diagSubjectPicker(renderChoices)); }
   renderChoices();
@@ -84,6 +109,11 @@ function diagSubjectPicker(onChange) {
       if (picked.length === 0) { cb.checked = true; return; }   /* 至少一科 */
       patchSettings({ subjects: picked.length === all.length ? [] : picked });
       refreshActiveSubjects();
+      /* 🔴 usable/papersIndex 依賴同一組範圍,漏了它 SUBJECTS 會與題池不同步:
+         在 overlay 勾入新科目 → 診斷對該科抽到 0 題(題數比畫面宣稱的少),
+         而且整個 session 都不 reload,診斷完回單題練習該科依然一題都不出。
+         設定頁走 location.reload() 所以沒事,這裡是就地更新才需要自己補。 */
+      rebuildUsable();
       var spans = syncSubjectSpans(state.settings);
       if (spans) { patchSettings({ subjectSpans: spans }); }
       onChange();
@@ -91,6 +121,42 @@ function diagSubjectPicker(onChange) {
     checks.push(cb);
     lab.appendChild(cb);
     lab.appendChild(document.createTextNode(' ' + s));
+    wrap.appendChild(lab);
+  });
+  box.appendChild(wrap);
+  return box;
+}
+/* 診斷前的應考類科勾選（分組考試專用；教檢 5 個類科）。
+   與設定頁的「應考類科」寫同一個 `state.settings.examCategories`，不是第二份資料
+   ——兩份會立刻打架（ADR-0012 決策一同一條理由）。差別只在這裡是新使用者第一次
+   遇到它的入口，而且改動要**即時**反映在下方的題數上，所以就地重算而不 reload。 */
+function diagCategoryPicker(onChange) {
+  var allCats = allCategoryNames();
+  var cur = (state.settings.examCategories && state.settings.examCategories.length)
+    ? state.settings.examCategories.slice() : allCats.slice();
+  var box = el('div', { 'class': 'diag-subjects' });
+  box.appendChild(el('p', { 'class': 'diag-lead' },
+    '你要報考哪個類科？（之後可在「設定」隨時改）'));
+  var wrap = el('div', { 'class': 'subj-checks' });
+  var checks = [];
+  allCats.forEach(function (c) {
+    var lab = el('label', { 'class': 'chk chk-inline' });
+    var cb = el('input', { type: 'checkbox', value: c });
+    cb.checked = cur.indexOf(c) >= 0;
+    cb.addEventListener('change', function () {
+      var picked = checks.filter(function (x) { return x.checked; }).map(function (x) { return x.value; });
+      if (picked.length === 0) { cb.checked = true; return; }   /* 至少一個類科 */
+      patchSettings({ examCategories: picked.length === allCats.length ? [] : picked });
+      refreshActiveSubjects();
+      rebuildUsable();   /* 題池要跟著收斂,否則抽題時該科 0 題(見 diagSubjectPicker 同一註解) */
+      var spans = (typeof syncSubjectSpans === 'function') ? syncSubjectSpans(state.settings) : null;
+      if (spans) { patchSettings({ subjectSpans: spans }); }
+      onChange();
+    });
+    checks.push(cb);
+    lab.appendChild(cb);
+    lab.appendChild(document.createTextNode(' ' +
+      ((typeof subjectGroupLabel === 'function') ? subjectGroupLabel(c) : c)));
     wrap.appendChild(lab);
   });
   box.appendChild(wrap);

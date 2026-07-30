@@ -294,7 +294,7 @@ function tempoBuildEntries(log) {
   var out = [], arr = log || [], i;
   for (i = 0; i < arr.length; i++) {
     var e = arr[i];
-    if (e.mode !== 'practice' || typeof e.correct !== 'boolean') { continue; }
+    if (e.mode !== 'practice' || typeof e.correct !== 'boolean' || e.free) { continue; }
     var ms = (typeof tempoMs === 'function') ? tempoMs(e.ts) : null;
     if (ms === null) { continue; }
     var dp = (typeof dayPart === 'function') ? dayPart(e.ts) : null;
@@ -457,15 +457,12 @@ function tempoDecision() {
       st = '如常';
       msg = '你在「' + curPart + '」的表現與自己平常相當（' + prof.n + ' 題），照原本的弱項配比練即可。';
     } else {
+      /* 樣本不夠就**什麼都不說**。原本會報「約再 117 題（或 9 場）就能開始分析這個時段」——
+         那是把系統的內部狀態當成給使用者的任務,讀起來像個沒做完的進度條,但使用者並不是
+         為了解鎖這個分析而練題。時段分析本來就是達標後自動出現的東西,沒到就安靜。
+         `state` 仍標 '資料不足',讓呼叫端知道此刻沒有結論可用(見 §4 展示層)。 */
       st = '資料不足';
-      var gap = prof ? Math.max(0, Math.ceil(T2_MIN_DAYPART_ENTRIES - prof.nEffEntries)) : T2_MIN_DAYPART_ENTRIES;
-      var gapSess = prof ? Math.max(0, Math.ceil(T2_MIN_CLUST_CLAIM - prof.nEffClust)) : T2_MIN_CLUST_CLAIM;
-      var where = curPart || '這個時段';
-      if (gap <= 0 && gapSess > 0) {
-        msg = '「' + where + '」的紀錄還不夠下判斷——約再 ' + gapSess + ' 場就能開始分析這個時段。';
-      } else {
-        msg = '「' + where + '」的紀錄還不夠下判斷——約再 ' + gap + ' 題（或 ' + gapSess + ' 場）就能開始分析這個時段。';
-      }
+      msg = '';
     }
   }
   var out = { state: st, message: msg, layer: layer };

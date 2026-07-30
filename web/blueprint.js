@@ -9,11 +9,18 @@
    showPanel / diffDays / todayStr / pct / $ / el。
    ============================================================ */
 
+/* 🔴 只算**目前範圍內**的題。`byQid` 是全題庫(刻意如此,歷史紀錄要能還原已退選的舊題),
+   拿它當分母以外的來源會讓「已掌握」把範圍外的題也算進來:退掉某科／某年之後,
+   `weeklyTarget` 的 remain = usable.length − mastered 會被範圍外的已掌握題硬扣一大塊,
+   每週題數憑空塌下來——那些題並沒有變簡單,只是不在視野內。`Math.max(0, …)` 只是把
+   負數藏起來,不是修好。`renderCoverage` 本來就再與 usable 交集一次,改在這裡最省事。 */
 function masteredSet() {
   var m = {};
   var need = masterRepsFor();
+  var inScope = {};
+  usable.forEach(function (q) { inScope[q.qid] = true; });
   Object.keys(state.srs).forEach(function (qid) {
-    if (byQid[qid] && state.srs[qid].reps >= need) { m[qid] = true; }
+    if (inScope[qid] && state.srs[qid].reps >= need) { m[qid] = true; }
   });
   return m;
 }
@@ -73,6 +80,18 @@ function renderBlueprint() {
   $('plan-detail').textContent = '公式：每週題數 = 未掌握題數 ÷ 剩餘週數。「已掌握」= 同一題連續答對 ' +
     masterRepsFor() + ' 次（無基礎門檻較高）。起算日 ' + state.settings.start + '，全程 ' + wt.weeks +
     ' 週，已掌握 ' + wt.mastered + ' 題。' + planPolicyText();
+  /* 診斷狀態要說出來。`examGoal.kind === 'skipped'` 一直有存,卻沒有任何畫面讀它——
+     於是略過的人看到的藍圖跟做完的人一模一樣,也不知道還能回去做。 */
+  var ds = $('diag-state');
+  if (ds) {
+    var g = state.settings.examGoal;
+    var done = g && g.kind !== 'skipped';
+    ds.textContent = done
+      ? '入學診斷：已於 ' + (g.diagnosedDate || state.settings.diagnosedAt) + ' 完成'
+      : '入學診斷：尚未做過（先前略過）';
+    var rb = $('btn-rediagnose');
+    if (rb) { rb.textContent = done ? '重做入學診斷' : '做入學診斷'; }
+  }
   $('include-review').checked = !!state.settings.includeReview;
   var legacyChk = $('include-legacy');
   if (legacyChk) { legacyChk.checked = !!state.settings.includeLegacy; }
@@ -125,3 +144,47 @@ function setBasis(basis) { patchSettings({ planBasis: basis }); renderBlueprint(
 function setWeeks(weeks) { patchSettings({ planWeeks: weeks }); renderBlueprint(); renderPracticeHead(); }
 /* P4 預計考試日期(選填):設了就接管「剩餘週數」;清除則回 半年/一年 時程。 */
 function setExamDate(val) { patchSettings({ examDate: val || '' }); renderBlueprint(); renderPracticeHead(); }
+
+/* ===================== 自我驗證(console 呼叫 selfTestScope()) =====================
+   驗「範圍」的兩件事,兩件都是**看畫面看不出來**的:
+     ① 年份只縮題池,不動作答紀錄與雷達(ADR-0014)
+     ② 已掌握題數必須與題池同範圍,否則退選後每週題數會憑空塌陷 */
+function selfTestScope() {
+  var out = [], pass = 0;
+  function assert(name, cond) { out.push((cond ? '✓ ' : '✗ ') + name); if (cond) { pass += 1; } }
+
+  var savedUsable = usable, savedSrs = state.srs, savedYears = state.settings.years;
+
+  /* 情境：題庫 111-115 各 100 題，學生已把 111 年的 60 題練到掌握。 */
+  var all = [];
+  [111, 112, 113, 114, 115].forEach(function (y) {
+    for (var i = 0; i < 100; i++) { all.push({ qid: y + '_x_' + i, year: y, subject: '國綜' }); }
+  });
+  var srs = {};
+  for (var i = 0; i < 60; i++) { srs['111_x_' + i] = { reps: 99 }; }
+  state.srs = srs;
+
+  usable = all.slice();
+  var mAll = Object.keys(masteredSet()).length;
+  assert('S1 全年份：已掌握 60 題', mAll === 60);
+
+  /* 把 111 年退出視野 → 題池 500→400,已掌握必須跟著歸零(那 60 題不在範圍內了) */
+  usable = all.filter(function (q) { return q.year !== 111; });
+  var mNarrow = Object.keys(masteredSet()).length;
+  assert('S2 退掉 111 年：題池 400', usable.length === 400);
+  assert('S3 已掌握隨題池收斂為 0（不是仍算 60）', mNarrow === 0);
+  /* 這一條是重點:舊版用 byQid(全題庫)算已掌握,remain 會變成 400−60=340,
+     等於「退掉一年反而少 60 題要練」——那 60 題並沒有變簡單,只是不在視野內。 */
+  assert('S4 未掌握 = 400 而非 340（退選不該讓進度憑空前進）',
+    Math.max(0, usable.length - mNarrow) === 400);
+
+  /* 作答紀錄與 SRS 一律保留:加回來時舊資料還在(ADR-0012 同一條原則) */
+  assert('S5 退選不刪 SRS，加回來時仍在', Object.keys(state.srs).length === 60);
+  usable = all.slice();
+  assert('S6 把 111 年加回來：已掌握回到 60', Object.keys(masteredSet()).length === 60);
+
+  usable = savedUsable; state.srs = savedSrs; state.settings.years = savedYears;
+  console.log(out.join('\n'));
+  console.log(pass + '/' + out.length + ' 通過');
+  return pass === out.length;
+}

@@ -17,6 +17,10 @@
 <meta name="theme-color" content="#2f5d8a">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="stylesheet" href="app.css">
+<!-- 主題必須在首繪前掛上 html.theme-light,否則 :root 的暖紙 --paper 會先畫一次、
+     等 settings.js(defer)的 initSettingsPrefs 才切白底 = 進科目時閃一下暖底。
+     與封面／各科頁共用同一支、同一把鑰匙 obig:theme;非 defer 是規格不是疏漏。 -->
+<script src="theme-boot.js"></script>
 <!-- KaTeX(自架,離線可用):渲染數學/自然題的 \( \) 行內、\[ \] 行間 LaTeX 公式。defer 保序:katex 先於 auto-render。 -->
 <link rel="stylesheet" href="katex/katex.min.css">
 <script src="katex/katex.min.js" defer></script>
@@ -183,7 +187,12 @@
       <span>準備時程：</span>
       <button type="button" id="weeks-26" aria-pressed="false">半年</button>
       <button type="button" id="weeks-52" aria-pressed="false">一年</button>
-      <button type="button" id="btn-rediagnose" class="btn-quiet">重做入學診斷</button>
+    </div>
+    <!-- 入學診斷自成一列。原本這顆按鈕擺在「準備時程」那一列的半年/一年旁邊,
+         讀起來像第三個時程選項,略過診斷的人就找不到回去的入口。 -->
+    <div class="mode-pick-row">
+      <span id="diag-state">入學診斷：—</span>
+      <button type="button" id="btn-rediagnose" class="btn-quiet">做入學診斷</button>
     </div>
     <div class="mode-pick-row">
       <label for="exam-date">預計考試日期（選填）：</label>

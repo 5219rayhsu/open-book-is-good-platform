@@ -39,6 +39,10 @@ function importProgress(file) {
       obj.settings = Object.assign({}, def.settings, obj.settings || {});
       if (!Array.isArray(obj.drill)) { obj.drill = []; }
       saveState(obj);
+    /* 匯入換掉整個 state(含 subjects/years/examCategories/includeLegacy),
+       SUBJECTS/ACTIVE_*_SET/usable 全是舊值 → 必須重算範圍再重繪。 */
+    if (typeof refreshActiveSubjects === 'function') { refreshActiveSubjects(); }
+    if (typeof rebuildUsable === 'function') { rebuildUsable(); }
       renderAll(); startToday();
     } catch (e) { alert('JSON 解析失敗：' + e.message); }
   };

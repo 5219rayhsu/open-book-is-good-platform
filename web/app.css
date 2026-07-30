@@ -553,8 +553,10 @@ tr.is-weak td{color:var(--bad-ink);}
 /* ---- 純 SVG 圖 ---- */
 .figure{border:1px solid var(--rule-faint);border-radius:var(--r);background:var(--paper-card);padding:.7rem;margin:.8rem 0;box-shadow:var(--shadow-sm);}
 .figure svg{display:block;width:100%;height:auto;}
-/* 雷達近正方形,放滿全寬會過高;收住寬度(趨勢/年量為寬圖,維持滿版) */
-#radar-box,.radar-figure{max-width:24rem;}
+/* 雷達近正方形,放滿全寬會過高;收住寬度(趨勢/年量為寬圖,維持滿版)。
+   上限改由 charts.js 依 viewBox 實際寬度逐張設在 <svg> 上——科名長的考試(教檢 21 科)
+   畫布會變寬,寬度若寫死就等於把圖縮小。這裡只留容器不超過版面寬。 */
+#radar-box,.radar-figure{max-width:100%;}
 .svg-grid{fill:none;stroke:var(--rule);stroke-width:1;}
 .svg-spoke{stroke:var(--rule-faint);stroke-width:1;}
 .svg-data{fill:rgba(47,107,64,.16);stroke:var(--ok-ink);stroke-width:1.5;}

@@ -111,7 +111,7 @@ function livePulse(log, nowMs) {
   var rs = [];
   for (i = idx.length - 1; i >= 0; i--) {           /* 還原時序 */
     var e = arr[idx[i]];
-    if (e.mode !== 'practice' || typeof e.correct !== 'boolean') { continue; }
+    if (e.mode !== 'practice' || typeof e.correct !== 'boolean' || e.free) { continue; }
     var stratum = (firstSeen[e.qid] != null && firstSeen[e.qid] < idx[i]) ? 'r' : 'n';
     var b = base ? base(e.subject, stratum) : 0.5;
     rs.push((e.correct ? 1 : 0) - b);
