@@ -80,7 +80,7 @@ function examStats(rollingN) {
    🔴 只算**目前範圍內**的題。分母是 `usable.length`(charts.js renderLandingStats),
    分子若用全題庫 `byQid`,縮年份／退科目之後就會出現「已練過 300 / 共 80 題（375%）」
    ——進度條還會撐爆版面。這與 masteredSet 是同一個病:**凡是把「範圍內」與「全部」
-   相減或相除的地方,兩邊必須是同一個範圍**(ADR-0014)。 */
+   相減或相除的地方,兩邊必須是同一個範圍**(IDR-0014)。 */
 function completionCount() {
   var inScopeSet = {};
   usable.forEach(function (q) { inScopeSet[q.qid] = true; });

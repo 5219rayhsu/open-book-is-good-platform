@@ -112,7 +112,7 @@ function _histRow(e) {
   return item;
 }
 
-/* 標記是「該次作答」的狀態(見 ADR-0009 修訂版):交卷時隨那筆歷史紀錄一併存(e.flags,qid 陣列),
+/* 標記是「該次作答」的狀態(見 ADR-0003 修訂版):交卷時隨那筆歷史紀錄一併存(e.flags,qid 陣列),
    舊紀錄沒有這個欄位一律當沒標記。這裡可回看、也可補標/取消——改動立即寫回那筆紀錄(持久化)。
    e 是 state.log 裡的原始物件參照,用 indexOf 找回原位置做不可變更新(新物件取代舊物件)。 */
 function toggleHistFlag(e, q) {
@@ -143,7 +143,7 @@ function _histDetail(detail, e, q, isEssay) {
       isEssay ? '申論題目尚未載入；切到「申論題」分頁一次後再回來即可還原。' : '此題目前不在可載入範圍（可能為待校題）。'));
     return;
   }
-  /* 當次標記(可編輯;見 ADR-0009):非選/申論沒有標記概念,只在選擇題顯示。 */
+  /* 當次標記(可編輯;見 ADR-0003):非選/申論沒有標記概念,只在選擇題顯示。 */
   if (!isEssay) {
     var flagged0 = Array.isArray(e.flags) && e.flags.indexOf(q.qid) >= 0;
     detail.classList.toggle('is-flagged', flagged0);

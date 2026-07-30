@@ -157,7 +157,7 @@ function _examSubjectSection() {
 }
 
 /* 年份範圍(要練哪幾年的考卷)。與「應考科目」同一套資料契約:
-   空陣列/全選 ＝ 全部年份;只縮題池,不動作答紀錄與雷達(見 app.js 的 ACTIVE_YEAR_SET 註解、ADR-0014)。 */
+   空陣列/全選 ＝ 全部年份;只縮題池,不動作答紀錄與雷達(見 app.js 的 ACTIVE_YEAR_SET 註解、IDR-0014)。 */
 function _examYearSection() {
   var all = (typeof allYears === 'function') ? allYears() : [];
   if (all.length < 2) { return null; }   /* 只有一年可選 ＝ 沒有選擇可言,不顯示 */
@@ -264,6 +264,21 @@ function renderSettings() {
   x.addEventListener('click', closeSettings);
   head.appendChild(x);
   sheet.appendChild(head);
+
+  /* 略過診斷、又還沒補做的人，在設定頁也給一次指路。
+     設定頁是「找不到某個開關時會來翻」的地方，所以把唯一入口寫在最上面，
+     而不是讓人在十個區塊裡找一顆不存在的「做診斷」按鈕（那顆只在學習藍圖）。 */
+  var _g = state.settings.examGoal;
+  if (!_g || _g.kind === 'skipped') {
+    var tip = el('div', { 'class': 'set-diag-tip' });
+    tip.appendChild(el('p', { 'class': 'subtitle' },
+      '入學診斷：尚未做過。診斷會畫出你的各科能力雷達並建議備考路線，' +
+      '入口在「學習藍圖」（本站唯一入口，隨時可做、可重做）。'));
+    var go = el('button', { type: 'button', 'class': 'btn-quiet' }, '前往學習藍圖');
+    go.addEventListener('click', function () { closeSettings(); showPanel('blueprint'); });
+    tip.appendChild(go);
+    sheet.appendChild(tip);
+  }
 
   sheet.appendChild(_choiceSection('字體大小',
     '調整全站文字大小，偏好會記住（存在這台瀏覽器）。',

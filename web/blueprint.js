@@ -147,7 +147,7 @@ function setExamDate(val) { patchSettings({ examDate: val || '' }); renderBluepr
 
 /* ===================== 自我驗證(console 呼叫 selfTestScope()) =====================
    驗「範圍」的兩件事,兩件都是**看畫面看不出來**的:
-     ① 年份只縮題池,不動作答紀錄與雷達(ADR-0014)
+     ① 年份只縮題池,不動作答紀錄與雷達(IDR-0014)
      ② 已掌握題數必須與題池同範圍,否則退選後每週題數會憑空塌陷 */
 function selfTestScope() {
   var out = [], pass = 0;
@@ -178,7 +178,7 @@ function selfTestScope() {
   assert('S4 未掌握 = 400 而非 340（退選不該讓進度憑空前進）',
     Math.max(0, usable.length - mNarrow) === 400);
 
-  /* 作答紀錄與 SRS 一律保留:加回來時舊資料還在(ADR-0012 同一條原則) */
+  /* 作答紀錄與 SRS 一律保留:加回來時舊資料還在(IDR-0012 同一條原則) */
   assert('S5 退選不刪 SRS，加回來時仍在', Object.keys(state.srs).length === 60);
   usable = all.slice();
   assert('S6 把 111 年加回來：已掌握回到 60', Object.keys(masteredSet()).length === 60);

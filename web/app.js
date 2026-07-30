@@ -251,16 +251,16 @@ function refreshActiveSubjects() {
 refreshActiveSubjects();
 
 /* ===================== 年份範圍(考卷份數) =====================
-   🔴 年份與科目是**不同種類的範圍**,這個區別決定了分析要怎麼反應(見 ADR-0014):
+   🔴 年份與科目是**不同種類的範圍**,這個區別決定了分析要怎麼反應(見 IDR-0014):
 
      科目是雷達的一根軸。新增一科 → 多一個「沒有資料的能力維度」→ 需要校準期
-       (ADR-0012 的 unmapped),否則系統會把「還沒練過」誤讀成「特別弱」而灌題。
+       (IDR-0012 的 unmapped),否則系統會把「還沒練過」誤讀成「特別弱」而灌題。
      年份不是任何一根軸。多收 111 年的考卷,並不會讓你對「國綜」的估計失效——
        那一科早就測繪過了。所以**年份增減不需要校準期**,加了就直接能練。
 
    年份唯一影響的是**題池**:出題來源、學習藍圖的未掌握題數、覆蓋率分母。
    雷達與正確率一律讀既有作答紀錄,不因為某年退出視野就把已展現的能力抹掉
-   ——與 ADR-0012「退選只移出視野,絕不刪資料」同一條原則。 */
+   ——與 IDR-0012「退選只移出視野,絕不刪資料」同一條原則。 */
 var ACTIVE_YEAR_SET = null;   /* null ＝ 全部年份(未設定/空陣列/全選) */
 /* 可勾選的年份：只列「**忽略年份條件後仍有題可練**」的年份。
    直接掃全題庫會列出 legacy 年份(101-109),使用者勾了卻一題都練不到——
@@ -331,7 +331,7 @@ function inScope(qid) {
    科目退選時它們碰巧被 inScope 擋住,年份卻沒有——於是把年份縮到只剩 115 年之後,
    答錯一題仍會把 111 年的題塞進佇列,與設定頁「之後出題只看選定年份」的承諾相牴觸。
 
-   分界訂在**新題 vs 複習**(ADR-0014 決策四):
+   分界訂在**新題 vs 複習**(IDR-0014 決策四):
      - 已答過的題(SRS 到期、錯題本、儲存題)照舊可複習——「退選只移出視野,不刪資料」,
        把已經在你腦子裡的複習排程砍掉,只會讓間隔複習斷掉,那不是使用者要的。
      - **尚未答過的新題必須在 usable 內**,否則等於從你已排除的範圍裡挖題給你練。 */
@@ -384,7 +384,7 @@ function patchSettings(patch) {
   patchState({ settings: Object.assign({}, state.settings, patch) });
 }
 
-/* ===================== 儲存(收藏,長期資料;見 ADR-0009) =====================
+/* ===================== 儲存(收藏,長期資料;見 ADR-0003) =====================
    儲存只在詳解檢視按「儲存」,收進「儲存題」清單長期保留。
    key 依考試隔離:obig_saved_<考試 key>,值＝qid 陣列,陣列順序＝儲存順序(新的在後)。
    （「標記」是另一件事:作答中只存在 run.js 的 startSheet() 內部記憶體,
@@ -416,7 +416,7 @@ function toggleSaved(qid) {
   return savedIds.indexOf(qid) >= 0;
 }
 function isSaved(qid) { return savedIds.indexOf(qid) >= 0; }
-/* 詳解檢視的「儲存」按鈕(唯一出處;見 ADR-0009:標記與儲存永不同畫面出現)。
+/* 詳解檢視的「儲存」按鈕(唯一出處;見 ADR-0003:標記與儲存永不同畫面出現)。
    掛在 explEl() 之後——本題解釋出現的當下就是「詳解檢視」那一刻。 */
 function saveButtonEl(qid) {
   var saved0 = isSaved(qid);
@@ -690,7 +690,7 @@ function recordAnswer(q, pickedLetter, opts) {
      正確率、趨勢、時段一律不算**——它對所有人都是「對」,加進分母分子只會把每個人的
      正確率往同一個方向推,是雜訊不是訊號。舊紀錄沒有這個欄位,讀取端一律當 false。 */
   if (q.answer === '#') { entry.free = true; }
-  /* 標記(見 ADR-0009):該次作答若標記過此題,隨這筆歷史紀錄一併存(qid 陣列,跟其餘欄位一樣扁平);
+  /* 標記(見 ADR-0003):該次作答若標記過此題,隨這筆歷史紀錄一併存(qid 陣列,跟其餘欄位一樣扁平);
      未標記則省略欄位,舊紀錄沒有這個欄位時讀取端一律當空處理。 */
   if (opts.flagged) { entry.flags = [q.qid]; }
   var logNext = state.log.concat([entry]);
@@ -787,7 +787,7 @@ function pickNext() {
   if (drill.length > 0) {
     var d0 = drill[0];
     /* 依 qid 移除,不是 drill.slice(1) —— 後者會把「這次被 scope／科目篩掉」的項目
-       一併寫掉。退選一科只該移出視野,不該靜默刪掉它的補強佇列(見 ADR-0012)。 */
+       一併寫掉。退選一科只該移出視野,不該靜默刪掉它的補強佇列(見 IDR-0012)。 */
     saveState(Object.assign({}, state, {
       drill: state.drill.filter(function (d) { return d.qid !== d0.qid; })
     }));
@@ -892,7 +892,7 @@ function todayAnswer(card, picked) {
   announce(fbText);
   var _ex = (typeof explEl === 'function') ? explEl(q.qid) : null;
   if (_ex) { card.appendChild(_ex); }   /* 本題解釋(AI 整理,explain.js) */
-  if (typeof saveButtonEl === 'function') { card.appendChild(saveButtonEl(q.qid)); }   /* 詳解檢視:儲存(見 ADR-0009) */
+  if (typeof saveButtonEl === 'function') { card.appendChild(saveButtonEl(q.qid)); }   /* 詳解檢視:儲存(見 ADR-0003) */
   var nextBtn = el('button', { type: 'button' }, '下一題');
   nextBtn.addEventListener('click', function () { startToday(); });
   card.appendChild(qaActionRow(q.qid, nextBtn));   /* 左疑義回報、右下一題,同列 */
@@ -923,14 +923,16 @@ function renderDailySummary() {
   var activeDays = Object.keys(days).length;
   if (activeDays === 0) {
     var hint = el('div', { 'class': 'daily-hint' });
+    /* 入學診斷的入口**只留學習藍圖一處**（2026-07-31 使用者指定）。這裡原本也有一顆
+       「做入學測驗」，等於同一件事有兩個入口——使用者略過之後要回頭找時，得先猜是哪一個。
+       改成指路：把人帶到唯一的那個入口，而不是在這裡再開一扇門。 */
     hint.appendChild(el('p', null,
-      '還沒有作答紀錄。你可以先四處看看（學習藍圖、各種練習模式），準備好再做入學測驗抓出強弱；' +
-      '或直接從下面這題開始。你的進度預設存在這台裝置（不上傳，登入雲端同步規劃中）。'));
+      '還沒有作答紀錄。你可以先四處看看（各種練習模式），或直接從下面這題開始。' +
+      '想先量一下程度，到「學習藍圖」做入學診斷。' +
+      '你的進度預設存在這台裝置（不上傳，登入雲端同步規劃中）。'));
     var row = el('p', { 'class': 'hint-actions' });
-    var diagBtn = el('button', { type: 'button' }, '做入學測驗');
-    diagBtn.addEventListener('click', function () {
-      if (typeof showDiagOverlay === 'function') { showDiagOverlay(); }
-    });
+    var diagBtn = el('button', { type: 'button' }, '前往學習藍圖');
+    diagBtn.addEventListener('click', function () { showPanel('blueprint'); });
     row.appendChild(diagBtn);
     hint.appendChild(row);
     box.appendChild(hint);
@@ -1210,7 +1212,7 @@ function renderWrongbook() {
 }
 
 /* ===================== 儲存題(獨立頁) =====================
-   詳解檢視按「儲存」收藏的題,集中在這裡專練(見 ADR-0009:儲存只在詳解檢視出現、
+   詳解檢視按「儲存」收藏的題,集中在這裡專練(見 ADR-0003:儲存只在詳解檢視出現、
    與作答中的「標記」分屬兩件事,永不同畫面)。savedIds 陣列順序即儲存順序。 */
 function renderSaved() {
   var box = $('saved-list');

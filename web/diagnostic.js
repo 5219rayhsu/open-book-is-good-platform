@@ -46,9 +46,13 @@ function showDiagOverlay() {
   var sheet = el('div', { 'class': 'diag-sheet' });
   sheet.appendChild(el('div', { 'class': 'seal' }, '入學測驗'));
   sheet.appendChild(el('h2', null, '先做一次入學診斷'));
+  /* 略過的去向要寫死在第一個畫面上。使用者略過之後最常見的問題是「我要去哪裡補做？」
+     ——當下不講，之後就得自己找。入口只有一個（學習藍圖），所以這裡直接點名。 */
   sheet.appendChild(el('p', { 'class': 'diag-lead' },
     '在開始之前，花點時間量一下你目前的程度。系統會據此畫出你的各科能力雷達，' +
-    '並建議一條備考路線。你隨時可以略過，之後也能在「學習藍圖」重做。'));
+    '並建議一條備考路線。'));
+  sheet.appendChild(el('p', { 'class': 'diag-lead' },
+    '你隨時可以略過 —— 略過之後請到「學習藍圖」填寫，那裡是入學診斷唯一的入口，隨時可做、可重做。'));
 
   /* 兩層設計的第一層:自選組合的考試(學測/分科)先問應考科目,再決定診斷份量。
      只在這裡問是不夠的——診斷可以略過,所以設定頁有獨立且隨時可改的同一個欄位。 */
@@ -67,7 +71,7 @@ function showDiagOverlay() {
   /* 分組考試(教檢:類科・科目)必須在這裡先問類科,否則診斷會用**全部** 21 科出題:
      簡短 84 題、完整 210 題——沒有人會做完，而且遠超過該科正式考試的規模。
      選定類科後收斂成 4–5 科（教檢正式考試就是考 4 科），份量才對得上真實考試。
-     年份不在這裡問（見 ADR-0016）：年份是「練習範圍」不是「應考身分」，
+     年份不在這裡問（見 IDR-0016）：年份是「練習範圍」不是「應考身分」，
      放進第一次見面的畫面只會多一個此刻無從判斷的選擇。 */
   if (typeof allCategoryNames === 'function' && allCategoryNames()) {
     sheet.appendChild(diagCategoryPicker(renderChoices));
@@ -128,7 +132,7 @@ function diagSubjectPicker(onChange) {
 }
 /* 診斷前的應考類科勾選（分組考試專用；教檢 5 個類科）。
    與設定頁的「應考類科」寫同一個 `state.settings.examCategories`，不是第二份資料
-   ——兩份會立刻打架（ADR-0012 決策一同一條理由）。差別只在這裡是新使用者第一次
+   ——兩份會立刻打架（IDR-0012 決策一同一條理由）。差別只在這裡是新使用者第一次
    遇到它的入口，而且改動要**即時**反映在下方的題數上，所以就地重算而不 reload。 */
 function diagCategoryPicker(onChange) {
   var allCats = allCategoryNames();
