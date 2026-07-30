@@ -611,9 +611,13 @@ tr.is-weak td{color:var(--bad-ink);}
 
 /* ---- 藍圖其餘 ---- */
 .mode-pick-row{display:flex;flex-wrap:wrap;gap:.85rem 1.35rem;align-items:center;font-size:.92rem;}
-/* 間距沿革:.6rem → 1rem(2026-07-11) → 1.35rem(2026-07-31)。前兩版量起來都沒有幾何重疊,
-   但實心(已選)按鈕與外框(未選)按鈕並排時,深色色塊沒有留白會被讀成「黏在一起」——
-   這是視覺重量問題,不是 layout bug,所以要靠間距而不是靠 flex 屬性解。 */
+/* 🔴 這幾列**列與列之間**原本沒有任何 margin——四個 .mode-pick-row 是彼此貼齊的 block,
+   垂直方向唯一的空隙來自按鈕自己的 border-box,量起來只有按鈕高度的一成。
+   2026-07-11 與 07-31 兩次「加大間距」都只動到 gap 的**橫向**分量(1.35rem 是 column-gap),
+   縱向的 .85rem row-gap 只在同一列換行時才生效,所以使用者回報的「上下撞在一起」兩次都沒被修掉。
+   教訓:回報說「撞到」時要先量**哪一個方向**,不要看到 gap 就以為改對地方了。 */
+.mode-pick-row + .mode-pick-row{margin-top:1rem;}   /* 16px ≒ 按鈕高的四成,眼睛才讀得出「這是兩列」 */
+.mode-pick-row:last-of-type{margin-bottom:.35rem;}
 .mode-pick-row > span:first-child{margin-right:.15rem;}   /* 標籤與第一顆按鈕再多一點呼吸 */
 .set-diag-tip{border:1px solid var(--accent);border-radius:var(--r);padding:.7rem .9rem;
   margin:0 0 1rem;background:var(--accent-wash);}
