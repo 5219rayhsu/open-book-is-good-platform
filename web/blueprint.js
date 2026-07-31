@@ -81,14 +81,17 @@ function renderBlueprint() {
     masterRepsFor() + ' 次（無基礎門檻較高）。起算日 ' + state.settings.start + '，全程 ' + wt.weeks +
     ' 週，已掌握 ' + wt.mastered + ' 題。' + planPolicyText();
   /* 診斷狀態要說出來。`examGoal.kind === 'skipped'` 一直有存,卻沒有任何畫面讀它——
-     於是略過的人看到的藍圖跟做完的人一模一樣,也不知道還能回去做。 */
+     於是略過的人看到的藍圖跟做完的人一模一樣,也不知道還能回去做。
+     未完成一律寫「尚未做過」,不標「（先前略過）」:同一句話要同時服務
+     「略過過」與「根本沒遇過」兩種人,標了對後者是錯的,而且對前者也沒多給資訊
+     ——他要的是旁邊那顆「做入學診斷」按鈕。 */
   var ds = $('diag-state');
   if (ds) {
     var g = state.settings.examGoal;
     var done = g && g.kind !== 'skipped';
     ds.textContent = done
       ? '入學診斷：已於 ' + (g.diagnosedDate || state.settings.diagnosedAt) + ' 完成'
-      : '入學診斷：尚未做過（先前略過）';
+      : '入學診斷：尚未做過';
     var rb = $('btn-rediagnose');
     if (rb) { rb.textContent = done ? '重做入學診斷' : '做入學診斷'; }
   }
