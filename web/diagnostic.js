@@ -6,15 +6,26 @@
      簡短  各科每科 4 題(逐題即時回饋,約 10 分鐘)
      完整  各科每科 10 題(整卷計時、交卷評分,接近真考份量)
 
-   科目清單依當前考試(exams.js 的 SUBJECTS)動態決定;診斷涵蓋該考試的所有
-   選擇題科目,題數隨科目數浮動。
+   科目清單依當前考試(exams.js 的 SUBJECTS)動態決定,題數隨科目數浮動;
+   有範圍問題的考試(教檢類科／學測科目)先在第一步收斂成實際要考的那幾科,
+   不是全部選擇題科目——教檢不收斂是 21 科、簡短就 84 題。
    完成後:算出各科正確率 → 餵能力雷達 → 依整體程度「建議」備考模式。
    誠實揭露:這是「為上榜而設計」的起點估計與工作量推估,不是上榜預測;
    六個月/十二個月是設計目標,沒有任何系統能保證考試結果。
 
+   兩步化(見 IDR-0016 決策一「範圍必須是畫面上第一個問題」):
+   有「範圍問題」的考試(分組考試的類科、自選科目考試的科目)先問範圍
+   (STEP_SCOPE)、再問強度(STEP_INTENSITY);兩步狀態機只存在 showDiagOverlay()
+   內部的 closure({step,picked}),不進 state、不進 localStorage——
+   全程只有使用者在第二步點下卡片時,diagCommitScope() 才寫入設定;
+   第一步「下一步」與第二步「返回」都是純畫面切換,零寫入。
+   沒有範圍問題的考試(律師/護理師等)維持單步,行為不變。
+
    依賴 app.js 全域:state / usable / SUBJECTS / subjectStats / startDrill /
    startSheet / patchSettings / setBasis / showPanel / el / $ / pct / shuffle /
-   todayStr;charts.js 的 drawRadarInto。
+   todayStr / refreshActiveSubjects / rebuildUsable / syncSubjectSpans /
+   computeActiveSubjects;exams.js 的 allCategoryNames / subjectGroupLabel /
+   examTiming;charts.js 的 drawRadarInto。
    ============================================================ */
 
 var DIAG_SHORT_PER = 4, DIAG_FULL_PER = 10;
@@ -39,90 +50,241 @@ function diagMins(n) {
     : ('約 ' + Math.floor(m / 60) + ' 小時' + (m % 60 ? ' ' + (m % 60) + ' 分' : ''));
 }
 
+/* 這個考試有沒有「範圍問題」要在份量之前先問(見 IDR-0016 決策一):
+   'category' ＝ 分組考試(教檢:類科・科目);'subject' ＝ 自選科目考試(學測/分科);
+   null ＝ 兩者皆非(律師/護理師等全科必考),份量不受範圍影響,維持單步。 */
+function diagScopeKind() {
+  if (typeof allCategoryNames === 'function' && allCategoryNames()) { return 'category'; }
+  if (EXAM.elective) { return 'subject'; }
+  return null;
+}
+
+/* 三種進入情境(見 §4):首次 / 曾略過現在來做 / 已做過重做。
+   決定 overlay 的標題、說明文案、逃生鈕——尤其是「skipDiagnostic 只在 first 綁定」
+   這條:redo 若誤接 skipDiagnostic,會把已完成的 examGoal 覆寫成 {kind:'skipped'},
+   是本次改動最危險的回歸點,所以三種情境全部由這裡集中判定,不散落各處各自猜。 */
+function diagOverlayMode() {
+  if (!state.settings.diagnosedAt) { return 'first'; }
+  var goal = state.settings.examGoal;
+  return (goal && goal.kind === 'skipped') ? 'redo-skipped' : 'redo';
+}
+function diagModeHeading(mode) {
+  if (mode === 'first') { return '先做一次入學診斷'; }
+  if (mode === 'redo-skipped') { return '做一次入學診斷'; }
+  return '重做入學診斷';
+}
+/* 說明段落(依情境增減):首次兩段(含略過去向);曾略過只留首段(他就是從那個
+   入口來的,不必再講一次去哪裡略過);已做過重做則改講「保留什麼、更新什麼」。 */
+function diagModeLeads(mode) {
+  if (mode === 'redo') {
+    return ['重做會重新抽題、重新量一次目前程度。過去的作答紀錄、雷達與進度全部保留；' +
+      '完成後只更新起點估計與建議路線。'];
+  }
+  var lead1 = '在開始之前，花點時間量一下你目前的程度。系統會據此畫出你的各科能力雷達，' +
+    '並建議一條備考路線。';
+  if (mode === 'redo-skipped') { return [lead1]; }
+  return [lead1,
+    '你隨時可以略過 —— 略過之後請到「學習藍圖」填寫，那裡是入學診斷唯一的入口，隨時可做、可重做。'];
+}
+/* 逃生鈕文案與行為;只有 first 會走 skipDiagnostic(唯一會寫入 examGoal:skipped 的路徑),
+   redo 兩種情境一律只 closeDiagOverlay(),零寫入。 */
+function diagEscapeConfig(mode) {
+  if (mode === 'first') { return { lead: '想直接練？', label: '略過診斷，直接開始', onClick: skipDiagnostic }; }
+  if (mode === 'redo-skipped') { return { lead: null, label: '先不做，返回', onClick: closeDiagOverlay }; }
+  return { lead: null, label: '返回，不重做', onClick: closeDiagOverlay };
+}
+function diagEscapeElement(mode) {
+  var cfg = diagEscapeConfig(mode);
+  var p = el('p', { 'class': 'diag-skip' });
+  if (cfg.lead) { p.appendChild(document.createTextNode(cfg.lead)); }
+  var b = el('button', { type: 'button' }, cfg.label);
+  b.addEventListener('click', cfg.onClick);
+  p.appendChild(b);
+  return p;
+}
+
+/* 第一步的預設勾選(見 §3):
+   類科(教檢)——未設定過 → 全部不勾(逼使用者做一次有意識的選擇);
+   科目(學測)——未設定過 → 全部勾選(自選科目考試本來就該預設全考)。
+   兩者已設定過(redo,或設定頁改過)時,一律預先勾選目前的選擇。 */
+function diagDefaultPicked(kind) {
+  if (kind === 'category') {
+    var cur = state.settings.examCategories;
+    return (Array.isArray(cur) && cur.length) ? cur.slice() : [];
+  }
+  var cur2 = state.settings.subjects;
+  return (Array.isArray(cur2) && cur2.length) ? cur2.slice() : EXAM.subjects.slice();
+}
+
+/* 兩步的即時題數統計:此時設定尚未寫入,借 computeActiveSubjects() 的可選參數 s
+   (app.js,見該函式頭註)用臨時物件試算「若真的這樣選,生效科目有幾科」,
+   不在 diagnostic.js 另寫一份前綴/停考科目過濾邏輯——會跟 deprecatedSubjects drift。 */
+function diagScopeSubjectCount(kind, picked) {
+  if (kind === 'category') {
+    return computeActiveSubjects({
+      examCategories: picked,
+      subjects: state.settings.subjects,
+      includeDeprecated: state.settings.includeDeprecated
+    }).length;
+  }
+  return computeActiveSubjects({
+    examCategories: state.settings.examCategories,
+    subjects: picked,
+    includeDeprecated: state.settings.includeDeprecated
+  }).length;
+}
+
+/* 換步後把焦點移到新畫面的標題,螢幕報讀器與鍵盤操作都跟得上畫面切換。 */
+function diagFocusHeading(container) {
+  var h2 = container.querySelector('h2');
+  if (h2) { h2.setAttribute('tabindex', '-1'); h2.focus(); }
+}
+
 function showDiagOverlay() {
   var ov = $('diag-overlay');
   ov.hidden = false;
+  var kind = diagScopeKind();
+  if (!kind) { renderDiagSinglePage(ov); return; }   /* 無範圍問題的考試:維持單步(IDR-0016 決策二不回退) */
+  var mode = diagOverlayMode();
+  /* 狀態機只活在這個 closure 裡,不進 state、不進 localStorage;
+     整個 overlay 內只有 diagCommitScope() 會呼叫 patchSettings(skipDiagnostic 除外)。 */
+  var wizard = { step: 'scope', picked: diagDefaultPicked(kind) };
+  function render() {
+    ov.textContent = '';
+    var sheet = (wizard.step === 'scope')
+      ? renderDiagScope(kind, mode, wizard, render)
+      : renderDiagIntensity(kind, mode, wizard, render);
+    ov.appendChild(sheet);
+    diagFocusHeading(sheet);
+  }
+  render();
+}
+
+/* 無範圍問題的考試(律師/護理師等):現行單頁,卡片含總題數與 diagMins() 時間,
+   點卡片直接開始。仍需依 diagOverlayMode() 決定文案與逃生鈕——否則 redo 時
+   逃生鈕會誤綁 skipDiagnostic,把已完成的 examGoal 覆寫成 skipped(見上方注記)。 */
+function renderDiagSinglePage(ov) {
   ov.textContent = '';
+  var mode = diagOverlayMode();
   var sheet = el('div', { 'class': 'diag-sheet' });
   sheet.appendChild(el('div', { 'class': 'seal' }, '入學測驗'));
-  sheet.appendChild(el('h2', null, '先做一次入學診斷'));
-  /* 略過的去向要寫死在第一個畫面上。使用者略過之後最常見的問題是「我要去哪裡補做？」
-     ——當下不講，之後就得自己找。入口只有一個（學習藍圖），所以這裡直接點名。 */
-  sheet.appendChild(el('p', { 'class': 'diag-lead' },
-    '在開始之前，花點時間量一下你目前的程度。系統會據此畫出你的各科能力雷達，' +
-    '並建議一條備考路線。'));
-  sheet.appendChild(el('p', { 'class': 'diag-lead' },
-    '你隨時可以略過 —— 略過之後請到「學習藍圖」填寫，那裡是入學診斷唯一的入口，隨時可做、可重做。'));
+  sheet.appendChild(el('h2', null, diagModeHeading(mode)));
+  diagModeLeads(mode).forEach(function (t) { sheet.appendChild(el('p', { 'class': 'diag-lead' }, t)); });
 
-  /* 兩層設計的第一層:自選組合的考試(學測/分科)先問應考科目,再決定診斷份量。
-     只在這裡問是不夠的——診斷可以略過,所以設定頁有獨立且隨時可改的同一個欄位。 */
+  var n = SUBJECTS.length;
   var choices = el('div', { 'class': 'diag-choices' });
-  var counts = el('div', null);
-  function renderChoices() {
-    choices.textContent = '';
-    var n = SUBJECTS.length;
-    choices.appendChild(diagChoice('簡短診斷',
-      '每科 ' + DIAG_SHORT_PER + ' 題，共 ' + (DIAG_SHORT_PER * n) + ' 題（' + diagMins(DIAG_SHORT_PER * n) + '）',
-      '逐題即時對錯。\n快速抓出強弱輪廓。', function () { startDiagnostic('short'); }));
-    choices.appendChild(diagChoice('完整模擬',
-      '每科 ' + DIAG_FULL_PER + ' 題，共 ' + (DIAG_FULL_PER * n) + ' 題（' + diagMins(DIAG_FULL_PER * n) + '）',
-      '整卷計時、交卷評分。\n最接近真實考試手感。', function () { startDiagnostic('full'); }));
-  }
-  /* 分組考試(教檢:類科・科目)必須在這裡先問類科,否則診斷會用**全部** 21 科出題:
-     簡短 84 題、完整 210 題——沒有人會做完，而且遠超過該科正式考試的規模。
-     選定類科後收斂成 4–5 科（教檢正式考試就是考 4 科），份量才對得上真實考試。
-     年份不在這裡問（見 IDR-0016）：年份是「練習範圍」不是「應考身分」，
-     放進第一次見面的畫面只會多一個此刻無從判斷的選擇。 */
-  if (typeof allCategoryNames === 'function' && allCategoryNames()) {
-    sheet.appendChild(diagCategoryPicker(renderChoices));
-  }
-  if (EXAM.elective) { sheet.appendChild(diagSubjectPicker(renderChoices)); }
-  renderChoices();
-  sheet.appendChild(counts);
+  choices.appendChild(diagChoice('簡短診斷',
+    '每科 ' + DIAG_SHORT_PER + ' 題，共 ' + (DIAG_SHORT_PER * n) + ' 題（' + diagMins(DIAG_SHORT_PER * n) + '）',
+    '逐題即時對錯。\n快速抓出強弱輪廓。', function () { startDiagnostic('short'); }));
+  choices.appendChild(diagChoice('完整模擬',
+    '每科 ' + DIAG_FULL_PER + ' 題，共 ' + (DIAG_FULL_PER * n) + ' 題（' + diagMins(DIAG_FULL_PER * n) + '）',
+    '整卷計時、交卷評分。\n最接近真實考試手感。', function () { startDiagnostic('full'); }));
   sheet.appendChild(choices);
 
-  var skip = el('p', { 'class': 'diag-skip' });
-  skip.appendChild(document.createTextNode('想直接練？'));
-  var sb = el('button', { type: 'button' }, '略過診斷，直接開始');
-  sb.addEventListener('click', skipDiagnostic);
-  skip.appendChild(sb);
-  sheet.appendChild(skip);
+  sheet.appendChild(diagEscapeElement(mode));
 
   sheet.appendChild(el('p', { 'class': 'diag-honest' },
     '說明：診斷給的是「起點估計」，不是上榜預測。六個月/十二個月是為上榜而設計的工作量目標，\n' +
     '會依你實際作答每天滾動重算 —— 沒有任何系統能保證考試結果。'));
   ov.appendChild(sheet);
 }
-/* 診斷前的應考科目勾選。與設定頁寫同一個 state.settings.subjects,不是第二份資料;
-   差別只在這裡是「新使用者第一次遇到它」的入口。改動即時反映在下方題數,
-   不 reload(overlay 還開著),而是就地重算 SUBJECTS 供本次診斷使用。 */
-function diagSubjectPicker(onChange) {
+
+/* STEP_SCOPE(第一步):標題／說明依情境、勾選清單、即時題數統計行、逃生鈕、下一步鈕。
+   「下一步」在 0 勾選時 disabled;絕不在此處 patchSettings ——寫入只發生在第二步點卡片時。
+
+   🔴 統計行**兩種份量都要寫**。只寫簡短的 16 題,使用者會照那個數字決定要不要做,
+      下一步選了完整模擬卻是 40 題／48 分鐘——差 2.5 倍。IDR-0016 立案的理由就是
+      「使用者是照這個數字決定要不要做的,寫死等於騙他」;只給一半跟寫死是同一個病。
+      而且「範圍放第一步」本來就是為了讓所需時間在剛進來時看得見。 */
+function renderDiagScope(kind, mode, wizard, rerender) {
+  var sheet = el('div', { 'class': 'diag-sheet' });
+  sheet.appendChild(el('div', { 'class': 'seal' }, '入學測驗'));
+  sheet.appendChild(el('h2', null, diagModeHeading(mode)));
+  diagModeLeads(mode).forEach(function (t) { sheet.appendChild(el('p', { 'class': 'diag-lead' }, t)); });
+
+  var stats = el('p', { 'class': 'diag-lead diag-scope-stats' });
+  var nextBtn = el('button', { type: 'button', 'class': 'diag-next' }, '下一步');
+  function updateStats() {
+    if (wizard.picked.length === 0) {
+      stats.textContent = kind === 'category' ? '請至少勾選一個類科' : '請至少勾選一科';
+      nextBtn.disabled = true;
+      return;
+    }
+    var subs = diagScopeSubjectCount(kind, wizard.picked);
+    var ns = subs * DIAG_SHORT_PER, nf = subs * DIAG_FULL_PER;
+    stats.textContent = '這個範圍共 ' + subs + ' 科：簡短診斷 ' + ns + ' 題（' + diagMins(ns)
+      + '）、完整模擬 ' + nf + ' 題（' + diagMins(nf) + '）';
+    nextBtn.disabled = false;
+  }
+  var onPickChange = function (picked) { wizard.picked = picked; updateStats(); };
+  var picker = (kind === 'category') ? diagCategoryPicker(wizard.picked, onPickChange)
+    : diagSubjectPicker(wizard.picked, onPickChange);
+  sheet.appendChild(picker);
+  sheet.appendChild(stats);
+  updateStats();
+
+  var actions = el('div', { 'class': 'diag-scope-actions' });
+  actions.appendChild(diagEscapeElement(mode));
+  nextBtn.addEventListener('click', function () {
+    if (wizard.picked.length === 0) { return; }
+    wizard.step = 'intensity';
+    rerender();
+  });
+  actions.appendChild(nextBtn);
+  sheet.appendChild(actions);
+  return sheet;
+}
+
+/* STEP_INTENSITY(第二步):兩張卡片含收斂後的真實總題數與時間、「← 返回」(picked 保留、
+   零寫入)、誠實聲明。唯一的寫入時機:點下卡片 → diagCommitScope() 先寫入範圍,
+   再 startDiagnostic(kind) 出題。 */
+function renderDiagIntensity(kind, mode, wizard, rerender) {
+  var sheet = el('div', { 'class': 'diag-sheet' });
+  sheet.appendChild(el('div', { 'class': 'seal' }, '入學測驗'));
+  sheet.appendChild(el('h2', null, diagModeHeading(mode)));
+
+  var n = diagScopeSubjectCount(kind, wizard.picked);
+  var choices = el('div', { 'class': 'diag-choices' });
+  choices.appendChild(diagChoice('簡短診斷',
+    '每科 ' + DIAG_SHORT_PER + ' 題，共 ' + (DIAG_SHORT_PER * n) + ' 題（' + diagMins(DIAG_SHORT_PER * n) + '）',
+    '逐題即時對錯。\n快速抓出強弱輪廓。',
+    function () { diagCommitScope(kind, wizard.picked); startDiagnostic('short'); }));
+  choices.appendChild(diagChoice('完整模擬',
+    '每科 ' + DIAG_FULL_PER + ' 題，共 ' + (DIAG_FULL_PER * n) + ' 題（' + diagMins(DIAG_FULL_PER * n) + '）',
+    '整卷計時、交卷評分。\n最接近真實考試手感。',
+    function () { diagCommitScope(kind, wizard.picked); startDiagnostic('full'); }));
+  sheet.appendChild(choices);
+
+  var back = el('p', { 'class': 'diag-skip' });
+  var bb = el('button', { type: 'button' }, '← 返回');
+  bb.addEventListener('click', function () { wizard.step = 'scope'; rerender(); });
+  back.appendChild(bb);
+  sheet.appendChild(back);
+
+  sheet.appendChild(el('p', { 'class': 'diag-honest' },
+    '說明：診斷給的是「起點估計」，不是上榜預測。六個月/十二個月是為上榜而設計的工作量目標，\n' +
+    '會依你實際作答每天滾動重算 —— 沒有任何系統能保證考試結果。'));
+  return sheet;
+}
+
+/* 診斷前的應考科目勾選(第一步用)。純本地元件:只維護 picked、回呼 onChange(picked),
+   不再 patchSettings/refreshActiveSubjects/rebuildUsable——那是 diagCommitScope() 的事,
+   寫入時機只在第二步點下卡片那一刻(見 showDiagOverlay 頭註)。與設定頁寫同一個
+   state.settings.subjects,不是第二份資料;差別只在這裡是「新使用者第一次遇到它」的入口。 */
+function diagSubjectPicker(initPicked, onChange) {
   var all = EXAM.subjects.slice();
-  var cur = (state.settings.subjects && state.settings.subjects.length)
-    ? state.settings.subjects.slice() : all.slice();
+  var picked = initPicked.slice();
   var box = el('div', { 'class': 'diag-subjects' });
   box.appendChild(el('p', { 'class': 'diag-lead' }, '你要考哪幾科？（之後可在「設定」隨時增減）'));
   var wrap = el('div', { 'class': 'subj-checks' });
-  var checks = [];
   all.forEach(function (s) {
     var lab = el('label', { 'class': 'chk chk-inline' });
     var cb = el('input', { type: 'checkbox', value: s });
-    cb.checked = cur.indexOf(s) >= 0;
+    cb.checked = picked.indexOf(s) >= 0;
     cb.addEventListener('change', function () {
-      var picked = checks.filter(function (c) { return c.checked; }).map(function (c) { return c.value; });
-      if (picked.length === 0) { cb.checked = true; return; }   /* 至少一科 */
-      patchSettings({ subjects: picked.length === all.length ? [] : picked });
-      refreshActiveSubjects();
-      /* 🔴 usable/papersIndex 依賴同一組範圍,漏了它 SUBJECTS 會與題池不同步:
-         在 overlay 勾入新科目 → 診斷對該科抽到 0 題(題數比畫面宣稱的少),
-         而且整個 session 都不 reload,診斷完回單題練習該科依然一題都不出。
-         設定頁走 location.reload() 所以沒事,這裡是就地更新才需要自己補。 */
-      rebuildUsable();
-      var spans = syncSubjectSpans(state.settings);
-      if (spans) { patchSettings({ subjectSpans: spans }); }
-      onChange();
+      picked = cb.checked ? picked.concat([s]) : picked.filter(function (x) { return x !== s; });
+      onChange(picked.slice());
     });
-    checks.push(cb);
     lab.appendChild(cb);
     lab.appendChild(document.createTextNode(' ' + s));
     wrap.appendChild(lab);
@@ -130,34 +292,23 @@ function diagSubjectPicker(onChange) {
   box.appendChild(wrap);
   return box;
 }
-/* 診斷前的應考類科勾選（分組考試專用；教檢 5 個類科）。
-   與設定頁的「應考類科」寫同一個 `state.settings.examCategories`，不是第二份資料
-   ——兩份會立刻打架（IDR-0012 決策一同一條理由）。差別只在這裡是新使用者第一次
-   遇到它的入口，而且改動要**即時**反映在下方的題數上，所以就地重算而不 reload。 */
-function diagCategoryPicker(onChange) {
+/* 診斷前的應考類科勾選(分組考試專用;教檢 5 個類科;第一步用)。純本地元件,同上一段理由。
+   與設定頁的「應考類科」寫同一個 state.settings.examCategories,不是第二份資料
+   ——兩份會立刻打架(IDR-0012 決策一同一條理由)。 */
+function diagCategoryPicker(initPicked, onChange) {
   var allCats = allCategoryNames();
-  var cur = (state.settings.examCategories && state.settings.examCategories.length)
-    ? state.settings.examCategories.slice() : allCats.slice();
+  var picked = initPicked.slice();
   var box = el('div', { 'class': 'diag-subjects' });
-  box.appendChild(el('p', { 'class': 'diag-lead' },
-    '你要報考哪個類科？（之後可在「設定」隨時改）'));
+  box.appendChild(el('p', { 'class': 'diag-lead' }, '你要報考哪個類科？（之後可在「設定」隨時改）'));
   var wrap = el('div', { 'class': 'subj-checks' });
-  var checks = [];
   allCats.forEach(function (c) {
     var lab = el('label', { 'class': 'chk chk-inline' });
     var cb = el('input', { type: 'checkbox', value: c });
-    cb.checked = cur.indexOf(c) >= 0;
+    cb.checked = picked.indexOf(c) >= 0;
     cb.addEventListener('change', function () {
-      var picked = checks.filter(function (x) { return x.checked; }).map(function (x) { return x.value; });
-      if (picked.length === 0) { cb.checked = true; return; }   /* 至少一個類科 */
-      patchSettings({ examCategories: picked.length === allCats.length ? [] : picked });
-      refreshActiveSubjects();
-      rebuildUsable();   /* 題池要跟著收斂,否則抽題時該科 0 題(見 diagSubjectPicker 同一註解) */
-      var spans = (typeof syncSubjectSpans === 'function') ? syncSubjectSpans(state.settings) : null;
-      if (spans) { patchSettings({ subjectSpans: spans }); }
-      onChange();
+      picked = cb.checked ? picked.concat([c]) : picked.filter(function (x) { return x !== c; });
+      onChange(picked.slice());
     });
-    checks.push(cb);
     lab.appendChild(cb);
     lab.appendChild(document.createTextNode(' ' +
       ((typeof subjectGroupLabel === 'function') ? subjectGroupLabel(c) : c)));
@@ -175,6 +326,20 @@ function diagChoice(name, meta, sub, onClick) {
   return b;
 }
 function closeDiagOverlay() { $('diag-overlay').hidden = true; }
+
+/* 兩步 overlay 唯一的寫入點(skipDiagnostic 除外):第二步點下卡片那一刻,
+   先把範圍寫進設定,再讓題池/雷達收斂。次序與「全選存空陣列」慣例照抄現行 picker
+   (IDR-0012 防呆一:空陣列＝全部,日後新增類科才不會被舊設定靜默擋掉)。 */
+function diagCommitScope(kind, picked) {
+  var allLen = (kind === 'category') ? allCategoryNames().length : EXAM.subjects.length;
+  var value = (picked.length === allLen) ? [] : picked.slice();
+  if (kind === 'category') { patchSettings({ examCategories: value }); }
+  else { patchSettings({ subjects: value }); }
+  refreshActiveSubjects();
+  rebuildUsable();   /* 題池要跟著收斂,否則抽題時該科 0 題 */
+  var spans = (typeof syncSubjectSpans === 'function') ? syncSubjectSpans(state.settings) : null;
+  if (spans) { patchSettings({ subjectSpans: spans }); }
+}
 
 function skipDiagnostic() {
   patchSettings({ diagnosedAt: todayStr(), examGoal: { kind: 'skipped', recommendedBasis: state.settings.planBasis } });

@@ -45,10 +45,19 @@ function initSettingsPrefs() {
 }
 
 /* 一段「標題 + 控制列」設定區塊。 */
+/* 說明文字裡的 `**強調**` 要畫成 <strong>,不是原樣印出星號。
+   用 split 逐段接 textNode／<strong>,不碰 innerHTML —— 文案是自家字串但規矩照舊。 */
+function _emphasize(p, desc) {
+  String(desc).split('**').forEach(function (seg, i) {
+    if (!seg) { return; }
+    p.appendChild(i % 2 ? el('strong', null, seg) : document.createTextNode(seg));
+  });
+  return p;
+}
 function _setSection(title, desc, controlNode) {
   var frag = document.createDocumentFragment();
   frag.appendChild(el('h3', null, title));
-  if (desc) { frag.appendChild(el('p', { 'class': 'subtitle' }, desc)); }
+  if (desc) { frag.appendChild(_emphasize(el('p', { 'class': 'subtitle' }), desc)); }
   frag.appendChild(controlNode);
   return frag;
 }

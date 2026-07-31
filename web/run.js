@@ -201,37 +201,65 @@ function parseCharLimits(stem) {
   while ((m = re.exec(String(stem || '')))) { out.push(Number(m[1])); }
   return out;
 }
-/* 非選的「勾選＋說明」作答表(q.answer_table = {headers:[…], choices:[…]})。
-   原卷把它印成表格:左欄一排勾選框、右欄(或右邊數欄)是要寫字的空格。
-   PDF 抽取時整張表被壓成一行,勾選框沒有可點的對象 —— **看得到不等於能作答**,
-   所以這不是呈現優化而是功能缺陷(見 _build_features/build_answer_tables.py)。
-   第 0 欄畫成 checkbox 清單(原卷印 □ 不是 ○,故用 checkbox;單選與否由題幹文字規範),
-   其餘欄各給一個輸入框。交卷後由 revealEssay 一併鎖住。 */
+/* 非選的「勾選＋說明」作答表。原卷把它印成表格:左欄一排勾選框、右欄(或右邊數欄)
+   是要寫字的空格。PDF 抽取時整張表被壓成一行,勾選框沒有可點的對象 ——
+   **看得到不等於能作答**,所以這不是呈現優化而是功能缺陷。
+   schema(由 _build_features/build_answer_tables.py 讀原卷框線網格產生):
+     {headers:[{text,span}], cols, input_cols:[欄index], rows:[[cell…]]}
+     cell = {col, input, rowspan?} ＋ ({choices:[…]} | {hints:[…]})
+   一列裡被上格 rowspan 蓋住的欄**不會出現在 rows 裡**,所以要靠 cell.col 定位,
+   不能用陣列位置(`113_社會_38` 右欄一格跨三列、`113_社會_60` 左二欄各跨兩列)。
+   choices → checkbox 清單(原卷印 □ 不是 ○,故用 checkbox;單選與否由題幹文字規範);
+   hints → 原卷就印在格子裡的字(如「因為該都市」),照印;
+   輸入框看 **cell.input**(builder 量過原卷格高:標題空白的欄是列標籤、印滿字的格
+   沒留空位),不是看 input_cols —— 同一欄有的格要填、有的不要。
+   交卷後由 revealEssay 一併鎖住。 */
 function buildAnswerTable(card, t) {
-  if (!t || !t.headers || !t.choices || !t.choices.length) { return; }
+  if (!t || !t.headers || !t.rows || !t.rows.length) { return; }
+  /* 表頭會跨欄,所以 headers 的索引 ≠ 內文的欄索引 —— 攤平成「每個內文欄一個標題」
+     才對得上 cell.col(`113_社會_60`:2 個表頭對 3 欄)。 */
+  var colHead = [];
+  t.headers.forEach(function (h) {
+    for (var i = 0; i < (h.span || 1); i++) { colHead.push(h.text); }
+  });
   var wrap = el('div', { 'class': 'q-table-wrap' });
   var tbl = el('table', { 'class': 'q-table answer-table' });
   var thead = el('thead'), htr = el('tr');
-  t.headers.forEach(function (h) { htr.appendChild(el('th', null, h)); });
-  thead.appendChild(htr); tbl.appendChild(thead);
-  var tr = el('tr');
-  var pick = el('td');
-  t.choices.forEach(function (c, i) {
-    var lab = el('label', { 'class': 'answer-choice' });
-    var box = el('input', { type: 'checkbox', 'data-idx': String(i) });
-    lab.appendChild(box); lab.appendChild(el('span', null, c));
-    pick.appendChild(lab);
-    card._answerInputs.push(box);
+  t.headers.forEach(function (h) {
+    var th = el('th', null, h.text);
+    if (h.span > 1) { th.setAttribute('colspan', String(h.span)); }
+    htr.appendChild(th);
   });
-  tr.appendChild(pick);
-  for (var k = 1; k < t.headers.length; k++) {
-    var td = el('td');
-    var ta = el('textarea', { 'class': 'answer-cell-input', rows: '3',
-      'aria-label': t.headers[k] });
-    td.appendChild(ta); tr.appendChild(td);
-    card._answerInputs.push(ta);
-  }
-  var tbody = el('tbody'); tbody.appendChild(tr);
+  thead.appendChild(htr); tbl.appendChild(thead);
+  var tbody = el('tbody');
+  t.rows.forEach(function (row) {
+    var tr = el('tr');
+    row.forEach(function (cell) {
+      var td = el('td');
+      if (cell.rowspan > 1) { td.setAttribute('rowspan', String(cell.rowspan)); }
+      if (cell.choices) {
+        cell.choices.forEach(function (c, i) {
+          var lab = el('label', { 'class': 'answer-choice' });
+          var box = el('input', { type: 'checkbox', 'data-idx': String(i) });
+          lab.appendChild(box); lab.appendChild(el('span', null, c));
+          td.appendChild(lab);
+          card._answerInputs.push(box);
+        });
+      } else {
+        (cell.hints || []).forEach(function (h) {
+          td.appendChild(el('p', { 'class': 'answer-cell-hint' }, h));
+        });
+        if (cell.input) {
+          var ta = el('textarea', { 'class': 'answer-cell-input', rows: '3',
+            'aria-label': colHead[cell.col] || '作答欄' });
+          td.appendChild(ta);
+          card._answerInputs.push(ta);
+        }
+      }
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
   tbl.appendChild(tbody); wrap.appendChild(tbl);
   card.appendChild(wrap);
 }

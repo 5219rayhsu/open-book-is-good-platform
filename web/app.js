@@ -199,43 +199,50 @@ var state = loadState();
 
 /* ===================== 應考類科(分組考試如教師檢定,可複選要報考的類科) =====================
    只在 EXAM.subjectGroupSep 有設(allCategoryNames() 非 null)的考試生效;其餘考試恆回 null
-   (=不過濾、全部科目),向下相容。examCategories 空陣列(預設,見 defaultState)＝全部類科。 */
-function activeCategories() {
+   (=不過濾、全部科目),向下相容。examCategories 空陣列(預設,見 defaultState)＝全部類科。
+
+   可選參數 s:預設讀 state.settings,但入學診斷 overlay(diagnostic.js)在寫入設定前
+   需要「若選了這個範圍,會收斂成幾科」的即時試算,傳一個臨時物件進來借用同一套邏輯,
+   不必在 diagnostic.js 另寫一份前綴/停考科目過濾——會跟 deprecatedSubjects drift。
+   這兩支是載入期就會跑的全域函式,既有零參數呼叫行為不變。 */
+function activeCategories(s) {
+  s = s || state.settings;
   var all = (typeof allCategoryNames === 'function') ? allCategoryNames() : null;
   if (all === null) { return null; }   /* 非分組考試:不套用類科過濾 */
-  var sel = state.settings.examCategories;
+  var sel = s.examCategories;
   if (!Array.isArray(sel) || sel.length === 0) { return null; }   /* 未設定/清空 = 全部類科 */
   var valid = sel.filter(function (c) { return all.indexOf(c) >= 0; });   /* 濾掉已不存在的舊值 */
   return valid.length ? valid : null;
 }
-/* 依 activeCategories() 收斂 EXAM.subjects:null 回全部科目;否則只留類科前綴落在生效類科內者。 */
-function computeActiveSubjects() {
-  var cats = activeCategories();
+/* 依 activeCategories(s) 收斂 EXAM.subjects:null 回全部科目;否則只留類科前綴落在生效類科內者。 */
+function computeActiveSubjects(s) {
+  s = s || state.settings;
+  var cats = activeCategories(s);
   var base;
   if (cats === null) { base = EXAM.subjects.slice(); }
   else {
     var sep = EXAM.subjectGroupSep;
-    base = EXAM.subjects.filter(function (s) {
-      var i = s.indexOf(sep);
-      var g = (i >= 0) ? s.slice(0, i) : s;
+    base = EXAM.subjects.filter(function (subj) {
+      var i = subj.indexOf(sep);
+      var g = (i >= 0) ? subj.slice(0, i) : subj;
       return cats.indexOf(g) >= 0;
     });
   }
   /* 停考科目過濾:includeDeprecated 為假(預設)時,把 manifest 標了 deprecatedSubjects 的科目
      移出生效 SUBJECTS —— 單題練習/弱點/診斷/雷達/藍圖/模擬/統計/歷屆全站自動排除;
      為真時全部保留(模擬考選科器仍會標註並預設不勾,見 modes.js 既有邏輯)。 */
-  if (!(state.settings && state.settings.includeDeprecated)) {
-    base = base.filter(function (s) {
-      return !(typeof subjectDeprecationNote === 'function' && subjectDeprecationNote(s));
+  if (!(s && s.includeDeprecated)) {
+    base = base.filter(function (subj) {
+      return !(typeof subjectDeprecationNote === 'function' && subjectDeprecationNote(subj));
     });
   }
   /* 應考科目(升學自選組合):settings.subjects 為陣列且非空時只留勾選的科。
      未設定／空陣列＝全部(向下相容,且日後某考試新增科目時不會被舊設定靜默擋掉);
      一律先濾掉「已不存在於本考試」的舊值(制度改版、科目更名後的殘留)。 */
-  var picked = state.settings && state.settings.subjects;
+  var picked = s && s.subjects;
   if (Array.isArray(picked) && picked.length) {
-    var keep = picked.filter(function (s) { return base.indexOf(s) >= 0; });
-    if (keep.length) { base = base.filter(function (s) { return keep.indexOf(s) >= 0; }); }
+    var keep = picked.filter(function (subj) { return base.indexOf(subj) >= 0; });
+    if (keep.length) { base = base.filter(function (subj) { return keep.indexOf(subj) >= 0; }); }
   }
   return base;
 }
@@ -1380,7 +1387,9 @@ function wireControls() {
     });
   }
   var rd = $('btn-rediagnose');
-  if (rd) { rd.addEventListener('click', function () { startDiagnostic('short'); }); }
+  /* 開完整 overlay(diagnostic.js showDiagOverlay),不再直接 startDiagnostic('short')——
+     否則跳過範圍選擇,教檢會直接對全部 21 科出題(見 IDR-0016)。 */
+  if (rd) { rd.addEventListener('click', showDiagOverlay); }
   var ed = $('exam-date');
   if (ed) { ed.addEventListener('change', function (e) { setExamDate(e.target.value); }); }   /* P4 預計考試日期 */
   var edc = $('exam-date-clear');

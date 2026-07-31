@@ -712,6 +712,16 @@ h1,h2,h3,h4,.mode-name,.daily-line.strong{text-wrap:balance;}
   border-radius:var(--r);background:var(--paper);}
 .diag-subjects .diag-lead{margin:0 0 .45rem;font-size:.94rem;}
 
+/* 入學診斷兩步化(第一步):即時題數統計行＋底部按鈕列（逃生鈕＋下一步） */
+.diag-scope-stats{font-weight:600;color:var(--ink);margin:.5rem 0 .9rem;}
+.diag-scope-actions{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.2rem;margin-top:.9rem;}
+.diag-scope-actions .diag-skip{margin:0;}
+.diag-scope-actions .diag-next{margin-left:auto;}
+@media (max-width:560px){
+  .diag-scope-actions{gap:.5rem .8rem;}
+  .diag-scope-actions .diag-next{margin-left:0;min-height:44px;}
+}
+
 /* 非選作答表(勾選＋說明)。原卷是表格,壓平成一行就不能作答 —— 這裡把它還原成可操作的表。 */
 .answer-table td{vertical-align:top;}
 .answer-choice{display:flex;align-items:flex-start;gap:.5rem;padding:.3rem 0;cursor:pointer;line-height:1.5;}
@@ -720,3 +730,7 @@ h1,h2,h3,h4,.mode-name,.daily-line.strong{text-wrap:balance;}
   padding:.4rem .5rem;border:1px solid var(--rule);border-radius:var(--r);
   background:var(--paper-card);color:var(--ink);resize:vertical;}
 .answer-cell-input:disabled,.answer-choice input:disabled{opacity:.65;cursor:default;}
+/* 格子裡原卷就印好的字(如「因為該都市」「所以第一所女子中等學校會先設在該都市。」)。
+   淡一階,好跟自己寫的字分開;不是提示語,是題目的一部分,所以不縮小字級。 */
+.answer-cell-hint{margin:0 0 .35rem;color:var(--ink-soft);line-height:1.7;}
+.answer-cell-hint:last-child{margin-bottom:0;}
