@@ -201,13 +201,54 @@ function parseCharLimits(stem) {
   while ((m = re.exec(String(stem || '')))) { out.push(Number(m[1])); }
   return out;
 }
+/* 非選的「勾選＋說明」作答表(q.answer_table = {headers:[…], choices:[…]})。
+   原卷把它印成表格:左欄一排勾選框、右欄(或右邊數欄)是要寫字的空格。
+   PDF 抽取時整張表被壓成一行,勾選框沒有可點的對象 —— **看得到不等於能作答**,
+   所以這不是呈現優化而是功能缺陷(見 _build_features/build_answer_tables.py)。
+   第 0 欄畫成 checkbox 清單(原卷印 □ 不是 ○,故用 checkbox;單選與否由題幹文字規範),
+   其餘欄各給一個輸入框。交卷後由 revealEssay 一併鎖住。 */
+function buildAnswerTable(card, t) {
+  if (!t || !t.headers || !t.choices || !t.choices.length) { return; }
+  var wrap = el('div', { 'class': 'q-table-wrap' });
+  var tbl = el('table', { 'class': 'q-table answer-table' });
+  var thead = el('thead'), htr = el('tr');
+  t.headers.forEach(function (h) { htr.appendChild(el('th', null, h)); });
+  thead.appendChild(htr); tbl.appendChild(thead);
+  var tr = el('tr');
+  var pick = el('td');
+  t.choices.forEach(function (c, i) {
+    var lab = el('label', { 'class': 'answer-choice' });
+    var box = el('input', { type: 'checkbox', 'data-idx': String(i) });
+    lab.appendChild(box); lab.appendChild(el('span', null, c));
+    pick.appendChild(lab);
+    card._answerInputs.push(box);
+  });
+  tr.appendChild(pick);
+  for (var k = 1; k < t.headers.length; k++) {
+    var td = el('td');
+    var ta = el('textarea', { 'class': 'answer-cell-input', rows: '3',
+      'aria-label': t.headers[k] });
+    td.appendChild(ta); tr.appendChild(td);
+    card._answerInputs.push(ta);
+  }
+  var tbody = el('tbody'); tbody.appendChild(tr);
+  tbl.appendChild(tbody); wrap.appendChild(tbl);
+  card.appendChild(wrap);
+}
 function buildEssayAnswer(card, q) {
   card._optButtons = [];   /* 讓 pickedLetters/markMCQCard 對非選卡安全(空陣列) */
+  card._answerInputs = [];
+  buildAnswerTable(card, q.answer_table);   /* 有作答表就先畫表,再給整體作答區 */
   var limits = parseCharLimits(q.stem);
   var maxLimit = limits.length ? Math.max.apply(null, limits) : 0;
   if (limits.length) {
     card.appendChild(el('p', { 'class': 'subtitle essay-limit' },
       '本題字數規定：' + limits.map(function (n) { return n + ' 字以內'; }).join('、') + '（含標點符號）'));
+  }
+  if (q.answer_table) {
+    /* 作答表本身就是作答區(右欄要寫字、左欄要勾選),再給一個大 textarea 會變成兩個作答區。 */
+    card._isEssay = true;
+    return;
   }
   var ta = el('textarea', { 'class': 'essay-answer-input', rows: (maxLimit && maxLimit <= 20) ? '3' : '6',
     placeholder: '在這裡作答 —— 非選題交卷後對照官方參考答案；提取練習：先自己寫，比看了答案才寫有效。' });
@@ -226,6 +267,7 @@ function buildEssayAnswer(card, q) {
 /* 交卷後揭示非選的官方參考答案/評分原則(資料 Phase D 接;先把 UI/欄位接好,先顯示 AI 詳解＋整備提示)。 */
 function revealEssay(card, q) {
   if (card._essayInput) { card._essayInput.disabled = true; }
+  (card._answerInputs || []).forEach(function (n) { n.disabled = true; });
   var box = el('div', { 'class': 'essay-reveal' });
   var _ex = (typeof explEl === 'function') ? explEl(q.qid) : null;
   if (_ex) { box.appendChild(_ex); }
@@ -540,7 +582,12 @@ function startSheet(questions, meta) {
       card._flagBtn = flagBtn;
       if (flags[q.qid]) { card.classList.add('is-flagged'); }
       if (card._isEssay) {
-        card._essayInput.addEventListener('input', function () { if (!graded) { updateProgress(); } });
+        /* 非選的作答元件可能是 textarea,也可能是作答表的勾選框＋輸入框(見 buildAnswerTable)。 */
+        [card._essayInput].concat(card._answerInputs || []).forEach(function (n) {
+          if (!n) { return; }
+          n.addEventListener(n.type === 'checkbox' ? 'change' : 'input',
+            function () { if (!graded) { updateProgress(); } });
+        });
       } else if (card._isMulti) {
         wireMultiToggle(card);   /* 多選:可複選(toggle .picked) */
         card._optButtons.forEach(function (b) {
@@ -565,10 +612,17 @@ function startSheet(questions, meta) {
     panel.appendChild(pp);
     updateProgress();
   }
-  function countAnswered() {   /* 已作答＝選擇題有 .opt.picked,或非選 textarea 有內容 */
+  /* 非選是否已作答:textarea 有字、或作答表勾了任一項／填了任一格。 */
+  function essayAnswered(card) {
+    if (card._essayInput && card._essayInput.value.trim()) { return true; }
+    return (card._answerInputs || []).some(function (n) {
+      return n.type === 'checkbox' ? n.checked : String(n.value || '').trim();
+    });
+  }
+  function countAnswered() {   /* 已作答＝選擇題有 .opt.picked,或非選有任一作答內容 */
     var n = 0;
     Array.prototype.forEach.call(panel.querySelectorAll('.question-card'), function (card) {
-      if (card._isEssay) { if (card._essayInput && card._essayInput.value.trim()) { n += 1; } }
+      if (card._isEssay) { if (essayAnswered(card)) { n += 1; } }
       else if (card.querySelector('.opt.picked')) { n += 1; }
     });
     return n;
