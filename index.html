@@ -47,6 +47,21 @@
   .exam-card.is-soon .go{color:var(--ink-faint);font-weight:500;}
   .landing-note{font-size:.9rem;color:var(--ink-soft);line-height:1.7;border-top:1px solid var(--rule-faint);padding-top:1.2rem;margin-top:1.5rem;}
   .landing-note b{color:var(--ink);}
+  /* 手機上右緣參差得很明顯：中文可以逐字斷行,但「Cloudflare R2」「localStorage」
+     這種拉丁字串整串不能斷,加上全形標點的避頭尾,常常整行提早 10~20px 結束
+     ——看起來就是「沒對齊」。兩端對齊把那些缺口分攤掉。
+     375px 下實測欄寬 340px(> 300px 門檻),字距不會被拉爆;
+     短的 .lead 不套(只有一兩行,末行不參與拉伸,只會撐爛第一行)。
+     🔴 只有一行例外:齊左時「…你瀏覽器的 localStorage」留了 95px 缺口,
+     兩端對齊會把它攤到那 13 個漢字上、字距爆開。這種行沒有 CSS 解
+     (沒有 max-word-spacing),只能給那個字串一個可斷點 —— 見內文的 <wbr>。
+     加規則前先量:齊左時右緣缺口 > 40px 的行,就是對齊後會被拉爆的行。 */
+  /* 🔴 兩端對齊只齊「框」,齊不了「墨水」。全形標點(、。,)字身偏左、右半格是空的,
+     所以整段結尾都是標點時,框明明齊了、看起來仍差半個字 —— 這正是手機截圖上
+     第二、三段的症狀。allow-end 讓行尾標點吊到版心外,墨水才真的對齊。
+     ⚠️ Safari／iOS 支援,Chromium 至今未實作:用 Chrome 看不到差別,不是壞掉。
+     ⚠️ 也因此這條**只能在 iPhone 上驗收**,瀏覽器面板量不到。 */
+  .landing-note p{text-align:justify;hanging-punctuation:allow-end;}
   #exam-index h2{font-family:var(--serif);font-size:1.25rem;margin:.2rem 0 .4rem;color:var(--ink);}
   .exam-index{list-style:none;padding:0;margin:.8rem 0 0;display:grid;
     grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:.35rem .9rem;}
@@ -100,8 +115,8 @@
 <!-- OBIG:STATIC-NAV:END -->
 
   <section class="landing-note">
-    <p><b>目前是 beta。</b>題庫與圖表仍在校對：少數題目因原始圖檔缺漏而暫時退出練習池，詳解也還沒補齊每一科。作答進度現在只存在你的瀏覽器；登入（Google 帳號）與雲端備份（Cloudflare R2）正在建置，上線時會一併說明資料存在哪裡、誰讀得到。已知問題完整列在專案的 <a href="https://github.com/5219rayhsu/open-book-is-good-platform" target="_blank" rel="noopener">GitHub</a>，發現新的歡迎回報。</p>
-    <p><b>怎麼運作：</b>每科都是同一套引擎 —— 單題自適應練習、歷屆原卷、模擬考、弱點殲滅、申論、能力雷達與學習藍圖。進度預設存在你瀏覽器的 localStorage，各科分開、互不影響（Google 登入與雲端備份建置中）；切換考試在站內頂端隨時可換。</p>
+    <p><b>目前是 beta。</b>題庫與圖表仍在校對：少數題目因原始圖檔缺漏而暫時退出練習池，各科詳解也還沒補齊。作答進度現在只存在你的瀏覽器；登入（Google 帳號）與雲端備份（Cloudflare R2）正在建置，上線時會一併說明資料存在哪裡、誰讀得到。已知問題完整列在專案的 <a href="https://github.com/5219rayhsu/open-book-is-good-platform" target="_blank" rel="noopener">GitHub</a>，發現新的歡迎回報。</p>
+    <p><b>怎麼運作：</b>每科都是同一套引擎 —— 單題自適應練習、歷屆原卷、模擬考、弱點殲滅、申論、能力雷達與學習藍圖。進度預設存在你瀏覽器的 local<wbr>Storage，各科分開、互不影響（Google 登入與雲端備份建置中）；切換考試在站內頂端隨時可換。</p>
     <p><b>資料來源與免責聲明：</b>題庫出自考選部「國家考試試題及測驗式試題答案」開放資料（OGDL 授權），以及大考中心（學測）、臺師大心測中心（會考）等官方歷屆試題；依著作權法第 9 條，依法令舉行之考試試題不得為著作權之標的、得自由利用，引用仍請註明出處。選擇題詳解與申論參考要點為 AI 整理的學習輔助，以及開源工作者與公眾的協助解答，並非官方標準答案；法規會修訂，作答與引用前請對照現行法規查證。任何備考工作量的推估，都是「為上榜而設計」的估計，而非上榜的保證。</p>
   </section>
 
