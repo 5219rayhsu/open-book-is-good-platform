@@ -25,6 +25,18 @@ function essaysForPaper(paper) {
 }
 
 function renderPaperPicker() {
+  /* 🔴 essays 已延後到 bank 落地後才載(app.js loadSecondary)。本面板是**唯一**讀全域
+     ESSAYS 卻沒有自己 resolve 的地方(申論面板與歷史頁都有),空載時整卷的申論題會
+     **靜默消失**——不報錯、不提示,只是「另含 N 題申論」那行不見了。延後之前這個洞被
+     「essays 與 bank 同時起跑、又小得多所以必先到」蓋住;延後之後賽跑窗口才真的打開。
+     守門 `ESSAYS.length === 0`:已載入就不重抓,同時阻斷 render→fetch→render 迴圈
+     (resolveEssays 的成功回呼是無條件的,裸掛 renderPaperPicker 會無窮遞迴)。
+     沒有 essays.json 的考試(教檢/醫師/護理…)每次進本面板會多兩個 404——刻意留著:
+     三個 resolver 都沒有重試機制,這是唯一能救「網路抖動掉了 essays.json」的路徑,
+     而 404 無 body、SW 也不快取失敗回應,代價可以忽略。 */
+  if (typeof resolveEssays === 'function' && typeof ESSAYS !== 'undefined' && ESSAYS.length === 0) {
+    resolveEssays(function () { if (ESSAYS.length > 0) { renderPaperPicker(); } });
+  }
   var box = $('paper-picker');
   box.textContent = '';
   if (papersIndex.length === 0) { box.appendChild(el('p', { 'class': 'empty-note' }, '題庫載入後顯示。')); return; }

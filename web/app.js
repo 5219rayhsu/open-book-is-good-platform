@@ -525,6 +525,7 @@ function buildPapersIndex() {
 }
 function setBank(obj) {
   bank = obj;
+  loadSecondary();   /* 放在渲染之前:fetch 一發出就開始下載,與下面的同步渲染並行 */
   rebuildUsable();
   $('load-error').hidden = true;
   renderAll();
@@ -1399,16 +1400,39 @@ function wireControls() {
 
 /* 鍵盤作答 wireKeyboard 在 run.js(屬作答流程)。 */
 
-/* ===================== 開機 ===================== */
+/* ===================== 開機 =====================
+   🔴 開機只抓 bank.json,其餘三包等它落地才起跑(loadSecondary)。
+   原本四個 fetch 同時發射,但**只有 bank.json 擋第一畫面**——其餘在開機當下
+   一個都讀不到(詳解與關聯要答完題才用,申論在原卷/申論面板才用)。實測 gzip 後
+   social-worker 開機共 5.9MB,bank 只佔 17.8%(explanations 3.8M、essay_samples 618K、
+   essays 230K、relations 171K),等於用五分之一的頻寬載那個唯一擋畫面的檔案。
+
+   為什麼串行不會讓後面那包變晚:頻寬受限時平行是兩者共享、都在 T 完成;串行是
+   第一個在 0.2T 完成、第二個仍在 T 完成(總位元組不變,還獨佔頻寬所以略早)。
+   代價只在延遲受限的快網路:max(a,b) 變 a+b,200ms → 400ms,而使用者讀完第一題要好幾秒。
+
+   已接受的取捨:explanations 落地前就答完的那一題,該則解釋會**一次性缺席**
+   (五個渲染點都是 `if (_ex)` 靜默跳過)。不補到貨重繪——那要動五個點,而風險與改動前同級
+   (改動前也是非同步),且 sw.js 的 SWR 讓第二次造訪起直接命中快取,窗口只存在於首次造訪。
+   三個 resolver 皆無重試:網路抖動掉了就是整個 session 缺席,這點改動前後相同。 */
+var _secondaryStarted = false;
+function loadSecondary() {
+  if (_secondaryStarted) { return; }
+  _secondaryStarted = true;
+  resolveRelations(setRelations);
+  resolveEssays();   /* 內含 essay_samples;歷屆原卷的靜默洞由 modes.js renderPaperPicker 自癒 */
+  if (typeof resolveExpl === 'function') { resolveExpl(); }   /* 本題解釋(explain.js) */
+}
+
 function boot() {
+  /* bank 載入失敗時**不載**次要資料:沒有 bank 就沒有任何消費它們的畫面,
+     而 bank 都逾時了次要 fetch 大概率同亡——沒有重試機制,提前燒掉唯一一次機會更糟。
+     使用者事後拖放餵入 bank 會走 setBank → loadSecondary,路徑閉合。 */
   resolveBank(setBank, function () {
     $('load-error').hidden = false;
     $('practice-empty').hidden = false;
     renderStatus();
   });
-  resolveRelations(setRelations);
-  resolveEssays();
-  if (typeof resolveExpl === 'function') { resolveExpl(); }   /* 本題解釋(explain.js) */
 }
 
 document.addEventListener('DOMContentLoaded', function () {
