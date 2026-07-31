@@ -111,12 +111,25 @@ function diagEscapeElement(mode) {
    科目(學測)——未設定過 → 全部勾選(自選科目考試本來就該預設全考)。
    兩者已設定過(redo,或設定頁改過)時,一律預先勾選目前的選擇。 */
 function diagDefaultPicked(kind) {
+  /* 🔴 存檔值要先濾掉「已不存在於本考試」的舊名（制度改版、類科/科目更名後的殘留）。
+     不濾的話會出現一個自相矛盾的畫面:一個框都沒勾（舊名對不到任何 checkbox）,
+     「下一步」卻是可以按的（picked 非空）,而統計行因為 activeCategories 判定
+     「全部失效 → 回 null → 全部類科」而寫著「共 21 科、簡短 84 題」。
+     隔壁的 activeCategories/computeActiveSubjects 本來就都濾（見 app.js 該處註解）,
+     這裡補上只是把防呆姿勢對齊,不是新規則。 */
   if (kind === 'category') {
+    var all = (typeof allCategoryNames === 'function' && allCategoryNames()) || [];
     var cur = state.settings.examCategories;
-    return (Array.isArray(cur) && cur.length) ? cur.slice() : [];
+    if (!Array.isArray(cur)) { return []; }
+    return cur.filter(function (c) { return all.indexOf(c) >= 0; });
   }
   var cur2 = state.settings.subjects;
-  return (Array.isArray(cur2) && cur2.length) ? cur2.slice() : EXAM.subjects.slice();
+  var keep = Array.isArray(cur2)
+    ? cur2.filter(function (s) { return EXAM.subjects.indexOf(s) >= 0; }) : [];
+  /* 科目全失效時回退成「全勾」——與設定頁「空陣列＝全部」的既有慣例一致,
+     不讓使用者因為一次更名就被鎖到一科都選不到。類科則相反,回退成全不勾,
+     因為那一步本來就要求他重新宣告一次報考身分。 */
+  return keep.length ? keep : EXAM.subjects.slice();
 }
 
 /* 兩步的即時題數統計:此時設定尚未寫入,借 computeActiveSubjects() 的可選參數 s
