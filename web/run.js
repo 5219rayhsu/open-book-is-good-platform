@@ -36,9 +36,23 @@ function buildTable(t) {
   var tbl = el('table', { 'class': 'q-table' });
   if (t.caption) { tbl.appendChild(el('caption', null, t.caption)); }
   if (t.headers && t.headers.length) {
-    var thead = el('thead'), htr = el('tr');
-    t.headers.forEach(function (h) { htr.appendChild(el('th', null, h)); });
-    thead.appendChild(htr); tbl.appendChild(thead);
+    var thead = el('thead');
+    /* headers 可為單列 [字串,…] 或多列 [[字串,…],…]（原卷的雙層表頭:「反應物」橫跨三欄）。
+       合併欄的資訊資料裡本來就有——被併掉的欄留下連續空字串,故「空格併入前一個非空表頭」
+       即可還原 colspan。左上角的空 stub 前面沒有非空格可併 → 原樣輸出一個空 <th>,兩種
+       情形靠資料本身的形狀自然分流,不需要額外欄位。 */
+    (Array.isArray(t.headers[0]) ? t.headers : [t.headers]).forEach(function (hrow) {
+      var htr = el('tr'), last = null;
+      hrow.forEach(function (h) {
+        if (last && !String(h).trim()) {
+          last.colSpan += 1;                     /* 空格 → 併進前一欄 */
+        } else {
+          last = el('th', null, h); htr.appendChild(last);
+        }
+      });
+      thead.appendChild(htr);
+    });
+    tbl.appendChild(thead);
   }
   var tbody = el('tbody');
   t.rows.forEach(function (row) {
