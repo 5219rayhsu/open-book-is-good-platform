@@ -2,7 +2,10 @@
 _scratch/
 .DS_Store
 **/.DS_Store
-*.bak
+# 🔴 `*.bak*` 不是 `*.bak`／`*.bak_*` 兩條——那兩條漏掉 `bank.json.bak2`，
+#    而漏掉的那個就是這次 61 個被追蹤 .bak 裡的其中一個。備份檔的命名是人隨手取的，
+#    樣式要寬到吃得下所有隨手取法。
+*.bak*
 *.tmp
 __pycache__/
 *.pyc
@@ -14,4 +17,11 @@ __pycache__/
 .env
 .env.*
 !.env.example
-*.bak_*
+
+# 🔴 `*.bak*` 只擋檔名，擋不到**目錄名**——`figures_pre_recrop_bak/` 裡 670 個
+#    衍生 PNG 就是這樣被 track 了一個月，`.git` 93MB → 487M（2026-08-02 實測）。
+#    衍生圖不是 source：source 是 PDF ＋ figdet 程式 ＋ 手修的 overrides/。
+*_bak/
+*_bak_*/
+# 原始 PDF 不進 repo（體積大且可從官方重抓）
+data/*/raw/
