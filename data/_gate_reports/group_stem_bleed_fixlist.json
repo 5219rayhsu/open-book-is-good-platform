@@ -1,0 +1,290 @@
+{
+ "applied": [
+  {
+   "bank": "nursing",
+   "qid": "104_104030_基本護理學（包括護理原理、護理技術）與護理行政_22",
+   "kind": "CONTAM",
+   "had_explanation": false,
+   "affected_members": [
+    {
+     "qid": "104_104030_基本護理學（包括護理原理、護理技術）與護理行政_23",
+     "had_explanation": true
+    },
+    {
+     "qid": "104_104030_基本護理學（包括護理原理、護理技術）與護理行政_24",
+     "had_explanation": true
+    },
+    {
+     "qid": "104_104030_基本護理學（包括護理原理、護理技術）與護理行政_25",
+     "had_explanation": true
+    },
+    {
+     "qid": "104_104030_基本護理學（包括護理原理、護理技術）與護理行政_26",
+     "had_explanation": true
+    }
+   ]
+  },
+  {
+   "bank": "nursing",
+   "qid": "104_104030_產兒科護理學_03",
+   "kind": "SPLIT",
+   "had_explanation": false,
+   "affected_members": []
+  },
+  {
+   "bank": "nursing",
+   "qid": "104_104030_產兒科護理學_58",
+   "kind": "SPLIT",
+   "had_explanation": false,
+   "affected_members": []
+  },
+  {
+   "bank": "nursing",
+   "qid": "104_104030_產兒科護理學_74",
+   "kind": "SPLIT",
+   "had_explanation": false,
+   "affected_members": []
+  },
+  {
+   "bank": "nursing",
+   "qid": "104_104030_精神科與社區衛生護理學_22",
+   "kind": "SPLIT",
+   "had_explanation": false,
+   "affected_members": []
+  },
+  {
+   "bank": "nursing",
+   "qid": "104_104030_精神科與社區衛生護理學_69",
+   "kind": "NOISE",
+   "had_explanation": false,
+   "affected_members": []
+  },
+  {
+   "bank": "nursing",
+   "qid": "104_104030_精神科與社區衛生護理學_70",
+   "kind": "CONTAM",
+   "had_explanation": false,
+   "affected_members": [
+    {
+     "qid": "104_104030_精神科與社區衛生護理學_71",
+     "had_explanation": true
+    },
+    {
+     "qid": "104_104030_精神科與社區衛生護理學_72",
+     "had_explanation": false
+    },
+    {
+     "qid": "104_104030_精神科與社區衛生護理學_73",
+     "had_explanation": false
+    }
+   ]
+  },
+  {
+   "bank": "nursing",
+   "qid": "104_104100_基本護理學（包括護理原理、護理技術）與護理行政_28",
+   "kind": "CONTAM",
+   "had_explanation": false,
+   "affected_members": []
+  },
+  {
+   "bank": "nursing",
+   "qid": "104_104100_基本護理學（包括護理原理、護理技術）與護理行政_66",
+   "kind": "SPLIT",
+   "had_explanation": true,
+   "affected_members": []
+  },
+  {
+   "bank": "nursing",
+   "qid": "104_104100_產兒科護理學_03",
+   "kind": "SPLIT",
+   "had_explanation": true,
+   "affected_members": []
+  },
+  {
+   "bank": "nursing",
+   "qid": "104_104100_產兒科護理學_46",
+   "kind": "SPLIT",
+   "had_explanation": true,
+   "affected_members": []
+  },
+  {
+   "bank": "nursing",
+   "qid": "104_104100_產兒科護理學_59",
+   "kind": "SPLIT",
+   "had_explanation": false,
+   "affected_members": []
+  },
+  {
+   "bank": "nursing",
+   "qid": "104_104100_產兒科護理學_60",
+   "kind": "SPLIT",
+   "had_explanation": false,
+   "affected_members": []
+  },
+  {
+   "bank": "nursing",
+   "qid": "106_106030_基本護理學（包括護理原理、護理技術）與護理行政_10",
+   "kind": "CONTAM",
+   "had_explanation": false,
+   "affected_members": []
+  },
+  {
+   "bank": "nursing",
+   "qid": "106_106030_基本護理學（包括護理原理、護理技術）與護理行政_42",
+   "kind": "CONTAM",
+   "had_explanation": false,
+   "affected_members": []
+  },
+  {
+   "bank": "nursing",
+   "qid": "106_106030_精神科與社區衛生護理學_16",
+   "kind": "CONTAM",
+   "had_explanation": true,
+   "affected_members": []
+  },
+  {
+   "bank": "nursing",
+   "qid": "107_107030_基本護理學（包括護理原理、護理技術）與護理行政_59",
+   "kind": "CONTAM",
+   "had_explanation": false,
+   "affected_members": []
+  },
+  {
+   "bank": "nursing",
+   "qid": "107_107110_精神科與社區衛生護理學_24",
+   "kind": "CONTAM",
+   "had_explanation": false,
+   "affected_members": []
+  },
+  {
+   "bank": "nursing",
+   "qid": "108_108020_基本護理學（包括護理原理、護理技術）與護理行政_08",
+   "kind": "CONTAM",
+   "had_explanation": true,
+   "affected_members": []
+  },
+  {
+   "bank": "nursing",
+   "qid": "108_108020_基本護理學（包括護理原理、護理技術）與護理行政_42",
+   "kind": "CONTAM",
+   "had_explanation": false,
+   "affected_members": []
+  },
+  {
+   "bank": "nursing",
+   "qid": "108_108020_內外科護理學_74",
+   "kind": "CONTAM",
+   "had_explanation": false,
+   "affected_members": []
+  },
+  {
+   "bank": "nursing",
+   "qid": "108_108110_內外科護理學_61",
+   "kind": "CONTAM",
+   "had_explanation": false,
+   "affected_members": []
+  },
+  {
+   "bank": "clinical",
+   "qid": "103_103100_特論二_23",
+   "kind": "CONTAM",
+   "had_explanation": false,
+   "affected_members": [
+    {
+     "qid": "110_110111_特論二_24",
+     "had_explanation": true
+    },
+    {
+     "qid": "110_110111_特論二_25",
+     "had_explanation": true
+    },
+    {
+     "qid": "110_110111_特論二_26",
+     "had_explanation": true
+    }
+   ]
+  },
+  {
+   "bank": "clinical",
+   "qid": "104_104030_總論一_11",
+   "kind": "CONTAM",
+   "had_explanation": false,
+   "affected_members": [
+    {
+     "qid": "114_114100_總論一_12",
+     "had_explanation": true
+    },
+    {
+     "qid": "114_114100_總論一_13",
+     "had_explanation": true
+    },
+    {
+     "qid": "114_114100_總論一_14",
+     "had_explanation": true
+    }
+   ]
+  },
+  {
+   "bank": "clinical",
+   "qid": "106_106110_特論一_18",
+   "kind": "SPLIT",
+   "had_explanation": false,
+   "affected_members": []
+  },
+  {
+   "bank": "clinical",
+   "qid": "108_108020_特論三_31",
+   "kind": "CONTAM",
+   "had_explanation": false,
+   "affected_members": [
+    {
+     "qid": "114_114100_特論三_32",
+     "had_explanation": true
+    },
+    {
+     "qid": "114_114100_特論三_33",
+     "had_explanation": true
+    },
+    {
+     "qid": "114_114100_特論三_34",
+     "had_explanation": true
+    }
+   ]
+  },
+  {
+   "bank": "social-worker",
+   "qid": "111_111110_社會工作研究方法_12",
+   "kind": "CONTAM",
+   "had_explanation": true,
+   "affected_members": []
+  },
+  {
+   "bank": "social-worker",
+   "qid": "111_111110_社會工作研究方法_15",
+   "kind": "CONTAM",
+   "had_explanation": true,
+   "affected_members": []
+  },
+  {
+   "bank": "social-worker",
+   "qid": "111_111110_社會工作研究方法_27",
+   "kind": "CONTAM",
+   "had_explanation": true,
+   "affected_members": []
+  }
+ ],
+ "skipped": [
+  {
+   "bank": "nursing",
+   "qid": "106_106030_基本護理學（包括護理原理、護理技術）與護理行政_49",
+   "kind": "CONTAM",
+   "reason": "RANGE regex 抓不到題號區間（PDF 文字在「第」後被截斷），range_found=False → 無法自動定位成員題以核對副本，人工用鄰近題號手動核對雖找到疑似副本，仍判定範圍解析可疑，不納入本次自動套用"
+  },
+  {
+   "bank": "nursing",
+   "qid": "106_106030_產兒科護理學_26",
+   "kind": "CONTAM",
+   "reason": "RANGE regex 抓不到題號區間（PDF 文字在「第」後被截斷），range_found=False → 無法自動定位成員題以核對副本，人工用鄰近題號手動核對雖找到疑似副本，仍判定範圍解析可疑，不納入本次自動套用"
+  }
+ ]
+}

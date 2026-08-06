@@ -1,0 +1,12 @@
+{
+ "exam": "social-worker",
+ "fixed": [
+  "107_107030_社會工作研究方法_06"
+ ],
+ "stats": {
+  "already-ok": 6401,
+  "unsplittable": 600,
+  "needs-eyes": 37,
+  "boundary-shift": 1
+ }
+}

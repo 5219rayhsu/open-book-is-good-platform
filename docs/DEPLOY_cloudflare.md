@@ -1,4 +1,27 @@
-# 部署到 Cloudflare Pages — 開卷有益｜國考統一站
+# 部署到 Cloudflare — 開卷有益｜國考統一站
+
+## 🔴 線上網址（正本，2026-08-06 補記）
+
+```
+https://open-book-is-good-platform.1003ray1003.workers.dev/
+```
+
+驗活一行（上線後的「驗使用者那一面」從這裡開始，不要憑印象）：
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' https://open-book-is-good-platform.1003ray1003.workers.dev/exam/nursing/
+```
+
+⚠️ **實際跑的是 Workers Assets，不是 Pages**——`_platform/wrangler.jsonc` 的
+`name: open-book-is-good-platform` ＋ `assets.directory: "."`，網域因此是
+`<name>.<帳號子網域>.workers.dev`，不是本文下面步驟寫的 `<專案>.pages.dev`。
+下面的 GUI 步驟是當初評估 Pages 時寫的，**保留當備援路徑，但它不是現況**。
+
+🔴 **為什麼這一格值得存在**：2026-08-06 稽核發現網址在 repo 裡**只**出現在
+`_platform/llms.txt` 與 `robots.txt`——**兩份都是寫給機器讀的檔案**。於是
+「上線後要驗使用者那一面」這條硬規則，在執行上依賴某個 session 剛好記得網址，
+而 session 會結束。**寫給機器的正本不等於寫給接手者的正本**；一條無法在新 session
+裡執行的驗證規則，觀測上等同於不存在。
 
 > 這是「資料驅動的純前端靜態站」：無 build、無後端、無追蹤。一份引擎（`web/`）
 > 跑五科，資料按考試分檔（`data/<考試>/*.json`）。部署 = 把 repo 根目錄
