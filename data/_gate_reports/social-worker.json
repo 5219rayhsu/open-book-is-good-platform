@@ -1,0 +1,54 @@
+{
+ "exam": "social-worker",
+ "questions": 7039,
+ "A_答案配對全驗": {
+  "status": "not_run",
+  "reason": "需獨立重新解析官方標準答案來源；本 repo 未留該科官方答案 PDF（找不到 social-worker/raw/ 下的答案檔）。",
+  "how_to_run": "取得官方答案 PDF → find_tables 解析 → 與 bank.answer 逐題 diff"
+ },
+ "A2_題數與缺號": {
+  "status": "partial",
+  "papers": 176,
+  "papers_with_gaps": 0,
+  "detail": [],
+  "note": "官方宣告題數未留存在 repo，故只驗『1..max 無缺號』這半邊；『入庫數＝官方宣告數』那半邊未驗——整卷尾部被截斷時抓不到。"
+ },
+ "A3_圖題掛載雙向": {
+  "status": "ok",
+  "figures_on_disk": 2,
+  "ref_but_no_file": 7,
+  "file_but_no_ref": 0,
+  "figure_missing_on_disk": 0,
+  "png_used_by_多題": 0,
+  "detail": {
+   "ref_but_no_file": [
+    "114_114100_社會工作研究方法_25",
+    "109_109110_社會工作直接服務_26",
+    "107_107030_社會政策與社會立法_32",
+    "106_106110_社會工作研究方法_15",
+    "105_105090_社會工作研究方法_16",
+    "104_104100_社會工作管理_18",
+    "103_103100_社會工作管理_16"
+   ],
+   "file_but_no_ref": [],
+   "figure_missing_on_disk": []
+  },
+  "note": "『引用圖卻無圖檔』一欄含合法誤報（圖片選項題），須人工過目；『有圖檔卻不引用』才是 off-by-one 錯掛的主要訊號。"
+ },
+ "A4_答案狀態已標注": {
+  "status": "ok",
+  "distribution": {
+   "official": 6976,
+   "multi": 38,
+   "free": 25
+  },
+  "unread": 0,
+  "papers_free_over_half": [],
+  "note": "unread＝我們對那題的答案一無所知（缺口，不是資料）；papers_free_over_half 非空＝該卷疑似答案表整段沒讀到，不要當送分題入庫。未標注＝該科尚未跑 answer_status.py。"
+ },
+ "B_詳解紅隊": {
+  "status": "not_run",
+  "report": null,
+  "reason": "找不到紅隊產物；紅隊跑過就該留下 findings 彙整與『全跑或抽查』的選擇紀錄。"
+ }
+}
