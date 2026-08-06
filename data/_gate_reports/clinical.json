@@ -2,9 +2,15 @@
  "exam": "clinical",
  "questions": 5640,
  "A_答案配對全驗": {
-  "status": "not_run",
-  "reason": "需獨立重新解析官方標準答案來源；本 repo 未留該科官方答案 PDF（找不到 clinical/raw/ 下的答案檔）。",
-  "how_to_run": "取得官方答案 PDF → find_tables 解析 → 與 bank.answer 逐題 diff"
+  "status": "partial",
+  "tool": "_build_features/verify_answer_key.py",
+  "ran_at": "2026-08-07",
+  "verified": 4400,
+  "mismatch": 0,
+  "not_in_table": 0,
+  "unverified_no_answer_pdf": 1240,
+  "unverified_parse_failed": 0,
+  "detail": []
  },
  "A2_題數與缺號": {
   "status": "partial",

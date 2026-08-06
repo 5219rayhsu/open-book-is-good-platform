@@ -2,9 +2,15 @@
  "exam": "nursing",
  "questions": 10070,
  "A_答案配對全驗": {
-  "status": "not_run",
-  "reason": "raw/ 存在但本腳本不代跑解析（需逐科的答案表版型判斷）。",
-  "how_to_run": "同上；raw/ 已有素材，可直接接上。"
+  "status": "ok",
+  "tool": "_build_features/verify_answer_key.py",
+  "ran_at": "2026-08-07",
+  "verified": 10070,
+  "mismatch": 0,
+  "not_in_table": 0,
+  "unverified_no_answer_pdf": 0,
+  "unverified_parse_failed": 0,
+  "detail": []
  },
  "A2_題數與缺號": {
   "status": "partial",
