@@ -39,7 +39,9 @@
      "url": "https://cap.rcpet.edu.tw/exam/111/111writing-1.pdf"
     }
    ],
-   "sample_kind": "cap"
+   "sample_kind": "cap",
+   "ref_status": "official_sample",
+   "ref_src": "official_url"
   },
   {
    "qid": "會考_112_寫作",
@@ -75,7 +77,9 @@
      "url": "https://cap.rcpet.edu.tw/exam/112/112writing-1.pdf"
     }
    ],
-   "sample_kind": "cap"
+   "sample_kind": "cap",
+   "ref_status": "official_sample",
+   "ref_src": "official_url"
   },
   {
    "qid": "會考_113_寫作",
@@ -111,7 +115,9 @@
      "url": "https://cap.rcpet.edu.tw/exam/113/113writing-1.pdf"
     }
    ],
-   "sample_kind": "cap"
+   "sample_kind": "cap",
+   "ref_status": "official_sample",
+   "ref_src": "official_url"
   },
   {
    "qid": "會考_114_寫作",
@@ -127,7 +133,9 @@
      "url": "https://cap.rcpet.edu.tw/"
     }
    ],
-   "sample_kind": "cap"
+   "sample_kind": "cap",
+   "ref_status": "official_sample",
+   "ref_src": "official_url"
   },
   {
    "qid": "會考_115_寫作",
@@ -143,7 +151,9 @@
      "url": "https://cap.rcpet.edu.tw/"
     }
    ],
-   "sample_kind": "cap"
+   "sample_kind": "cap",
+   "ref_status": "official_sample",
+   "ref_src": "official_url"
   }
  ]
 }

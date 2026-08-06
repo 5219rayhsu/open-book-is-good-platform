@@ -67,7 +67,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "115_115030_人類行為與社會環境_E2",
@@ -110,7 +112,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "115_115030_社會工作_E1",
@@ -155,7 +159,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "115_115030_社會工作_E2",
@@ -198,7 +204,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "115_115030_社會工作直接服務_E1",
@@ -242,7 +250,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "115_115030_社會工作直接服務_E2",
@@ -284,7 +294,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "115_115030_社會工作研究方法_E1",
@@ -326,7 +338,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "115_115030_社會工作研究方法_E2",
@@ -369,7 +383,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "115_115030_社會政策與社會立法_E1",
@@ -414,7 +430,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "115_115030_社會政策與社會立法_E2",
@@ -458,7 +476,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "114_114030_人類行為與社會環境_E1",
@@ -505,7 +525,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "114_114030_人類行為與社會環境_E2",
@@ -551,7 +573,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "114_114030_社會工作_E1",
@@ -593,7 +617,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "114_114030_社會工作_E2",
@@ -638,7 +664,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "114_114030_社會工作直接服務_E1",
@@ -683,7 +711,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "114_114030_社會工作直接服務_E2",
@@ -731,7 +761,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "114_114030_社會工作研究方法_E1",
@@ -776,7 +808,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "114_114030_社會工作研究方法_E2",
@@ -821,7 +855,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "114_114030_社會工作管理_E1",
@@ -869,7 +905,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "114_114030_社會工作管理_E2",
@@ -916,7 +954,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "114_114030_社會政策與社會立法_E1",
@@ -962,7 +1002,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "114_114030_社會政策與社會立法_E2",
@@ -1005,7 +1047,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "114_114100_人類行為與社會環境_E1",
@@ -1050,7 +1094,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "114_114100_人類行為與社會環境_E2",
@@ -1097,7 +1143,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "114_114100_社會工作_E1",
@@ -1141,7 +1189,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "114_114100_社會工作_E2",
@@ -1185,7 +1235,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "114_114100_社會工作直接服務_E1",
@@ -1230,7 +1282,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "114_114100_社會工作直接服務_E2",
@@ -1274,7 +1328,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "114_114100_社會工作研究方法_E1",
@@ -1316,7 +1372,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "114_114100_社會工作研究方法_E2",
@@ -1359,7 +1417,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "114_114100_社會工作管理_E1",
@@ -1405,7 +1465,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "114_114100_社會工作管理_E2",
@@ -1449,7 +1511,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "114_114100_社會政策與社會立法_E1",
@@ -1495,7 +1559,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "114_114100_社會政策與社會立法_E2",
@@ -1537,7 +1603,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "113_113030_人類行為與社會環境_E1",
@@ -1584,7 +1652,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "113_113030_人類行為與社會環境_E2",
@@ -1630,7 +1700,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "113_113030_社會工作_E1",
@@ -1678,7 +1750,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "113_113030_社會工作_E2",
@@ -1726,7 +1800,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "113_113030_社會工作直接服務_E1",
@@ -1771,7 +1847,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "113_113030_社會工作直接服務_E2",
@@ -1813,7 +1891,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "113_113030_社會工作研究方法_E1",
@@ -1859,7 +1939,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "113_113030_社會工作研究方法_E2",
@@ -1905,7 +1987,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "113_113030_社會工作管理_E1",
@@ -1949,7 +2033,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "113_113030_社會工作管理_E2",
@@ -1993,7 +2079,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "113_113030_社會政策與社會立法_E1",
@@ -2040,7 +2128,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "113_113030_社會政策與社會立法_E2",
@@ -2087,7 +2177,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "113_113100_人類行為與社會環境_E1",
@@ -2134,7 +2226,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "113_113100_人類行為與社會環境_E2",
@@ -2181,7 +2275,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "113_113100_社會工作_E1",
@@ -2228,7 +2324,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "113_113100_社會工作_E2",
@@ -2272,7 +2370,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "113_113100_社會工作直接服務_E1",
@@ -2320,7 +2420,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "113_113100_社會工作直接服務_E2",
@@ -2366,7 +2468,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "113_113100_社會工作研究方法_E1",
@@ -2410,7 +2514,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "113_113100_社會工作研究方法_E2",
@@ -2455,7 +2561,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "113_113100_社會工作管理_E1",
@@ -2497,7 +2605,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "113_113100_社會工作管理_E2",
@@ -2544,7 +2654,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "113_113100_社會政策與社會立法_E1",
@@ -2591,7 +2703,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "113_113100_社會政策與社會立法_E2",
@@ -2636,7 +2750,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "112_112030_人類行為與社會環境_E1",
@@ -2684,7 +2800,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "112_112030_人類行為與社會環境_E2",
@@ -2726,7 +2844,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "112_112030_社會工作_E1",
@@ -2769,7 +2889,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "112_112030_社會工作_E2",
@@ -2810,7 +2932,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "112_112030_社會工作直接服務_E1",
@@ -2854,7 +2978,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "112_112030_社會工作直接服務_E2",
@@ -2896,7 +3022,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "112_112030_社會工作研究方法_E1",
@@ -2938,7 +3066,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "112_112030_社會工作研究方法_E2",
@@ -2979,7 +3109,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "112_112030_社會工作管理_E1",
@@ -3020,7 +3152,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "112_112030_社會工作管理_E2",
@@ -3062,7 +3196,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "112_112030_社會政策與社會立法_E1",
@@ -3104,7 +3240,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "112_112030_社會政策與社會立法_E2",
@@ -3145,7 +3283,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "112_112110_人類行為與社會環境_E1",
@@ -3187,7 +3327,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "112_112110_人類行為與社會環境_E2",
@@ -3230,7 +3372,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "112_112110_社會工作_E1",
@@ -3272,7 +3416,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "112_112110_社會工作_E2",
@@ -3315,7 +3461,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "112_112110_社會工作直接服務_E1",
@@ -3359,7 +3507,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "112_112110_社會工作直接服務_E2",
@@ -3402,7 +3552,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "112_112110_社會工作研究方法_E1",
@@ -3446,7 +3598,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "112_112110_社會工作研究方法_E2",
@@ -3490,7 +3644,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "112_112110_社會工作管理_E1",
@@ -3531,7 +3687,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "112_112110_社會工作管理_E2",
@@ -3574,7 +3732,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "112_112110_社會政策與社會立法_E1",
@@ -3618,7 +3778,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "112_112110_社會政策與社會立法_E2",
@@ -3661,7 +3823,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "111_111030_人類行為與社會環境_E1",
@@ -3708,7 +3872,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "111_111030_人類行為與社會環境_E2",
@@ -3755,7 +3921,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "111_111030_社會工作_E1",
@@ -3803,7 +3971,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "111_111030_社會工作_E2",
@@ -3850,7 +4020,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "111_111030_社會工作直接服務_E1",
@@ -3898,7 +4070,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "111_111030_社會工作直接服務_E2",
@@ -3945,7 +4119,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "111_111030_社會工作研究方法_E1",
@@ -3991,7 +4167,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "111_111030_社會工作研究方法_E2",
@@ -4038,7 +4216,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "111_111030_社會工作管理_E1",
@@ -4084,7 +4264,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "111_111030_社會工作管理_E2",
@@ -4131,7 +4313,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "111_111030_社會政策與社會立法_E1",
@@ -4180,7 +4364,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "111_111030_社會政策與社會立法_E2",
@@ -4227,7 +4413,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "111_111110_人類行為與社會環境_E1",
@@ -4275,7 +4463,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "111_111110_人類行為與社會環境_E2",
@@ -4323,7 +4513,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "111_111110_社會工作_E1",
@@ -4371,7 +4563,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "111_111110_社會工作_E2",
@@ -4419,7 +4613,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "111_111110_社會工作直接服務_E1",
@@ -4465,7 +4661,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "111_111110_社會工作直接服務_E2",
@@ -4511,7 +4709,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "111_111110_社會工作研究方法_E1",
@@ -4556,7 +4756,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "111_111110_社會工作研究方法_E2",
@@ -4604,7 +4806,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "111_111110_社會工作管理_E1",
@@ -4652,7 +4856,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "111_111110_社會工作管理_E2",
@@ -4699,7 +4905,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "111_111110_社會政策與社會立法_E1",
@@ -4749,7 +4957,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "111_111110_社會政策與社會立法_E2",
@@ -4796,7 +5006,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "110_110030_人類行為與社會環境_E1",
@@ -4843,7 +5055,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "110_110030_人類行為與社會環境_E2",
@@ -4889,7 +5103,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "110_110030_社會工作_E1",
@@ -4936,7 +5152,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "110_110030_社會工作_E2",
@@ -4984,7 +5202,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "110_110030_社會工作直接服務_E1",
@@ -5032,7 +5252,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "110_110030_社會工作直接服務_E2",
@@ -5080,7 +5302,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "110_110030_社會工作研究方法_E1",
@@ -5123,7 +5347,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "110_110030_社會工作研究方法_E2",
@@ -5167,7 +5393,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "110_110030_社會工作管理_E1",
@@ -5214,7 +5442,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "110_110030_社會工作管理_E2",
@@ -5259,7 +5489,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "110_110030_社會政策與社會立法_E1",
@@ -5302,7 +5534,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "110_110030_社會政策與社會立法_E2",
@@ -5347,7 +5581,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "110_110111_人類行為與社會環境_E1",
@@ -5391,7 +5627,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "110_110111_人類行為與社會環境_E2",
@@ -5434,7 +5672,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "110_110111_社會工作_E1",
@@ -5481,7 +5721,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "110_110111_社會工作_E2",
@@ -5527,7 +5769,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "110_110111_社會工作直接服務_E1",
@@ -5574,7 +5818,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "110_110111_社會工作直接服務_E2",
@@ -5621,7 +5867,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "110_110111_社會工作研究方法_E1",
@@ -5665,7 +5913,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "110_110111_社會工作研究方法_E2",
@@ -5709,7 +5959,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "110_110111_社會工作管理_E1",
@@ -5751,7 +6003,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "110_110111_社會工作管理_E2",
@@ -5798,7 +6052,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "110_110111_社會政策與社會立法_E1",
@@ -5844,7 +6100,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "110_110111_社會政策與社會立法_E2",
@@ -5888,7 +6146,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "109_109030_人類行為與社會環境_E1",
@@ -5936,7 +6196,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "109_109030_人類行為與社會環境_E2",
@@ -5984,7 +6246,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "109_109030_社會工作_E1",
@@ -6033,7 +6297,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "109_109030_社會工作_E2",
@@ -6079,7 +6345,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "109_109030_社會工作直接服務_E1",
@@ -6126,7 +6394,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "109_109030_社會工作直接服務_E2",
@@ -6172,7 +6442,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "109_109030_社會工作研究方法_E1",
@@ -6217,7 +6489,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "109_109030_社會工作研究方法_E2",
@@ -6263,7 +6537,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "109_109030_社會工作管理_E1",
@@ -6310,7 +6586,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "109_109030_社會工作管理_E2",
@@ -6356,7 +6634,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "109_109030_社會政策與社會立法_E1",
@@ -6404,7 +6684,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "109_109030_社會政策與社會立法_E2",
@@ -6450,7 +6732,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "109_109110_人類行為與社會環境_E1",
@@ -6497,7 +6781,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "109_109110_人類行為與社會環境_E2",
@@ -6544,7 +6830,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "109_109110_社會工作_E1",
@@ -6595,7 +6883,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "109_109110_社會工作_E2",
@@ -6642,7 +6932,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "109_109110_社會工作直接服務_E1",
@@ -6690,7 +6982,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "109_109110_社會工作直接服務_E2",
@@ -6735,7 +7029,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "109_109110_社會工作研究方法_E1",
@@ -6778,7 +7074,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "109_109110_社會工作研究方法_E2",
@@ -6820,7 +7118,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "109_109110_社會工作管理_E1",
@@ -6866,7 +7166,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "109_109110_社會工作管理_E2",
@@ -6912,7 +7214,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "109_109110_社會政策與社會立法_E1",
@@ -6959,7 +7263,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "109_109110_社會政策與社會立法_E2",
@@ -7007,7 +7313,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "108_108020_人類行為與社會環境_E1",
@@ -7057,7 +7365,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "108_108020_人類行為與社會環境_E2",
@@ -7107,7 +7417,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "108_108020_社會工作_E1",
@@ -7155,7 +7467,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "108_108020_社會工作_E2",
@@ -7202,7 +7516,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "108_108020_社會工作直接服務_E1",
@@ -7250,7 +7566,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "108_108020_社會工作直接服務_E2",
@@ -7298,7 +7616,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "108_108020_社會工作研究方法_E1",
@@ -7348,7 +7668,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "108_108020_社會工作研究方法_E2",
@@ -7397,7 +7719,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "108_108020_社會工作管理_E1",
@@ -7443,7 +7767,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "108_108020_社會工作管理_E2",
@@ -7489,7 +7815,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "108_108020_社會政策與社會立法_E1",
@@ -7535,7 +7863,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "108_108020_社會政策與社會立法_E2",
@@ -7584,7 +7914,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "108_108110_人類行為與社會環境_E1",
@@ -7632,7 +7964,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "108_108110_人類行為與社會環境_E2",
@@ -7678,7 +8012,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "108_108110_社會工作_E1",
@@ -7727,7 +8063,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "108_108110_社會工作_E2",
@@ -7775,7 +8113,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "108_108110_社會工作直接服務_E1",
@@ -7823,7 +8163,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "108_108110_社會工作直接服務_E2",
@@ -7870,7 +8212,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "108_108110_社會工作研究方法_E1",
@@ -7914,7 +8258,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "108_108110_社會工作研究方法_E2",
@@ -7965,7 +8311,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "108_108110_社會工作管理_E1",
@@ -8013,7 +8361,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "108_108110_社會工作管理_E2",
@@ -8059,7 +8409,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "108_108110_社會政策與社會立法_E1",
@@ -8105,7 +8457,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "108_108110_社會政策與社會立法_E2",
@@ -8151,7 +8505,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "107_107030_人類行為與社會環境_E1",
@@ -8200,7 +8556,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "107_107030_人類行為與社會環境_E2",
@@ -8249,7 +8607,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "107_107030_社會工作_E1",
@@ -8298,7 +8658,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "107_107030_社會工作_E2",
@@ -8345,7 +8707,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "107_107030_社會工作直接服務_E1",
@@ -8396,7 +8760,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "107_107030_社會工作直接服務_E2",
@@ -8444,7 +8810,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "107_107030_社會工作研究方法_E1",
@@ -8492,7 +8860,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "107_107030_社會工作研究方法_E2",
@@ -8540,7 +8910,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "107_107030_社會工作管理_E1",
@@ -8588,7 +8960,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "107_107030_社會工作管理_E2",
@@ -8634,7 +9008,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "107_107030_社會政策與社會立法_E1",
@@ -8684,7 +9060,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "107_107030_社會政策與社會立法_E2",
@@ -8735,7 +9113,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "107_107110_人類行為與社會環境_E1",
@@ -8783,7 +9163,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "107_107110_人類行為與社會環境_E2",
@@ -8832,7 +9214,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "107_107110_社會工作_E1",
@@ -8880,7 +9264,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "107_107110_社會工作_E2",
@@ -8928,7 +9314,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "107_107110_社會工作直接服務_E1",
@@ -8977,7 +9365,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "107_107110_社會工作直接服務_E2",
@@ -9026,7 +9416,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "107_107110_社會工作研究方法_E1",
@@ -9072,7 +9464,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "107_107110_社會工作研究方法_E2",
@@ -9119,7 +9513,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "107_107110_社會工作管理_E1",
@@ -9166,7 +9562,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "107_107110_社會工作管理_E2",
@@ -9215,7 +9613,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "107_107110_社會政策與社會立法_E1",
@@ -9261,7 +9661,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "107_107110_社會政策與社會立法_E2",
@@ -9309,7 +9711,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106030_人類行為與社會環境_E1",
@@ -9358,7 +9762,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106030_人類行為與社會環境_E2",
@@ -9406,7 +9812,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106030_社會工作_E1",
@@ -9452,7 +9860,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106030_社會工作_E2",
@@ -9497,7 +9907,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106030_社會工作直接服務_E1",
@@ -9543,7 +9955,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106030_社會工作直接服務_E2",
@@ -9590,7 +10004,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106030_社會工作研究方法_E1",
@@ -9635,7 +10051,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106030_社會工作研究方法_E2",
@@ -9678,7 +10096,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106030_社會工作管理_E1",
@@ -9723,7 +10143,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106030_社會工作管理_E2",
@@ -9768,7 +10190,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106030_社會政策與社會立法_E1",
@@ -9813,7 +10237,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106030_社會政策與社會立法_E2",
@@ -9860,7 +10286,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106110_人類行為與社會環境_E1",
@@ -9906,7 +10334,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106110_人類行為與社會環境_E2",
@@ -9951,7 +10381,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106110_社會工作_E1",
@@ -9997,7 +10429,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106110_社會工作_E2",
@@ -10043,7 +10477,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106110_社會工作直接服務_E1",
@@ -10089,7 +10525,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106110_社會工作直接服務_E2",
@@ -10136,7 +10574,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106110_社會工作研究方法_E1",
@@ -10179,7 +10619,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106110_社會工作研究方法_E2",
@@ -10221,7 +10663,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106110_社會工作管理_E1",
@@ -10266,7 +10710,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106110_社會工作管理_E2",
@@ -10311,7 +10757,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106110_社會政策與社會立法_E1",
@@ -10356,7 +10804,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106110_社會政策與社會立法_E2",
@@ -10402,7 +10852,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106111_社會工作_E1",
@@ -10449,7 +10901,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106111_社會工作_E2",
@@ -10495,7 +10949,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106111_社會工作直接服務_E1",
@@ -10539,7 +10995,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106111_社會工作直接服務_E2",
@@ -10585,7 +11043,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106111_社會工作管理_E1",
@@ -10631,7 +11091,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "106_106111_社會工作管理_E2",
@@ -10677,7 +11139,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "105_105030_人類行為與社會環境_E1",
@@ -10724,7 +11188,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "105_105030_人類行為與社會環境_E2",
@@ -10771,7 +11237,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "105_105030_社會工作_E1",
@@ -10820,7 +11288,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "105_105030_社會工作_E2",
@@ -10868,7 +11338,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "105_105030_社會工作直接服務_E1",
@@ -10915,7 +11387,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "105_105030_社會工作直接服務_E2",
@@ -10962,7 +11436,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "105_105030_社會工作研究方法_E1",
@@ -11012,7 +11488,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "105_105030_社會工作研究方法_E2",
@@ -11060,7 +11538,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "105_105030_社會工作管理_E1",
@@ -11108,7 +11588,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "105_105030_社會工作管理_E2",
@@ -11155,7 +11637,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "105_105030_社會政策與社會立法_E1",
@@ -11202,7 +11686,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "105_105030_社會政策與社會立法_E2",
@@ -11251,7 +11737,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "105_105090_人類行為與社會環境_E1",
@@ -11296,7 +11784,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "105_105090_人類行為與社會環境_E2",
@@ -11344,7 +11834,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "105_105090_社會工作_E1",
@@ -11392,7 +11884,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "105_105090_社會工作_E2",
@@ -11437,7 +11931,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "105_105090_社會工作直接服務_E1",
@@ -11487,7 +11983,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "105_105090_社會工作直接服務_E2",
@@ -11535,7 +12033,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "105_105090_社會工作研究方法_E1",
@@ -11580,7 +12080,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "105_105090_社會工作研究方法_E2",
@@ -11626,7 +12128,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "105_105090_社會工作管理_E1",
@@ -11672,7 +12176,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "105_105090_社會工作管理_E2",
@@ -11719,7 +12225,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "105_105090_社會政策與社會立法_E1",
@@ -11762,7 +12270,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "105_105090_社會政策與社會立法_E2",
@@ -11810,7 +12320,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "104_104030_人類行為與社會環境_E1",
@@ -11861,7 +12373,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "104_104030_人類行為與社會環境_E2",
@@ -11911,7 +12425,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "104_104030_社會工作_E1",
@@ -11963,7 +12479,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "104_104030_社會工作_E2",
@@ -12013,7 +12531,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "104_104030_社會工作直接服務_E1",
@@ -12063,7 +12583,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "104_104030_社會工作直接服務_E2",
@@ -12111,7 +12633,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "104_104030_社會工作研究方法_E1",
@@ -12158,7 +12682,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "104_104030_社會工作研究方法_E2",
@@ -12205,7 +12731,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "104_104030_社會工作管理_E1",
@@ -12255,7 +12783,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "104_104030_社會工作管理_E2",
@@ -12302,7 +12832,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "104_104030_社會政策與社會立法_E1",
@@ -12352,7 +12884,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "104_104030_社會政策與社會立法_E2",
@@ -12403,7 +12937,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "104_104100_人類行為與社會環境_E1",
@@ -12453,7 +12989,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "104_104100_人類行為與社會環境_E2",
@@ -12503,7 +13041,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "104_104100_社會工作_E1",
@@ -12555,7 +13095,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "104_104100_社會工作_E2",
@@ -12604,7 +13146,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "104_104100_社會工作直接服務_E1",
@@ -12653,7 +13197,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "104_104100_社會工作直接服務_E2",
@@ -12703,7 +13249,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "104_104100_社會工作研究方法_E1",
@@ -12750,7 +13298,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "104_104100_社會工作研究方法_E2",
@@ -12797,7 +13347,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "104_104100_社會工作管理_E1",
@@ -12846,7 +13398,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "104_104100_社會工作管理_E2",
@@ -12894,7 +13448,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "104_104100_社會政策與社會立法_E1",
@@ -12942,7 +13498,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "104_104100_社會政策與社會立法_E2",
@@ -12994,7 +13552,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "103_103100_人類行為與社會環境_E1",
@@ -13042,7 +13602,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "103_103100_人類行為與社會環境_E2",
@@ -13092,7 +13654,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "103_103100_社會工作_E1",
@@ -13142,7 +13706,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "103_103100_社會工作_E2",
@@ -13191,7 +13757,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "103_103100_社會工作直接服務_E1",
@@ -13241,7 +13809,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "103_103100_社會工作直接服務_E2",
@@ -13291,7 +13861,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "103_103100_社會工作研究方法_E1",
@@ -13340,7 +13912,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "103_103100_社會工作研究方法_E2",
@@ -13391,7 +13965,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "103_103100_社會工作管理_E1",
@@ -13440,7 +14016,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "103_103100_社會工作管理_E2",
@@ -13490,7 +14068,9 @@
     "confidence": "medium",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "103_103100_社會政策與社會立法_E1",
@@ -13548,7 +14128,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   },
   {
    "qid": "103_103100_社會政策與社會立法_E2",
@@ -13601,7 +14183,9 @@
     "confidence": "high",
     "needs_verification": true,
     "caveat": "參考要點為 AI 整理的學習輔助，非官方標準答案，作答與引用前請對照現行中華民國法規查證。"
-   }
+   },
+   "ref_status": "project_notes",
+   "ref_src": "generated"
   }
  ]
 }

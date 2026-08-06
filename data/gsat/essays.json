@@ -19,7 +19,9 @@
      "url": "https://www.ceec.edu.tw/xmdoc?xsmsid=0J071624926253508127"
     }
    ],
-   "sample_kind": "gsat"
+   "sample_kind": "gsat",
+   "ref_status": "official_sample",
+   "ref_src": "official_url"
   },
   {
    "qid": "111_國寫_2",
@@ -35,7 +37,9 @@
      "url": "https://www.ceec.edu.tw/xmdoc?xsmsid=0J071624926253508127"
     }
    ],
-   "sample_kind": "gsat"
+   "sample_kind": "gsat",
+   "ref_status": "official_sample",
+   "ref_src": "official_url"
   },
   {
    "qid": "112_國寫_1",
@@ -51,7 +55,9 @@
      "url": "https://www.ceec.edu.tw/xmdoc?xsmsid=0J071624926253508127"
     }
    ],
-   "sample_kind": "gsat"
+   "sample_kind": "gsat",
+   "ref_status": "official_sample",
+   "ref_src": "official_url"
   },
   {
    "qid": "112_國寫_2",
@@ -67,7 +73,9 @@
      "url": "https://www.ceec.edu.tw/xmdoc?xsmsid=0J071624926253508127"
     }
    ],
-   "sample_kind": "gsat"
+   "sample_kind": "gsat",
+   "ref_status": "official_sample",
+   "ref_src": "official_url"
   },
   {
    "qid": "113_國寫_1",
@@ -83,7 +91,9 @@
      "url": "https://www.ceec.edu.tw/xmdoc?xsmsid=0J071624926253508127"
     }
    ],
-   "sample_kind": "gsat"
+   "sample_kind": "gsat",
+   "ref_status": "official_sample",
+   "ref_src": "official_url"
   },
   {
    "qid": "113_國寫_2",
@@ -99,7 +109,9 @@
      "url": "https://www.ceec.edu.tw/xmdoc?xsmsid=0J071624926253508127"
     }
    ],
-   "sample_kind": "gsat"
+   "sample_kind": "gsat",
+   "ref_status": "official_sample",
+   "ref_src": "official_url"
   },
   {
    "qid": "114_國寫_1",
@@ -115,7 +127,9 @@
      "url": "https://www.ceec.edu.tw/xmdoc?xsmsid=0J071624926253508127"
     }
    ],
-   "sample_kind": "gsat"
+   "sample_kind": "gsat",
+   "ref_status": "official_sample",
+   "ref_src": "official_url"
   },
   {
    "qid": "114_國寫_2",
@@ -131,7 +145,9 @@
      "url": "https://www.ceec.edu.tw/xmdoc?xsmsid=0J071624926253508127"
     }
    ],
-   "sample_kind": "gsat"
+   "sample_kind": "gsat",
+   "ref_status": "official_sample",
+   "ref_src": "official_url"
   },
   {
    "qid": "115_國寫_1",
@@ -147,7 +163,9 @@
      "url": "https://www.ceec.edu.tw/xmdoc?xsmsid=0J071624926253508127"
     }
    ],
-   "sample_kind": "gsat"
+   "sample_kind": "gsat",
+   "ref_status": "official_sample",
+   "ref_src": "official_url"
   },
   {
    "qid": "115_國寫_2",
@@ -163,7 +181,9 @@
      "url": "https://www.ceec.edu.tw/xmdoc?xsmsid=0J071624926253508127"
     }
    ],
-   "sample_kind": "gsat"
+   "sample_kind": "gsat",
+   "ref_status": "official_sample",
+   "ref_src": "official_url"
   }
  ]
 }

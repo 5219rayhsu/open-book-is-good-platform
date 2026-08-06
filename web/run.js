@@ -329,7 +329,7 @@ function buildMCQCard(q, meta) {
      見 app.js 的 saveButtonEl()。 */
   /* 多選題:type=多選,或官方答案為多字母(如 BD/ADE)。送分題(#)非多選。
      多選 UI／集合評分見 wireMultiToggle / pickedLetters / markMCQCard / recordAnswer。 */
-  var isMulti = (q.type === '多選') || (q.answer !== '#' && String(q.answer).length > 1);
+  var isMulti = (q.type === '多選') || (!isFree(q) && String(q.answer).length > 1);
   card._isMulti = isMulti;
   var flag = (q.parse === 'review') ? '（待校題）' : '';
   card.appendChild(el('div', { 'class': 'q-meta' },
@@ -392,7 +392,7 @@ function pickedSetOf(picked) {
   return letterSetOf(picked);
 }
 function markMCQCard(card, q, picked) {
-  var given = (q.answer === '#'); // 送分題：無單一正解，不標紅綠
+  var given = isFree(q); // 送分題：無單一正解，不標紅綠
   /* accept 題把所有官方認可字母都標綠（acceptListOf 見 app.js） */
   var ansSet = correctLetterSet(q), pickSet = pickedSetOf(picked);
   card._optButtons.forEach(function (b, i) {
@@ -501,7 +501,7 @@ function startDrill(items, meta) {
     var correct = recordAnswer(q, picked, { mode: meta.mode || 'drill' });
     if (correct) { ok += 1; }
     markMCQCard(card, q, picked);
-    var fbText = (q.answer === '#') ? '本題送分（考選部公告一律給分）。'
+    var fbText = isFree(q) ? '本題送分（考選部公告一律給分）。'
       : (correct ? '答對。正解（' + answerLabelOf(q) + '）。'
         : '答錯。正解（' + answerLabelOf(q) + '）。');
     var fb = el('p', { 'class': 'feedback ' + (correct ? 'good' : 'bad') }, fbText);
@@ -578,7 +578,7 @@ function startSheet(questions, meta) {
     panel.appendChild(el('h2', null, meta.title || '整卷練習'));
     if (meta.subtitle) { panel.appendChild(el('p', { 'class': 'subtitle' }, meta.subtitle)); }
     /* 測驗開始前的正式說明(保持乾淨,只列必要資訊;含多選題時據實說明) */
-    var hasMulti = questions.some(function (q) { return q.type === '多選' || (q.answer !== '#' && String(q.answer).length > 1); });
+    var hasMulti = questions.some(function (q) { return q.type === '多選' || (!isFree(q) && String(q.answer).length > 1); });
     panel.appendChild(el('p', { 'class': 'exam-instruction' },
       hasMulti ? '本試題含單選與多選；單選題選一個最適當答案，多選題請選出所有正確選項。'
                : '本試題為單一選擇題，請選出一個正確或最適當答案。'));
@@ -731,7 +731,7 @@ function startSheet(questions, meta) {
       if (typeof feedbackLink === 'function') {   /* 交卷後每題各一顆疑義與建議回報鈕(非整份一顆) */
         var _fbp = el('p', { 'class': 'review-fb' }); _fbp.appendChild(feedbackLink(q.qid)); card.appendChild(_fbp);
       }
-      if (q.answer === '#') { freeN += 1; }   /* 送分題:分數含它,落點/平均扣它(stats.js) */
+      if (isFree(q)) { freeN += 1; }   /* 送分題:分數含它,落點/平均扣它(stats.js) */
       if (!sub[q.subject]) { sub[q.subject] = { n: 0, ok: 0 }; }
       sub[q.subject].n += 1; if (correct) { sub[q.subject].ok += 1; }
     });

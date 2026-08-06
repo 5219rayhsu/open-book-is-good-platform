@@ -697,7 +697,7 @@ function recordAnswer(q, pickedLetter, opts) {
   /* 送分題(#)標記出來:整卷分數要算它(39/40 對卻報 39 題是錯的),但**能力雷達、
      正確率、趨勢、時段一律不算**——它對所有人都是「對」,加進分母分子只會把每個人的
      正確率往同一個方向推,是雜訊不是訊號。舊紀錄沒有這個欄位,讀取端一律當 false。 */
-  if (q.answer === '#') { entry.free = true; }
+  if (isFree(q)) { entry.free = true; }
   /* 標記(見 ADR-0003):該次作答若標記過此題,隨這筆歷史紀錄一併存(qid 陣列,跟其餘欄位一樣扁平);
      未標記則省略欄位,舊紀錄沒有這個欄位時讀取端一律當空處理。 */
   if (opts.flagged) { entry.flags = [q.qid]; }
@@ -891,7 +891,7 @@ function todayAnswer(card, picked) {
   var correct = recordAnswer(q, picked, { mode: 'practice' });
   session = { n: session.n + 1, ok: session.ok + (correct ? 1 : 0) };
   markMCQCard(card, q, picked);
-  var fbText = (q.answer === '#') ? '本題送分（考選部公告一律給分）。'
+  var fbText = isFree(q) ? '本題送分（考選部公告一律給分）。'
     : (correct ? '答對。正解（' + q.answer + '）。'
       : '答錯。正解（' + q.answer + '）。');
   var fb = el('p', { 'class': 'feedback ' + (correct ? 'good' : 'bad') }, fbText);

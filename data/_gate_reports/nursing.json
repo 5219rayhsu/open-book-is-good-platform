@@ -71,9 +71,13 @@
    "free": 71,
    "unread": 1
   },
+  "src_distribution": {
+   "derived": 10070
+  },
   "unread": 1,
+  "unverified_free": 71,
   "papers_free_over_half": [],
-  "note": "unread＝我們對那題的答案一無所知（缺口，不是資料）；papers_free_over_half 非空＝該卷疑似答案表整段沒讀到，不要當送分題入庫。未標注＝該科尚未跑 answer_status.py。"
+  "note": "unread＝我們對那題的答案一無所知（缺口，不是資料）；unverified_free＝標成送分但來源是回推、未經 §A 逐題重驗，仍可能是讀不出來的偽裝；papers_free_over_half 非空＝該卷疑似答案表整段沒讀到，不要當送分題入庫。未標注＝該科尚未跑 answer_status.py。"
  },
  "B_詳解紅隊": {
   "status": "not_run",
