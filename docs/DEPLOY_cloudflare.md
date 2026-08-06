@@ -12,6 +12,26 @@ https://open-book-is-good-platform.1003ray1003.workers.dev/
 curl -s -o /dev/null -w '%{http_code}\n' https://open-book-is-good-platform.1003ray1003.workers.dev/exam/nursing/
 ```
 
+### 🔴 `publish_platform.sh --push` **不等於上線**（2026-08-06 實測補記）
+
+那支腳本只推 GitHub，**本身不含任何部署步驟**。真正的部署是 Cloudflare
+**Workers Builds** 從 repo 自動觸發的——設定在 Cloudflare 的儀表板，**不在這個 repo 裡**
+（沒有 `.github/workflows/`、`publish_platform.sh` 也沒有 `wrangler deploy`），
+所以在程式碼裡怎麼找都找不到，只能靠這一段記著。
+
+**實測延遲約 3 分鐘**（21:19:5x 推送 → 21:22:55 線上資料更新）。推完立刻 `curl`
+會拿到**舊資料**，那不是失敗、是還沒建置完。
+
+所以驗收不能只看 HTTP 200——**首頁在部署前後都是 200**。要驗「內容真的換了」：
+
+```bash
+B=https://open-book-is-good-platform.1003ray1003.workers.dev
+curl -s "$B/data/nursing/explanations.json" | python3 -c 'import json,sys;print(len(json.load(sys.stdin)["explanations"]),"則")'
+```
+
+輪詢到數字改變才算上線。**「推了」與「上線了」是兩件事**，中間那 3 分鐘足夠讓
+一個 session 誤報完成。
+
 ⚠️ **實際跑的是 Workers Assets，不是 Pages**——`_platform/wrangler.jsonc` 的
 `name: open-book-is-good-platform` ＋ `assets.directory: "."`，網域因此是
 `<name>.<帳號子網域>.workers.dev`，不是本文下面步驟寫的 `<專案>.pages.dev`。
