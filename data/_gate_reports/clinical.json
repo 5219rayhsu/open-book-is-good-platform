@@ -2,13 +2,13 @@
  "exam": "clinical",
  "questions": 5640,
  "A_答案配對全驗": {
-  "status": "partial",
+  "status": "ok",
   "tool": "_build_features/verify_answer_key.py",
   "ran_at": "2026-08-07",
-  "verified": 4400,
+  "verified": 5640,
   "mismatch": 0,
   "not_in_table": 0,
-  "unverified_no_answer_pdf": 1240,
+  "unverified_no_answer_pdf": 0,
   "unverified_parse_failed": 0,
   "detail": []
  },
