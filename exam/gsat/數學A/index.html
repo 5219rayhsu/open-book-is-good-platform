@@ -40,6 +40,10 @@
 .linkgrid span{display:block;color:var(--ink-faint);font-size:.8rem;}
 .sq{border-top:1px solid var(--rule-faint);padding:1.1rem 0 .3rem;}
 .sq-no{font-size:.82rem;letter-spacing:.06em;color:var(--accent);margin:0 0 .35rem;}
+.sq-link{color:inherit;text-decoration:none;}
+.sq-link:hover{text-decoration:underline;}
+.sq:target{background:var(--rule-faint);border-radius:var(--r-sm);
+  box-shadow:0 0 0 .6rem var(--rule-faint);}
 .sq-flag{margin-left:.4rem;color:var(--ink-faint);}
 .sq-stem{font-family:var(--serif);font-size:1.02rem;line-height:1.85;color:var(--ink);}
 .sq-opts{list-style:none;padding:0;margin:.55rem 0 .5rem;}
@@ -94,14 +98,14 @@
 
 <h2>題目長什麼樣</h2>
 <p>以下自本科題庫抽 5 題示例，完整題目請看上方各年度考卷。</p>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">財神廟舉辦抽發財金活動：參加者抽兩次籤，每次抽籤出現「吉」、「祥」的機率皆為 \(\dfrac{1}{3}\)。如果兩次都抽得「吉」，獲得獎金 180 元；如果兩次都抽得「祥」，獲得獎金 90 元；其餘情況則無獎金。試問參加者可獲獎金的期望值為何？</div>
 <ol class="sq-opts"><li><b>（A）</b>20 元</li><li><b>（B）</b>30 元</li><li><b>（C）</b>45 元</li><li><b>（D）</b>60 元</li><li><b>（E）</b>90 元</li></ol>
 <p class="sq-ans">答案：（B）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題幹給兩次抽籤的中獎條件，期望值須把每個獎金乘上其發生機率。兩次皆為吉的機率＝1/3×1/3=1/9，貢獻 180×1/9=20 元；兩次皆為祥的機率＝1/9，貢獻 90×1/9=10 元；其餘情形貢獻 0 元。E=20+10+0=30 元，所以 B 正確。</p><p>A：20 元只計入兩次皆為吉的期望貢獻，漏掉兩次皆為祥的 10 元。</p><p>C：45 元不是 180×1/9+90×1/9 的結果。</p><p>D：60 元相當於把中獎機率誤當為 1/3，故錯誤。</p><p>E：90 元未將各中獎金額乘上同時抽到兩次的 1/9 機率，故錯誤。</p><p>本題考點：離散期望值——E＝Σ（結果×機率）；獨立事件——兩次同一結果的機率為 1/3×1/3=1/9。</p></details>
 </article>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">不透明袋中有藍、綠色球各若干顆，且球上皆有 1 或 2 的編號，其顆數如下表，例如標有 1 號的藍色球有 2 顆。從此袋中隨機抽取一球（每顆球被抽到的機率相等），若已知抽到藍色球的事件與抽到 1 號球的事件互相獨立，試問 \(k\) 值為何？</div>
 <div class="sq-tablewrap"><table class="sq-table"><caption>藍、綠色球依編號的顆數</caption><thead><tr><th></th><th>藍</th><th>綠</th></tr></thead><tbody><tr><td>1 號</td><td>2</td><td>4</td></tr><tr><td>2 號</td><td>3</td><td>\(k\)</td></tr></tbody></table></div>
@@ -109,21 +113,21 @@
 <p class="sq-ans">答案：（E）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題幹給「抽到藍色球」與「抽到 1 號球」互相獨立，應用 P(藍且1號)=P(藍)P(1號)。藍球有 2+3=5 顆，綠球有 4+k 顆，總數為 9+k；1 號球有 2+4=6 顆，藍色且 1 號有 2 顆。代入 2/(9+k)=(5/(9+k))×(6/(9+k))。兩邊乘 (9+k)²，得 2(9+k)=30；18+2k=30；2k=12；k=6，故 E 為正解。</p><p>A：k=2 時，總數 11，左邊 P(藍且1號)=2/11，右邊 P(藍)P(1號)=(5/11)×(6/11)=30/121，兩者不等，錯誤。</p><p>B：k=3 時，左邊=2/12=1/6，右邊=(5/12)×(6/12)=5/24，不等，錯誤。</p><p>C：k=4 時，左邊=2/13，右邊=(5/13)×(6/13)=30/169，不等，錯誤。</p><p>D：k=5 時，左邊=2/14=1/7，右邊=(5/14)×(6/14)=15/98，不等，錯誤。</p><p>本題考點：獨立事件——兩事件獨立時 P(A∩B)=P(A)P(B)；機率計數——先列總球數、各事件球數與交集球數，再代入方程求未知數。</p></details>
 </article>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">研究顯示：服用某藥物後，在使用者體內的藥物殘留量隨時間呈指數型衰退。已知在服用某藥物 2 小時後，體內仍殘留有該藥物的一半劑量，試問下列哪一選項正確？</div>
 <ol class="sq-opts"><li><b>（A）</b>服用 3 小時後，體內仍殘留有該藥物的 \(\dfrac{1}{3}\) 劑量</li><li><b>（B）</b>服用 4 小時後，體內仍殘留有該藥物的 \(\dfrac{1}{4}\) 劑量</li><li><b>（C）</b>服用 6 小時後，體內仍殘留有該藥物的 \(\dfrac{1}{6}\) 劑量</li><li><b>（D）</b>服用 8 小時後，體內仍殘留有該藥物的 \(\dfrac{1}{8}\) 劑量</li><li><b>（E）</b>服用 10 小時後，體內仍殘留有該藥物的 \(\dfrac{1}{10}\) 劑量</li></ol>
 <p class="sq-ans">答案：（B）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題幹給定「2 小時後剩一半」且為指數型衰退，應採半衰期模型，而非把時間與剩餘比例作線性對應。設初始劑量為 1，每經過 2 小時乘以 1/2，則服用 t 小時後的殘留比例為 r(t)=(1/2)^(t/2)。B：t=4 時，r(4)=(1/2)^(4/2)=(1/2)²=1/4，與選項相符，故 B 為正解。</p><p>A：t=3 時，r(3)=(1/2)^(3/2)=1/(2√2)=√2/4≈0.354，不是 1/3≈0.333，A 錯誤。</p><p>C：t=6 時，r(6)=(1/2)^(6/2)=(1/2)³=1/8，不是 1/6，C 錯誤。它看起來對，是因為把「6 小時」誤當成殘留 1/6，將指數衰退錯看成線性衰退。</p><p>D：t=8 時，r(8)=(1/2)^(8/2)=(1/2)⁴=1/16，不是 1/8，D 錯誤。</p><p>E：t=10 時，r(10)=(1/2)^(10/2)=(1/2)⁵=1/32，不是 1/10，E 錯誤。</p><p>本題考點：指數型衰退與半衰期——若每 2 小時剩原來的 1/2，經 t 小時後以 (1/2)^(t/2) 計算；判準式——時間每多 2 小時，殘留量再乘以 1/2，不可把剩餘比例直接寫成 1/t。</p></details>
 </article>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">若在計算器中鍵入某正整數 \(N\)，接著連按「\(\sqrt{\phantom{x}}\)」鍵（取正平方根）3 次，視窗顯示得到答案為 2，則 \(N\) 等於下列哪一個選項？</div>
 <ol class="sq-opts"><li><b>（A）</b>\(2^{3}\)</li><li><b>（B）</b>\(2^{4}\)</li><li><b>（C）</b>\(2^{6}\)</li><li><b>（D）</b>\(2^{8}\)</li><li><b>（E）</b>\(2^{12}\)</li></ol>
 <p class="sq-ans">答案：（D）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：連按 3 次平方根鍵，就是依序取 2 次、4 次、8 次方根；因此選擇 8 次方後能回到 2 的選項。設第一次開根後為 N^(1/2)，第二次為 N^(1/4)，第三次為 N^(1/8)。題設顯示 2，所以 N^(1/8)=2。兩邊同取 8 次方，N=2^8=256。D：2^8 符合，故 D 為正解。</p><p>A：N=2^3 時，連按 3 次後為 (2^3)^(1/8)=2^(3/8)，不等於 2，A 錯誤。</p><p>B：N=2^4 時，連按 3 次後為 (2^4)^(1/8)=2^(4/8)=2^(1/2)，不等於 2，B 錯誤。</p><p>C：N=2^6 時，連按 3 次後為 (2^6)^(1/8)=2^(6/8)=2^(3/4)，不等於 2，C 錯誤。</p><p>E：N=2^12 時，連按 3 次後為 (2^12)^(1/8)=2^(12/8)=2^(3/2)，不等於 2，E 錯誤。</p><p>本題考點：反覆開平方根——每開一次平方根，指數乘以 1/2，連開 3 次即為 1/8 次方；指數反推判準——若 N^(1/8)=2，兩邊取 8 次方得 N=2^8。</p></details>
 </article>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">某冰淇淋店最少需準備 \(n\) 桶不同口味的冰淇淋，才能滿足廣告所稱「任選兩球不同口味冰淇淋的組合數超過 100 種」。試問來店顧客從 \(n\) 桶中任選兩球（可為同一口味）共有幾種方法？</div>
 <ol class="sq-opts"><li><b>（A）</b>101</li><li><b>（B）</b>105</li><li><b>（C）</b>115</li><li><b>（D）</b>120</li><li><b>（E）</b>225</li></ol>

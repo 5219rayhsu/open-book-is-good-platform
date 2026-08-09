@@ -40,6 +40,10 @@
 .linkgrid span{display:block;color:var(--ink-faint);font-size:.8rem;}
 .sq{border-top:1px solid var(--rule-faint);padding:1.1rem 0 .3rem;}
 .sq-no{font-size:.82rem;letter-spacing:.06em;color:var(--accent);margin:0 0 .35rem;}
+.sq-link{color:inherit;text-decoration:none;}
+.sq-link:hover{text-decoration:underline;}
+.sq:target{background:var(--rule-faint);border-radius:var(--r-sm);
+  box-shadow:0 0 0 .6rem var(--rule-faint);}
 .sq-flag{margin-left:.4rem;color:var(--ink-faint);}
 .sq-stem{font-family:var(--serif);font-size:1.02rem;line-height:1.85;color:var(--ink);}
 .sq-opts{list-style:none;padding:0;margin:.55rem 0 .5rem;}
@@ -94,14 +98,14 @@
 
 <h2>題目長什麼樣</h2>
 <p>以下自本科題庫抽 5 題示例，完整題目請看上方各年度考卷。</p>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">解二元一次聯立方程式 \(\begin{cases} x + 2y = 5 \\ 2x - 2y = 1 \end{cases}\)，得 \(x\) 值為何？</div>
 <ol class="sq-opts"><li><b>（A）</b>\(-4\)</li><li><b>（B）</b>\(-2\)</li><li><b>（C）</b>\(2\)</li><li><b>（D）</b>\(4\)</li></ol>
 <p class="sq-ans">答案：（C）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：兩式的y項為2y與−2y，選相加可消去y。x+2y=5與2x−2y=1相加，得3x=6，再除以3，x=2，故C為正解。代回x+2y=5，得2+2y=5、2y=3、y=1.5，符合另一式。</p><p>A：−4把兩式相減或符號處理錯誤；正確相加應得3x=6，錯誤。</p><p>B：−2同樣不符合3x=6，錯誤。</p><p>D：4把3x=6的除法算錯；6÷3=2，不是4，錯誤。</p><p>本題考點：二元一次聯立方程式——係數相反時兩式相加即可消去該未知數；解出後代回原式可驗算。</p></details>
 </article>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">算式 \( 7^{10} \times 7^{2} \div 7^{4} \) 之值可用下列何者表示？</div>
 <img class="sq-fig" loading="lazy" src="../../../data/cap/figures/114_會考數學_試題_p10_q1_0.png" alt="第 1 題附圖">
@@ -109,7 +113,7 @@
 <p class="sq-ans">答案：（C）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：同底數冪相乘時指數相加、相除時指數相減。7¹⁰×7²÷7⁴＝7^(10+2)÷7⁴＝7^(12−4)＝7⁸，故 C 為正解。</p><p>A：7³ 把指數的運算規則用錯，沒有算出 10+2−4=8，錯誤。</p><p>B：7⁵ 漏算了部分相乘時應相加的指數，錯誤。</p><p>D：7¹⁶ 把÷7⁴誤當成×7⁴，算成 10+2+4，錯誤。</p><p>本題考點：指數律——同底數相乘，指數相加；同底數相除，指數相減；應依原算式由左至右整理為 10+2−4。</p></details>
 </article>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">算式 \( \dfrac{3}{7} - \left( -\dfrac{1}{4} \right) \) 之值為何？</div>
 <img class="sq-fig" loading="lazy" src="../../../data/cap/figures/113_會考數學_試題_p10_q1_0.png" alt="第 1 題附圖">
@@ -117,7 +121,7 @@
 <p class="sq-ans">答案：（A）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題幹含有減去負分數，先將減負數改為加正數，再通分。3/7−(−1/4)=3/7+1/4。分母 7 與 4 的最小公倍數是 28，3/7=12/28，1/4=7/28，所以 12/28+7/28=19/28，故 A 為正解。</p><p>B：5/28 是把原式錯算成 12/28−7/28，忽略減去負數要變加，錯誤。</p><p>C：4/11 是將分子、分母分別相加成（3+1）/（7+4），分數加法不能如此計算，錯誤。</p><p>D：2/3 不符合通分後的 19/28；分數相加必先化為同分母，錯誤。</p><p>本題考點：負數的減法——a−(−b)=a+b；異分母分數加法——先通分，再將分子相加、分母維持不變。</p></details>
 </article>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">\((-3)^3\) 之值為何？</div>
 <img class="sq-fig" loading="lazy" src="../../../data/cap/figures/112_會考數學_試題_p10_q1_0.png" alt="第 1 題附圖">
@@ -125,7 +129,7 @@
 <p class="sq-ans">答案：（A）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：負數的三次方要把 -3 連乘 3 次。(-3)³=(-3)×(-3)×(-3)=9×(-3)=-27，所以 A 為正解。</p><p>B：-9 是只算了 (-3)×(-3) 的量，少乘 1 個 -3，錯誤。</p><p>C：9 是算到兩個負數相乘即停止，錯誤。</p><p>D：27 漏掉奇次方保留負號的結果，錯誤。</p><p>本題考點：整數次方——a³=a×a×a；負數的奇次方為負，負數的偶次方為正。</p></details>
 </article>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">圖（一）數線上的 \(A\)、\(B\)、\(C\)、\(D\) 四點所表示的數分別為 \(a\)、\(b\)、\(c\)、\(d\)，且 \(O\) 為原點。根據圖中各點的位置判斷，下列何者的值最小？</div>
 <img class="sq-fig" loading="lazy" src="../../../data/cap/figures/111_會考數學_試題_p5_q1_0.png" alt="第 1 題附圖">

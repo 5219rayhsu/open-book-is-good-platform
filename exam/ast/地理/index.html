@@ -40,6 +40,10 @@
 .linkgrid span{display:block;color:var(--ink-faint);font-size:.8rem;}
 .sq{border-top:1px solid var(--rule-faint);padding:1.1rem 0 .3rem;}
 .sq-no{font-size:.82rem;letter-spacing:.06em;color:var(--accent);margin:0 0 .35rem;}
+.sq-link{color:inherit;text-decoration:none;}
+.sq-link:hover{text-decoration:underline;}
+.sq:target{background:var(--rule-faint);border-radius:var(--r-sm);
+  box-shadow:0 0 0 .6rem var(--rule-faint);}
 .sq-flag{margin-left:.4rem;color:var(--ink-faint);}
 .sq-stem{font-family:var(--serif);font-size:1.02rem;line-height:1.85;color:var(--ink);}
 .sq-opts{list-style:none;padding:0;margin:.55rem 0 .5rem;}
@@ -92,7 +96,7 @@
 
 <h2>題目長什麼樣</h2>
 <p>以下自本科題庫抽 5 題示例，完整題目請看上方各年度考卷。</p>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">世界棒球經典賽將於2026 年3 月舉行分組預賽,某參賽國球迷貼文表示:「希望我國與
 
@@ -106,7 +110,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：貼文把日本與韓國球員的漢字姓名視為容易辨識、能拉近觀賽者距離的共同文化線索，判準在不同國家之間存在相近的文字與文化經驗。這種由共享文化特徵形成的區域認同，最適合用文化圈說明，故選 A。</p><p>B：資訊革新著重資訊科技如何改變傳遞、溝通與生產方式；題幹的重點不是使用新科技，而是名字所反映的文化親近感。</p><p>C：區位移轉是產業、人口或活動因成本與條件變化而改變所在地，和球迷對漢字姓名的熟悉程度無關。</p><p>D：世界體系分析核心區、半邊陲區與邊陲區之間的經濟權力與分工，不能直接解釋此處的文字文化認同。</p><p>本題考點：文化圈（cultural realm）——材料若以共同文字、宗教、語言或生活習俗連結多地，優先判為文化圈；區域概念的判別（regional concepts）——先辨認題幹是在談文化相似、科技變遷、區位移動或經濟權力，再選相應概念。</p></details>
 </article>
 <aside class="sq-passage"><p>義大利某都市海岸侵蝕嚴重,當地政府為此委託專家進行海岸管理計畫。專家們首先 43.31°N</p><p> 判斷沿岸流的方向以瞭解該市</p><p> 海岸侵蝕的機制,接著訪問</p><p> 漁業、旅遊業、環保組織、</p><p> 公民等權益關係人,將他們的</p><p> 訴求與建議帶回,之後建立各項</p><p> 海岸管理指標,再以網路地圖的</p><p> 方式呈現指標資訊,作為規劃 13.73°E</p><p> 海岸管理計畫使用,並提供民眾</p><p> 查詢,圖9 是該市海岸的局部衛</p><p> 星影像圖。某生以此案例進行公</p><p> 眾參與式地理資訊系統 圖9</p><p> (PPGIS)的專題報告。請問:</p></aside>
-<article class="sq" id="q37">
+<article class="sq">
 <p class="sq-no">第 37 題</p>
 <div class="sq-stem">老師認為該生所引用的案例並未完全符合PPGIS 的理念,其理由最可能是因為該計畫進行
 
@@ -117,7 +121,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題幹中的「訪問權益關係人，將訴求與建議帶回」只做到蒐集意見；PPGIS 的核心還要讓利害關係人能在 GIS 平臺上共同討論並影響規劃。把資訊上網供查詢是單向公開，不能取代協作決策，故選 C。</p><p>A：研究人員整合海岸土地利用資料可作為分析基礎，卻不是題幹顯示缺少的環節；PPGIS 並不排斥專家整理資料。</p><p>B：題組已說明網路地圖提供民眾查詢，因此這種資訊取用已經出現。它看似有民眾參與，但沒有讓民眾與規劃者共同形成方案。</p><p>D：公開景觀分區圖也是資訊透明的做法，與題組的網路地圖相符；分辨關鍵在公開後是否有回饋、討論與決策影響。</p><p>本題考點：公眾參與式地理資訊系統（Public Participation GIS，PPGIS）——判斷是否符合時，要看民眾是否能藉地理資訊進入討論與決策，不只看資料是否上網；權益關係人（stakeholders）——把意見帶回是諮詢，能與不同群體共同協商才是實質參與；參與階梯（participation ladder）——區分告知、諮詢與共決時，判準是參與者對方案的影響程度。</p></details>
 </article>
 <aside class="sq-passage"><p>Aorere 河是源自毛利語的河川名稱,該河出海口則位於源自英語的Golden 灣,因此 河川附近常可見到這兩個不同文化圈的混合文化現象。該河川的流域年雨量約700mm, 水位季節變化不明顯,是當地重要產業用水來源。貝類養殖是Golden 灣的重要產業, 但過往曾突然發生收成期變短的現象,導致收穫大幅減少,影響民生甚鉅。請問:</p></aside>
-<article class="sq" id="q28">
+<article class="sq">
 <p class="sq-no">第 28 題</p>
 <div class="sq-stem">文中貝類養殖發生收成問題的原因,最可能與當地發生下列何種事件有關?</div>
 <ol class="sq-opts"><li><b>（A）</b>沿岸的北大西洋暖流勢力減弱,導致海水水溫突然變低</li><li><b>（B）</b>河川集水區內飼養的牲畜糞便,導致河水細菌大量滋生</li><li><b>（C）</b>六至八月的夏季旅客入境者眾,導致廢水排放總量增加</li><li><b>（D）</b>太陽直射與暖化使得乾季拉長,導致河水自淨能力減弱
@@ -127,7 +131,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題組指出 Aorere 河是 Golden 灣貝類養殖的重要用水來源，且收成期曾突然縮短。集水區牲畜糞便若隨逕流進入河川，會增加細菌污染並惡化養殖水質，貝類易因衛生風險或生長受影響而縮短可收成期間，故選 B。</p><p>A：北大西洋暖流影響的是北大西洋海域，Golden 灣位於紐西蘭，不能以此洋流減弱解釋當地貝類收成問題。</p><p>C：紐西蘭位於南半球，6 至 8 月是冬季而非夏季；題幹也沒有提供旅客增加或廢水排放的資料。</p><p>D：題組已說河流水位的季節變化不明顯，且問題是突然出現的收成異常，沒有支持乾季拉長、河川自淨能力下降的證據。</p><p>本題考點：集水區污染（watershed pollution）——上游畜牧排泄物進入河川時，須追蹤其對下游養殖與飲用水水質的影響；貝類養殖水質（shellfish aquaculture water quality）——貝類會累積水中污染物，判斷收成異常時優先檢視流域污染源。</p></details>
 </article>
 <aside class="sq-passage"><p>◎ 2021 年臺灣遭遇「百年大旱」,今年春季同樣面臨缺水危機,已成為氣候變遷下臺灣 的新常態。2021 年臺灣已有24 座海水淡化場,主要位於水資源較不足的地區。水利署 為了因應臺灣未來工業的高度發展,提出短中長期抗旱計畫,將陸續增設海水淡化廠。 請問:</p></aside>
-<article class="sq" id="q20">
+<article class="sq">
 <p class="sq-no">第 20 題</p>
 <div class="sq-stem">根據題文,陸續增設的海水淡化廠最可能設置於哪些縣市?
 
@@ -136,7 +140,7 @@
 <p class="sq-ans">答案：（D）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：本題要把題幹的「未來工業高度發展」與沿海水源補充需求連在一起。新竹市、臺南市與高雄市都有重要科技或工業聚落，用水需求大且可規劃以海水淡化增加供水韌性，因此丙、丁、戊最符合，故選 D。</p><p>A：甲乙丙含花蓮縣與臺北市，兩地不如臺南市與高雄市同時符合題幹所強調的高工業用水需求，組合不完整。</p><p>B：甲丁戊雖有臺南市與高雄市，但花蓮縣取代了同樣具高科技產業用水需求的新竹市，不是最可能的配置。</p><p>C：乙丙丁含新竹市與臺南市，卻漏掉高雄市；題幹的工業發展線索不足以支持以臺北市取代高雄市。</p><p>本題考點：工業用水需求（industrial water demand）——題幹若強調高科技或重工業集中發展，應連結穩定大量供水需求；海水淡化（seawater desalination）——沿海高用水地區可將海淡視為補充水源，但選址仍須同時看產業規模與地理條件。</p></details>
 </article>
-<article class="sq" id="q8">
+<article class="sq">
 <p class="sq-no">第 8 題</p>
 <div class="sq-stem">布蘭登線(或稱布朗特界線)以區域經濟發展的差異,將世界劃分為南、北方區域,表1
  為甲~戊五個國家的商品出口資料,下列哪些最可能是南方區域的國家?

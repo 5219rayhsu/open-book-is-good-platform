@@ -40,6 +40,10 @@
 .linkgrid span{display:block;color:var(--ink-faint);font-size:.8rem;}
 .sq{border-top:1px solid var(--rule-faint);padding:1.1rem 0 .3rem;}
 .sq-no{font-size:.82rem;letter-spacing:.06em;color:var(--accent);margin:0 0 .35rem;}
+.sq-link{color:inherit;text-decoration:none;}
+.sq-link:hover{text-decoration:underline;}
+.sq:target{background:var(--rule-faint);border-radius:var(--r-sm);
+  box-shadow:0 0 0 .6rem var(--rule-faint);}
 .sq-flag{margin-left:.4rem;color:var(--ink-faint);}
 .sq-stem{font-family:var(--serif);font-size:1.02rem;line-height:1.85;color:var(--ink);}
 .sq-opts{list-style:none;padding:0;margin:.55rem 0 .5rem;}
@@ -92,35 +96,35 @@
 
 <h2>題目長什麼樣</h2>
 <p>以下自本科題庫抽 5 題示例，完整題目請看上方各年度考卷。</p>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">DSM-5將許多診斷重新分類，例如新增「強迫症和相關障礙症」章節，下列敘述何者錯誤？</div>
 <ol class="sq-opts"><li><b>（A）</b>基於診斷經常共病</li><li><b>（B）</b>基於具有相同的風險因子</li><li><b>（C）</b>基於具有共同的病因</li><li><b>（D）</b>基於症狀表現較為類似</li></ol>
 <p class="sq-ans">答案：（D）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>本題問DSM-5新增「強迫症及相關障礙症」章節重新分類的依據何者錯誤。考點為DSM-5以效度為基礎的分類原則。重新歸類主要依共病、共同風險因子與共同病因，而非僅因「症狀表現類似」，故(D)錯誤為答案。陷阱在症狀相似看似合理，但DSM-5強調的是潛在病因與危險因子的共通性，而非表面症狀相似。</p></details>
 </article>
-<article class="sq" id="q33">
+<article class="sq">
 <p class="sq-no">第 33 題</p>
 <div class="sq-stem">認為「種族」 （ethnicity）在心理疾患的表現及原因上占有重要份量的是什麼觀點？</div>
 <ol class="sq-opts"><li><b>（A）</b>學習理論</li><li><b>（B）</b>現象學派</li><li><b>（C）</b>人本論</li><li><b>（D）</b>社會文化因素</li></ol>
 <p class="sq-ans">答案：（D）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題眼在「種族」與「心理疾患的表現及原因」——判準是理論是否把文化、族群處境、社會結構與歧視經驗視為心理健康的重要脈絡。社會文化因素直接處理族群與文化如何影響症狀表達、求助與風險，故選 D。</p><p>A：學習理論主要以制約、模仿與增強解釋行為形成，並不以種族或文化脈絡為核心分析單位。</p><p>B：現象學派重視個人的主觀經驗與意義世界，但題目問的是種族在疾患表現與成因中的系統性重要性，較符合社會文化觀點。</p><p>C：人本論著重自我實現、主觀選擇與成長潛能，並非以族群社會脈絡為主要解釋架構。</p><p>本題考點：社會文化觀點（sociocultural perspective）——以文化、族群與社會結構理解心理疾患；文化脈絡（cultural context）——影響症狀意義、表現與求助途徑。</p></details>
 </article>
-<article class="sq" id="q25">
+<article class="sq">
 <p class="sq-no">第 25 題</p>
 <div class="sq-stem">某研究者想藉由研究來檢驗以下假設： 「焦慮患者的注意力會選擇性地偏向環境中的負向訊息」 ， 下列何者是最適合該研究者選擇的研究作業？</div>
 <ol class="sq-opts"><li><b>（A）</b>Recognition task</li><li><b>（B）</b>Random number generation task</li><li><b>（C）</b>Dot-probe task</li><li><b>（D）</b>Trail making task</li></ol>
 <p class="sq-ans">答案：（C）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題眼在「注意力會選擇性地偏向環境中的負向訊息」——判準是研究作業必須直接測得注意力朝威脅線索配置的快慢。Dot-probe task 同時或短暫呈現威脅與中性刺激，再以探測點反應時間推估注意偏向；對威脅位置探測點反應較快，即支持注意偏向，故選 C。</p><p>A：Recognition task 主要測量辨識或記憶表現，不能直接區分最初的注意定向。</p><p>B：Random number generation task 常用來檢視執行控制或認知負荷；它不呈現威脅與中性線索的空間競爭。</p><p>D：Trail making task 主要測量視覺掃描、處理速度與轉換能力。最強誘答在於它也含注意成分，錯在未針對負向訊息的選擇性定向。</p><p>本題考點：點探測作業（dot-probe task）——以探測點反應時間推估注意偏向；注意偏向（attentional bias）——焦慮者較易優先處理威脅線索。</p></details>
 </article>
-<article class="sq" id="q17">
+<article class="sq">
 <p class="sq-no">第 17 題</p>
 <div class="sq-stem">基因中的 DNA 序列生產出蛋白質的過程，步驟從 DNA 轉錄成 mRNA 開始，一直到對於蛋白質進行後轉譯修飾為止，是基因被開啟與關閉（turned on and off）的歷程，此過程稱為：</div>
 <ol class="sq-opts"><li><b>（A）</b>基因表現（gene expression）</li><li><b>（B）</b>多基因（polygenic）</li><li><b>（C）</b>轉錄（transcription）</li><li><b>（D）</b>多態性（polymorphism）</li></ol>
 <p class="sq-ans">答案：（A）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題眼在「從 DNA 轉錄成 mRNA」到「蛋白質後轉譯修飾」——題幹描述的是基因資訊由 DNA 經 RNA 到蛋白質產物的整體運作與調控歷程，稱為基因表現，故選 A。</p><p>B：多基因是指一項特徵受多個基因共同影響，不是 DNA 到蛋白質的歷程，故非答案。</p><p>C：轉錄只是 DNA 產生 mRNA 的其中一步，題幹還包括後續轉譯與修飾，故非答案。</p><p>D：多態性指族群中同一基因座存在不同變異型態，不是基因被開啟或關閉的過程，故非答案。</p><p>本題考點：基因表現（gene expression）涵蓋轉錄、轉譯與蛋白質調控；轉錄（transcription）是 DNA 生成 mRNA 的步驟；多態性（polymorphism）描述遺傳變異而非表現歷程。</p></details>
 </article>
-<article class="sq" id="q9">
+<article class="sq">
 <p class="sq-no">第 9 題</p>
 <div class="sq-stem">過去 DSM 診斷系統被批評欠缺考量種族文化之差異，從那一個版本開始增加文化敏感度？</div>
 <ol class="sq-opts"><li><b>（A）</b>DSM-III</li><li><b>（B）</b>DSM-III-R</li><li><b>（C）</b>DSM-IV</li><li><b>（D）</b>DSM-IV-TR</li></ol>

@@ -40,6 +40,10 @@
 .linkgrid span{display:block;color:var(--ink-faint);font-size:.8rem;}
 .sq{border-top:1px solid var(--rule-faint);padding:1.1rem 0 .3rem;}
 .sq-no{font-size:.82rem;letter-spacing:.06em;color:var(--accent);margin:0 0 .35rem;}
+.sq-link{color:inherit;text-decoration:none;}
+.sq-link:hover{text-decoration:underline;}
+.sq:target{background:var(--rule-faint);border-radius:var(--r-sm);
+  box-shadow:0 0 0 .6rem var(--rule-faint);}
 .sq-flag{margin-left:.4rem;color:var(--ink-faint);}
 .sq-stem{font-family:var(--serif);font-size:1.02rem;line-height:1.85;color:var(--ink);}
 .sq-opts{list-style:none;padding:0;margin:.55rem 0 .5rem;}
@@ -77,7 +81,7 @@
 
 <h2>全部 13 題</h2>
 <article class="sq" id="q2">
-<p class="sq-no">第 2 題</p>
+<p class="sq-no"><a class="sq-link" href="#q2" title="這一題的永久連結">第 2 題</a></p>
 <div class="sq-stem">放射性物質的半衰期T 定義為「每經過時間T ,該物質的質量會衰退成原來的一
  半」。鉛製容器中有A 、B 兩種放射性物質,其半衰期分別為 T A 、 TB 。開始記錄
 
@@ -94,7 +98,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：兩物質起始質量相等，應先以質量比消去共同的初始質量。設起始質量為 M，則 m_A=M×2^(−112/T_A)，m_B=M×2^(−112/T_B)。由 m_B/m_A=1/4=2^(−2)，得到 2^(112/T_A−112/T_B)=2^(−2)，所以 112/T_B−112/T_A=2；與此等價的關係式為（B），故選 B。</p><p>A：把兩個 112/T 項的差與 2 組成相加為 0 的式子，代入正確差值 2 後不會得到該式要求的等式，故不成立。</p><p>C：取對數時，兩個衰減指數的差應先形成 2，再由共同的 log 2 因子處理；（C）額外把 2 log 2 與差值混在同一等式中，化簡後不等於 112/T_B−112/T_A=2。</p><p>D：把 2 與含 log 2 的衰減項直接相加，沒有讓兩側的常數與 log 2 維持同一比例；這不是由 1/4=2^(−2) 取對數所得的關係。</p><p>E：雖然出現 2log 2，但兩個半衰期項的方向與位置化簡後仍不是 112/T_B−112/T_A=2，故不等價。</p><p>本題考點：放射性衰變（radioactive decay）——質量寫成初始量乘以 2^(−t/T) 後再比較；半衰期（half-life）——同一時間內，半衰期較短者的衰減次數較多；指數方程（exponential equation）——同底數冪相等時比較指數，取對數時要同步處理共同因子。</p></details>
 </article>
 <article class="sq" id="q4">
-<p class="sq-no">第 4 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q4" title="這一題的永久連結">第 4 題</a>（多選）</p>
 <div class="sq-stem">設,a b 為實數。已知四個數3,1,4,7 皆滿足x 的不等式x  a ,試選出正確的選項。b</div>
 <ol class="sq-opts"><li><b>（A）</b>10 也滿足x 的不等式x  a  b</li><li><b>（B）</b>3,1, 滿足x4, 7 的不等式x  a  b
 
@@ -104,7 +108,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：由四個已知數都滿足嚴格不等式 |x−a|&lt;b，解集是開區間 (a−b,a+b)。已知的最小值 −1 與最大值 7 都在其中，所以 a−b&lt;−1、a+b&gt;7；兩式相減得 2b&gt;8，即 b&gt;4。依此判準，故選 AB。</p><p>A：將選項所列的數代入開區間判準，依題幹給出的兩端限制可確認它仍滿足 |x−a|&lt;b，故成立。</p><p>B：原本滿足 |x−a|&lt;b 的數取相反數後，得到 |(−x)−(−a)|=|x−a|&lt;b，也就是以 −a 為中心的對稱區間，故選項的轉換成立。</p><p>C：C 所列各數值須逐一代入 a−b&lt;x&lt;a+b；其中超出已知最小值 −1 所能保證範圍的數，不能由題幹條件推出必然滿足，故 C 不成立。</p><p>D：由兩端 −1 與 7 的距離為 8，嚴格不等式要求 2b&gt;8，所以 b&gt;4；b=4 不可能，故 D 不成立。</p><p>E：若 a=b，則 a−b=0，無法滿足已知數 −1 所要求的 a−b&lt;−1，故 a、b 不可能相等。</p><p>本題考點：絕對值不等式（absolute-value inequality）——|x−a|&lt;b 的解集是 (a−b,a+b)，端點不包含在內；區間凸性（interval convexity）——區間包含兩點時，也包含它們之間的所有實數；端點限制——由最小值與最大值分別建立 a−b&lt;最小值、a+b&gt;最大值，再檢查選項。</p></details>
 </article>
 <article class="sq" id="q5">
-<p class="sq-no">第 5 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q5" title="這一題的永久連結">第 5 題</a>（多選）</p>
 <div class="sq-stem">考慮實係數多項式 f ( x )  x 4  4 x 3  2 x 2  ax  b 。已知方程式 f ( x)  0 有虛根1  2i
  (其中 i ),試選出正確的選項。1</div>
 <ol class="sq-opts"><li><b>（A）</b>1  2i 也是 f ( x)  0 的根</li><li><b>（B）</b>,a b 皆為正數</li><li><b>（C）</b>f (2.1)  0</li><li><b>（D）</b>函數 y  f ( x ) 在 x 有局部極小值1</li><li><b>（E）</b>y  f ( x ) 圖形反曲點的x 坐標皆大於0</li></ol>
@@ -112,7 +116,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：係數皆為實數時，非實根會成共軛對出現。已知 1+2i 是根，1−2i 也是根，對應因式為 (x−(1+2i))(x−(1−2i))=x^2−2x+5。再由 x^3 係數得另一因式為 x^2−2x−11，因此 f(x)=(x^2−2x+5)(x^2−2x−11)，可得 a=12、b=−55；並且 f&#x27;(x)=4(x−3)(x−1)(x+1)，所以 f&#x27;(2.1)&lt;0，故選 AC。</p><p>A：1−2i 與 1+2i 為共軛複數；實係數多項式的共軛亦為根。</p><p>C：2.1 介於 1 與 3 之間，此時 (x−3)(x−1)(x+1) 為負，故 f&#x27;(2.1)&lt;0。</p><p>B：由因式展開得到 b=−55，b 並非正數，故不能說 a、b 皆為正。</p><p>D：f&#x27; 在 x=1 的左側為正、右側為負，函數在此為局部極大值，不是局部極小值。</p><p>E：f&#x27;&#x27;(x)=12x^2−24x−4 的兩根為 1±2√3/3，其中一根小於 0，反曲點的 x 坐標並非全為正。</p><p>本題考點：共軛根定理（complex conjugate root theorem）——實係數多項式有非實根時，其共軛必同為根；多項式因式分解（polynomial factorization）——已知根可先組成二次因式再比係數；導數判別（derivative sign test）——以導數左右符號判斷局部極值。</p></details>
 </article>
 <article class="sq" id="q6">
-<p class="sq-no">第 6 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q6" title="這一題的永久連結">第 6 題</a>（多選）</p>
 <div class="sq-stem">設 a, b, c, d , r , s, t 皆為實數,已知坐標空間中三個非零向量 u ( a , b ,0)、 v ( c , d ,0) 及
   a b 0  w ( r , s , t ) 滿足內積 w  u  w  v  0 。考慮三階方陣 A  c d 0  ,試選出正確的  
   r s t   
@@ -135,7 +139,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：令 Δ=ad-bc，則三個向量作為矩陣列向量時 det(A)=tΔ。因為 u、v 都在 xy 平面，w 同時垂直 u、v；只要 u、v 在該平面線性獨立，就有 Δ≠0，進而 w 必須有非零的 z 分量。這正是（A）、（D）、（E）共同使用的判準，故選 ADE。</p><p>A：兩個非零平面向量若內積為 0，便互相垂直而線性獨立，因此 Δ≠0。</p><p>D：任意 (e,f,g) 都能表示為 u、v、w 的線性組合，表示三向量張成 R^3；u、v 不可能平行，故 Δ≠0。</p><p>E：若 Δ≠0，u、v 張成整個 xy 平面。w 垂直這個平面，只能有 r=s=0；又 w 非零，所以 t≠0，因而 det(A)=tΔ≠0。</p><p>B：取 u=v=(1,0,0)、w=(0,0,1)，可有 t≠0，但 Δ=0，故 t≠0 不足以保證 Δ≠0。</p><p>C：同樣取 u=v=(1,0,0)、w=(0,1,0)、w&#x27;=(0,0,1)，則 w&#x27;×w≠0，然而 u、v 平行且 Δ=0，故條件不足。</p><p>本題考點：內積與正交（dot product and orthogonality）——非零平面正交向量必線性獨立；行列式（determinant）——三向量能否張成 R^3 可由行列式是否為 0 判定；外積（cross product）——外積非零只保證兩個指定向量不平行，不能替代 u、v 的獨立性。</p></details>
 </article>
 <article class="sq" id="q8">
-<p class="sq-no">第 8 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q8" title="這一題的永久連結">第 8 題</a>（多選）</p>
 <div class="sq-stem">複數平面上,設z 代表複數z 的共軛複數,且 i  。試選出正確的選項。1</div>
 <ol class="sq-opts"><li><b>（A）</b>若 z  2 i ,則 z 3  4iz</li><li><b>（B）</b>若非零複數滿足 3  4i,則  2</li><li><b>（C）</b>若非零複數滿足 3  4i且令   i,則 3  4i
 
@@ -146,7 +150,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：複數方程涉及共軛時，判準是先把模長與輻角分開，並檢查乘以 i 是否只是使輻角旋轉 π/2；如此才可判定各選項。依官方答案鍵，故選 BC。本題把握度低，因為共軛、絕對值與指數記號的精確位置會改變方程，必須完整保留才可逐式驗算。</p><p>B：此敘述的模長條件必須由完整等式左右兩側取絕對值而得；複數解不能直接誤認為唯一實數解。</p><p>C：令 β=iα 的代換時，必須連同共軛因子與 i 的冪次重新帶入；只有方程兩側同時保持時，旋轉後的數才仍滿足原條件。</p><p>A：共軛複數與原複數的虛部符號相反，代入前若未先還原兩者關係，等式的實部與虛部會混淆。</p><p>D：主輻角要先解出所有角度類別，再取指定範圍內的代表值；不能只由模長或單一解判定。</p><p>E：非零解的個數須同時滿足模長與輻角條件，方程的最高次數不必然等於可取解數。</p><p>本題考點：共軛複數（complex conjugate）——先確認共軛會保留模長、反轉輻角；極式（polar form）——複數方程可分成模長方程與輻角同餘分別求解；乘以 i 的旋轉（rotation by i）——乘以 i 使輻角增加 π/2，代入方程時還要處理共軛。</p></details>
 </article>
 <article class="sq" id="q9">
-<p class="sq-no">第 9 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q9" title="這一題的永久連結">第 9 題</a>（多選）</p>
 <div class="sq-stem">已知平面上直角 ABC 的三邊長 AB  7 、 AC  3 、 BC  2 。若分別以AB與AC為
  底邊在 ABC 的外部作頂角等於120的等腰三角形 MAB 與 NAC ,
 
@@ -157,7 +161,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：頂角為 120° 的等腰三角形，若底邊長為 s，兩腰長為 s/√3，高為 s/(2√3)。解這類外作三角形題時，把原直角三角形置於座標平面，分別取兩個外側頂點，再用 MN^2 = (xM − xN)^2 + (yM − yN)^2 計算；外作條件決定兩頂點必在原三角形相反的外側。依此計算法，填答格式為 13/3，故選 13/3。</p><p>本題考點：120° 等腰三角形（isosceles triangle with 120-degree vertex angle）——底邊與腰長的關係是 s = √3×腰長，可先把外作頂點的位置量化；座標幾何（coordinate geometry）——外作圖形以坐標表示後，用兩點距離公式處理最穩定；外側判定（exterior construction）——同一底邊的兩個等腰頂點分居直線兩側，必須選不含原三角形內部的那一個。</p></details>
 </article>
 <article class="sq" id="q10">
-<p class="sq-no">第 10 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q10" title="這一題的永久連結">第 10 題</a>（多選）</p>
 <div class="sq-stem">坐標空間中有方向向量為(1, 2,2) 的直線L 、平面 E1 :2 x  3 y  6 z  10 與平面
 
  10-1 10-2 ○ E2 : 2 x  3 y  6 z 。則L4 被 E1 、 E2 所截線段的長度為○ 。(化為最簡分數)
@@ -166,7 +170,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：關鍵是沿直線前進時，平面方程式左側每增加多少。令直線位移為 t(1,−2,2)，平面法向量為 (2,3,6)，則內積為 2×1 + 3×(−2) + 6×2 = 8。兩平面的常數差為 10 − (−4) = 14，所以 Δt = 14/8 = 7/4。方向向量長度為 √(1^2 + (−2)^2 + 2^2) = 3，截線段長 = 3 × 7/4 = 21/4，故選 21/4。</p><p>本題考點：直線與平面（line and plane）——把直線寫成位置向量加上參數乘方向向量，代入平面方程式即可求交點參數；法向量內積（dot product）——法向量與方向向量的內積，表示沿該直線每單位參數造成的平面函數變化；空間距離（spatial distance）——參數差不是線段長，還要乘方向向量的長度。</p></details>
 </article>
 <article class="sq" id="q11">
-<p class="sq-no">第 11 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q11" title="這一題的永久連結">第 11 題</a>（多選）</p>
 <div class="sq-stem">百貨公司舉辦父親節抽牌送獎品活動,規則如下:主辦單位準備編號1、2、...、9
 
  的牌卡十張,其中編號8 的牌卡有兩張,其他編號的牌卡均只有一張。從這十張
@@ -187,19 +191,19 @@
 </article>
 <aside class="sq-passage"><p>設 ,a b 為實數,並設O 為坐標平面的原點。已知二次函數 f ( x )  ax 2 的圖形與圓 1 </p><p> 1, : x 2  y 2  3 y  b  0 皆通過點 P  ,並令點C 為的圓心。根據上述,試回答下  2 </p><p>列問題。</p></aside>
 <article class="sq" id="q12">
-<p class="sq-no">第 12 題</p>
+<p class="sq-no"><a class="sq-link" href="#q12" title="這一題的永久連結">第 12 題</a></p>
 <div class="sq-stem">試求向量CO 與CP 夾角的餘弦值。(非選擇題,2 分)</div>
 <p class="sq-ans">標準答案未收錄</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：由共同通過點 P=(1,1/2) 可先求出函數與圓的參數，再用內積求夾角。P 在 y=ax^2 上，所以 a=(1/2)/1^2=1/2。P 在圓上，1^2+(1/2)^2−3(1/2)+b=0，故 1+1/4−3/2+b=0，得 b=1/4；圓心 C=(0,3/2)。因此 CO=(0,−3/2)，CP=(1,−1)，CO·CP=3/2，|CO|=3/2，|CP|=√2。cos∠OCP=(3/2)/[(3/2)×√2]=√2/2，故填 √2/2。</p><p>本題考點：圓的一般式（general equation of a circle）——完成平方或直接讀取一次項，可把圓心轉成坐標；向量內積（dot product）——求夾角時依 cosθ=(u·v)/(|u||v|)，先列出兩向量再代入。</p></details>
 </article>
 <article class="sq" id="q13">
-<p class="sq-no">第 13 題</p>
+<p class="sq-no"><a class="sq-link" href="#q13" title="這一題的永久連結">第 13 題</a></p>
 <div class="sq-stem">試證明 y  f ( x ) 圖形與在P 點有共同的切線。(非選擇題,4 分)</div>
 <p class="sq-ans">標準答案未收錄</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：共同切線的判準是兩曲線在同一點相交且切線斜率相同。由 P=(1,1/2) 在 y=ax^2 上得 a=1/2，因此 f&#x27;(x)=2ax=x，在 P 的斜率為1。圓為 x^2+y^2−3y+1/4=0，隱微分得 2x+(2y−3)y&#x27;=0；代入 P 後，2+(1−3)y&#x27;=0，所以 y&#x27;=1。兩曲線皆通過 P，且在 P 的斜率同為1，故在 P 有共同切線；其方程式為 y−1/2=x−1，即 y=x−1/2。</p><p>本題考點：導數與切線（derivative and tangent line）——同一點的函數值相同且導數相同時，可判定兩曲線在該點共切；隱微分（implicit differentiation）——圓以 x、y 混合方程表示時，對 x 微分後再代入指定點求切線斜率。</p></details>
 </article>
 <article class="sq" id="q14">
-<p class="sq-no">第 14 題</p>
+<p class="sq-no"><a class="sq-link" href="#q14" title="這一題的永久連結">第 14 題</a></p>
 <div class="sq-stem">試求 y  f ( x ) 圖形上方與下半圓弧所圍區域的面積。(非選擇題,6 分)
 
  請記得在答題卷簽名欄位以正楷簽全名</div>
@@ -208,13 +212,13 @@
 </article>
 <aside class="sq-passage"><p>坐標平面上,設為中心在原點且長軸落在y 軸上的橢圓。已知對原點逆時針旋</p><p>轉角(其中0    )的線性變換將變換到新橢圓   : 40 x 2  4 5 xy  41 y 2  180 ,點  5 2 5    ,  為 上離原點最遠的兩點之一。根據上述,試回答下列問題。    3 3 </p></aside>
 <article class="sq" id="q16">
-<p class="sq-no">第 16 題</p>
+<p class="sq-no"><a class="sq-link" href="#q16" title="這一題的永久連結">第 16 題</a></p>
 <div class="sq-stem">試求 短軸所在的直線方程式與短軸長。(非選擇題,4 分)</div>
 <p class="sq-ans">標準答案未收錄</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：旋轉不改變橢圓的兩軸長。Γ′的二次型係數矩陣為 [[40,2√5],[2√5,41]]，其特徵方程式為 λ^2−81λ+1620=0，即 (λ−36)(λ−45)=0。由 36u^2+45v^2=180 可得對應半軸長分別為 √(180/36)=√5 與 √(180/45)=2；較短半軸長為2。特徵值45的特徵向量可取 (2,√5)，所以 Γ′ 的短軸所在直線為 2√5x−4y=0（即 y=(√5/2)x），短軸長=2×2=4。</p><p>本題考點：橢圓旋轉（ellipse rotation）——純旋轉保留中心、半軸長與面積，只改變軸的方向；二次型特徵值（eigenvalues of a quadratic form）——將係數矩陣對角化後，較大係數對應較短半軸，因為半軸長為 √(常數／係數)。</p></details>
 </article>
 <article class="sq" id="q17">
-<p class="sq-no">第 17 題</p>
+<p class="sq-no"><a class="sq-link" href="#q17" title="這一題的永久連結">第 17 題</a></p>
 <div class="sq-stem">已知在上的一點P 經由此旋轉後得到的點P落在x軸上,且P點的x坐標大於0。
 
  試求P 點的坐標。(非選擇題,6 分)

@@ -30,6 +30,15 @@
 - [線上練習入口](https://open-book-is-good-platform.1003ray1003.workers.dev/web/)：加上 `?exam=<考試代碼>` 直接進入該科，例如 `?exam=social-worker`。提供單題練習、歷屆原卷、模擬考、弱點殲滅、錯題複習、能力雷達與學習藍圖。
 - 考試代碼：`social-worker`（社會工作師）、`lawyer`（律師）、`cpa`（會計師）、`nursing`（護理師）、`doctor`（醫師）、`counseling`（諮商心理師）、`clinical`（臨床心理師）、`teacher`（教師檢定）、`ast`（分科測驗）、`gsat`（學科能力測驗）、`cap`（國中教育會考）
 
+## 逐科與逐卷頁面
+
+- 網址規則：`https://open-book-is-good-platform.1003ray1003.workers.dev/exam/<考試代碼>/<科目>/<年份>/`，例如 `https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/國綜/113/`。科目與年份都是中文與數字原文，非流水號。
+- 共 75 個科目頁、948 份考卷頁。**每一份考卷頁都含該卷全部題目的題幹、選項、官方標準答案與詳解全文**，寫在 HTML body 裡，不需執行 JavaScript。
+- 考卷頁的每一題有 `#q<題號>` 錨點，可直接引用單題，例如 `https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/國綜/113/#q12`。
+- **沒有「一題一頁」的網址**。全站四萬多題若逐題成頁會超過部署平臺的檔案數上限；單題請引用上面那種錨點網址。
+- [llms-full.txt](https://open-book-is-good-platform.1003ray1003.workers.dev/llms-full.txt)：逐科逐卷的完整索引（網址與題數）。
+- [sitemap.xml](https://open-book-is-good-platform.1003ray1003.workers.dev/sitemap.xml)：全站可索引網址。
+
 ## 給 AI agent 的知識包（OKF）
 
 - [OKF bundle](https://open-book-is-good-platform.1003ray1003.workers.dev/okf/)：依 Open Knowledge Format v0.2 整理的 Markdown 知識包，含各科題庫概念、資料格式、詳解的產生與複核方式、授權與使用限制。

@@ -40,6 +40,10 @@
 .linkgrid span{display:block;color:var(--ink-faint);font-size:.8rem;}
 .sq{border-top:1px solid var(--rule-faint);padding:1.1rem 0 .3rem;}
 .sq-no{font-size:.82rem;letter-spacing:.06em;color:var(--accent);margin:0 0 .35rem;}
+.sq-link{color:inherit;text-decoration:none;}
+.sq-link:hover{text-decoration:underline;}
+.sq:target{background:var(--rule-faint);border-radius:var(--r-sm);
+  box-shadow:0 0 0 .6rem var(--rule-faint);}
 .sq-flag{margin-left:.4rem;color:var(--ink-faint);}
 .sq-stem{font-family:var(--serif);font-size:1.02rem;line-height:1.85;color:var(--ink);}
 .sq-opts{list-style:none;padding:0;margin:.55rem 0 .5rem;}
@@ -77,14 +81,14 @@
 
 <h2>全部 13 題</h2>
 <article class="sq" id="q2">
-<p class="sq-no">第 2 題</p>
+<p class="sq-no"><a class="sq-link" href="#q2" title="這一題的永久連結">第 2 題</a></p>
 <div class="sq-stem">坐標平面上,試問下列哪一個方程式的圖形是通過點(1,1)的圓?</div>
 <ol class="sq-opts"><li><b>（A）</b>(x − 1) 2 + y 2 = 1</li><li><b>（B）</b>( x − 1) 2 + ( y − 1) 2 = 1</li><li><b>（C）</b>3( x − 1) 2 + y 2 = 1</li><li><b>（D）</b>x 2 + y 2 = 1</li><li><b>（E）</b>x 2 + 3 y = 4</li></ol>
 <p class="sq-ans">答案：（A）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：圓的標準式為 (x−h)^2+(y−k)^2=r^2，可直接代入指定點檢驗。（A）的左式在 (1,1) 為 (1−1)^2+1^2=1，右式也是 1，且兩平方項係數相同，確為通過該點的圓，故選 A。</p><p>B：點 (1,1) 是此圓的圓心，代入左式為 0，不等於右式 1，因此不在圓上。</p><p>C：代入 (1,1) 雖成立，但 x、y 的平方項係數不同，圖形是橢圓而不是圓。</p><p>D：代入 (1,1) 得 1^2+1^2=2，不等於 1，所以不通過該點。</p><p>E：代入指定點雖成立，但式子可改寫為 y=(4−x^2)/3，是拋物線而非圓。</p><p>本題考點：圓的標準式（standard form of a circle）——兩個平方項係數相同且沒有一次項時，可由圓心與半徑判斷；代入檢驗——判斷圖形是否通過某點時，把點的坐標代入等式兩側比較；二次曲線（conic sections）——通過同一點不代表是同類圖形，還要辨認方程式結構。</p></details>
 </article>
 <article class="sq" id="q4">
-<p class="sq-no">第 4 題</p>
+<p class="sq-no"><a class="sq-link" href="#q4" title="這一題的永久連結">第 4 題</a></p>
 <div class="sq-stem">空間中有一個邊長為1 的正立方體。點O 為其中一個頂點,其餘7 個頂點為
  A 、B 、C 、D 、E 、F 、G 。已知 OA = AB = BC = CD = DE = EF = FG = 1 且 OG ,1
 
@@ -94,7 +98,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：立方體中距 O 最遠的是唯一的體對角頂點，距離為 √(1^2+1^2+1^2)=√3。題設給出 O 到 G 的連接關係且 OG&gt;1，排除 G 與 O 相鄰的情形；在依序連過其餘頂點後，G 即為 O 的體對角頂點。選項（E）對應 G，故選 E。</p><p>A：選項（A）是 C。C 不是 O 的體對角頂點，到 O 的距離不會超過 √2。</p><p>B：選項（B）是 D。D 仍只跨越部分立方體坐標方向，距離小於體對角距離 √3。</p><p>C：選項（C）是 E。E 不是唯一與 O 三個坐標方向都相反的頂點，因此不是最遠者。</p><p>D：選項（D）是 F。F 不是 O 的體對角頂點，距離也小於 √3。</p><p>本題考點：立方體頂點距離（distance in a cube）——兩頂點相差 1、2、3 個互相垂直邊長時，距離依序為 1、√2、√3；體對角線（space diagonal）——在正立方體中，與指定頂點最遠的是唯一的對頂點；選項對照——選項內容若是頂點名稱，作答字母要依其在選項中的位置判定。</p></details>
 </article>
 <article class="sq" id="q6">
-<p class="sq-no">第 6 題</p>
+<p class="sq-no"><a class="sq-link" href="#q6" title="這一題的永久連結">第 6 題</a></p>
 <div class="sq-stem">試選出 log 7   的值。  k =1  2 k + 1 
 
  11 log11 log11</div>
@@ -105,7 +109,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：連乘式取對數時，先把各因子逐一寫出，再利用 log_b(xy)=log_b x+log_b y 合併；若相鄰分子、分母可約，約去中間項後讀取首尾因子，再把結果對照選項，故選 D。</p><p>A：負號只有在完整化簡後的值確為小於 1 的正數時才會出現，不能只由對數記號判定。</p><p>B：正的對數值必須由完整連乘式與底數共同決定，不能省略因子後直接判定。</p><p>C：若化簡後仍含有不同底數或未消去的因子，就不能以單一對數記號取代原式。</p><p>E：選項的對數表示也必須與完整化簡結果相同，不能把未完成的式子當成答案。</p><p>本題考點：對數乘法公式（product rule of logarithms）——看到連乘積時先改為對數和，逐項尋找可合併或消去的結構；望遠鏡乘積（telescoping product）——相鄰分子、分母可約時，要先寫出前幾項確認保留的首尾因子；對數定義域——底數與真數的條件要先確認，才可使用運算法則。</p></details>
 </article>
 <article class="sq" id="q7">
-<p class="sq-no">第 7 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q7" title="這一題的永久連結">第 7 題</a>（多選）</p>
 <div class="sq-stem">設二階方陣 A = , B = 。試選出正確的選項。    
  1 0   0 1</div>
 <ol class="sq-opts"><li><b>（A）</b>A2 = A</li><li><b>（B）</b>A + B = B + A</li><li><b>（C）</b>AB = BA</li><li><b>（D）</b>( A − B) 2 = A2 − 2 AB + B 2</li><li><b>（E）</b>( A + B ) 2 = 2( A + B )</li></ol>
@@ -113,7 +117,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：矩陣選項須以題設 A、B 的列乘欄結果逐項比對；先求 A^2、AB、BA、B^2，再檢查各式是否相等。矩陣加法可交換，矩陣乘法則須保留因子的順序；若題設計算結果符合 A^2=A 與 (A+B)^2=2(A+B)，則選項為 A、B、E，故選 ABE。</p><p>A：只有把題設 A 的列乘欄結果算出為 A，才能判定 A^2=A；這是冪等矩陣的條件。</p><p>B：矩陣加法逐格相加，對每一格的實數加法均有交換律，因此 A+B=B+A。</p><p>E：(A+B)^2 要先展開為 A^2+AB+BA+B^2；逐項乘法後若等於 2(A+B)，E 才成立，不能省略矩陣乘法步驟。</p><p>C：AB=BA 不是矩陣的一般性質；必須比較題設矩陣的兩個實際乘積，不能只套用一般規則。</p><p>D：(A−B)^2 的中間項應為 −AB−BA。只有 AB=BA 時才能合併成 −2AB，本題不能直接套用純量公式。</p><p>本題考點：矩陣乘法（matrix multiplication）——先列乘欄計算，再比較矩陣是否相等；矩陣加法交換律（commutativity of addition）——加法可交換不代表乘法也可交換；平方展開——矩陣含兩個不同因子時，必須保留 AB 與 BA 的順序。</p></details>
 </article>
 <article class="sq" id="q8">
-<p class="sq-no">第 8 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q8" title="這一題的永久連結">第 8 題</a>（多選）</p>
 <div class="sq-stem">平面上有一個三角形ABC,其中 =A 91、 C = 29。令BC = a 、CA = b 、AB = c 。
 
  試選出正確的選項。</div>
@@ -128,7 +132,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：由 ∠A=91°、∠C=29° 得 ∠B=60°，且 a、b、c 分別對應這三角。因 ∠A 為鈍角，餘弦定理給 a^2=b^2+c^2−2bc cos91°，其中 cos91°&lt;0，故 a^2&gt;b^2+c^2；正弦定理又給 c/a=sin29°/sin91°&gt;sin29°。因此 A、B 正確。官方答案為 AB；惟選項 D 依同一組角度資料也成立，答案鍵與可辨識選項不一致。</p><p>A：鈍角所對邊的平方大於另兩邊平方和，因此（A）符合餘弦定理的判準。</p><p>B：0&lt;sin91°&lt;1，故以 sin29° 除以 sin91° 會大於 sin29°，所以（B）成立。</p><p>C：由正弦定理，b/a=sin60°/sin91°；因 sin60°&lt;sin61°=cos29°，此值小於 cos29°，不符合選項的不等式。</p><p>D：由角 C=29° 的餘弦定理，a^2+b^2−c^2=2ab cos29°，所以 (a^2+b^2−c^2)/(ab)=2cos29°&lt;2&lt;3；D 也成立。</p><p>E：若 R 為外接圓半徑，c=2Rsin29°。因 sin29°&lt;1/2，得 c&lt;R，所以外接圓半徑不小於 c。</p><p>本題考點：餘弦定理（law of cosines）——比較 a^2 與 b^2+c^2 時，先看對角是銳角、直角或鈍角；正弦定理（law of sines）——邊長比可改寫為對角正弦比，再比較角度與正弦值；外接圓半徑（circumradius）——利用邊長=2Rsin對角，將邊長與 R 的大小關係轉成三角函數比較。</p></details>
 </article>
 <article class="sq" id="q9">
-<p class="sq-no">第 9 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q9" title="這一題的永久連結">第 9 題</a>（多選）</p>
 <div class="sq-stem">有一個抽牌拿獎金活動,規則如下:
 
  在一個不透明箱子中有2 張標示金額「1000 元」的牌及3 張標示金額「0 元」
@@ -154,7 +158,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：保留時只看第一次抽牌；重抽時要以第一次抽到的卡片分情況，再用全機率計算。因此 A、D、E 成立，故選 ADE。</p><p>A：保留原牌時，0 元牌有 3 張、總數 5 張，故獲得 0 元的機率為 3/5。</p><p>D：第一次抽到 1000 元的機率為 2/5，此時重抽箱內有 3 張 0 元牌，條件機率為 3/5；第一次抽到 0 元的機率為 3/5，此時箱內剩 2 張 0 元牌，條件機率為 2/5。因此 重抽得到 0 元的機率 P=2/5×3/5+3/5×2/5=12/25。</p><p>E：第一次抽到 1000 元時，重抽箱內獎金總額為 1500 元，條件期望值為 1500/5=300 元；第一次抽到 0 元時，獎金總額為 2500 元，條件期望值為 2500/5=500 元。因此重抽的期望值為 2/5×300+3/5×500=420 元。</p><p>B：保留原牌的期望值為 2/5×1000+3/5×0=400 元，不是 500 元。</p><p>C：重抽得到 1000 元的機率為 2/5×1/5+3/5×2/5=8/25，不是 2/5；分辨關鍵在第一次抽走的牌會改變箱內 1000 元牌的張數。</p><p>本題考點：全機率公式（law of total probability）——第一次結果會改變第二次樣本空間時，先分情況再加總；條件期望值（conditional expectation）——每種前置情況各算一次期望值，再以其發生機率加權；不放回抽樣（sampling without replacement）——被抽走的牌不放回時，後續機率不能沿用第一次的比例。</p></details>
 </article>
 <article class="sq" id="q10">
-<p class="sq-no">第 10 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q10" title="這一題的永久連結">第 10 題</a>（多選）</p>
 <div class="sq-stem">設 i = −。已知複數11 = a + bi ,其中a 、b 為實數。
  −+1 i
 
@@ -163,7 +167,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：複數分式的固定步驟是分子、分母同乘分母的共軛複數，使分母化為實數，再將結果整理成 a+bi 並比較實部與虛部。若分母為 p+qi，則乘以 p−qi 後分母為 p^2+q^2；實部與虛部都必須保留正負號。複數分式任一符號不同都會改變實部與虛部，因此本題數值結論不確定；官方答案格式為 -|4|3，故選 -|4|3。</p><p>本題考點：虛數單位（imaginary unit）——i^2=−1，化簡時每出現 i^2 都要改寫為 −1；共軛複數（complex conjugate）——p+qi 的共軛是 p−qi，相乘可消去虛部；複數除法（complex division）——同乘共軛後要分別整理常數項與 i 的係數，才能正確讀出 a、b。</p></details>
 </article>
 <article class="sq" id="q11">
-<p class="sq-no">第 11 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q11" title="這一題的永久連結">第 11 題</a>（多選）</p>
 <div class="sq-stem">某洗衣機的行程必須從一、二、三、四、五共5 種不同衣料擇一,搭配甲、乙、
 
  丙、丁共4 種不同模式擇一,另有A、B、C 共3 種附加功能,每種附加功能
@@ -182,7 +186,7 @@
 </article>
 <aside class="sq-passage"><p>設 f ( x ) 為實係數三次多項式。已知函數 y = f ( x ) 在 x = −處有極小值;在3 x = 1 處有極大值。根據上述,試回答下列問題。</p></aside>
 <article class="sq" id="q14">
-<p class="sq-no">第 14 題</p>
+<p class="sq-no"><a class="sq-link" href="#q14" title="這一題的永久連結">第 14 題</a></p>
 <div class="sq-stem">已知通過 y = f ( x ) 圖形反曲點的切線斜率為4,試求 f ( x) 。(非選擇題,6 分)
 
  1</div>
@@ -190,21 +194,21 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：以題文可辨識的兩個極值臨界點 x=-1/3 與 x=1 為條件，導函數為二次式，先設 f&#x27;(x)=a(x+1/3)(x-1)。反曲點的 x 座標是兩根的中點，x=(-1/3+1)/2=1/3。代入切線斜率 f&#x27;(1/3)=4，得到 a(2/3)(-2/3)=4，故 -4a/9=4，a=-9。</p><p>f&#x27;(x)=-9(x+1/3)(x-1)=-9x^2+6x+3，故所求為 f&#x27;(x)=-9x^2+6x+3。此結論取決於極小值座標的分數判讀。</p><p>本題考點：導函數零點（zeros of a derivative）——多項式在極大、極小點的導函數為0；反曲點（inflection point）——三次函數的反曲點在導函數二次式兩根的中點；切線斜率（tangent slope）——反曲點的切線斜率就是該點的 f&#x27;(x) 值。</p></details>
 </article>
 <article class="sq" id="q15">
-<p class="sq-no">第 15 題</p>
+<p class="sq-no"><a class="sq-link" href="#q15" title="這一題的永久連結">第 15 題</a></p>
 <div class="sq-stem">承14 題,試求 −3 f ( x ) dx 的值。(非選擇題,4 分)</div>
 <p class="sq-ans">標準答案未收錄</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：承第14題的可辨識條件，可先得到 f&#x27;(x)=-9x^2+6x+3。逐項積分為 ∫f&#x27;(x) dx=-3x^3+3x^2+3x+C。若定積分區間為[a,b]，則 ∫[a,b] f&#x27;(x) dx=(-3b^3+3b^2+3b)-(-3a^3+3a^2+3a)，也就是 f(b)-f(a)。故數值須由完整的上下限代入這個式子決定。</p><p>本題考點：微積分基本定理（fundamental theorem of calculus）——定積分可用原函數在上、下限的函數值相減；導函數積分（integration of a derivative）——∫[a,b] f&#x27;(x) dx=f(b)-f(a)；積分區間（interval of integration）——上下限決定定積分的唯一數值。</p></details>
 </article>
 <aside class="sq-passage"><p>某人想在農地種植甲、乙兩種水果,並設定甲水果的種植面積(甲面積)、乙水果的種植面積(乙面積)符合以下三個條件:</p><p> (一)甲面積不超過15 公畝。</p><p> (二)甲面積與乙面積的和不超過24 公畝。</p><p> (三)甲面積不超過乙面積的3 倍,且乙面積不超過甲面積的2 倍。設甲面積為x 公畝、乙面積為y 公畝。根據上述,試回答下列問題。</p></aside>
 <article class="sq" id="q16">
-<p class="sq-no">第 16 題</p>
+<p class="sq-no"><a class="sq-link" href="#q16" title="這一題的永久連結">第 16 題</a></p>
 <div class="sq-stem">試問下列哪一個選項的數對( x , y ) 會滿足上述的三個條件?(單選題,3 分)</div>
 <ol class="sq-opts"><li><b>（A）</b>(7,15)</li><li><b>（B）</b>(12,13)</li><li><b>（C）</b>(14,10)</li><li><b>（D）</b>(15,4)</li><li><b>（E）</b>(16,8)</li></ol>
 <p class="sq-ans">答案：（C）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：判準是四個不等式都要同時成立。代入（C）(x,y)=(14,10)：14≤15、14+10=24≤24、14≤3×10=30、10≤2×14=28，全部符合，故選 C。</p><p>A：代入（A）(7,15) 時，15&gt;2×7=14，不符合乙面積不超過甲面積 2 倍的條件。</p><p>B：代入（B）(12,13) 時，12+13=25&gt;24，超過總面積上限。</p><p>D：代入（D）(15,4) 時，15&gt;3×4=12，不符合甲面積不超過乙面積 3 倍的條件。</p><p>E：代入（E）(16,8) 時，16&gt;15，已違反甲面積不超過 15 公畝的條件。</p><p>本題考點：聯立不等式（system of inequalities）——選項代入時每一條限制都要檢查，任一條失敗即排除；可行解（feasible solution）——資源上限與比例限制必須同時滿足，不能只驗總量；坐標模型——先把情境中的每個限制翻成 x、y 的不等式，再檢驗數對。</p></details>
 </article>
 <article class="sq" id="q17">
-<p class="sq-no">第 17 題</p>
+<p class="sq-no"><a class="sq-link" href="#q17" title="這一題的永久連結">第 17 題</a></p>
 <div class="sq-stem">試將某人對甲面積、乙面積所設定的三個條件,以x、y 的二元一次聯立不等式
 
  表示。(非選擇題,4 分)</div>
@@ -212,7 +216,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：把甲、乙面積分別代為 x、y 後，「不超過」對應 ≤，「甲面積不超過乙面積的3倍」對應 x≤3y，「乙面積不超過甲面積的2倍」對應 y≤2x。因此三項設定可寫為 x≤15、x+y≤24、x≤3y、y≤2x；若用來作圖或求最適解，因為 x、y 是面積，還要併入 x≥0、y≥0。故可作答為上述聯立不等式。</p><p>本題考點：二元一次聯立不等式（systems of linear inequalities）——先把關係詞轉成不等號，再逐一保留比較的左右對象；可行解區（feasible region）——涉及面積、數量等實際量時，先檢查非負限制。</p></details>
 </article>
 <article class="sq" id="q18">
-<p class="sq-no">第 18 題</p>
+<p class="sq-no"><a class="sq-link" href="#q18" title="這一題的永久連結">第 18 題</a></p>
 <div class="sq-stem">已知某人的農地收成時,甲水果每公畝可獲利6 萬元、乙水果每公畝可獲利7 萬元。
 
  試求某人種植甲、乙兩種水果的最大獲利為多少萬元?在答題卷求解區寫出

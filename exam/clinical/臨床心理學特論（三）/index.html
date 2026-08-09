@@ -40,6 +40,10 @@
 .linkgrid span{display:block;color:var(--ink-faint);font-size:.8rem;}
 .sq{border-top:1px solid var(--rule-faint);padding:1.1rem 0 .3rem;}
 .sq-no{font-size:.82rem;letter-spacing:.06em;color:var(--accent);margin:0 0 .35rem;}
+.sq-link{color:inherit;text-decoration:none;}
+.sq-link:hover{text-decoration:underline;}
+.sq:target{background:var(--rule-faint);border-radius:var(--r-sm);
+  box-shadow:0 0 0 .6rem var(--rule-faint);}
 .sq-flag{margin-left:.4rem;color:var(--ink-faint);}
 .sq-stem{font-family:var(--serif);font-size:1.02rem;line-height:1.85;color:var(--ink);}
 .sq-opts{list-style:none;padding:0;margin:.55rem 0 .5rem;}
@@ -92,35 +96,35 @@
 
 <h2>題目長什麼樣</h2>
 <p>以下自本科題庫抽 5 題示例，完整題目請看上方各年度考卷。</p>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">根據DSM-5，暴食症（bulimia nervosa）的診斷條件中，暴食行為（binge eating）與不適當補償行為（compensatory behavior）的相關條件為：</div>
 <ol class="sq-opts"><li><b>（A）</b>過去三個月內，兩者都必須出現，頻率至少一個月一次</li><li><b>（B）</b>過去三個月內，至少兩者之一曾出現，頻率至少一個月一次</li><li><b>（C）</b>過去三個月內，兩者都必須出現，頻率至少一週一次</li><li><b>（D）</b>過去一個月內，至少兩者之一曾出現，頻率至少一週一次</li></ol>
 <p class="sq-ans">答案：（C）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>考點為 DSM-5 暴食症（bulimia nervosa）的頻率與期程準則。暴食與不適當補償行為「兩者皆須」出現，且平均至少「每週一次、持續三個月」，故 C 正確。陷阱在頻率與期程的數字組合：A、D 把每週誤為每月（頻率太低），B 誤為「兩者之一」（應為兩者皆須）。需同時記住三個月、每週、兩行為並存三要件。</p></details>
 </article>
-<article class="sq" id="q25">
+<article class="sq">
 <p class="sq-no">第 25 題</p>
 <div class="sq-stem">DSM-5 在失眠症診斷上的重要變革不包含下列何者？</div>
 <ol class="sq-opts"><li><b>（A）</b>不再強調原發性失眠症與次發性失眠症</li><li><b>（B）</b>定義發生頻率為每週至少 3 次</li><li><b>（C）</b>縮短慢性失眠的持續影響時間為 1 個月</li><li><b>（D）</b>移除無恢復性睡眠主訴的準則</li></ol>
 <p class="sq-ans">答案：（C）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題眼在「DSM-5」與「重要變革不包含」——判準是 DSM-5 對失眠症診斷所作的分類與時間準則調整。DSM-5 不再以是否伴隨其他疾患區分原發性與次發性失眠，並以每週至少 3 次界定症狀頻率，也移除了「無恢復性睡眠」作為必要主訴；慢性失眠的持續時間並非縮短為 1 個月，故選 C。</p><p>A：不再強調原發性與次發性失眠，是 DSM-5 將失眠視為可獨立診斷、也可與其他疾患共病的重要轉變，故非答案。</p><p>B：每週至少 3 次是 DSM-5 對失眠症症狀頻率的界定，故非答案。</p><p>D：無恢復性睡眠未被保留為診斷所必須的核心主訴；診斷重點放在對睡眠量或品質不滿及其日間功能後果，故非答案。</p><p>本題考點：失眠症（insomnia disorder）的 DSM-5 診斷架構——不再採原發性／次發性二分；症狀頻率以每週至少 3 次為判準；診斷準則具版本敏感性，本題依 DSM-5 作答。</p></details>
 </article>
-<article class="sq" id="q9">
+<article class="sq">
 <p class="sq-no">第 9 題</p>
 <div class="sq-stem">一位中年婦人在得知罹患乳癌後，因擔心化療的痛苦而拒絕治療，也未告訴家人她生病之事，生 活一切如常未顯出任何異狀。她沒有任何精神病史。一年後全身疼痛，檢查後顯示疾病惡化。依 據前述，此位婦人最可能符合 DSM-5 中那一項診斷？</div>
 <ol class="sq-opts"><li><b>（A）</b>罹病焦慮症（illness anxiety disorder）</li><li><b>（B）</b>適應障礙症（adjustment disorder）</li><li><b>（C）</b>廣泛性焦慮症（generalized anxiety disorder）</li><li><b>（D）</b>受心理因素影響的其他身體病況（psychological factors affecting other medical conditions）</li></ol>
 <p class="sq-ans">答案：（D）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題眼在已確診乳癌後「拒絕治療」並隱匿病情，最後疾病惡化——判準是心理因素是否不利影響既有醫療病況的病程或治療遵從；此婦人不是錯認自己有病，而是因恐懼化療而影響治療，故選（D）受心理因素影響的其他身體病況。</p><p>A：罹病焦慮症的重點是對罹患嚴重疾病的持續過度擔憂，常伴隨反覆檢查或求醫；即使確有身體疾病，仍須健康焦慮與疾病嚴重度明顯不相稱才符合。題幹呈現的是隱匿病情、生活如常、未顯異狀，缺乏這種過度健康焦慮，故非答案。</p><p>B：適應障礙症是壓力後的情緒或行為反應診斷；最強誘答在於癌症確是重大壓力，但題幹特別指出心理因素已干擾醫療處遇，較直接符合（D）的判準。</p><p>C：廣泛性焦慮症須是多領域、持續難控制的擔憂，題中焦慮聚焦於化療，故非答案。</p><p>本題考點：受心理因素影響的其他身體病況（psychological factors affecting other medical conditions）——心理或行為因素不利影響病程、治療或預後；罹病焦慮症（illness anxiety disorder）——以與病況不相稱的健康焦慮為特徵，而非確診後拒治。</p></details>
 </article>
-<article class="sq" id="q33">
+<article class="sq">
 <p class="sq-no">第 33 題</p>
 <div class="sq-stem">「認知評估 （cognitive appraisal） 」 是 Lazarus 提出的壓力模式之重要歷程，下列何者不屬於他所謂的 「初 級評估（primary appraisal）」歷程？</div>
 <ol class="sq-opts"><li><b>（A）</b>評估壓力源是否和我有關</li><li><b>（B）</b>評估壓力源是否對我有害</li><li><b>（C）</b>評估是否有足夠資源因應壓力源</li><li><b>（D）</b>評估為那一類壓力源</li></ol>
 <p class="sq-ans">答案：（C）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題眼在 Lazarus 壓力模式與「不屬於初級評估」——判準是初級評估判斷事件與自身的關聯、意義與威脅；次級評估才判斷可用資源與因應能力。（C）評估是否有足夠資源因應壓力源屬次級評估，故選 C。</p><p>A：評估壓力源是否與自己有關，是初級評估的關聯性判斷。</p><p>B：評估壓力源是否有害，是初級評估的威脅或損失判斷。</p><p>D：辨識壓力源的意義與類型，是初級評估的一部分。這是最強誘答，因為分類看似客觀，但其目的在判斷事件對自己的意義，不是盤點資源。</p><p>本題考點：認知評估（cognitive appraisal）——壓力由人與情境關係的評估產生；初級評估（primary appraisal）判斷關聯、威脅或挑戰；次級評估（secondary appraisal）判斷因應資源與選項。</p></details>
 </article>
-<article class="sq" id="q17">
+<article class="sq">
 <p class="sq-no">第 17 題</p>
 <div class="sq-stem">解離性疾患會有那一種類的記憶缺陷（deficits），請選出最為正確之答案？</div>
 <ol class="sq-opts"><li><b>（A）</b>內隱記憶（implicit memory）</li><li><b>（B）</b>外顯記憶（explicit memory）</li><li><b>（C）</b>語意記憶（semantic memory）</li><li><b>（D）</b>虛構記憶（confabulatory memory）</li></ol>

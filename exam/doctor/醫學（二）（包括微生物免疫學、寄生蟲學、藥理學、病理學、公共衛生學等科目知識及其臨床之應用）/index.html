@@ -40,6 +40,10 @@
 .linkgrid span{display:block;color:var(--ink-faint);font-size:.8rem;}
 .sq{border-top:1px solid var(--rule-faint);padding:1.1rem 0 .3rem;}
 .sq-no{font-size:.82rem;letter-spacing:.06em;color:var(--accent);margin:0 0 .35rem;}
+.sq-link{color:inherit;text-decoration:none;}
+.sq-link:hover{text-decoration:underline;}
+.sq:target{background:var(--rule-faint);border-radius:var(--r-sm);
+  box-shadow:0 0 0 .6rem var(--rule-faint);}
 .sq-flag{margin-left:.4rem;color:var(--ink-faint);}
 .sq-stem{font-family:var(--serif);font-size:1.02rem;line-height:1.85;color:var(--ink);}
 .sq-opts{list-style:none;padding:0;margin:.55rem 0 .5rem;}
@@ -92,35 +96,35 @@
 
 <h2>題目長什麼樣</h2>
 <p>以下自本科題庫抽 5 題示例，完整題目請看上方各年度考卷。</p>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">有關胺基醣苷類（aminoglycosides）抗生素之敘述，下列何者最不適當？</div>
 <ol class="sq-opts"><li><b>（A）</b>此類抗生素可抑制細菌蛋白質生合成，進而達到殺菌或抑制細菌生長之作用</li><li><b>（B）</b>降低抗生素進入細菌內可能會導致細菌對此類抗生素出現抗藥性</li><li><b>（C）</b>此類抗生素需在厭氧環境下，方可穿過細胞膜，因此厭氧菌對此類抗生素具有感受性（susceptible）</li><li><b>（D）</b>卡納黴素（kanamycin）與阿米卡星（amikacin）為此類常見抗生素</li></ol>
 <p class="sq-ans">答案：（C）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：胺基醣苷類進入細菌所需的條件。aminoglycosides 需仰賴氧依賴性運輸進入細菌細胞，因此在厭氧環境下進入受阻，厭氧菌對此類藥物具有內在抗藥性；選項卻說厭氧環境才可穿膜且厭氧菌具感受性，方向完全相反，故最不適當的是 C。</p><p>A：胺基醣苷類與 30S 核糖體次單位結合，干擾蛋白質生合成，具殺菌作用，敘述適當。</p><p>B：細菌降低藥物攝入或改變運輸，可造成胺基醣苷類抗藥性，敘述適當。</p><p>D：kanamycin 與 amikacin 都屬胺基醣苷類抗生素，敘述適當。</p><p>本題考點：胺基醣苷類（aminoglycosides）抑制細菌蛋白質合成並需氧依賴性運輸進入細胞；厭氧菌因藥物攝入不足而天然不敏感；抗藥性可來自攝入減少、修飾酶或標的改變。</p></details>
 </article>
-<article class="sq" id="q61">
+<article class="sq">
 <p class="sq-no">第 61 題</p>
 <div class="sq-stem">下列降血糖藥與作用機轉的配對，何者錯誤？</div>
 <ol class="sq-opts"><li><b>（A）</b>pioglitazone—peroxisome proliferator-activated receptor gamma（PPAR-γ）agonist</li><li><b>（B）</b>metformin—AMP-activated protein kinase（AMPK）activator</li><li><b>（C）</b>exenatide—glucagon-like peptide-1（GLP-1）receptor agonist</li><li><b>（D）</b>empagliflozin—sodium-glucose co-transporter 2（SGLT2）activator</li></ol>
 <p class="sq-ans">答案：（D）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：「配對何者錯誤」。empagliflozin 的降血糖作用是抑制近端腎小管的 sodium-glucose co-transporter 2（SGLT2），減少葡萄糖再吸收並增加尿糖；它不是 SGLT2 activator，故錯誤的是 D。</p><p>A：pioglitazone 為 peroxisome proliferator-activated receptor gamma（PPAR-γ）agonist，可改善胰島素敏感性，配對正確，非本題答案。</p><p>B：metformin 的重要作用包含活化 AMP-activated protein kinase（AMPK）相關途徑並抑制肝糖質新生，配對正確。</p><p>C：exenatide 是 glucagon-like peptide-1（GLP-1）receptor agonist，可依血糖狀態促進胰島素分泌，配對正確。</p><p>本題考點：SGLT2 inhibitors（sodium-glucose co-transporter 2 inhibitors）——empagliflozin 抑制腎臟葡萄糖再吸收；PPAR-γ agonists、AMPK activation 與 GLP-1 receptor agonists 分別代表不同降血糖機轉。</p></details>
 </article>
-<article class="sq" id="q21">
+<article class="sq">
 <p class="sq-no">第 21 題</p>
 <div class="sq-stem">毒殺性 CD8 T 細胞（cytotoxic CD8 T cells）所執行細胞凋亡之內在徑路（intrinsic pathway），下列何者為主要調節抑制的分子？</div>
 <ol class="sq-opts"><li><b>（A）</b>Bcl-2 family</li><li><b>（B）</b>Bax family</li><li><b>（C）</b>caspase-3</li><li><b>（D）</b>p53</li></ol>
 <p class="sq-ans">答案：（A）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：細胞凋亡的「內在徑路」與「主要調節抑制」。粒線體內在凋亡徑路的關鍵關卡是 Bcl-2 family；其中抗凋亡成員可抑制粒線體外膜通透化，阻止 cytochrome c 釋出及後續 caspase 活化。故主要調節抑制分子為（A）Bcl-2 family。</p><p>B：Bax family 多屬促凋亡分子，可促進粒線體外膜通透化，功能方向與題目所問的主要抑制者相反。</p><p>C：caspase-3 是凋亡下游的執行者（executioner caspase），負責切割細胞內受質；它不是在粒線體關卡抑制內在徑路的主要調節分子。</p><p>D：p53 可在 DNA 損傷時誘導促凋亡基因，並可促進凋亡；雖與凋亡調控有關，卻不是題目所指由 Bcl-2 家族掌控的主要抑制關卡。</p><p>本題考點：內在凋亡徑路（intrinsic apoptosis pathway）——由粒線體外膜通透化與 cytochrome c 釋出啟動；Bcl-2 family——整合促凋亡與抗凋亡訊號、決定粒線體凋亡閾值。</p></details>
 </article>
-<article class="sq" id="q81">
+<article class="sq">
 <p class="sq-no">第 81 題</p>
 <div class="sq-stem">下列何者為最常於造血系統惡性腫瘤活化致癌基因之染色體核型改變（karyotypic change）？</div>
 <ol class="sq-opts"><li><b>（A）</b>Translocation</li><li><b>（B）</b>Deletion</li><li><b>（C）</b>Gene amplification</li><li><b>（D）</b>Aneuploidy</li></ol>
 <p class="sq-ans">答案：（A）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：造血系統惡性腫瘤活化致癌基因最常見的染色體核型改變是 translocation。染色體易位可形成融合基因，或讓原致癌基因置於高活性調控序列旁而過度表現，驅動白血病或淋巴瘤，故選 A。</p><p>B：deletion 較常造成 tumor suppressor gene 缺失，屬失去抑癌功能的機轉，不是最典型的致癌基因活化方式。</p><p>C：gene amplification 可增加致癌基因拷貝數，在部分實體腫瘤重要；但造血惡性腫瘤的經典核型活化模式仍是染色體易位。</p><p>D：aneuploidy 是染色體數目異常，可造成基因劑量失衡，但不如特定易位能直接解釋某一原致癌基因的活化。</p><p>本題考點：染色體易位（chromosomal translocation）；致癌基因（oncogene）活化；造血系統惡性腫瘤（hematologic malignancy）的融合基因機轉。</p></details>
 </article>
-<article class="sq" id="q41">
+<article class="sq">
 <p class="sq-no">第 41 題</p>
 <div class="sq-stem">研究臺灣各鄉鎮市區空氣污染與癌症發⽣之關係，空氣污染資料來⾃環保署，⽽癌症發⽣資料來⾃衛⽣福利部，這些資料除了性別與年齡外無個⼈⽣活相關資料，則該研究屬何種？</div>
 <ol class="sq-opts"><li><b>（A）</b>個案報告（case report）</li><li><b>（B）</b>⽣態學研究（ecological study）</li><li><b>（C）</b>病例對照研究（case-control study）</li><li><b>（D）</b>世代研究（cohort study）</li></ol>

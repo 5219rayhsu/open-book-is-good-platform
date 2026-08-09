@@ -40,6 +40,10 @@
 .linkgrid span{display:block;color:var(--ink-faint);font-size:.8rem;}
 .sq{border-top:1px solid var(--rule-faint);padding:1.1rem 0 .3rem;}
 .sq-no{font-size:.82rem;letter-spacing:.06em;color:var(--accent);margin:0 0 .35rem;}
+.sq-link{color:inherit;text-decoration:none;}
+.sq-link:hover{text-decoration:underline;}
+.sq:target{background:var(--rule-faint);border-radius:var(--r-sm);
+  box-shadow:0 0 0 .6rem var(--rule-faint);}
 .sq-flag{margin-left:.4rem;color:var(--ink-faint);}
 .sq-stem{font-family:var(--serif);font-size:1.02rem;line-height:1.85;color:var(--ink);}
 .sq-opts{list-style:none;padding:0;margin:.55rem 0 .5rem;}
@@ -92,35 +96,35 @@
 
 <h2>題目長什麼樣</h2>
 <p>以下自本科題庫抽 5 題示例，完整題目請看上方各年度考卷。</p>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">當發生醫療糾紛時，護理人員可能會面臨的法律責任，下列敘述何者錯誤？</div>
 <ol class="sq-opts"><li><b>（A）</b>須對「侵權行為」負民事責任，一般多以金錢賠償損害</li><li><b>（B）</b>執業時，應注意而未注意造成病人傷害可能會面臨「過失傷害罪」</li><li><b>（C）</b>護理人員法保障護理人員在涉及刑法上的責任時，可免於刑罰</li><li><b>（D）</b>地方衛生機關的懲戒委員會，就事件決定護理師執照是否撤銷或停權</li></ol>
 <p class="sq-ans">答案：（C）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>本題問「錯誤」者，正解為（C）。（C）「護理人員法保障護理人員在涉及刑法上的責任時可免於刑罰」為錯誤：護理人員若有過失致病人傷亡等情形，仍須依《刑法》負相應刑事責任，並無任何法律使其當然免除刑罰，故此敘述不正確。（A）侵權行為造成他人損害須負民事賠償責任，多以金錢賠償，正確。（B）執業時應注意而未注意致病人受傷害，可能構成過失傷害罪，正確（《刑法》第 284 條現行已整併為過失傷害／過失致重傷罪，不再區分「業務過失」）。（D）護理人員若有違失，由主管（衛生）機關依法處置，涉及執照之撤銷或停權等懲戒，敘述方向正確。故唯一錯誤者為（C）。</p></details>
 </article>
-<article class="sq" id="q71">
+<article class="sq">
 <p class="sq-no">第 71 題</p>
 <div class="sq-stem">從 N1 要晉升 N2，下列何者是必須完成的項目之一？</div>
 <ol class="sq-opts"><li><b>（A）</b>在職訓練課程 12 小時</li><li><b>（B）</b>病人照護 100 小時</li><li><b>（C）</b>案例分析報告一篇</li><li><b>（D）</b>通過個案報告審查</li></ol>
 <p class="sq-ans">答案：（C）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題眼在「N1 要晉升 N2」——判準是各晉階層級所對應的書面成果要求。臺灣醫院護理能力進階制度中，N1 晉 N2 的書面成果為案例分析報告，重點在呈現單一病人的評估、問題判斷、措施與結果之間的連結，故選 C。</p><p>A：在職訓練是持續專業發展的重要資料，但時數本身反映的是受訓量，不是本階所要求的臨床推論能力成果，故非答案。</p><p>B：病人照護時數反映臨床參與的量，同樣不是本階段用以檢核專業判斷能力的成果形式，故非答案。</p><p>D：個案報告（含審查程序）屬更高階的書面成果要求，一般安排在 N2 晉 N3 階段，所需的分析深度與審查程序都高於案例分析報告，層級對不上本題所問。這是最強誘答——它與案例書面成果最相近，分辨關鍵在於兩者分屬不同晉階層級。</p><p>本題考點：護理能力進階（clinical ladder）以臨床能力與專業成果作為晉階證據；案例分析（case analysis）呈現評估、判斷與照護推論；個案報告則對應更高階的分析與審查要求。</p></details>
 </article>
-<article class="sq" id="q71">
+<article class="sq">
 <p class="sq-no">第 71 題</p>
 <div class="sq-stem">糖尿病病人住院時訂醫院的素食，但送餐有誤，營養部門進行檢討及改進，下列處理方法何者最不適當？</div>
 <ol class="sq-opts"><li><b>（A）</b>應仔細檢討伙食送錯的導因為何</li><li><b>（B）</b>應找出犯錯者並將他調到其他單位</li><li><b>（C）</b>檢討員工的知識技能是否足夠</li><li><b>（D）</b>加強伙食準備正確性的稽核</li></ol>
 <p class="sq-ans">答案：（B）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題眼是「送餐有誤」後的「檢討及改進」——應以病人飲食安全的系統改善為準。流程須分析醫囑傳遞、辨識、備餐與送餐何處失效；（B）找犯錯者調職只處理個人，未修正失效流程，故為最不適當。</p><p>A：檢討導因可找出流程失效點，故非答案。</p><p>C：檢討員工知識技能可辨識訓練需求，是系統分析的一環，故非答案。</p><p>D：稽核備餐正確性可監測改善是否落實，故非答案。最強誘答是（C）檢討能力；若結合流程檢討與訓練，仍是預防再發的措施。</p><p>本題考點：病人安全事件管理（patient safety incident management）重根本原因分析；品質改善（quality improvement）聚焦流程失效；公正文化（just culture）避免單純究責。</p></details>
 </article>
-<article class="sq" id="q71">
+<article class="sq">
 <p class="sq-no">第 71 題</p>
 <div class="sq-stem">效率標準和效能標準評值之比較敘述，以下何者錯誤？</div>
 <ol class="sq-opts"><li><b>（A）</b>評估投入的人力需求量屬於效率標準</li><li><b>（B）</b>評估投入的人力所達成的目標是屬於效率標準</li><li><b>（C）</b>評估投入財力的充足性是屬於效率標準</li><li><b>（D）</b>評估投入財力的執行結果是屬於效能標準</li></ol>
 <p class="sq-ans">答案：（B）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題眼在「何者錯誤」與效率、效能的比較——效率看投入資源是否經濟適切，效能看是否達成預定目標或結果。（B）把「投入人力所達成的目標」歸為效率，實際上是在評估目標達成，應屬效能，故 B 為應選項。</p><p>A：投入的人力需求量屬資源使用與配置的評估，符合效率標準，故非答案。</p><p>C：投入財力是否充足是在檢視資源投入情形，可歸為效率面向，故非答案。</p><p>D：投入財力所產生的執行結果是在看成果是否達成，符合效能標準，故非答案。最強誘答是（A），因人力「需求量」也可能影響目標；分辨關鍵仍是題幹問投入資源，還是最終成果。</p><p>本題考點：效率（efficiency）比較投入與資源運用；效能（effectiveness）評估目標與結果達成；結構—過程—結果（structure-process-outcome）有助區分資源、執行與成果。</p></details>
 </article>
-<article class="sq" id="q71">
+<article class="sq">
 <p class="sq-no">第 71 題</p>
 <div class="sq-stem">下列何者不計算在直接護理時數中？</div>
 <ol class="sq-opts"><li><b>（A）</b>執行傷口換藥</li><li><b>（B）</b>測量體溫與血壓</li><li><b>（C）</b>與病患及家屬會談</li><li><b>（D）</b>書寫護理紀錄</li></ol>

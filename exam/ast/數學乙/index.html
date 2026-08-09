@@ -40,6 +40,10 @@
 .linkgrid span{display:block;color:var(--ink-faint);font-size:.8rem;}
 .sq{border-top:1px solid var(--rule-faint);padding:1.1rem 0 .3rem;}
 .sq-no{font-size:.82rem;letter-spacing:.06em;color:var(--accent);margin:0 0 .35rem;}
+.sq-link{color:inherit;text-decoration:none;}
+.sq-link:hover{text-decoration:underline;}
+.sq:target{background:var(--rule-faint);border-radius:var(--r-sm);
+  box-shadow:0 0 0 .6rem var(--rule-faint);}
 .sq-flag{margin-left:.4rem;color:var(--ink-faint);}
 .sq-stem{font-family:var(--serif);font-size:1.02rem;line-height:1.85;color:var(--ink);}
 .sq-opts{list-style:none;padding:0;margin:.55rem 0 .5rem;}
@@ -92,14 +96,14 @@
 
 <h2>題目長什麼樣</h2>
 <p>以下自本科題庫抽 5 題示例，完整題目請看上方各年度考卷。</p>
-<article class="sq" id="q2">
+<article class="sq">
 <p class="sq-no">第 2 題</p>
 <div class="sq-stem">坐標平面上,試問下列哪一個方程式的圖形是通過點(1,1)的圓?</div>
 <ol class="sq-opts"><li><b>（A）</b>(x − 1) 2 + y 2 = 1</li><li><b>（B）</b>( x − 1) 2 + ( y − 1) 2 = 1</li><li><b>（C）</b>3( x − 1) 2 + y 2 = 1</li><li><b>（D）</b>x 2 + y 2 = 1</li><li><b>（E）</b>x 2 + 3 y = 4</li></ol>
 <p class="sq-ans">答案：（A）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：圓的標準式為 (x−h)^2+(y−k)^2=r^2，可直接代入指定點檢驗。（A）的左式在 (1,1) 為 (1−1)^2+1^2=1，右式也是 1，且兩平方項係數相同，確為通過該點的圓，故選 A。</p><p>B：點 (1,1) 是此圓的圓心，代入左式為 0，不等於右式 1，因此不在圓上。</p><p>C：代入 (1,1) 雖成立，但 x、y 的平方項係數不同，圖形是橢圓而不是圓。</p><p>D：代入 (1,1) 得 1^2+1^2=2，不等於 1，所以不通過該點。</p><p>E：代入指定點雖成立，但式子可改寫為 y=(4−x^2)/3，是拋物線而非圓。</p><p>本題考點：圓的標準式（standard form of a circle）——兩個平方項係數相同且沒有一次項時，可由圓心與半徑判斷；代入檢驗——判斷圖形是否通過某點時，把點的坐標代入等式兩側比較；二次曲線（conic sections）——通過同一點不代表是同類圖形，還要辨認方程式結構。</p></details>
 </article>
-<article class="sq" id="q6">
+<article class="sq">
 <p class="sq-no">第 6 題</p>
 <div class="sq-stem">試選出 log 7   的值。  k =1  2 k + 1 
 
@@ -110,7 +114,7 @@
 <p class="sq-ans">答案：（D）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：連乘式取對數時，先把各因子逐一寫出，再利用 log_b(xy)=log_b x+log_b y 合併；若相鄰分子、分母可約，約去中間項後讀取首尾因子，再把結果對照選項，故選 D。</p><p>A：負號只有在完整化簡後的值確為小於 1 的正數時才會出現，不能只由對數記號判定。</p><p>B：正的對數值必須由完整連乘式與底數共同決定，不能省略因子後直接判定。</p><p>C：若化簡後仍含有不同底數或未消去的因子，就不能以單一對數記號取代原式。</p><p>E：選項的對數表示也必須與完整化簡結果相同，不能把未完成的式子當成答案。</p><p>本題考點：對數乘法公式（product rule of logarithms）——看到連乘積時先改為對數和，逐項尋找可合併或消去的結構；望遠鏡乘積（telescoping product）——相鄰分子、分母可約時，要先寫出前幾項確認保留的首尾因子；對數定義域——底數與真數的條件要先確認，才可使用運算法則。</p></details>
 </article>
-<article class="sq" id="q8">
+<article class="sq">
 <p class="sq-no">第 8 題（多選）</p>
 <div class="sq-stem">平面上有一個三角形ABC,其中 =A 91、 C = 29。令BC = a 、CA = b 、AB = c 。
 
@@ -125,7 +129,7 @@
 <p class="sq-ans">答案：（A）（B）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：由 ∠A=91°、∠C=29° 得 ∠B=60°，且 a、b、c 分別對應這三角。因 ∠A 為鈍角，餘弦定理給 a^2=b^2+c^2−2bc cos91°，其中 cos91°&lt;0，故 a^2&gt;b^2+c^2；正弦定理又給 c/a=sin29°/sin91°&gt;sin29°。因此 A、B 正確。官方答案為 AB；惟選項 D 依同一組角度資料也成立，答案鍵與可辨識選項不一致。</p><p>A：鈍角所對邊的平方大於另兩邊平方和，因此（A）符合餘弦定理的判準。</p><p>B：0&lt;sin91°&lt;1，故以 sin29° 除以 sin91° 會大於 sin29°，所以（B）成立。</p><p>C：由正弦定理，b/a=sin60°/sin91°；因 sin60°&lt;sin61°=cos29°，此值小於 cos29°，不符合選項的不等式。</p><p>D：由角 C=29° 的餘弦定理，a^2+b^2−c^2=2ab cos29°，所以 (a^2+b^2−c^2)/(ab)=2cos29°&lt;2&lt;3；D 也成立。</p><p>E：若 R 為外接圓半徑，c=2Rsin29°。因 sin29°&lt;1/2，得 c&lt;R，所以外接圓半徑不小於 c。</p><p>本題考點：餘弦定理（law of cosines）——比較 a^2 與 b^2+c^2 時，先看對角是銳角、直角或鈍角；正弦定理（law of sines）——邊長比可改寫為對角正弦比，再比較角度與正弦值；外接圓半徑（circumradius）——利用邊長=2Rsin對角，將邊長與 R 的大小關係轉成三角函數比較。</p></details>
 </article>
-<article class="sq" id="q10">
+<article class="sq">
 <p class="sq-no">第 10 題（多選）</p>
 <div class="sq-stem">設 i = −。已知複數11 = a + bi ,其中a 、b 為實數。
  −+1 i
@@ -135,7 +139,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：複數分式的固定步驟是分子、分母同乘分母的共軛複數，使分母化為實數，再將結果整理成 a+bi 並比較實部與虛部。若分母為 p+qi，則乘以 p−qi 後分母為 p^2+q^2；實部與虛部都必須保留正負號。複數分式任一符號不同都會改變實部與虛部，因此本題數值結論不確定；官方答案格式為 -|4|3，故選 -|4|3。</p><p>本題考點：虛數單位（imaginary unit）——i^2=−1，化簡時每出現 i^2 都要改寫為 −1；共軛複數（complex conjugate）——p+qi 的共軛是 p−qi，相乘可消去虛部；複數除法（complex division）——同乘共軛後要分別整理常數項與 i 的係數，才能正確讀出 a、b。</p></details>
 </article>
 <aside class="sq-passage"><p>設 f ( x ) 為實係數三次多項式。已知函數 y = f ( x ) 在 x = −處有極小值;在3 x = 1 處有極大值。根據上述,試回答下列問題。</p></aside>
-<article class="sq" id="q14">
+<article class="sq">
 <p class="sq-no">第 14 題</p>
 <div class="sq-stem">已知通過 y = f ( x ) 圖形反曲點的切線斜率為4,試求 f ( x) 。(非選擇題,6 分)
 

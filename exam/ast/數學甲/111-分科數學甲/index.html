@@ -40,6 +40,10 @@
 .linkgrid span{display:block;color:var(--ink-faint);font-size:.8rem;}
 .sq{border-top:1px solid var(--rule-faint);padding:1.1rem 0 .3rem;}
 .sq-no{font-size:.82rem;letter-spacing:.06em;color:var(--accent);margin:0 0 .35rem;}
+.sq-link{color:inherit;text-decoration:none;}
+.sq-link:hover{text-decoration:underline;}
+.sq:target{background:var(--rule-faint);border-radius:var(--r-sm);
+  box-shadow:0 0 0 .6rem var(--rule-faint);}
 .sq-flag{margin-left:.4rem;color:var(--ink-faint);}
 .sq-stem{font-family:var(--serif);font-size:1.02rem;line-height:1.85;color:var(--ink);}
 .sq-opts{list-style:none;padding:0;margin:.55rem 0 .5rem;}
@@ -77,7 +81,7 @@
 
 <h2>全部 10 題</h2>
 <article class="sq" id="q1">
-<p class="sq-no">第 1 題</p>
+<p class="sq-no"><a class="sq-link" href="#q1" title="這一題的永久連結">第 1 題</a></p>
 <div class="sq-stem">設 a1 , a 2 , a3 , a 4 是首項為10、公比是10 的等比數列。令 b 
  n 1
 
@@ -90,7 +94,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：首項為 10、公比為 10 的等比數列可先寫成 a_1=10、a_2=100、a_3=1000、a_4=10000；再依 b 的題設運算比較其所在區間。本題把握度低，故選 C。</p><p>A：2&lt;b≤3 是否成立，須以 b 的完整運算結果與區間端點比較，不能只由公比判定。</p><p>B：3&lt;b≤4 同樣要先求得 b 的數值；相鄰區間的差別在於 b 是否跨過整數端點。</p><p>D：5&lt;b≤6 是另一個可能的範圍，判別時應維持左開右閉的端點條件，不可只比較整數部分。</p><p>E：6&lt;b≤7 也須由 b 的完整值決定；等比數列各項成長很快，不代表任何由其定義的量必然落在較大的區間。</p><p>本題考點：等比數列（geometric sequence）——已知首項與公比時，用 a_n=a_1r^(n-1) 逐項建立數列；區間判定（interval comparison）——求得量後要同時比較兩個端點，注意 &lt; 與 ≤ 的差異。</p></details>
 </article>
 <article class="sq" id="q2">
-<p class="sq-no">第 2 題</p>
+<p class="sq-no"><a class="sq-link" href="#q2" title="這一題的永久連結">第 2 題</a></p>
 <div class="sq-stem">設c 為實數使得三元一次方程組  2 x  cy  3 z  1 無解。試選出c 之值。
    3 x  3 y  cz  0</div>
 <ol class="sq-opts"><li><b>（A）</b>3</li><li><b>（B）</b>2</li><li><b>（C）</b>0</li><li><b>（D）</b>2</li><li><b>（E）</b>3
@@ -101,7 +105,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：三元一次方程組判定「無解」時，核心是消去後出現 0=非 0 的矛盾式，而不是只有係數矩陣的行列式為 0。本題把握度低，故選 B。</p><p>A：c=-3 是否無解，必須把 c 代入完整方程組後檢查常數項是否與係數關係相容。</p><p>C：c=0 只改變部分係數；判別無解仍須以列運算得到的增廣矩陣為準。</p><p>D：c=2 不能僅因係數中出現相同數字便判為矛盾，需檢視消去後的方程式。</p><p>E：c=3 若使某些係數列線性相關，也可能有無限多解而非無解；分辨關鍵在常數項是否同時滿足相同的線性關係。</p><p>本題考點：線性方程組相容性（consistency of linear systems）——列運算若得到 0=k 且 k≠0，方程組無解；行列式（determinant）——行列式為 0 只表示不能直接得到唯一解，還要分辨無解與無限多解。</p></details>
 </article>
 <article class="sq" id="q5">
-<p class="sq-no">第 5 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q5" title="這一題的永久連結">第 5 題</a>（多選）</p>
 <div class="sq-stem">坐標平面上有一圖形,其方程式為 ( x  1) 2  ( y  1) 2  101 。試選出正確的選項。</div>
 <ol class="sq-opts"><li><b>（A）</b>與x 軸負向、y 軸負向分別交於( 9,0) 、(0, 9)</li><li><b>（B）</b>上x 坐標最大的點是點(11,0)</li><li><b>（C）</b>上的點與原點距離的最大值為 2  101
  3</li><li><b>（D）</b>在第三象限的點之極坐標可用 9,表示,其中     
@@ -110,7 +114,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：圓 Γ 的圓心是 (1,1)，半徑是 √101。判斷各敘述時，軸截距由代入 x=0 或 y=0 求得，與原點距離的極值則用圓心到原點距離 √2 加上半徑；旋轉後圓仍是圓，故選 ACE。</p><p>A：令 y=0，可得 x=11 或 x=-9，所以與 x 軸負向交於 (-9,0)；令 x=0，可得 y=11 或 y=-9，所以與 y 軸負向交於 (0,-9)。</p><p>C：圓上點到原點最遠時，該點位於原點、圓心與圓周同一直線的外側，最大距離=√2+√101。</p><p>E：旋轉保留所有點到圓心的距離，影像仍可寫成以新圓心為中心、半徑 √101 的圓方程式，因此不會產生 xy 項。</p><p>B：x 坐標最大的圓上點應在圓心右方，坐標是 (1+√101,1)，不是 (11,0)。</p><p>D：第三象限的圓上點到原點距離會隨位置改變，極座標的極徑不能固定成單一數值；只限制極角範圍也不足以表示該段圓弧。</p><p>本題考點：圓的標準式（circle equation）——由 (x-h)^2+(y-k)^2=r^2 直接讀出圓心與半徑；三角不等式（triangle inequality）——求圓上點到外部定點的最遠距離時，用圓心距加半徑；旋轉變換（rotation）——圓在旋轉後仍保持圓形，二次式不會因旋轉而出現 xy 項。</p></details>
 </article>
 <article class="sq" id="q6">
-<p class="sq-no">第 6 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q6" title="這一題的永久連結">第 6 題</a>（多選）</p>
 <div class="sq-stem">假設2 階方陣a b  所代表的線性變換將坐標平面上三點 O (0,0) , A(1,0) , B (0,1) 分別映  
   c d 
  射到 O (0,0) , A(3, 3) , B( 3,3) ,並將與原點距離為1 的點 C ( x , y ) 映射到點 C  ( x , y 。)
@@ -128,7 +132,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：A′、B′分別是標準基底向量的像，所以矩陣的兩欄為（3,3）與（−3,3），可寫成 M = [[3,-3],[3,3]]。直接計算得 M^T M = [[18,0],[0,18]] = 18I。若 |OC|=1，則 |OC′|^2 = 18，故 |OC′|=3√2；此外 M 是倍率 3√2 加上 45° 旋轉的變換，因此正確選項為 BD。</p><p>B：由 M^T M=18I，單位向量 C 的像滿足 |OC′|=√18=3√2，所以此敘述成立。</p><p>D：由 x′=3x−3y、y′=3x+3y，條件 y=y′ 等價於 3x+2y=0。例如取 C=(2/√13,−3/√13)，它距離原點為 1 且滿足 y=y′，因此此敘述成立。</p><p>A：det M=3×3−(−3)×3=18，不是選項所列的 6。</p><p>C：M 是倍率 3√2 的 45° 旋轉，OC 與 OC′的夾角為 45°，不是 60°。</p><p>E：x&lt;y 不必然推出 y&gt;0。例如 C=(−2/√5,−1/√5) 滿足 x&lt;y，但 x′=−3/√5、y′=−9/√5，反而是 x′&gt;y′。</p><p>本題考點：線性變換矩陣（matrix of a linear transformation）——標準基底 e_1、e_2 的像依序放入矩陣兩欄；正交縮放（scaled orthogonal transformation）——若 M^T M=kI，所有長度同乘 √k、角度保持；行列式（determinant）——以 |det M| 判斷平面面積縮放倍數。</p></details>
 </article>
 <article class="sq" id="q8">
-<p class="sq-no">第 8 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q8" title="這一題的永久連結">第 8 題</a>（多選）</p>
 <div class="sq-stem">假設兩數列 na 、 nb ,對所有正整數n 都滿足 bn   a n  3bn 。已知lim an  6 ,
  n n 
 
@@ -143,7 +147,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：數列極限題必須把題設不等式與 a_n→6 一起使用，先由不等式取得 b_n 的界，再判定特定項與收斂性的可能性。本題把握度低，故選 BE。</p><p>B：由題設不等式推得的下界若對每個正整數 n 都成立，即可作為 b_n 的必要條件；判斷時要保留不等號方向。</p><p>E：a_n→6 只是在 n 足夠大時趨近 6；結合題設提供的有效界，才能對 a_10000 的大小作出題目所要求的判定。</p><p>A：上界與下界的方向不能互換。由 a_n 與 b_n 的不等式推論時，移項或除以正數後仍須逐步檢查不等號。</p><p>C：單憑 a_n 收斂不能直接推出 b_n 發散或收斂；必須檢查題設界是否把 b_n 夾在收斂數列之間。</p><p>D：極限為 6 不代表任一指定的大正整數項必定小於 6.1；若沒有能量化到該項的界，不能把「最終趨近」誤作「已經落入範圍」。</p><p>本題考點：數列極限（limit of a sequence）——a_n→L 表示對任意正誤差都存在足夠大的門檻，不是每一項都接近 L；夾擠與不等式（squeeze argument）——先確認上下界的方向與極限，再推論未知數列；特定項估計（term bound）——要判斷 a_N，必須有可套用到 N 的明確界。</p></details>
 </article>
 <article class="sq" id="q9">
-<p class="sq-no">第 9 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q9" title="這一題的永久連結">第 9 題</a>（多選）</p>
 <div class="sq-stem">大吉百貨春節期間準備許多紅包讓顧客抽籤得紅包,並宣稱活動會一直持續到送
 
  出所有的紅包。抽籤的籤筒內有5 支籤、其中只有1 支籤有標示「大吉」,且每
@@ -163,7 +167,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：本題把一位顧客在最多三次抽籤內得紅包當成一次成功。令每次抽中大吉的機率為 1/5；成功事件是前兩次皆中或後兩次皆中，兩事件同時發生時是三次皆中。因此 p = 1/25 + 1/25 − 1/125 = 9/125。第一位得紅包者的序號 X 服從成功機率 p 的幾何分配，E(X) = 1/p = 125/9 ≈ 13.9，四捨五入為 14，故選 14。</p><p>本題考點：幾何分配（geometric distribution）——重複且獨立的伯努力試驗中，第一次成功所在次數的期望值為 1/p；容斥原理（inclusion-exclusion principle）——「第 1、2 次成功」與「第 2、3 次成功」會在三次皆成功時重疊，必須扣回一次；伯努力試驗（Bernoulli trial）——每位顧客是否得紅包只有成功與失敗兩結果，可先算單一顧客的成功機率。</p></details>
 </article>
 <article class="sq" id="q10">
-<p class="sq-no">第 10 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q10" title="這一題的永久連結">第 10 題</a>（多選）</p>
 <div class="sq-stem">老師要求班上學藝安排在下週一、二、三、四這4 天,發完國、英、數、社、自
  共5 張複習卷,每天至少發其中一科的卷子給同學帶回家練習,隔天繳交。由
 
@@ -179,13 +183,13 @@
 </article>
 <aside class="sq-passage"><p>考慮坐標平面上之向量a 、b 滿足|a | |b |  9 以及|a b | 。若令|7 a | ,x其中1  x  8 ,且令a 、b 的夾角為,則利用向量a 、b 、a b 所形成的三角 c</p><p>形,可將cos以x表示成 2  d ,其中c 、d 為常數且 c  0 。令此表示式為 f ( x ) , 9 x  x且其定義域為{ x 1  x  8} 。試回答下列問題。</p></aside>
 <article class="sq" id="q15">
-<p class="sq-no">第 15 題</p>
+<p class="sq-no"><a class="sq-link" href="#q15" title="這一題的永久連結">第 15 題</a></p>
 <div class="sq-stem">求 f ( x ) 及其導函數。(非選擇題,4 分)</div>
 <p class="sq-ans">標準答案未收錄</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：令 |a|=x，則 |b|=9-x，且 |a-b|=7。由餘弦定理，7^2=x^2+(9-x)^2-2x(9-x)cosθ。</p><p>49=2x^2-18x+81-2x(9-x)cosθ。</p><p>2x(9-x)cosθ=2x^2-18x+32。</p><p>cosθ=(x^2-9x+16)/(9x-x^2)=16/(9x-x^2)-1。</p><p>因此 f(x)=16/(9x-x^2)-1。再對 f(x) 微分：f&#x27;(x)=-16(9-2x)/(9x-x^2)^2=16(2x-9)/(9x-x^2)^2，故得 f(x)=16/(9x-x^2)-1，f&#x27;(x)=16(2x-9)/(9x-x^2)^2。</p><p>本題考點：餘弦定理（law of cosines）——已知三角形三邊時，可用 c^2=a^2+b^2-2ab cos C 求夾角餘弦；代數化簡（algebraic simplification）——把 x^2-9x+16 改寫為 -(9x-x^2)+16，可直接得到題目要求的分式形式；微分法（differentiation）——對 1/u(x) 微分時，分母需平方並乘上 u&#x27;(x)。</p></details>
 </article>
 <article class="sq" id="q16">
-<p class="sq-no">第 16 題</p>
+<p class="sq-no"><a class="sq-link" href="#q16" title="這一題的永久連結">第 16 題</a></p>
 <div class="sq-stem">說明 f ( x ) 在定義域中遞增、遞減的情況。並說明x為多少時a 、b 的夾角最大。
 
  (非選擇題,4 分)</div>
@@ -193,7 +197,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：由 f&#x27;(x)=16(2x-9)/(9x-x^2)^2，可知在1&lt;x&lt;8時分母平方恆為正，導函數的正負只由2x-9決定。當1&lt;x&lt;9/2時，2x-9&lt;0，所以 f(x) 遞減；當9/2&lt;x&lt;8時，2x-9&gt;0，所以 f(x) 遞增。</p><p>又 f(x)=cosθ，而0≤θ≤π時 cosθ 隨θ增加而減少；因此 f(x) 的最小值對應θ的最大值。f(x) 在 x=9/2由遞減轉為遞增，故θ在 x=9/2時最大。</p><p>本題考點：導函數符號（derivative sign）——分母固定為正時，只要判斷分子的正負即可判定遞增遞減；極小值（local minimum）——函數由遞減轉為遞增的臨界點是極小值候選；餘弦單調性（cosine monotonicity）——在0到π內，cosθ越小，θ越大。</p></details>
 </article>
 <article class="sq" id="q17">
-<p class="sq-no">第 17 題</p>
+<p class="sq-no"><a class="sq-link" href="#q17" title="這一題的永久連結">第 17 題</a></p>
 <div class="sq-stem">利用 f ( x ) 的一次估計(一次近似),求當 x  4.96 時,cos約為多少?
 
  (非選擇題,4 分)

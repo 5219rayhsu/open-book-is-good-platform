@@ -40,6 +40,10 @@
 .linkgrid span{display:block;color:var(--ink-faint);font-size:.8rem;}
 .sq{border-top:1px solid var(--rule-faint);padding:1.1rem 0 .3rem;}
 .sq-no{font-size:.82rem;letter-spacing:.06em;color:var(--accent);margin:0 0 .35rem;}
+.sq-link{color:inherit;text-decoration:none;}
+.sq-link:hover{text-decoration:underline;}
+.sq:target{background:var(--rule-faint);border-radius:var(--r-sm);
+  box-shadow:0 0 0 .6rem var(--rule-faint);}
 .sq-flag{margin-left:.4rem;color:var(--ink-faint);}
 .sq-stem{font-family:var(--serif);font-size:1.02rem;line-height:1.85;color:var(--ink);}
 .sq-opts{list-style:none;padding:0;margin:.55rem 0 .5rem;}
@@ -92,7 +96,7 @@
 
 <h2>題目長什麼樣</h2>
 <p>以下自本科題庫抽 5 題示例，完整題目請看上方各年度考卷。</p>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">抗體主要由何種單體分子脫水聚合而成?</div>
 <ol class="sq-opts"><li><b>（A）</b>磷脂質</li><li><b>（B）</b>胺基酸</li><li><b>（C）</b>脂肪酸</li><li><b>（D）</b>單醣</li></ol>
@@ -100,7 +104,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：抗體是免疫球蛋白，屬於蛋白質；蛋白質由胺基酸之間脫水形成胜肽鍵，連結成多胜肽鏈後再摺疊成具有辨識功能的抗體，故選 B。</p><p>A：磷脂質是細胞膜的重要成分，主要由甘油、脂肪酸與磷酸相關基團組成，不是蛋白質的單體。</p><p>C：脂肪酸可參與形成三酸甘油酯或磷脂質；它不會以胜肽鍵聚合成抗體。</p><p>D：單醣可脫水聚合成多醣，例如澱粉或肝醣；抗體的主鏈則是胺基酸組成。</p><p>本題考點：蛋白質（protein）——看到酵素、抗體或受體等大分子時，先判斷其基本單體為胺基酸；脫水合成（dehydration synthesis）——胺基酸脫去水分子形成胜肽鍵，連成多胜肽；免疫球蛋白（immunoglobulin）——抗體的專一性來自蛋白質立體構形，不是脂質或醣類聚合物。</p></details>
 </article>
 <aside class="sq-passage"><p>抗體若能識別特定細菌的抗原,且不會與其他種細菌的抗原產生交叉反應,就非常 適合開發成為檢測該特定細菌的專用試劑,來檢測樣本中是否有該抗原以及特定細菌。 某生利用感染甲細菌的病牛血液做實驗,打算篩選能檢測出特定病原體甲細菌存在之 抗體的檢測法。實驗中得到可以辨識細菌毒素或外膜蛋白的抗體A-D。 該生再進一步 表4</p><p> 將此四種抗體分別 甲細菌 乙細菌 唾液樣本來源</p><p> 與甲細菌、乙細菌 毒素X 外膜蛋白 毒素Y 外膜蛋白 病牛 健康牛 的毒素或外膜蛋白, 抗體A 有 有 無 無 無 無</p><p> 以及牛唾液進行抗體</p><p> 抗體B 有 無 有 無 有 無</p><p> 抗原反應分析,結果</p><p> 抗體C 無 有 無 無 有 無</p><p> 如表4 所示,表中的</p><p> 抗體D 有 有 無 無 無 有</p><p> 有、無代表是否產生</p><p> 抗體-抗原正反應。</p><p>114年分科 第 10 頁 請記得在答題卷簽名欄位以正楷簽全名生物考科 共 11 頁</p></aside>
-<article class="sq" id="q37">
+<article class="sq">
 <p class="sq-no">第 37 題</p>
 <div class="sq-stem">上述檢測法是利用後天性免疫的何種特性?(2分)</div>
 <img class="sq-fig" loading="lazy" src="../../../data/ast/figures/114_分科生物_g36_37.png" alt="第 37 題附圖">
@@ -108,7 +112,7 @@
 <p class="sq-ans">標準答案未收錄</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題組要求用抗體把甲細菌與乙細菌分開，關鍵條件是只結合甲細菌的特定抗原、對乙細菌不產生交叉反應。這種抗原與抗體相互辨識的選擇性，就是後天性免疫的專一性，故選「專一性」。</p><p>本題考點：後天性免疫的專一性（specificity）——判斷檢測法時，看抗體是否只辨認目標抗原；抗原—抗體結合（antigen-antibody binding）——能結合不等於能診斷，還要排除與非目標抗原的交叉反應。</p></details>
 </article>
-<article class="sq" id="q25">
+<article class="sq">
 <p class="sq-no">第 25 題</p>
 <div class="sq-stem">下列關於SNP的敘述,何者正確?</div>
 <img class="sq-fig" loading="lazy" src="../../../data/ast/figures/113_分科生物_25.png" alt="第 25 題附圖">
@@ -116,7 +120,7 @@
 <p class="sq-ans">答案：（D）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：SNP 是基因組中特定位置的一個核苷酸差異，可作為個體或品系的遺傳標記。育種時可比較大量 SNP 的型態來建立品系資料、追蹤遺傳背景或輔助選拔，因此（D）正確。故選 D。</p><p>A：SNP 可以位於編碼 DNA 中；若改變密碼子，可能改變胺基酸與蛋白質，也可能是同義替換。</p><p>B：SNP 指的是單一核苷酸位置的變異，不是染色體大片段缺失。</p><p>C：SNP 的自然多型性正可用於族群遺傳、性狀關聯與疾病相關研究，並非不適合研究。</p><p>本題考點：單核苷酸多型性（single nucleotide polymorphism, SNP）——看到單一位置的鹼基差異時，以 SNP 判讀，不要誤認成大片段染色體變異；分子標記（molecular marker）——育種與疾病研究可用標記比較遺傳差異，但標記本身不必直接造成性狀。</p></details>
 </article>
-<article class="sq" id="q14">
+<article class="sq">
 <p class="sq-no">第 14 題（多選）</p>
 <div class="sq-stem">一胜肽鏈的序列為Met-Phe-Ser-Tyr-Cys-Arg,從胜肽鏈的合成開始到結束,下列哪些分
  子會出現在核糖體的A位?</div>
@@ -124,7 +128,7 @@
 <p class="sq-ans">答案：（A）（E）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：A 位接收下一個胺醯 tRNA。序列 Met-Phe-Ser-Tyr-Cys-Arg 中，帶 Ser 的 tRNA 會進入 A 位；帶 Cys 的 tRNA 接上既有胜肽鏈後，帶 Met-Phe-Ser-Tyr-Cys 的 tRNA 仍在 A 位。故選 AE。</p><p>A：起始 Met-tRNA 在 P 位，Phe-tRNA、Ser-tRNA 依序進入 A 位，故帶 Ser 的 tRNA 會出現在 A 位。</p><p>E：帶 Cys 的 tRNA 進入 A 位並形成胜肽鍵後，攜帶完整的 Met-Phe-Ser-Tyr-Cys 鏈；轉位前仍位於 A 位。</p><p>B：去醯化 tRNA 轉位後從 P 位移至 E 位，不會進入 A 位。</p><p>C：題示胜肽序列沒有 Gln，帶 Gln 的 tRNA 不會進入 A 位。</p><p>D：成長胜肽須含有先前所有胺基酸；Tyr-Cys 片段不符合由 Met 起始的序列。</p><p>本題考點：核糖體 A、P、E 位（A/P/E sites）——A 位接收胺醯 tRNA、P 位持有成長胜肽鏈、E 位排出 tRNA；轉譯延長（translation elongation）——依序追蹤胺基酸，可判斷每次進入 A 位的 tRNA；轉位（translocation）——胜肽鍵形成後，帶胜肽的 tRNA 由 A 位移到 P 位。</p></details>
 </article>
-<article class="sq" id="q5">
+<article class="sq">
 <p class="sq-no">第 5 題</p>
 <div class="sq-stem">法布瑞氏症是代謝異常造成的疾病。此病主要是因人體胞器中某一種分解大分子的酵
 

@@ -40,6 +40,10 @@
 .linkgrid span{display:block;color:var(--ink-faint);font-size:.8rem;}
 .sq{border-top:1px solid var(--rule-faint);padding:1.1rem 0 .3rem;}
 .sq-no{font-size:.82rem;letter-spacing:.06em;color:var(--accent);margin:0 0 .35rem;}
+.sq-link{color:inherit;text-decoration:none;}
+.sq-link:hover{text-decoration:underline;}
+.sq:target{background:var(--rule-faint);border-radius:var(--r-sm);
+  box-shadow:0 0 0 .6rem var(--rule-faint);}
 .sq-flag{margin-left:.4rem;color:var(--ink-faint);}
 .sq-stem{font-family:var(--serif);font-size:1.02rem;line-height:1.85;color:var(--ink);}
 .sq-opts{list-style:none;padding:0;margin:.55rem 0 .5rem;}
@@ -92,35 +96,35 @@
 
 <h2>題目長什麼樣</h2>
 <p>以下自本科題庫抽 5 題示例，完整題目請看上方各年度考卷。</p>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">非公開發行且非閉鎖性之A 股份有限公司，不得於章程中明訂發行下列何種之特別股？</div>
 <ol class="sq-opts"><li><b>（A）</b>每股有10 個表決權之特別股</li><li><b>（B）</b>得當選一席董事之特別股</li><li><b>（C）</b>對經理人任免具否決權之特別股</li><li><b>（D）</b>附轉讓限制之特別股</li></ol>
 <p class="sq-ans">答案：（C）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：公司法第一百五十七條就特別股得於章程訂定之事項，以列舉方式規定其範圍，除股息紅利分派順序、剩餘財產分派順序外，就表決權部分，明定得為複數表決權特別股或對於特定事項具否決權特別股之設計，此處所稱特定事項，係指提付股東會決議之特定事項，特別股股東透過其於股東會之表決權對該等事項行使否決權。經理人之委任、解任及報酬，依公司法第二十九條屬董事會，或未設董事會時股東，之職權，並非提付股東會決議之事項，性質上不在第一百五十七條所稱特定事項之股東表決權否決範圍內。C 選項使特別股股東對經理人任免享有否決權，其否決對象並非股東會決議事項，已逾越第一百五十七條就特別股表決權設計所能及之範圍，該公司不得於章程明訂此種特別股，本題選 C。</p><p>A：公司法第一百五十七條第一項明文允許以複數表決權特別股之方式設計特別股表決權，非公開發行公司本得於章程訂定每股享有多個表決權之特別股，如本題每股十個表決權，法無表決權倍數之上限規定，A 選項屬法律明文容許之範圍，並非不得訂定之情形，此為本題最易誤選之選項，因表決權倍數看似誇張，但法無明文限制。</p><p>B：公司法第一百五十七條第一項就特別股股東被選舉為董事、監察人設有相應規定，容許特別股股東享有當選一定名額董事之權利，B 選項使特別股股東得保障當選一席董事，屬法律明文列舉容許之特別股權利類型，並非不得訂定之情形。</p><p>D：公司法第一百五十七條第一項將特別股轉讓之限制列為得訂定之事項，D 選項使特別股附有轉讓限制，同屬法定列舉容許之範圍，並非不得訂定之情形。</p><p>本題考點：特別股章程訂定事項之法定列舉性質，公司法第一百五十七條，含股息紅利、剩餘財產分派、複數表決權或特定事項否決權、董監事選舉權利、轉換、轉讓限制等；特別股否決權之對象限於提付股東會決議之特定事項；經理人委任解任屬董事會，或未設董事會時股東，之專屬職權，公司法第二十九條，非股東會決議事項，不在特別股表決權否決範圍內。</p></details>
 </article>
-<article class="sq" id="q29">
+<article class="sq">
 <p class="sq-no">第 29 題</p>
 <div class="sq-stem">甲簽發匯票一紙交付給乙，依序由乙、丙、丁記名背書，執票人戊之子己趁戊不注意時，將其好友丙之簽名塗銷，若匯票於到期日不獲付款，戊可向下列何人行使追索權？</div>
 <ol class="sq-opts"><li><b>（A）</b>僅甲、乙</li><li><b>（B）</b>僅甲、乙、丁</li><li><b>（C）</b>僅甲、乙、丙、丁</li><li><b>（D）</b>僅甲、乙、己</li></ol>
 <p class="sq-ans">答案：（C）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：票據法第 38 條規定，須由執票人故意塗銷背書，始使被塗銷背書人及其後手免責。本題塗銷丙簽名的是執票人戊之子己，己並非執票人，縱其趁戊不注意時故意塗銷，仍不符合該條要件，塗銷不生使丙或丁免責的效果。戊仍得對發票人甲及背書人乙、丙、丁全體行使追索權，故 C 正確。</p><p>A：A 漏列丙與丁，誤以為己的塗銷已使丙及其後手免責。這個選項看起來符合塗銷背書會切斷責任的印象，誘答點在於漏掉「執票人故意塗銷」這一要件。</p><p>B：B 漏列丙，亦誤認己的塗銷對丙發生免責效果；己並非執票人，丙的背書效力不受影響。</p><p>D：己僅塗銷丙的簽名，未在票據上背書，並非票據債務人；戊不得對己行使票據上追索權。它看起來把塗銷行為人視為應負票據責任者，誘答點在於票據責任須以票據上的法定簽名關係為基礎。</p><p>本題考點：票據法第 38 條背書塗銷的免責要件，以及執票人、背書人與票據債務人的身分區辨。</p></details>
 </article>
-<article class="sq" id="q57">
+<article class="sq">
 <p class="sq-no">第 57 題</p>
 <div class="sq-stem">While a crime such as murder or shoplifting is a wrong committed against society, a tort is acommittedagainst an individual.</div>
 <ol class="sq-opts"><li><b>（A）</b>private wrong</li><li><b>（B）</b>civil wrong</li><li><b>（C）</b>public wrong</li><li><b>（D）</b>contradict wrong</li></ol>
 <p class="sq-ans">答案：（B）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題幹對比犯罪是對社會的不法，侵權行為（tort）則是對個人的 civil wrong，即民事不法；B 為教科書中界定 tort 的慣用語，故為預期答案。</p><p>A：private wrong 亦可作為侵權行為的描述性稱呼，並常與犯罪的 public wrong 相對；但本題空格要求的是 tort 的慣用定義 civil wrong，故 A 並非最佳答案。</p><p>C：public wrong 指向對社會的不法，與題幹用來說明犯罪的概念相符，非侵權行為的空格答案。</p><p>D：contradict wrong 並非法律上用來指稱侵權行為的術語，故非答案。</p><p>本題考點：侵權行為（tort）的英文法律概念；civil wrong 為預期定義，而 private wrong 亦可作描述性用語。題幹原文應讀為「a tort is a wrong committed against an individual」。</p></details>
 </article>
-<article class="sq" id="q15">
+<article class="sq">
 <p class="sq-no">第 15 題</p>
 <div class="sq-stem">股東行使股東提案權提出以下那些議案，公司必須列入開會通知？</div>
 <ol class="sq-opts"><li><b>（A）</b>修改公司章程選舉董事、監察人的方法，由累積投票制改為直接投票制</li><li><b>（B）</b>任期屆滿前，改選全體董事、監察人</li><li><b>（C）</b>為解決高階經理人薪酬過高的問題，應於章程中訂定經理人薪酬上限</li><li><b>（D）</b>公司規模逐漸成長，股東人數眾多，應向證券主管機關申請辦理公開發行程序</li></ol>
 <p class="sq-ans">答案：（B）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：公司法第一百九十九條之一規定，股東會於董事任期未屆滿前，得經有代表已發行股份總數三分之二以上股東出席之股東會，以出席股東表決權過半數之決議，將其全體解任，並改選全體董事、監察人；此為股東會之法定固有職權事項，凡股東提出「改選全體董事、監察人」之議案，均屬股東會依法得為決議之事項，公司不得以其非股東會所得決議為由拒絕列入開會通知，故B之議案應予列入，本題選B。</p><p>A：修改公司章程將董監事選舉方法由累積投票制改為直接投票制（全額連記法），累積投票制係公司法第一百九十八條為保障少數股東選任董監事機會所設之保護性規定，此類牽動少數股東權益之選舉方式變更，股東提案適格性受較嚴格之審查，尚非可逕由股東提案要求公司列入。</p><p>C：經理人之委任、解任及報酬，依公司法第二十九條規定，於設有董事會之公司，係由董事會以董事過半數出席、出席董事過半數同意之決議定之，屬董事會專屬職權事項，並非股東會所得決議之事項，股東就此提出章程訂定經理人薪酬上限之議案，得不予列入。</p><p>D：公司依公司法第一百五十六條之二規定，得依董事會決議之方式向證券主管機關申請辦理股票公開發行，此屬董事會職權事項，非股東會決議事項，股東就此提出之議案，同屬非股東會所得決議者，得不予列入。</p><p>本題考點：股東提案權之適格要件與董事會得不列入議案之事由（非股東會所得決議者得排除）；董監事提前改選之股東會職權（公司法第一百九十九條之一）；經理人委任解任報酬之董事會職權（公司法第二十九條）；股票公開發行申請之董事會決議事項（公司法第一百五十六條之二）。</p></details>
 </article>
-<article class="sq" id="q43">
+<article class="sq">
 <p class="sq-no">第 43 題</p>
 <div class="sq-stem">A 上市公司（下稱A 公司）私募普通股一億股，並由B 保險公司、C 銀行、A 公司董事甲、A 公司非經理人之員工乙應募。問下列何人非屬合法之應募人？</div>
 <ol class="sq-opts"><li><b>（A）</b>B</li><li><b>（B）</b>C</li><li><b>（C）</b>甲</li><li><b>（D）</b>乙</li></ol>

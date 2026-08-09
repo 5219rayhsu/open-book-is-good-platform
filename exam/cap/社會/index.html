@@ -40,6 +40,10 @@
 .linkgrid span{display:block;color:var(--ink-faint);font-size:.8rem;}
 .sq{border-top:1px solid var(--rule-faint);padding:1.1rem 0 .3rem;}
 .sq-no{font-size:.82rem;letter-spacing:.06em;color:var(--accent);margin:0 0 .35rem;}
+.sq-link{color:inherit;text-decoration:none;}
+.sq-link:hover{text-decoration:underline;}
+.sq:target{background:var(--rule-faint);border-radius:var(--r-sm);
+  box-shadow:0 0 0 .6rem var(--rule-faint);}
 .sq-flag{margin-left:.4rem;color:var(--ink-faint);}
 .sq-stem{font-family:var(--serif);font-size:1.02rem;line-height:1.85;color:var(--ink);}
 .sq-opts{list-style:none;padding:0;margin:.55rem 0 .5rem;}
@@ -92,35 +96,35 @@
 
 <h2>題目長什麼樣</h2>
 <p>以下自本科題庫抽 5 題示例，完整題目請看上方各年度考卷。</p>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">農業部統計，受發生於2024年7月下旬的某次災害影響，全臺農業損失估計高達33億元，其中以雲林縣、臺南市、嘉義縣的損失尤為慘重，三個行政區農損合計超過全臺農損的一半。根據上述災害發生時間及受影響地區判斷，此災害最可能為下列何者？</div>
 <ol class="sq-opts"><li><b>（A）</b>颱風帶來的豪大雨淹沒農田</li><li><b>（B）</b>強勁東北季風吹襲造成水稻倒伏</li><li><b>（C）</b>梅雨季節的連續降雨造成果樹浸水</li><li><b>（D）</b>強勁西南風越過山脈形成熱風使作物枯黃</li></ol>
 <p class="sq-ans">答案：（A）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題幹鎖定2024年7月下旬及雲林縣、臺南市、嘉義縣農損嚴重；夏季西南部遭颱風帶來豪大雨，最可能造成農田淹沒，故A為正解。</p><p>B：強勁東北季風主要在秋冬盛行，時間與7月下旬不符，錯誤。</p><p>C：梅雨季主要在5至6月，與題幹災害時間不符，錯誤。</p><p>D：越過山脈形成的熱風主要影響東部地區，與西南部雲林、臺南、嘉義的受災分布不符，錯誤。</p><p>本題考點：臺灣天然災害的季節判讀——7月下旬優先聯想到颱風與豪大雨；區域判準——西南部農損嚴重須與颱風降雨的影響相互對照。</p></details>
 </article>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">一國若發生重大自然災害，可能會直接衝擊該國的經濟活動，而成為較脆弱的投資環境。臺灣因位於地震帶常發生地震，且易受颱風侵襲，於2015年被某金融機構列為最脆弱的十個國家之一。下列哪一國家最可能也因為常發生上述二種自然災害而列名其中？</div>
 <ol class="sq-opts"><li><b>（A）</b>日本</li><li><b>（B）</b>伊朗</li><li><b>（C）</b>北韓</li><li><b>（D）</b>澳洲</li></ol>
 <p class="sq-ans">答案：（A）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題幹要求同時具備常發生地震與颱風兩種災害；日本位於環太平洋地震帶，也常受颱風侵襲，故 A 為正解。</p><p>B：伊朗多地震，但少受颱風侵襲。</p><p>C：北韓地震頻率較低，且少有颱風侵襲，不符合兩項條件。</p><p>D：澳洲雖可能受熱帶氣旋影響，但地震相對少。</p><p>本題考點：自然災害分布——須同時比對地震帶與颱風路徑；環太平洋地震帶——日本與臺灣皆位於此帶，且同受西北太平洋颱風影響。</p></details>
 </article>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">「格外品」意指市場規格之外但品質無虞的農產品，例如規格不符或賣相不佳。格外品會被農民分享給親友或作為肥料跟飼料，盛產時還可能出現遭大量棄置的問題。下列何項作法較能有效解決上述問題？</div>
 <ol class="sq-opts"><li><b>（A）</b>推動從產地到餐桌的理念，降低食物里程</li><li><b>（B）</b>善用食品加工，以利農產品的保存與食用</li><li><b>（C）</b>鼓勵農民改採有機農法，提高農產品售價</li><li><b>（D）</b>種植基因改造作物，增加單位面積的產量</li></ol>
 <p class="sq-ans">答案：（B）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：格外品品質無虞卻因規格或賣相不佳而在盛產時遭棄置，關鍵是處理已產生的過剩農產品。善用食品加工製成果汁、果乾等，可延長保存並增加食用方式，B 最能直接減少浪費。</p><p>A：降低食物里程著重縮短產地到餐桌的運輸距離，未處理格外品遭棄置，錯誤。</p><p>C：有機農法與提高售價不能解決既有格外品的保存與去化，錯誤。</p><p>D：增加單位面積產量可能使過剩更多，未處理格外品問題，錯誤。</p><p>本題考點：食物浪費的改善——先辨認問題是生產過剩、運輸或保存，再選擇對應作法；品質無虞的格外品可透過加工延長保存並提高利用。</p></details>
 </article>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">近年來，在政府與民間的努力下，開發出米麵包、米蛋糕、米布丁、米鳳梨酥、米冰淇淋等新米食。上述作法最可能達成下列何項效益？</div>
 <ol class="sq-opts"><li><b>（A）</b>降低稻米生產成本</li><li><b>（B）</b>減少水稻耕作人力</li><li><b>（C）</b>減輕稻米過剩壓力</li><li><b>（D）</b>確保米食安全管理</li></ol>
 <p class="sq-ans">答案：（C）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：米麵包、米蛋糕、米布丁等新米食，是把稻米加工成更多樣的產品以擴大消費需求。需求增加能消耗餘糧，減輕稻米過剩壓力，所以C為正解。</p><p>A：食品研發不會直接降低農民種植稻米的生產成本，錯誤。</p><p>B：新產品改變的是消費與加工方式，不能直接減少水稻耕作所需人力，錯誤。</p><p>D：米食安全管理屬檢驗、衛生與追溯制度範圍，不是開發新產品的主要效益，錯誤。</p><p>本題考點：農業多角化經營——將農產品開發成多元加工品，可增加用途與市場需求；要處理產量過剩，判準是設法擴大消費或去化存量。</p></details>
 </article>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">某宗教的全球年度大型集會活動在 2017 年約有 235 萬人參與。表（一）為該年參與者的來源國及其人數，此一宗教活動最可能為下列何者？</div>
 <div class="sq-tablewrap"><table class="sq-table"><caption>表（一）</caption><thead><tr><th>國家</th><th>人數</th><th>國家</th><th>人數</th></tr></thead><tbody><tr><td>沙烏地阿拉伯</td><td>600,108</td><td>伊朗</td><td>86,500</td></tr><tr><td>印尼</td><td>221,000</td><td>土耳其</td><td>79,000</td></tr><tr><td>巴基斯坦</td><td>179,210</td><td>奈及利亞</td><td>79,000</td></tr><tr><td>印度</td><td>170,000</td><td>阿爾及利亞</td><td>36,000</td></tr><tr><td>孟加拉</td><td>127,198</td><td>摩洛哥</td><td>31,000</td></tr><tr><td>埃及</td><td>108,000</td><td>其他</td><td>635,106</td></tr></tbody></table></div>

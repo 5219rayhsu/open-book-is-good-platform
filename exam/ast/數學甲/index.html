@@ -40,6 +40,10 @@
 .linkgrid span{display:block;color:var(--ink-faint);font-size:.8rem;}
 .sq{border-top:1px solid var(--rule-faint);padding:1.1rem 0 .3rem;}
 .sq-no{font-size:.82rem;letter-spacing:.06em;color:var(--accent);margin:0 0 .35rem;}
+.sq-link{color:inherit;text-decoration:none;}
+.sq-link:hover{text-decoration:underline;}
+.sq:target{background:var(--rule-faint);border-radius:var(--r-sm);
+  box-shadow:0 0 0 .6rem var(--rule-faint);}
 .sq-flag{margin-left:.4rem;color:var(--ink-faint);}
 .sq-stem{font-family:var(--serif);font-size:1.02rem;line-height:1.85;color:var(--ink);}
 .sq-opts{list-style:none;padding:0;margin:.55rem 0 .5rem;}
@@ -92,7 +96,7 @@
 
 <h2>題目長什麼樣</h2>
 <p>以下自本科題庫抽 5 題示例，完整題目請看上方各年度考卷。</p>
-<article class="sq" id="q3">
+<article class="sq">
 <p class="sq-no">第 3 題</p>
 <div class="sq-stem">《幾何原本》上說:「給定相異兩點可決定一條直線」。一般來說,相異三點
 
@@ -111,7 +115,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：先列出 8 個交點。圓 Γ1 與兩坐標軸給出 (2,0)、(−2,0)、(0,2)、(0,−2)；圓 Γ2 與 x−y=0 給出 (1,1)、(−1,−1)；圓 Γ2 與 x+y=0 給出 (1,−1)、(−1,1)。8 點先按點對計有 C(8,2)=28 條；三點共線組為 (2,0)、(1,1)、(0,2)，(−2,0)、(−1,−1)、(0,−2)，(2,0)、(1,−1)、(0,−2)，以及 (−2,0)、(−1,1)、(0,2)。每組 3 點的 3 個點對只代表 1 條直線，所以每組扣除 3−1=2 條，總數為 28−4×2=20，故選 C。</p><p>A：12 條表示還要扣除更多重複的共線點對；列出的 8 點只有上述四組三點共線，沒有這樣的額外扣除。</p><p>B：16 條同樣多扣了兩組共線修正；每組三點共線只需從 3 個點對改成 1 條線，不能重複扣除。</p><p>D：24 條只扣除兩組三點共線，漏掉另外兩組由斜率相同所形成的共線關係。</p><p>E：28 條是未處理共線重複的點對總數；四組三點共線各會造成 2 條的重複，因此不能直接採用。</p><p>本題考點：兩點決定一直線——n 個點先以 C(n,2) 計點對；共線修正——m 點共線時，C(m,2) 個點對只形成 1 條線，須扣除 C(m,2)−1；組合計數——列出全部 3 點以上共線組後再修正，避免漏扣或重複扣除。</p></details>
 </article>
 <aside class="sq-passage"><p>2 1 設實係數多項式函數 f ( x ) = 3ax + (1 − a ) ,其中 −  a  1 。在坐標平面上, 2</p><p>令為 y = f ( x ) 與x 軸在 −1 x  1 所圍的區域。根據上述,試回答下列問題。</p></aside>
-<article class="sq" id="q16">
+<article class="sq">
 <p class="sq-no">第 16 題</p>
 <div class="sq-stem">證明對於所有 a −[ ,1] ,的面積皆為2。(非選擇題,2 分)
  2
@@ -120,14 +124,14 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：在給定範圍內 f(x)≥0，因此 Γ 的面積可直接以定積分計算。A=∫[-1,1] ((3a x^2)/2+1-a/2) dx=(3a/2)×(2/3)+(1-a/2)×2=a+2-a=2。參數 a 的項恰好相消，故對所有 -1/2≤a≤1，Γ 的面積皆為2。</p><p>本題考點：定積分求面積（definite integral for area）——函數在區間內非負時，面積就是 ∫f(x) dx，不必另取絕對值；參數消去——展開積分後檢查含參數項是否相消，不能只憑圖形外觀判定面積不變。</p></details>
 </article>
 <aside class="sq-passage"><p>坐標空間中,考慮三個平面 E1 : x + y + z = 7 、 E2 : x − y + z = 3 、 E3 : x − y −=z −。令5 E1與 E2 相交的直線為 L3 ; E2 與 E3 相交的直線為 1L ; E3 與 E1 相交的直線為 L2 。</p><p>根據上述,試回答下列問題。</p></aside>
-<article class="sq" id="q13">
+<article class="sq">
 <p class="sq-no">第 13 題</p>
 <div class="sq-stem">試說明 1L 、 L2 、 L3 中,任兩直線所夾的銳角皆為60。(非選擇題,4 分)
  (註:令 1L 與 L2 所夾的銳角為, L2 與 L3 所夾的銳角為, L3 與 1L 所夾的銳角為)</div>
 <p class="sq-ans">標準答案未收錄</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：由三個平面的法向量可取三條交線的方向向量 d1=(1,1,0)、d2=(0,1,-1)、d3=(1,0,-1)。三者長度都為 √2，且 d1·d2=d2·d3=d3·d1=1，因此每一對方向向量的內積比都是 1/2。故 cos α=cos β=cos γ=1/2，三個銳角皆為 60°，故選 α=β=γ=60°。</p><p>本題考點：平面交線方向向量（direction vector of plane intersection）——以兩平面法向量的外積求交線方向；空間直線夾角（angle between lines）——用 |d·e|/(|d||e|) 求銳角的餘弦，再由數值判讀角度。</p></details>
 </article>
-<article class="sq" id="q8">
+<article class="sq">
 <p class="sq-no">第 8 題（多選）</p>
 <div class="sq-stem">複數平面上,設z 代表複數z 的共軛複數,且 i  。試選出正確的選項。1</div>
 <ol class="sq-opts"><li><b>（A）</b>若 z  2 i ,則 z 3  4iz</li><li><b>（B）</b>若非零複數滿足 3  4i,則  2</li><li><b>（C）</b>若非零複數滿足 3  4i且令   i,則 3  4i
@@ -138,7 +142,7 @@
 <p class="sq-ans">答案：（B）（C）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：複數方程涉及共軛時，判準是先把模長與輻角分開，並檢查乘以 i 是否只是使輻角旋轉 π/2；如此才可判定各選項。依官方答案鍵，故選 BC。本題把握度低，因為共軛、絕對值與指數記號的精確位置會改變方程，必須完整保留才可逐式驗算。</p><p>B：此敘述的模長條件必須由完整等式左右兩側取絕對值而得；複數解不能直接誤認為唯一實數解。</p><p>C：令 β=iα 的代換時，必須連同共軛因子與 i 的冪次重新帶入；只有方程兩側同時保持時，旋轉後的數才仍滿足原條件。</p><p>A：共軛複數與原複數的虛部符號相反，代入前若未先還原兩者關係，等式的實部與虛部會混淆。</p><p>D：主輻角要先解出所有角度類別，再取指定範圍內的代表值；不能只由模長或單一解判定。</p><p>E：非零解的個數須同時滿足模長與輻角條件，方程的最高次數不必然等於可取解數。</p><p>本題考點：共軛複數（complex conjugate）——先確認共軛會保留模長、反轉輻角；極式（polar form）——複數方程可分成模長方程與輻角同餘分別求解；乘以 i 的旋轉（rotation by i）——乘以 i 使輻角增加 π/2，代入方程時還要處理共軛。</p></details>
 </article>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">設 a1 , a 2 , a3 , a 4 是首項為10、公比是10 的等比數列。令 b 
  n 1

@@ -5,12 +5,16 @@
 User-agent: *
 Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
-# 題庫 JSON 體積大且非給人讀的頁面，排除以免浪費檢索預算；
-# 需要原始資料請直接取 /data/<考試>/bank.json（見 llms.txt 與 datapackage.json）。
-Disallow: /data/
+
+# 🔴 這裡刻意**沒有** `Disallow: /data/`。原本有，而它與 llms.txt／datapackage.json
+# 直接衝突：那兩份檔案叫 agent 去取 /data/<考試>/bank.json，robots.txt 卻禁止它去。
+# 一個守規矩的 agent 只能兩者擇一違背，而它選哪一邊我們看不到。
+# 真正想講的是「可以抓、不要收錄」——那是 X-Robots-Tag 的語意，不是 Disallow 的。
+# 題庫 JSON 的 `X-Robots-Tag: noindex` 設在 `_dev/_headers` 的 /data/* 那格。
 
 Sitemap: https://open-book-is-good-platform.1003ray1003.workers.dev/sitemap.xml
 
 # 給 AI agent 的取材指引與知識包：
-#   https://open-book-is-good-platform.1003ray1003.workers.dev/llms.txt
-#   https://open-book-is-good-platform.1003ray1003.workers.dev/okf/          （Open Knowledge Format v0.2）
+#   https://open-book-is-good-platform.1003ray1003.workers.dev/llms.txt       （站台概覽）
+#   https://open-book-is-good-platform.1003ray1003.workers.dev/llms-full.txt  （逐科逐卷完整索引）
+#   https://open-book-is-good-platform.1003ray1003.workers.dev/okf/           （Open Knowledge Format v0.2）

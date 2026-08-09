@@ -40,6 +40,10 @@
 .linkgrid span{display:block;color:var(--ink-faint);font-size:.8rem;}
 .sq{border-top:1px solid var(--rule-faint);padding:1.1rem 0 .3rem;}
 .sq-no{font-size:.82rem;letter-spacing:.06em;color:var(--accent);margin:0 0 .35rem;}
+.sq-link{color:inherit;text-decoration:none;}
+.sq-link:hover{text-decoration:underline;}
+.sq:target{background:var(--rule-faint);border-radius:var(--r-sm);
+  box-shadow:0 0 0 .6rem var(--rule-faint);}
 .sq-flag{margin-left:.4rem;color:var(--ink-faint);}
 .sq-stem{font-family:var(--serif);font-size:1.02rem;line-height:1.85;color:var(--ink);}
 .sq-opts{list-style:none;padding:0;margin:.55rem 0 .5rem;}
@@ -92,35 +96,35 @@
 
 <h2>題目長什麼樣</h2>
 <p>以下自本科題庫抽 5 題示例，完整題目請看上方各年度考卷。</p>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">下列有關審計準則中對於可擴縮性之敘述，何者錯誤？</div>
 <ol class="sq-opts"><li><b>（A）</b>我國審計準則之基本準則適用所有企業之查核，無論其性質及情況複雜與否</li><li><b>（B）</b>查核人員可使用自動化工具及技術執行風險評估程序</li><li><b>（C）</b>在查核較不複雜受查者時，對於受查者之瞭解及相關事項無須全面書面化，為可擴縮性之範例</li><li><b>（D）</b>查核規模較小的企業，皆可適用審計準則中與可擴縮性有關之規定</li></ol>
 <p class="sq-ans">答案：（D）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題幹的關鍵在於「可擴縮性」並非以企業規模作唯一判準，而是依受查者性質及情況複雜度調整查核工作；D 將小規模企業一概視為可適用，敘述過於絕對，故 D 為正解。</p><p>A：審計準則的基本準則適用於所有企業之查核，不因企業性質或情況複雜度而排除，正確。</p><p>B：查核人員得使用自動化工具及技術執行風險評估程序，正確。</p><p>C：查核較不複雜受查者時，對受查者之瞭解及相關事項可依情況調整書面化程度，正是可擴縮性的範例，正確。它看起來不像可擴縮性，是因為容易把「書面化」誤認為任何案件都須完全相同。</p><p>本題考點：審計準則可擴縮性——依受查者性質及情況複雜度調整查核工作，不得僅以企業規模判斷；基本準則適用所有企業，調整的是程序執行方式與範圍。</p></details>
 </article>
-<article class="sq" id="q19">
+<article class="sq">
 <p class="sq-no">第 19 題</p>
 <div class="sq-stem">有關重大性的敘述，下列何者錯誤？</div>
 <ol class="sq-opts"><li><b>（A）</b>重大性是相對的而非絕對的概念</li><li><b>（B）</b>用於決定重大性最重要的基礎是總資產</li><li><b>（C）</b>質性及量化因素均影響重大性的判斷</li><li><b>（D）</b>管理階層從事的舞弊，即使金額不重大，亦應被認為具重大性</li></ol>
 <p class="sq-ans">答案：（B）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題幹問重大性敘述何者錯誤，關鍵是重大性基準應配合受查者性質與財務資訊；可能採稅前淨利、營收等適當基準，並非總資產一律最重要，故 B 錯誤而為正解。</p><p>A：重大性是相對而非絕對的概念，敘述正確。</p><p>C：判斷重大性時，質性與量化因素均須納入，敘述正確。</p><p>D：管理階層從事的舞弊，即使金額不重大，仍可能因其性質而具重大性，敘述正確。</p><p>本題考點：重大性判斷——依受查者性質選擇適當基準，不預設總資產最重要；同時衡量金額與性質；管理階層舞弊的質性因素可使小額事項具重大性。</p></details>
 </article>
-<article class="sq" id="q12">
+<article class="sq">
 <p class="sq-no">第 12 題</p>
 <div class="sq-stem">下列何者較不可能為財務報表查核工作僅能提供高度但非絕對確信之原因？</div>
 <ol class="sq-opts"><li><b>（A）</b>查核時間的限制</li><li><b>（B）</b>會計準則上的限制</li><li><b>（C）</b>查核程序上的限制</li><li><b>（D）</b>人員訓練時間的限制</li></ol>
 <p class="sq-ans">答案：（D）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題幹問「較不可能」造成查核僅能提供高度而非絕對確信的原因，應區分查核固有限制與事務所的人力管理問題。D 的人員訓練時間限制屬人力品質問題，非抽樣、估計或程序本質造成的固有限制，故 D 為正解。</p><p>A：查核時間限制使查核無法檢查所有事項，是高度而非絕對確信的原因之一。</p><p>B：會計準則及會計估計涉及判斷與不確定性，屬財務報導固有限制之一。</p><p>C：抽樣等查核程序的限制，不能保證發現所有重大不實表達，亦為合理確信的原因。</p><p>本題考點：合理確信——財務報表查核受抽樣、證據性質、會計估計與時間成本等固有限制，只能提供高度而非絕對確信；查核人員訓練不足屬可改善的人力品質問題，不能混同於查核固有限制。</p></details>
 </article>
-<article class="sq" id="q5">
+<article class="sq">
 <p class="sq-no">第 5 題</p>
 <div class="sq-stem">依我國審計準則公報第34 號「財務資訊協議程序之執行」規定，會計師受託執行協議程序時出具之報告內容應包括下列何項？</div>
 <ol class="sq-opts"><li><b>（A）</b>協議程序係由會計師依專業判斷決定</li><li><b>（B）</b>會計師係依一般公認審計準則執行協議程序</li><li><b>（C）</b>協議程序執行報告中之財務資訊係與財務報表整體有關</li><li><b>（D）</b>若會計師不具超然獨立，協議程序執行報告應作適當說明</li></ol>
 <p class="sq-ans">答案：（D）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：協議程序執行報告的必要內容；會計師若不具超然獨立，報告應作適當說明，故 D 為正解。</p><p>A：協議程序由委任人與會計師協議決定，不是會計師單依專業判斷決定。</p><p>B：協議程序不是依一般公認審計準則執行，且會計師不表示意見。</p><p>C：協議程序針對特定財務資訊，不以財務報表整體為對象。</p><p>本題考點：協議程序——程序由委任人與會計師協議，報告揭露所執行的程序與發現而不表示意見；不具超然獨立時須在報告中適當說明。</p></details>
 </article>
-<article class="sq" id="q4">
+<article class="sq">
 <p class="sq-no">第 4 題</p>
 <div class="sq-stem">會計師在查核應付款項時，應搜尋是否有未入帳之負債。下列關於搜尋未入帳負債之敘述，何者正確？①函證應付帳款，是搜尋未入帳負債的查核程序，且為必須執行之查核程序 ②會計師函證的對象，不應侷限於應付帳款餘額大於0 的債務人 ③進行函證的時間，通常是在期後期間，外勤工作快結束之時④搜尋未入帳負債，可以達成應付帳款係「存在」之查核目標</div>
 <ol class="sq-opts"><li><b>（A）</b>②③</li><li><b>（B）</b>①②③</li><li><b>（C）</b>②③④</li><li><b>（D）</b>①②③④</li></ol>

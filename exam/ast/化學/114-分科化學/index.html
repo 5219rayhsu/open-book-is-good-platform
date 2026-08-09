@@ -40,6 +40,10 @@
 .linkgrid span{display:block;color:var(--ink-faint);font-size:.8rem;}
 .sq{border-top:1px solid var(--rule-faint);padding:1.1rem 0 .3rem;}
 .sq-no{font-size:.82rem;letter-spacing:.06em;color:var(--accent);margin:0 0 .35rem;}
+.sq-link{color:inherit;text-decoration:none;}
+.sq-link:hover{text-decoration:underline;}
+.sq:target{background:var(--rule-faint);border-radius:var(--r-sm);
+  box-shadow:0 0 0 .6rem var(--rule-faint);}
 .sq-flag{margin-left:.4rem;color:var(--ink-faint);}
 .sq-stem{font-family:var(--serif);font-size:1.02rem;line-height:1.85;color:var(--ink);}
 .sq-opts{list-style:none;padding:0;margin:.55rem 0 .5rem;}
@@ -77,7 +81,7 @@
 
 <h2>全部 31 題</h2>
 <article class="sq" id="q1">
-<p class="sq-no">第 1 題</p>
+<p class="sq-no"><a class="sq-link" href="#q1" title="這一題的永久連結">第 1 題</a></p>
 <div class="sq-stem">穩定分子的分子式 CH3SH x 、 CH 3 (CH y ) 3 Cl、 CH3 NHz 中,則x、y、z 值應分別為下列
 
  哪一項?</div>
@@ -86,7 +90,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：判準是中性穩定分子中各原子的常見鍵結數。CH3SHx 的硫已與碳形成一鍵，還需一個氫形成第二鍵，所以 x=1；CH3(CHy)3Cl 的鏈中 CHy 各已有兩個單鍵，尚需兩個氫，所以 y=2；CH3NHz 的氮與 CH3 形成一鍵後，還需兩個氫湊成三鍵，所以 z=2。故選 A。</p><p>B：z=3 會使 CH3NHz 中的中性氮形成四個單鍵，與題設的中性穩定分子不符。</p><p>C：x=2 與 y=3 都不符合硫與碳的常見價數；把原子已有的鍵結數漏算，才會多補氫。</p><p>D：x=2、y=3 同樣把硫與鏈中碳所需的氫數估得過多。</p><p>E：x=3 使硫的鍵結數更不合理，不能形成題示的中性分子。</p><p>本題考點：價鍵（valence bonding）——先數原子已形成的單鍵，再補到其常見鍵結數；結構式（structural formula）——判斷分子式時，要以相鄰原子的實際連結數決定氫原子數；中性分子（neutral molecule）——未標示電荷時，避免把需帶電的四鍵氮或過度鍵結的硫當成一般中性結構。</p></details>
 </article>
 <article class="sq" id="q2">
-<p class="sq-no">第 2 題</p>
+<p class="sq-no"><a class="sq-link" href="#q2" title="這一題的永久連結">第 2 題</a></p>
 <div class="sq-stem">定溫定容下,某氣體( X 2 Y)可進行分解反應,其化學反應式如式1:
  X2 Y(g) → X2 (g) +Y(g) (式1)
  P0
@@ -114,7 +118,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：定溫、定容時壓力與氣體莫耳數成正比。設某時 X2Y 的分壓為 p，已分解的量以壓力表示為 P0−p，因此 X2 與 Y 的分壓各為 P0−p。總壓為 P總=p+(P0−p)+(P0−p)=2P0−p；初值是 P0，之後隨 X2Y 分壓下降而上升，且兩條曲線在每一時刻相加為 2P0，故選 E。</p><p>A、B、C、D：這些曲線都未同時滿足 P總=2P0−p。判別時不能只看總壓是否上升，還須檢驗起點、平衡平台與各時刻的變化量；每消耗 1 份 X2Y，會同時生成 1 份 X2 與 1 份 Y，總壓的增加量必須等於 X2Y 分壓的減少量。</p><p>本題考點：道耳頓分壓定律（Dalton&#x27;s law of partial pressures）——總壓要逐一加總各成分的分壓；定溫定容的理想氣體（ideal gas at constant T and V）——以分壓變化直接代表莫耳數變化；化學計量與壓力曲線——先由反應式寫出各成分的增減量，再決定曲線方向與平台。</p></details>
 </article>
 <article class="sq" id="q3">
-<p class="sq-no">第 3 題</p>
+<p class="sq-no"><a class="sq-link" href="#q3" title="這一題的永久連結">第 3 題</a></p>
 <div class="sq-stem">圖2 為電解NaCl(l)的電流與時間的關係圖,試問經過3 小時後,大約可以生成
 
  多少克鈉金屬?(鈉的原子量請參見封面週期表)</div>
@@ -129,7 +133,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：電解產物量取決於電流—時間圖下的面積，也就是通過的總電量。圖中 3 小時內的面積為 30 A·h，故 Q=30 A·h×3600 s/h=1.08×10⁵ C。n(e−)=1.08×10⁵ C/(9.65×10⁴ C/mol)=1.12 mol；陰極反應為 Na++e−→Na，所以 n(Na)=1.12 mol。m(Na)=1.12 mol×23 g/mol≈26 g，依圖形讀值約為 25 g，故選 A。</p><p>B：13 g 約為把總電量少算一部分後的量級，沒有完整累積三小時內的電流—時間面積。</p><p>C：1.1 接近電子或鈉的莫耳數量級，尚未乘上鈉的莫耳質量，不能作為質量答案。</p><p>D：0.02 g 未完成 A·h 轉換為 C、再除以法拉第常數的步驟，量級明顯過小。</p><p>E：電流的瞬時數值不是電量；必須先對時間積分，才可代入法拉第定律求出生成的鈉質量。</p><p>本題考點：法拉第電解定律（Faraday&#x27;s law of electrolysis）——先由 Q=I×t 或電流—時間面積求電量，再換成電子莫耳數；電流—時間圖——圖下面積的單位是 A·s 或 C，不是 A；電極反應計量——Na+ 還原為 Na 每 1 mol 只需 1 mol e−。</p></details>
 </article>
 <article class="sq" id="q4">
-<p class="sq-no">第 4 題</p>
+<p class="sq-no"><a class="sq-link" href="#q4" title="這一題的永久連結">第 4 題</a></p>
 <div class="sq-stem">將pH=2.0 的HCl 水溶液50 mL,與一未知濃度的KOH 水溶液50 mL 均勻混合後,
  若溫度沒有改變,體積為100 mL,此溶液的pH 值為4.0。則原來KOH 水溶液
  的濃度(M)為下列何者?</div>
@@ -138,7 +142,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：混合後 pH=4.0，溶液仍呈酸性，所以 HCl 過量而 KOH 已完全被中和。先換算混合前的氫離子：pH=2.0，所以 [H⁺]=1.0×10⁻² mol/L；體積 50 mL=0.050 L，n(H⁺)=1.0×10⁻²×0.050=5.0×10⁻⁴ mol。混合後 [H⁺]=1.0×10⁻⁴ mol/L；總體積 100 mL=0.100 L，剩餘 n(H⁺)=1.0×10⁻⁴×0.100=1.0×10⁻⁵ mol。被 OH⁻ 中和的量為 5.0×10⁻⁴−1.0×10⁻⁵=4.9×10⁻⁴ mol，因此 n(KOH)=4.9×10⁻⁴ mol。原 KOH 體積為 0.050 L，c(KOH)=4.9×10⁻⁴/0.050=9.8×10⁻³ mol/L=0.0098 M，故選 B。</p><p>A：0.098 M 比計算值大 10 倍。50 mL 應換成 0.050 L；體積單位或濃度次方錯一位，就會得到這種 10 倍偏差。</p><p>C：0.0049 M 是把中和的 KOH 物量除以混合後的 0.100 L。題目問的是原 KOH 溶液濃度，分母必須使用原來的 0.050 L。</p><p>D：此值不符合兩段氫離子物量相減所得的 4.9×10⁻⁴ mol。分辨關鍵在於剩餘氫離子要以混合後的 0.100 L 計算，再回到原 KOH 的 0.050 L 求濃度。</p><p>E：0.00098 M 是正確濃度的十分之一，表示在物量或體積的 10 倍換算上少算了一個因子。</p><p>本題考點：強酸強鹼中和計量（stoichiometry of neutralization）——先把各階段濃度換成 mol，再以過量離子的前後差求中和量；pH 與氫離子濃度（pH and hydrogen ion concentration）——由 pH=−log[H⁺] 判斷混合後誰過量；稀釋與體積變化（dilution and volume change）——混合後濃度配總體積，原溶液濃度配原體積。</p></details>
 </article>
 <article class="sq" id="q5">
-<p class="sq-no">第 5 題</p>
+<p class="sq-no"><a class="sq-link" href="#q5" title="這一題的永久連結">第 5 題</a></p>
 <div class="sq-stem">氣體A 與氣體B 反應生成氣體C。在定溫下,某固定體積的密閉容器中,A、B
  與C 的起始濃度分別為1.000 M、1.500 M 與1.000 M;當反應達到平衡後,A 的
  濃度為0.921 M,B 的濃度為1.342 M,C 的濃度為1.158 M。試問此反應的化學
@@ -151,7 +155,7 @@
 </article>
 <aside class="sq-passage"><p>聚二甲基矽氧烷(甲)與化合物(乙)試劑反應後,其線形結構轉變成三維 網狀結構,物理性質也從液體的矽油轉變成具有彈性的固體矽膠,圖3 為其分子 結構及化學反應示意圖,此反應稱為交聯反應(a、b、c 分別代表括弧中單元 重複的數目)。</p><p> 圖3</p></aside>
 <article class="sq" id="q6">
-<p class="sq-no">第 6 題</p>
+<p class="sq-no"><a class="sq-link" href="#q6" title="這一題的永久連結">第 6 題</a></p>
 <div class="sq-stem">交聯反應中,(甲)末端的碳碳雙鍵與試劑(乙)中的哪個基團形成新的化學鍵結?</div>
 <img class="sq-fig" loading="lazy" src="../../../../data/ast/figures/114_分科化學_g6_7.png" alt="第 6 題附圖">
 <p class="sq-hint">本題選項為上圖中的 A／B／C／D，請對照圖片作答。</p>
@@ -159,7 +163,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：聚二甲基矽氧烷由線形結構變為三維網狀，關鍵是（甲）末端的碳碳雙鍵與（乙）的反應性官能基形成新的共價鍵，讓不同高分子鏈之間出現交聯點。交聯反應的一般判準可確定，但（乙）的具體官能基配對仍有不確定性，因此本則把握度較低，故選 C。</p><p>A、B、D、E：交聯的判別必須回到「是否能與末端碳碳雙鍵反應，並在分子鏈之間建立共價橋鍵」。不符合這個條件的基團，不能作為本題所問的新鍵結來源。</p><p>本題考點：高分子交聯（polymer crosslinking）——看到線形聚合物轉為網狀固體時，判斷是否形成了鏈與鏈之間的共價鍵；官能基反應性（functional-group reactivity）——由反應物的雙鍵與可反應基團配對，判定新鍵結形成的位置。</p></details>
 </article>
 <article class="sq" id="q7">
-<p class="sq-no">第 7 題</p>
+<p class="sq-no"><a class="sq-link" href="#q7" title="這一題的永久連結">第 7 題</a></p>
 <div class="sq-stem">在相同反應條件下,將適當比例的不同重量(甲)和(乙)進行交聯反應,反應
 
  完全後所得到的矽膠會有不同彈性,主要原因為何?</div>
@@ -171,14 +175,14 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題幹已限定反應條件相同且反應完全，差異要從固化後網狀結構的疏密判斷。改變（甲）與（乙）的用量配比，會改變每條聚合物鏈可連結的交聯點數；交聯密度不同，矽膠受拉伸時鏈段可移動的程度不同，彈性便會改變。這是交聯反應程度不同所致；配比與結構細節的對應仍有不確定性，以下以交聯密度的一般判準說明，故選 D。</p><p>A：反應物的末端雙鍵與反應性基團種類並未因用量改變而變成另一種基團；改變的是形成網狀結構的數量與密度。</p><p>B：反應活性會影響反應是否容易發生或所需條件，但題幹已說明在相同條件下反應完全，不能用活性差異解釋最終彈性。</p><p>C：反應速率只描述達到完成所需的快慢。反應完成後材料彈性的主要判準是交聯密度，而非到達終點的速度。</p><p>E：溶解度不是已固化矽膠彈性差異的直接來源；分辨關鍵在鏈與鏈之間建立了多少交聯點。</p><p>本題考點：交聯密度（crosslink density）——比較高分子彈性時，先看單位體積內鏈間共價連結的多少；高分子網狀結構（polymer network）——線形鏈被交聯後，鏈段活動受限而材料性質改變；反應速率與平衡性質（reaction rate vs final property）——題幹給出反應完成時，勿以速率取代最終結構的判斷。</p></details>
 </article>
 <article class="sq" id="q8">
-<p class="sq-no">第 8 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q8" title="這一題的永久連結">第 8 題</a>（多選）</p>
 <div class="sq-stem">下列有關石墨與金剛石的敘述,哪些正確?</div>
 <ol class="sq-opts"><li><b>（A）</b>石墨與金剛石為同素異形體</li><li><b>（B）</b>石墨的導電性與結構中的π 鍵有關</li><li><b>（C）</b>石墨的碳碳鍵長大於金剛石的碳碳鍵長</li><li><b>（D）</b>金剛石為三維共價網狀固體,常溫常壓時可導電</li><li><b>（E）</b>石墨內的碳以 sp 2 混成軌域鍵結,層與層間有凡得瓦作用力</li></ol>
 <p class="sq-ans">答案：（A）（B）（E）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：共同判準是石墨與金剛石都只由碳組成，但碳原子的鍵結與排列不同；石墨的層內 sp² 鍵結留下可離域移動的電子，層間則以較弱的凡得瓦作用力相連。因此同時符合組成、導電機制與層狀結構的敘述為 A、B、E，故選 ABE。</p><p>A：石墨與金剛石都是元素碳形成的不同結構，屬於同素異形體。</p><p>B：石墨層內的 π 電子可在平面方向離域移動，所以導電性與 π 鍵系統有關。</p><p>E：石墨中的碳主要採 sp² 混成，形成平面六角網狀層；各層之間主要是凡得瓦作用力。</p><p>C：石墨的 sp² 碳碳鍵具有較高鍵級，鍵長約比金剛石 sp³ 的單鍵短，不是較長。</p><p>D：金剛石雖是三維共價網狀固體，但所有價電子都局限在共價鍵中，常溫常壓下沒有可自由移動的載子，不能導電。</p><p>本題考點：同素異形體（allotrope）——元素相同而原子排列或鍵結方式不同時，判為同素異形體；混成與鍵長（hybridization and bond length）——比較 sp² 與 sp³ 碳碳鍵時，以鍵級較高者鍵長較短判斷；石墨導電性（electrical conductivity of graphite）——看到層狀 sp² 網路時，追問是否有可離域移動的 π 電子。</p></details>
 </article>
 <article class="sq" id="q9">
-<p class="sq-no">第 9 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q9" title="這一題的永久連結">第 9 題</a>（多選）</p>
 <div class="sq-stem">氦(He)是惰性氣體中最輕的元素,氦的一個價電子游離後,生成了氦離子( He + )。
 
  下列關於 He + 的敘述,哪些正確?</div>
@@ -187,7 +191,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：He⁺只剩一個電子，屬於氫樣離子；它的能階與氫原子同型，只是受核電荷 Z=2 的影響而能量尺度不同。據此可判斷基態電子組態、可用的模型與再次游離所需能量，正確為 C、D、E，故選 CDE。</p><p>C：基態 He⁺的電子組態為 1s¹，與基態氫原子相同。</p><p>D：單電子系統沒有電子間排斥，可用波耳原子模型描述其離散能階與光譜。</p><p>E：由 He⁺移除最後一個 1s 電子時，電子受 +2 核電荷吸引且沒有其他電子遮蔽，所需游離能大於由中性 He 移除第一個電子。</p><p>A：軌域是否存在由量子數允許與否決定，不以該離子是否有電子佔據為準；氫樣離子仍有 n=3、l=2 對應的 3d 軌域。</p><p>B：He⁺只有一個電子且核電荷為 +2，電子雲受吸引較強，半徑比中性 He 小，不是較大。</p><p>本題考點：氫樣離子（hydrogen-like ion）——只含一個電子的原子或離子，可依氫原子的能階模型判斷；電子組態（electron configuration）——基態先依電子數填入最低能量的 1s 軌域；游離能與有效核電荷（ionization energy and effective nuclear charge）——比較移除電子難易時，看核吸引與遮蔽是否改變。</p></details>
 </article>
 <article class="sq" id="q10">
-<p class="sq-no">第 10 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q10" title="這一題的永久連結">第 10 題</a>（多選）</p>
 <div class="sq-stem">甲、乙、丙、丁、戊五種元素的原子序均小於20。甲是週期表中質量最小的元素,
 
  乙是週期表中電負度最大的元素,丙原子最外殼層電子數是次外殼層電子數的
@@ -200,7 +204,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：先依題幹定位元素：甲為 H、乙為 F、丙為 O、丁為 S，戊為 P。再逐一檢驗其化合物、同位素與元素性質，可判定正確選項為 C、D、E。故選 C、D、E。</p><p>C：H 與 O 形成 H2O，水分子間可藉 O—H 鍵與氧的孤電子對形成分子間氫鍵，敘述正確。</p><p>D：丁為 S，硫在常溫下為黃色固體，敘述正確。</p><p>E：戊為 P，其氧化物溶於水可形成酸性溶液，敘述正確。</p><p>A：H 與 F 所形成的 HF 可溶於水，不能以「不溶於水」描述。</p><p>B：自然界的 O 有三種穩定同位素，非兩種。</p><p>本題考點：週期表定位（periodic table identification）——利用最小原子量、電負度、族別與原子序和等線索交叉鎖定元素；分子間氫鍵（intermolecular hydrogen bonding）——H 直接連到 O、N 或 F，且鄰近分子有孤電子對時可判斷能形成氫鍵；同位素（isotopes）——比較同一元素的中子數差異時，要區分自然存在的同位素數目與化學性質。</p></details>
 </article>
 <article class="sq" id="q11">
-<p class="sq-no">第 11 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q11" title="這一題的永久連結">第 11 題</a>（多選）</p>
 <div class="sq-stem">某生配製濃度均為1.0 M 的 Pb(NO3 ) 2 、 H 2SO 4 、 BaCl 2 與 AgNO3 四種水溶液後,忘記
 
  標示,致使無法辨識各溶液。為能得知各溶液成分,他先將溶液標示為:甲、乙、
@@ -217,7 +221,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：判準是以白色沉澱是否受熱溶解來配對離子。甲與乙生成 AgCl，故甲為 AgNO3、乙為 BaCl2；乙與丁的 PbCl2 受熱可溶，故丁為 Pb(NO3)2；剩下丙為 H2SO4，且丙與丁生成加熱不消失的 PbSO4。據此 A、D、E 正確。故選 A、D、E。</p><p>A：甲為 AgNO3，與乙中的 Cl− 形成白色 AgCl，符合實驗結果。</p><p>D：丁為 Pb(NO3)2，與乙中的 Cl− 形成 PbCl2；該白色沉澱受熱後溶解，正合題述。</p><p>E：丁含 Pb2+，加入 KI 後形成難溶的 PbI2 沉澱，敘述正確。</p><p>B：乙應為 BaCl2；H2SO4 是與丁形成受熱不消失硫酸鹽沉澱的丙。</p><p>C：丙應為 H2SO4，而非 BaCl2。分辨關鍵在丙與丁生成的 PbSO4 加熱後不消失。</p><p>本題考點：沉澱反應（precipitation reaction）——兩溶液混合後先找難溶鹽，再用共同離子反推未知溶液；溶解度與溫度（solubility and temperature）——比較沉澱受熱前後的變化，可區分不同鹽類；離子鑑定（ion identification）——同時利用 Cl−、SO4^2− 與 Pb2+ 的特徵沉澱交叉驗證。</p></details>
 </article>
 <article class="sq" id="q12">
-<p class="sq-no">第 12 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q12" title="這一題的永久連結">第 12 題</a>（多選）</p>
 <div class="sq-stem">某反應是一種振盪反應,反應溶液初始為紅色,經過一段時間後轉變為藍色,然後
 
  再轉變成紅色,溶液顏色就在紅與藍之間振盪,推測的反應步驟如下:
@@ -239,7 +243,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：判準是氧化數與配位數。步驟乙中溴酸根的溴由 +5 變為 HOBr 中的 +1，故為還原；而 o-phen 是雙牙基配位子，三個配位子各提供兩個配位原子，二價鐵錯合物的配位數為 6。故選 CD。</p><p>C：BrO3− 中 Br 的氧化數為 +5，HOBr 中 Br 的氧化數為 +1；氧化數降低代表溴酸根被還原。</p><p>D：每個 o-phen 均以兩個原子與鐵離子鍵結，3 個配位子共提供 6 個配位位置，因此鐵離子的配位數為 6。</p><p>A：步驟甲中溴酸根的溴由 +5 降至較低氧化數，是接受電子的一方，應為氧化劑而非還原劑。</p><p>B：題幹已標示二價鐵錯合物呈紅色、三價鐵錯合物呈藍色；二價鐵被氧化成三價鐵時，顏色應由紅轉藍。</p><p>E：藍轉紅是三價鐵錯合物在步驟丙被還原回二價鐵錯合物所致；溴離子的再生成參與振盪循環，並非顏色的直接來源。</p><p>本題考點：氧化還原反應（redox reaction）——用同一元素反應前後的氧化數判斷氧化或還原；配位數（coordination number）——雙牙基配位子提供兩個配位位置，計數時按配位原子而非配位子數目；錯合物顏色（coordination complex color）——依題幹標示把顏色變化連回特定氧化態的錯合物。</p></details>
 </article>
 <article class="sq" id="q13">
-<p class="sq-no">第 13 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q13" title="這一題的永久連結">第 13 題</a>（多選）</p>
 <div class="sq-stem">膽固醇可由肝細胞合成或由食物中攝取,是人體中重要的成分。膽固醇的結構
  如圖5 所示,下列相關敘述,哪些正確?</div>
 <img class="sq-fig" loading="lazy" src="../../../../data/ast/figures/114_分科化學_13.png" alt="第 13 題附圖">
@@ -251,14 +255,14 @@
 </article>
 <aside class="sq-passage"><p>某生在恆溫下進行 Na 2S2 O3 水溶液的分解反應速率實驗,反應式如式2: S2 O3 2 − + 2 H + → SO2 + S + H 2 O (式2) 其實驗步驟如下:</p><p> (1)在一個錐形瓶中置入50 mL 的0.20 M Na 2S2 O3 溶液 (2)在瓶子底部下方放置一張畫有黑色「X」標誌的白紙</p><p> (3)將10 mL 的0.10 M HCl溶液加入上述錐形瓶中,並立刻按下秒錶且以玻棒 攪拌</p><p> (4)由錐形瓶開口向下觀察,當無法看見白紙上「X」標誌時,停止計時並記錄 時間(t)</p><p> (5)改變步驟(1)的 Na 2S2 O3 溶液體積,並另加入適量蒸餾水。再重複上述步驟 進行實驗,結果如表1所示。</p><p> 表1</p><p> Na 2S2 O3 溶液體積 蒸餾水體積 標誌消失時間t 1/t 數值 (mL) (mL) (秒) (1/秒)</p><p> 50.0 0 33.8 0.0296</p><p> 30.0 20.0 49.2 0.0203</p><p> 10.0 40.0 150 0.0067</p></aside>
 <article class="sq" id="q14">
-<p class="sq-no">第 14 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q14" title="這一題的永久連結">第 14 題</a>（多選）</p>
 <div class="sq-stem">關於式2 的反應與實驗設計,下列敘述哪些正確?</div>
 <ol class="sq-opts"><li><b>（A）</b>H+ 是催化劑</li><li><b>（B）</b>是一個氧化還原反應</li><li><b>（C）</b>三個實驗中,加入H+ 的濃度與體積為一定值</li><li><b>（D）</b>可以用 Na 2S2 O3 濃度對t 作圖,得知其為線性關係</li><li><b>（E）</b>若使用20.0 mL Na 2S2 O3 溶液再進行一次實驗,需使用30.0 mL蒸餾水</li></ol>
 <p class="sq-ans">答案：（B）（C）（E）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：反應式中 S2O3^2− 內的硫發生氧化數改變，且三組實驗都固定加入10 mL、0.10 M 的 HCl；改變的是 Na2S2O3 溶液體積並以水補到50 mL。若改用20.0 mL Na2S2O3，蒸餾水應為50.0−20.0=30.0 mL。因此 B、C、E 正確。故選 B、C、E。</p><p>B：S2O3^2− 中不同硫原子分別變成 SO2 與 S，氧化數有升有降，屬氧化還原反應。</p><p>C：步驟（3）每次均加入10 mL、0.10 M HCl，因此 H+ 的加入濃度與體積固定。</p><p>E：各組在加入 HCl 前的 Na2S2O3 溶液與蒸餾水總體積皆為50.0 mL，故需補入30.0 mL 蒸餾水。</p><p>A：H+ 列在反應物一側並被消耗，不是反應前後量不變的催化劑。</p><p>D：由表中資料可用 1/t 作為反應速率的比較量，近似檢視其與 Na2S2O3 濃度的關係；Na2S2O3 濃度直接對 t 作圖不會得到線性關係。</p><p>本題考點：氧化還原反應（redox reaction）——同一反應中若有元素氧化數上升與下降，即可判為氧化還原；控制變因（controlled variables）——探究一種反應物濃度時，其餘反應物的加入濃度、體積與溫度要固定；稀釋（dilution）——固定總體積時，缺少的體積由蒸餾水補足。</p></details>
 </article>
 <article class="sq" id="q15">
-<p class="sq-no">第 15 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q15" title="這一題的永久連結">第 15 題</a>（多選）</p>
 <div class="sq-stem">關於實驗結果與推論,下列敘述哪些正確?</div>
 <ol class="sq-opts"><li><b>（A）</b>此反應對 S2 O3 2 −而言為一級反應</li><li><b>（B）</b>看不清「X」標誌時,代表產生了0.5 mmol 的硫</li><li><b>（C）</b>看不清「X」標誌是由於產生的二氧化硫氣泡干擾</li><li><b>（D）</b>若將HCl溶液濃度改為0.15 M時,不會改變標誌消失的時間(t)</li><li><b>（E）</b>若固定反應總體積,並增加 Na 2S2 O3 溶液體積與減少蒸餾水體積,則標誌消失
  時間(t)將變小</li></ol>
@@ -267,7 +271,7 @@
 </article>
 <aside class="sq-passage"><p>甲烷( CH 4 )是天然氣的主要成分,燃燒時可以產生1200-1800 K 的高溫。 圖6 是 CH 4 與 O2 的混合氣體燃燒時產生的火焰示意圖, Z 外焰</p><p> 其中Z 軸標示了火焰的高度位置。以X=0、Z=0 為起始點, Z=1.0 完全燃燒時的火焰最高點為Z=1.0(cm),火焰高度按比 內焰</p><p> Z=0.6</p><p> 例的相對值為Z=0.2、0.4... ... 等,如圖6 所示。</p><p> Z=0.2</p><p> 科學家透過儀器分析,分別得到在X=0、Z=0 至1.0</p><p> X X=0、Z=0 位置的化學成分莫耳分率,結果如圖7 所示。圖7 中 O2 的 莫耳分率數值範圍為0.72-0.92,而其他氣體的比例較少,</p><p> 莫耳分率數值範圍在0.0-0.20 之間。 圖6</p><p> 穩定的火焰中,圖7 表示甲烷燃燒過程中的各氣體莫耳分率變化,可以呈現 其燃燒的結果。回答下列問題:</p><p> 0.92 0.20</p><p> 0.90 0.18</p><p> H2O</p><p> 0.88 0.16 O2</p><p> 0.86 0.14 的莫耳分率</p><p> 0.84 0.12</p><p> H2O 0.82 0.10</p><p> CH4 的莫耳分率 0.80 CO2, 0.08</p><p> O2 CO2 0.78 CO, 0.06</p><p> CO 0.76 0.04 CH4,</p><p> 0.74 0.02</p><p> 0.72 0.0</p><p> 0 0.1 0.2 0.3 0.35 0.4 0.6 0.8 1.0 高度Z(cm)</p><p> 圖7</p></aside>
 <article class="sq" id="q16">
-<p class="sq-no">第 16 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q16" title="這一題的永久連結">第 16 題</a>（多選）</p>
 <div class="sq-stem">關於此混合氣體燃燒實驗,下列敘述哪些正確?</div>
 <img class="sq-fig" loading="lazy" src="../../../../data/ast/figures/114_分科化學_g16_17.png" alt="第 16 題附圖">
 <ol class="sq-opts"><li><b>（A）</b>燃燒前混合氣體中 CH 4 與 O2 的莫耳數比大於0.2</li><li><b>（B）</b>燃燒前混合氣體中有 H 2 O及 CO 2 雜質</li><li><b>（C）</b>燃燒過程共消耗掉約0.15莫耳的 O2</li><li><b>（D）</b>完全燃燒後 CH 4 轉變生成 CO 2 與 H 2 O</li><li><b>（E）</b>完全燃燒後產生之 H 2 O重量約為 CO 2 重量之2倍</li></ol>
@@ -275,7 +279,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：完全燃燒的反應式是 CH4+2O2→CO2+2H2O，因此甲烷完全燃燒後的碳、氫分別進入 CO2 與 H2O，故（D）正確。另由圖7起始位置仍可辨識 H2O 與 CO2 的莫耳分率，表示燃燒前混合氣體含有這兩種雜質，故（B）正確；圖線判讀把握較低。故選 B、D。</p><p>B：燃燒起始位置已有 H2O 與 CO2 的莫耳分率，兩者不可能由尚未開始的 CH4 燃燒生成，應為原混合氣體的雜質。</p><p>D：CH4 的完全燃燒遵守碳、氫原子守恆，生成物為 CO2 與 H2O。</p><p>A：燃燒前 CH4 與 O2 的莫耳數比須以 Z=0 的莫耳分率相除；圖示值不支持其大於0.2。</p><p>C：莫耳分率僅反映相對比例，未給總莫耳數，不能算出消耗0.15 mol O2。</p><p>E：每1 mol CH4 完全燃燒生成2 mol H2O 與1 mol CO2，水與二氧化碳的質量比為2×18:44=36:44，不是約2倍。</p><p>本題考點：甲烷完全燃燒（complete combustion of methane）——先以 CH4+2O2→CO2+2H2O 做原子與莫耳數守恆判斷；莫耳分率（mole fraction）——只能比較相對組成，沒有總莫耳數不能推出絕對莫耳量；燃燒圖線判讀（combustion profile interpretation）——起始位置已存在的產物成分，應先檢查是否為原混合物雜質。</p></details>
 </article>
 <article class="sq" id="q17">
-<p class="sq-no">第 17 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q17" title="這一題的永久連結">第 17 題</a>（多選）</p>
 <div class="sq-stem">下列敘述,哪些符合圖7 的觀測結果?</div>
 <img class="sq-fig" loading="lazy" src="../../../../data/ast/figures/114_分科化學_g16_17.png" alt="第 17 題附圖">
 <ol class="sq-opts"><li><b>（A）</b>H 2 O的生成,在Z=0.1 cm 時的速率最快</li><li><b>（B）</b>在Z=0.1 cm 時,每生成1.0莫耳 H 2 O伴隨0.5莫耳 CO 2 的生成</li><li><b>（C）</b>在Z=0.2 cm 時, CH 4 生成CO的速率比CO轉變為 CO 2 的速率快</li><li><b>（D）</b>在Z=0.2 cm 時, CH 4 生成CO的速率比生成 H 2 O的速率快</li><li><b>（E）</b>在Z&gt;0.3 cm 時,主要反應為CO的燃燒</li></ol>
@@ -283,7 +287,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：圖中的莫耳分率變化可用曲線斜率判斷各物質的生成與消耗速率。在 Z=0.2 cm，CO 的莫耳分率仍上升，表示由 CH4 生成 CO 的速率大於 CO 再轉為 CO2 的速率；Z&gt;0.3 cm 時 CH4 已大致消耗，CO 下降而 CO2 上升，主要反應為 CO 的燃燒。故選 CE。</p><p>C：CO 莫耳分率在 Z=0.2 cm 上升，代表此處 CO 的生成量大於消耗量，因此 CH4 生成 CO 的速率較 CO 轉為 CO2 的速率快。</p><p>E：在火焰後段，CO 減少而 CO2 增加，符合 CO 與 O2 反應生成 CO2 的燃燒。</p><p>A：H2O 的生成速率要比較曲線在各位置的斜率，不是只看某位置的莫耳分率；圖示不支持 Z=0.1 cm 為最快。</p><p>B：某位置的莫耳分率不是該位置新生成物的化學計量莫耳數，不能直接套用完全燃燒的比例作結論。</p><p>D：兩種生成速率同樣須比較 Z=0.2 cm 的曲線斜率；圖示並不支持 CH4 生成 CO 快於 H2O 生成。</p><p>本題考點：莫耳分率曲線（mole-fraction profile）——判斷局部生成或消耗時看曲線隨位置的增減與斜率；甲烷燃燒（methane combustion）——先形成 CO 的不完全燃燒區，後段可由 CO 繼續氧化為 CO2；化學計量（stoichiometry）——反應式比例不能直接套到混合氣體在單一位置的莫耳分率。</p></details>
 </article>
 <article class="sq" id="q18">
-<p class="sq-no">第 18 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q18" title="這一題的永久連結">第 18 題</a>（多選）</p>
 <div class="sq-stem">酵素可以催化反應,其第一步是和反應物產生作用,並結合形成複合體。圖8
 
  結構中甲代表反應物,乙代表某酵素中和甲結合部位的示意圖,丙是兩者結合後
@@ -305,7 +309,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：乙既標示為酵素，主要由胺基酸組成；甲與乙結合時，結構中的 N—H 與含氧基團可形成氫鍵。甲進行水解會切斷其含乙醯基的鍵結，醋酸可為產物之一；酵素本身則在反應後恢復。故選 BCD。</p><p>B：一般酵素為蛋白質，蛋白質由胺基酸聚合而成，因此乙可視為由胺基酸組成。</p><p>C：丙的結構可見可供氫鍵的 N—H 與含孤電子對的氧原子，兩分子結合時包含氫鍵等分子間作用力。</p><p>D：甲的乙醯基在水解時形成醋酸，因此醋酸是反應產物之一。</p><p>A：未鍵結電子對必須把甲中所有含氮、氧原子的孤電子對逐一計入；5 對不符合其路易斯結構。</p><p>E：酵素是催化劑，反應完成、產物離開後應再生為可繼續催化的狀態，不會因催化而固定脫去一分子水。</p><p>本題考點：酵素催化（enzyme catalysis）——酵素參與形成複合體但不被淨消耗，反應後要能再生；氫鍵（hydrogen bonding）——辨認 N—H 作供體與 O、N 的孤電子對作受體；水解反應（hydrolysis）——水參與斷鍵，依官能基判斷可能形成的產物。</p></details>
 </article>
 <article class="sq" id="q19">
-<p class="sq-no">第 19 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q19" title="這一題的永久連結">第 19 題</a>（多選）</p>
 <div class="sq-stem">圖9 為由硼砂( Na 2 B4 O7  10H2 O )製備硼元素(熔點:2076 °C)的方法:
 
  圖9
@@ -318,28 +322,28 @@
 </article>
 <aside class="sq-passage"><p>某生量測三個鹼土族金屬的氫氧化合物之溶解度,方法如下:</p><p> (1) 取適量氫氧化合物置於錐形瓶中,加入蒸餾水後攪拌一天,然後靜置一天 (2) 由(1)的錐形瓶中取適當量的溶液,置於另一個錐形瓶中,以0.0020 M HCl的標準溶液滴定。實驗結果如表2所示:</p><p> 表2</p><p> 化合物 式量 取用體積(mL) 標準酸滴定用量(mL)</p><p> Mg(OH) 2 58.3 50.0 8.12</p><p> Ca(OH) 2 74.1 1.00 24.41</p><p> Sr(OH) 2 121.6 0.500 34.87</p></aside>
 <article class="sq" id="q20">
-<p class="sq-no">第 20 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q20" title="這一題的永久連結">第 20 題</a>（多選）</p>
 <div class="sq-stem">關於此實驗的步驟,下列敘述哪些正確?(多選)</div>
 <ol class="sq-opts"><li><b>（A）</b>步驟(1)應將瓶口用軟木塞蓋緊</li><li><b>（B）</b>步驟(1)靜置的目的是讓懸浮的固體顆粒沉積</li><li><b>（C）</b>此實驗操作溶液溫度需要記錄</li><li><b>（D）</b>步驟(2)應使用適當大小的量筒,取用準確體積的溶液</li><li><b>（E）</b>步驟(2)若改用0.020 M HCl 的標準溶液滴定,則可得到更精確的數據</li></ol>
 <p class="sq-ans">答案：（A）（B）（C）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：本實驗要量到各氫氧化物的飽和溶液濃度，步驟設計必須避免溶液組成改變、讓未溶固體沉降，並記錄影響溶解度的溫度。故 A、B、C 正確。故選 A、B、C。</p><p>A：瓶口蓋緊可減少與空氣接觸，避免外界氣體改變氫氧化物飽和溶液的組成。</p><p>B：靜置可使懸浮固體顆粒沉積，取樣時較能取得澄清的飽和上清液，而非夾帶未溶固體。</p><p>C：固體的溶解度受溫度影響，若要比較或重現結果，實驗溶液溫度需要記錄。</p><p>D：題目取用體積低至0.500 mL，需以較精確的移液器具量取；量筒不適合作為取得準確體積的首選。</p><p>E：將 HCl 濃度提高10倍會使滴定所需體積約降為原來的十分之一，讀值的相對誤差反而可能變大，不能據此說數據更精確。</p><p>本題考點：飽和溶液（saturated solution）——取樣前要讓未溶固體與溶液達平衡，並取澄清上清液；溶解度（solubility）——比較不同物質的溶解度時，溫度是必須控制或記錄的條件；滴定精密度（titration precision）——滴定體積過小時，相同讀值誤差所占比例會提高。</p></details>
 </article>
 <article class="sq" id="q21">
-<p class="sq-no">第 21 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q21" title="這一題的永久連結">第 21 題</a>（多選）</p>
 <div class="sq-stem">關於表2 的結果,下列敘述哪些正確?(多選)</div>
 <ol class="sq-opts"><li><b>（A）</b>氫氧化鎂的溶解度最小</li><li><b>（B）</b>溶解度較大者,其溶解速率較快</li><li><b>（C）</b>當飽和溶液生成後,固體粒子的溶解與沉澱達平衡狀態</li><li><b>（D）</b>根據此實驗的步驟與方法,亦可用來量測鹼金族金屬氫氧化物的溶解度</li><li><b>（E）</b>若欲測定 Ba(OH) 2 的溶解度,則應取用50.0 mL飽和溶液</li></ol>
 <p class="sq-ans">答案：（A）（C）（D）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：共同判準是把滴定所耗 HCl 換成飽和溶液中的 OH− 莫耳數，再以 M(OH)2 每 1 mol 會給 2 mol OH− 求溶解度。三組數據算得 Mg(OH)2、Ca(OH)2、Sr(OH)2 的溶解度依序增加；飽和且靜置的系統則維持動態平衡。據此可判定 A、C、D 成立，故選 ACD。</p><p>A：Mg(OH)2 取樣 50.0 mL，耗用 HCl 8.12 mL；其濃度換算後最小，故三者中溶解度最小。</p><p>C：固體與其飽和溶液同時存在且濃度不再改變時，微觀上溶解與沉澱仍持續進行，兩速率相等即為動態平衡。</p><p>D：本法的核心是先製得飽和溶液，再以標準酸滴定 OH−；在有足量固體並調整取樣量的條件下，同樣可用於鹼金族金屬氫氧化物。</p><p>B：溶解度是平衡性質，溶解速率是受表面積、攪拌與溫度影響的動力學量；溶解度較大不必然溶得較快。</p><p>E：由 Mg、Ca、Sr 的結果可見往下族溶解度增加，Ba(OH)2 預期需取遠小於 50.0 mL 的飽和溶液，才能以有限的標準酸完成滴定；50.0 mL 並非適當取樣量。</p><p>本題考點：酸鹼滴定（acid-base titration）——先以 n(HCl)=n(OH−) 求出樣品的氫氧根莫耳數；溶解度積與溶解速率（solubility and dissolution rate）——前者是平衡濃度，後者是到達平衡的快慢，不能互推；動態平衡（dynamic equilibrium）——飽和時正、逆過程皆持續但速率相等。</p></details>
 </article>
 <article class="sq" id="q22">
-<p class="sq-no">第 22 題</p>
+<p class="sq-no"><a class="sq-link" href="#q22" title="這一題的永久連結">第 22 題</a></p>
 <div class="sq-stem">根據此實驗結果,計算氫氧化鈣的溶解度(M)。(2 分)</div>
 <p class="sq-ans">標準答案未收錄</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題目量到的是 1.00 mL 飽和 Ca(OH)2 溶液所含的 OH−，故先用 HCl 的莫耳數，再依 1 mol Ca(OH)2 對應 2 mol OH− 換算。HCl 體積為 24.41 mL=0.02441 L；n(HCl)=0.0020 mol/L×0.02441 L=4.882×10⁻⁵ mol，所以 n(OH−)=4.882×10⁻⁵ mol。n(Ca(OH)2)=4.882×10⁻⁵ mol÷2=2.441×10⁻⁵ mol；樣品體積為 1.00 mL=0.00100 L，溶解度=2.441×10⁻⁵ mol÷0.00100 L=0.02441 mol/L，依有效數字為 0.024 M，故選 0.024 M。</p><p>本題考點：酸鹼中和計量（acid-base stoichiometry）——先由標準酸濃度與體積求莫耳數，再以反應係數換算待測物；氫氧化鈣的解離（dissociation of calcium hydroxide）——Ca(OH)2 每 1 mol 產生 2 mol OH−，除以 2 的步驟不可省略；濃度計算（molarity calculation）——樣品濃度的分母應用取出的 1.00 mL 溶液，不是滴定液體積。</p></details>
 </article>
 <aside class="sq-passage"><p>在混合溶液中,不同種類分子的分子間作用力差距,會影響溶液偏離理想性質 的幅度。圖10 是在1 大氣壓下,環己烷-乙醇混合溶液所測得的沸點對乙醇莫耳 分率數值(X)的曲線。回答下列問題:</p><p> 90</p><p> 80</p><p> 沸點</p><p> (°C)</p><p> 70</p><p> 60</p><p> 0.0 0.2 0.4 0.6 0.8 1.0</p><p> 乙醇莫耳分率(X)</p><p> 圖10</p></aside>
 <article class="sq" id="q23">
-<p class="sq-no">第 23 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q23" title="這一題的永久連結">第 23 題</a>（多選）</p>
 <div class="sq-stem">關於環己烷-乙醇混合溶液的敘述,哪些正確?(多選)</div>
 <img class="sq-fig" loading="lazy" src="../../../../data/ast/figures/114_分科化學_g23_25.png" alt="第 23 題附圖">
 <ol class="sq-opts"><li><b>（A）</b>X = 0.5 的環己烷-乙醇混合溶液沸點約為64 °C</li><li><b>（B）</b>將 0.5 L環己烷與 0.5 L乙醇混合後,溶液總體積大於 1.0 L</li><li><b>（C）</b>環己烷與乙醇混合為放熱反應</li><li><b>（D）</b>環己烷分子間作用力大於乙醇分子間作用力</li><li><b>（E）</b>環己烷分子與乙醇分子之間主要以偶極-偶極力互相吸引</li></ol>
@@ -347,7 +351,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：在1 atm 下，圖10顯示乙醇莫耳分率 X=0.5 附近的沸點約為64°C，故（A）正確。曲線的最低沸點反映環己烷與乙醇間作用力較同類分子間作用力弱，混合後較不緊密，總體積可大於原體積和，故（B）正確；兩端純液體的沸點比較則支持（D）。圖形讀值部分把握較低。故選 A、B、D。</p><p>A：X=0.5 的曲線讀值約為64°C，低於兩端純液體的沸點。</p><p>B：異種分子間吸引較弱時，混合可出現體積膨脹，0.5 L 加0.5 L 的總體積可大於1.0 L。</p><p>D：圖中純環己烷端的沸點高於純乙醇端，表示環己烷分子間的整體作用力較大。</p><p>C：異種分子間吸引較弱且混合體積膨脹時，需吸收能量破壞原有的較強作用，不能判為放熱混合。</p><p>E：環己烷是非極性分子，不能與乙醇主要形成偶極—偶極力；此說法把非極性分子誤當成具永久偶極的分子。</p><p>本題考點：拉午耳定律偏差（deviation from Raoult&#x27;s law）——混合物沸點低於兩端純液體時，先判斷異種分子間作用力是否較弱；體積變化（volume change on mixing）——異種分子間吸引較弱時，分子堆積可能較鬆散而體積膨脹；分子間作用力（intermolecular forces）——偶極—偶極力要求兩個分子都具有永久偶極，非極性環己烷不符合。</p></details>
 </article>
 <article class="sq" id="q24">
-<p class="sq-no">第 24 題</p>
+<p class="sq-no"><a class="sq-link" href="#q24" title="這一題的永久連結">第 24 題</a></p>
 <div class="sq-stem">下列三種液體甲、乙與丙在60 °C時,蒸氣壓大小順序為何?用「&lt;」的符號
  寫出從小到大的順序。(2 分)
 
@@ -361,7 +365,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：同一溫度下，蒸氣壓較大的液體有較低的正常沸點。純環己烷的正常沸點高於純乙醇，所以乙的蒸氣壓小於甲；環己烷與乙醇混合時，異種分子間作用力較乙醇分子間的氫鍵弱，呈正偏差，丙的總蒸氣壓又較甲大。因此從小到大的順序為乙&lt;甲&lt;丙。</p><p>本題考點：蒸氣壓與沸點（vapor pressure and boiling point）——在相同外壓下，沸點較低者於同溫的蒸氣壓較高；拉午耳定律正偏差（positive deviation from Raoult&#x27;s law）——異種分子吸引力較弱時，分子較易逸出液面，總蒸氣壓上升。</p></details>
 </article>
 <article class="sq" id="q25">
-<p class="sq-no">第 25 題</p>
+<p class="sq-no"><a class="sq-link" href="#q25" title="這一題的永久連結">第 25 題</a></p>
 <div class="sq-stem">X=0.9 的環己烷-乙醇混合溶液,其沸點比純乙醇的沸點明顯降低,寫出其主要
  原因。(2 分)
 
@@ -373,7 +377,7 @@
 </article>
 <aside class="sq-passage"><p>化合物甲為雌激素,化合物乙、丙、丁亦具有類似的作用,會干擾內分泌 系統的正常運作,稱為環境荷爾蒙,結構如圖11 所示。 OH</p><p> OH OH</p><p> HO OH</p><p> HO</p><p> HO</p><p> 甲 乙 丙 丁</p><p> 圖11</p></aside>
 <article class="sq" id="q26">
-<p class="sq-no">第 26 題</p>
+<p class="sq-no"><a class="sq-link" href="#q26" title="這一題的永久連結">第 26 題</a></p>
 <div class="sq-stem">比較化合物甲~丁的分子結構,推測其關鍵的結構是何種官能基團,寫出此官能基
  的中文名稱及畫出其結構。(2 分)</div>
 <img class="sq-fig" loading="lazy" src="../../../../data/ast/figures/114_分科化學_g26_28.png" alt="第 26 題附圖">
@@ -382,7 +386,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：比較甲至丁可見共同重複出現的官能基為羥基，結構可寫成 R—OH，或直接標示為 —OH。若羥基連在芳香環上，則可稱為酚羥基；本題要辨認的是各分子共有的 —OH 結構，而不是各自碳骨架的差異。</p><p>本題考點：官能基辨識（functional-group identification）——先找所有結構都重複出現的原子團，再排除只屬於個別分子的碳鏈或環；羥基（hydroxyl group）——看到氧與氫直接相連的 —OH，即可判為羥基。</p></details>
 </article>
 <article class="sq" id="q27">
-<p class="sq-no">第 27 題</p>
+<p class="sq-no"><a class="sq-link" href="#q27" title="這一題的永久連結">第 27 題</a></p>
 <div class="sq-stem">式3 為工業上合成化合物丙的方法,a-d 為反應式的平衡係數。寫出a:b:c:d 的最小
  整數比。(2 分)
 
@@ -393,7 +397,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：式3可寫成 2 C6H6O+C3H6O→C15H16O2+H2O。令化合物丙係數為 1，碳原子需滿足 6a+3b=15；取丙酮係數 b=1 時，a=2。左側氫原子數為 2×6+6=18，右側化合物丙已有 16 個氫，故水的係數 d=1；氧原子亦為左側 2+1=3、右側 2+1=3。故 a:b:c:d 的最小整數比為 2:1:1:1。</p><p>本題考點：化學反應式平衡（chemical equation balancing）——先固定較複雜產物的係數，再以 C、H、O 逐一守恆檢核；最簡整數比——所有係數確認守恆後，再以公因數約成最小正整數。</p></details>
 </article>
 <article class="sq" id="q28">
-<p class="sq-no">第 28 題</p>
+<p class="sq-no"><a class="sq-link" href="#q28" title="這一題的永久連結">第 28 題</a></p>
 <div class="sq-stem">畫出式3 反應中 C3 H6 O 的結構式(包含所有原子)。(2 分)
 
  背面還有試題</div>
@@ -404,7 +408,7 @@
 </article>
 <aside class="sq-passage"><p>果膠為一種水溶性的高分子聚合物,結構中含有大量的羥(-OH)、羧(-COOH) 與酯( -COOCH3 )官能基,如圖12 所示。果膠亦為一種高分子電解質,其結構 單元上含有能解離的官能基團。</p><p> COX OH COX OH COX</p><p> O O O O O O O</p><p> OH OH OH OH OH</p><p> O O O O</p><p> OH COX OH COX OH</p><p> X=OH or OCH3</p><p> 圖12</p><p> 小芬取0.2 克果膠,置入15 mL 的濃度0.1 M HCl 水溶液,混合均勻後維持 緩慢攪拌溶液,同時將0.1 M 的NaOH 水溶液慢慢滴入,量測和記錄該溶液的 導電度及pH 值。實驗結果如圖13 所示。X 軸代表所加入的NaOH 體積,Y 軸 左側為導電度(方形□數據),Y 軸右側為pH 值(空心圓○數據)的變化。回答 下列問題。</p><p> 區域I 區域II 區域III</p><p> 2500</p><p> 12</p><p> 2000 10</p><p> 導電度 8</p><p> 1500 (μS / cm) pH</p><p> 6</p><p> 1000</p><p> 導電度 4</p><p> pH 值</p><p> 500</p><p> 2</p><p> 0 5 10 15 20 25 30</p><p> NaOH 的體積(mL)</p><p> 圖13</p></aside>
 <article class="sq" id="q29">
-<p class="sq-no">第 29 題</p>
+<p class="sq-no"><a class="sq-link" href="#q29" title="這一題的永久連結">第 29 題</a></p>
 <div class="sq-stem">寫出圖13 中,區域I 所發生的主要化學反應式。(2 分)</div>
 <img class="sq-fig" loading="lazy" src="../../../../data/ast/figures/114_分科化學_g29_31.png" alt="第 29 題附圖">
 <p class="sq-hint">本題選項為上圖中的 A／B／C／D，請對照圖片作答。</p>
@@ -412,7 +416,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：區域I開始時溶液含有過量的強酸 HCl，慢慢加入的 NaOH 主要先中和 HCl。主要反應式為 HCl(aq)+NaOH(aq)→NaCl(aq)+H2O(l)，其淨離子式為 H3O+(aq)+OH−(aq)→2 H2O(l)。此時優先移除導電度高的 H3O+，也正符合區域I的酸鹼中和階段。</p><p>本題考點：強酸強鹼中和（strong acid-strong base neutralization）——有過量強酸時，加入 OH− 會先與 H3O+ 反應；淨離子反應式（net ionic equation）——刪去旁觀離子 Na+、Cl− 後，只保留真正發生變化的 H3O+ 與 OH−；導電度滴定曲線（conductometric titration）——先判溶液中哪一種高遷移率離子被消耗，再對應曲線分區。</p></details>
 </article>
 <article class="sq" id="q30">
-<p class="sq-no">第 30 題</p>
+<p class="sq-no"><a class="sq-link" href="#q30" title="這一題的永久連結">第 30 題</a></p>
 <div class="sq-stem">根據圖13 中pH 值變化,判斷寫出果膠的 pK a 應約為多少?(2 分)</div>
 <img class="sq-fig" loading="lazy" src="../../../../data/ast/figures/114_分科化學_g29_31.png" alt="第 30 題附圖">
 <p class="sq-hint">本題選項為上圖中的 A／B／C／D，請對照圖片作答。</p>
@@ -420,7 +424,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：區域II是果膠羧基的弱酸滴定區，pKa 要在半當量點讀取。此區域共消耗 3.9 mL NaOH，半當量點位於自區域II起算 3.9/2=1.95 mL 的位置；此時 [—COOH]=[—COO−]，依 Henderson–Hasselbalch 關係 pH=pKa。由題圖半當量點的 pH 讀值，果膠的 pKa 約為 3.5。</p><p>本題考點：半當量點（half-equivalence point）——弱酸滴定時，加入量達可滴定酸量一半即有 [HA]=[A−]；Henderson–Hasselbalch equation——當酸、共軛鹼濃度相等時可直接用 pH 讀出 pKa；羧酸解離（carboxylic-acid dissociation）——果膠的 —COOH 在滴定中轉成 —COO−，其緩衝區可用來判讀酸性強弱。</p></details>
 </article>
 <article class="sq" id="q31">
-<p class="sq-no">第 31 題</p>
+<p class="sq-no"><a class="sq-link" href="#q31" title="這一題的永久連結">第 31 題</a></p>
 <div class="sq-stem">在區域II 的範圍內,所消耗的NaOH 體積約為3.9 mL。若更換另一種果膠樣品,
  實驗操作不變的情況下,區域II 所消耗的NaOH 體積變為4.1 mL,試用官能基
  與其數量說明新樣品與原樣品在結構上有何差異?(2 分)</div>

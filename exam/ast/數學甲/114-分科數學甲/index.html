@@ -40,6 +40,10 @@
 .linkgrid span{display:block;color:var(--ink-faint);font-size:.8rem;}
 .sq{border-top:1px solid var(--rule-faint);padding:1.1rem 0 .3rem;}
 .sq-no{font-size:.82rem;letter-spacing:.06em;color:var(--accent);margin:0 0 .35rem;}
+.sq-link{color:inherit;text-decoration:none;}
+.sq-link:hover{text-decoration:underline;}
+.sq:target{background:var(--rule-faint);border-radius:var(--r-sm);
+  box-shadow:0 0 0 .6rem var(--rule-faint);}
 .sq-flag{margin-left:.4rem;color:var(--ink-faint);}
 .sq-stem{font-family:var(--serif);font-size:1.02rem;line-height:1.85;color:var(--ink);}
 .sq-opts{list-style:none;padding:0;margin:.55rem 0 .5rem;}
@@ -77,7 +81,7 @@
 
 <h2>全部 11 題</h2>
 <article class="sq" id="q3">
-<p class="sq-no">第 3 題</p>
+<p class="sq-no"><a class="sq-link" href="#q3" title="這一題的永久連結">第 3 題</a></p>
 <div class="sq-stem">《幾何原本》上說:「給定相異兩點可決定一條直線」。一般來說,相異三點
 
  可決定 C23 = 3 條直線;但若這三點共線,此時僅決定一條直線。坐標平面上,
@@ -95,7 +99,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：先列出 8 個交點。圓 Γ1 與兩坐標軸給出 (2,0)、(−2,0)、(0,2)、(0,−2)；圓 Γ2 與 x−y=0 給出 (1,1)、(−1,−1)；圓 Γ2 與 x+y=0 給出 (1,−1)、(−1,1)。8 點先按點對計有 C(8,2)=28 條；三點共線組為 (2,0)、(1,1)、(0,2)，(−2,0)、(−1,−1)、(0,−2)，(2,0)、(1,−1)、(0,−2)，以及 (−2,0)、(−1,1)、(0,2)。每組 3 點的 3 個點對只代表 1 條直線，所以每組扣除 3−1=2 條，總數為 28−4×2=20，故選 C。</p><p>A：12 條表示還要扣除更多重複的共線點對；列出的 8 點只有上述四組三點共線，沒有這樣的額外扣除。</p><p>B：16 條同樣多扣了兩組共線修正；每組三點共線只需從 3 個點對改成 1 條線，不能重複扣除。</p><p>D：24 條只扣除兩組三點共線，漏掉另外兩組由斜率相同所形成的共線關係。</p><p>E：28 條是未處理共線重複的點對總數；四組三點共線各會造成 2 條的重複，因此不能直接採用。</p><p>本題考點：兩點決定一直線——n 個點先以 C(n,2) 計點對；共線修正——m 點共線時，C(m,2) 個點對只形成 1 條線，須扣除 C(m,2)−1；組合計數——列出全部 3 點以上共線組後再修正，避免漏扣或重複扣除。</p></details>
 </article>
 <article class="sq" id="q4">
-<p class="sq-no">第 4 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q4" title="這一題的永久連結">第 4 題</a>（多選）</p>
 <div class="sq-stem">試從下列坐標平面上的二次曲線中,選出與所有的鉛直線都相交的選項。
 
  x 2 y 2</div>
@@ -119,7 +123,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：與所有鉛直線 x=k 都相交，等價於任取實數 k 都能解出實數 y。（C）化為 y^2/4=1+x^2/9，右式永遠為正；（D）直接給 y=(4/9)x^2，每個 k 都有一個 y。兩者均符合，故選 CD。</p><p>C：任意實數 x 代入後，1+x^2/9&gt;0，因此可解得兩個實數 y，故每條鉛直線都相交。</p><p>D：對任意 x，y 的值由 y=(4/9)x^2 唯一決定，故每條鉛直線恰有一個交點。</p><p>A：橢圓只有在 −3≤x≤3 時才有實數 y，x 超出此範圍的鉛直線不相交。</p><p>B：此雙曲線需滿足 x^2/9−1≥0，也就是 |x|≥3，不能與所有鉛直線相交。</p><p>E：由 x=(4/9)y^2 可知 x 必為非負；x&lt;0 的鉛直線沒有交點。</p><p>本題考點：鉛直線檢驗（vertical line test）——把 x=k 代入方程式，檢查任意實數 k 是否都有實數 y；二次曲線定義域——由 y^2 或 y 的方程式判斷哪些 x 可取；隱函數與顯函數——能對每個 x 解出至少一個 y，才會與所有鉛直線相交。</p></details>
 </article>
 <article class="sq" id="q5">
-<p class="sq-no">第 5 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q5" title="這一題的永久連結">第 5 題</a>（多選）</p>
 <div class="sq-stem">有一實數數列 an ,其中 na = cos( n− ) ,n為正整數。試選出正確的選項。
  6
 
@@ -133,14 +137,14 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：先化簡通項：a_n = cos(nπ−π/6) = (−1)^n√3/2。偶數項為 √3/2，奇數項為 −√3/2，因此 a_4=a_24=√3/2；又 (a_n)^n = ((−1)^n√3/2)^n = (−√3/2)^n。令 r=−√3/2，部分和 S_N=r(1−r^N)/(1−r)；因 |r|&lt;1，r^N→0，所以 lim S_N=r/(1−r)=(−√3/2)/(1+√3/2)=−√3/(2+√3)=3−2√3。故正確選項為 CE。</p><p>C：4 與 24 都是偶數，a_4=(−1)^4√3/2=√3/2，a_24=(−1)^24√3/2=√3/2，兩項相等。</p><p>E：由 a_n 的奇偶符號可得 (a_n)^n=(−√3/2)^n；其公比 r=−√3/2 且 |r|&lt;1，部分和極限為 3−2√3，故級數敘述成立。</p><p>A：a_1=(−1)^1√3/2=−√3/2，不等於 −1/2。</p><p>B：a_2=√3/2，而 a_3=−√3/2，兩者不相等。</p><p>D：偶數項固定為 √3/2，奇數項固定為 −√3/2，兩個子列極限不同，所以 a_n 不收斂。</p><p>本題考點：三角函數週期與特殊角——先把 nπ 與 π/6 分開化簡；數列收斂——比較偶數、奇數子列是否有同一極限；幾何級數——先寫部分和，再以 |r|&lt;1 取極限。</p></details>
 </article>
 <article class="sq" id="q6">
-<p class="sq-no">第 6 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q6" title="這一題的永久連結">第 6 題</a>（多選）</p>
 <div class="sq-stem">設指數函數 f ( x ) = 1.2 x 。試選出正確的選項。</div>
 <ol class="sq-opts"><li><b>（A）</b>f (0)  0</li><li><b>（B）</b>f (10)  10</li><li><b>（C）</b>坐標平面上, y = 1.2 x 的圖形與直線 y = x 相交</li><li><b>（D）</b>坐標平面上, y = 1.2 x 與 y = log(1.2 x ) 的圖形對稱於直線 y = x</li><li><b>（E）</b>對任意正實數b , log1.2 b  1.2b</li></ol>
 <p class="sq-ans">答案：（A）（C）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：函數 f(x)=1.2^x 的底數大於 1，且 f(0)=1。圖形是否與 y=x 相交，要看 g(x)=1.2^x−x 的正負；g(1)=0.2&gt;0，g(2)=1.44−2&lt;0，連續性保證中間有交點。因此 A、C 正確，故選 AC。</p><p>A：f(0)=1.2^0=1&gt;0，故（A）成立。</p><p>C：g(x) 在 x=1 時為正、x=2 時為負，依連續函數的介值性質，1 與 2 之間存在 g(x)=0 的位置，也就是兩圖相交。</p><p>B：1.2^10 小於 10，不能因底數大於 1 就判定其在 x=10 已超過 10。</p><p>D：與 y=1.2^x 對稱於 y=x 的反函數應為 y=log_1.2 x；選項所列的對數式不滿足這個反函數關係。</p><p>E：令 h(b)=log_1.2 b−1.2^b。b=10 時 h(b)&gt;0，而 b 充分大時指數項會超過對數項，使 h(b)&lt;0；由連續性可知存在正實數 b 使兩者相等，故「任意」皆不等於的敘述不成立。</p><p>本題考點：指數函數（exponential function）——底數大於 1 時函數遞增，但特定 x 的大小仍要實際比較；介值定理（intermediate value theorem）——連續函數在兩點異號時，中間必有零點；反函數（inverse function）——指數函數的圖形要與以同底數為底的對數函數互為 y=x 對稱。</p></details>
 </article>
 <article class="sq" id="q8">
-<p class="sq-no">第 8 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q8" title="這一題的永久連結">第 8 題</a>（多選）</p>
 <div class="sq-stem">設複數z 的虛部不為0 且 z = 2 。已知在複數平面上,1、z、 3z 共線。試選出正確
 
  的選項。</div>
@@ -155,7 +159,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：令 z=x+yi，其中 y≠0 且 x^2+y^2=4。因 1、z、z^3 共線，(z^3−1)/(z−1)=z^2+z+1 必為實數；其虛部為 y(2x+1)，故 y≠0 時 2x+1=0，得到 x=−1/2，並有 y^2=4−1/4=15/4。</p><p>B：(z^3−z)/(z−1)=z(z+1)=z^2+z，其虛部同樣為 y(2x+1)=0，所以此分式為實數，選項成立。</p><p>C：上面的共線條件直接給出 2x+1=0，因此 z 的實部為 −1/2，選項成立。</p><p>E：判斷題列三點是否共線時，應取兩個位置差並檢查其比值是否為實數；依此共線判準，答案鍵列出的 E 為入選項。</p><p>A：z 與其共軛複數 z̄ 的乘積為 z·z̄=|z|^2=4，不是 2。</p><p>D：由 z^2+z+4=0 可得題列的 z^2−z̄+4=−(z+z̄)=1，不是 0，故不成立。</p><p>本題考點：複數平面共線——兩個複數差的比值為實數時可判三點共線；實虛部分離——令 z=x+yi 並利用 y≠0 解出 x；模長——z·z̄=|z|^2，可把幾何條件轉成代數式。</p></details>
 </article>
 <article class="sq" id="q9">
-<p class="sq-no">第 9 題（多選）</p>
+<p class="sq-no"><a class="sq-link" href="#q9" title="這一題的永久連結">第 9 題</a>（多選）</p>
 <div class="sq-stem">令A 為以原點為中心逆時針旋轉角的旋轉矩陣,且令B 為以x 軸為鏡射軸
   a1 a2   c1 c2 
  (對稱軸)的鏡射矩陣。令 A =   、 BA =   。
@@ -168,7 +172,7 @@
 </article>
 <aside class="sq-passage"><p>某商店以抽獎方式販售一熱門公仔,每次抽獎都互相獨立且抽中的機率為2 。 5</p><p>參加者可用以下兩種方式參加抽獎。</p><p>方式一:先付225 元得到兩次抽獎機會,只要抽中即停止抽獎且得到一個公仔; 若這兩次皆未抽中,則必須再多付75 元得到一個公仔。</p><p>方式二:抽獎次數不限,每抽獎一次付100 元。</p><p>根據上述,試回答下列問題。</p></aside>
 <article class="sq" id="q13">
-<p class="sq-no">第 13 題</p>
+<p class="sq-no"><a class="sq-link" href="#q13" title="這一題的永久連結">第 13 題</a></p>
 <div class="sq-stem">若以方式二抽獎直到抽中一個公仔為止,試依期望值定義,使用符號表示
 
  所需抽獎次數的期望值,並求其值。(非選擇題,4 分)</div>
@@ -176,7 +180,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：每次抽中機率為2/5，前 n-1 次未中的機率為 (3/5)^(n-1)，第 n 次才抽中的機率為 (3/5)^(n-1)×2/5。令 X 為抽到第一個公仔所需的次數，依期望值定義，E(X)=∑（n=1 至 ∞）n×(3/5)^(n-1)×2/5。這是成功機率 p=2/5 的幾何分布，E(X)=1/p=1/(2/5)=5/2。故所需抽獎次數的期望值為5/2次。</p><p>本題考點：幾何分布（geometric distribution）——「直到首次成功」時，先寫前 n-1 次失敗、最後一次成功的機率；期望值（expected value）——以各可能值乘上其機率後加總，幾何分布可化為 1/p。</p></details>
 </article>
 <article class="sq" id="q14">
-<p class="sq-no">第 14 題</p>
+<p class="sq-no"><a class="sq-link" href="#q14" title="這一題的永久連結">第 14 題</a></p>
 <div class="sq-stem">假設花費金額不設限直到得到一個公仔為止,試分別求出這兩種抽獎方式
 
  得到一個公仔所需付金額的期望值,並說明這兩個期望值的大小關係。
@@ -189,14 +193,14 @@
 </article>
 <aside class="sq-passage"><p>2 1 設實係數多項式函數 f ( x ) = 3ax + (1 − a ) ,其中 −  a  1 。在坐標平面上, 2</p><p>令為 y = f ( x ) 與x 軸在 −1 x  1 所圍的區域。根據上述,試回答下列問題。</p></aside>
 <article class="sq" id="q15">
-<p class="sq-no">第 15 題</p>
+<p class="sq-no"><a class="sq-link" href="#q15" title="這一題的永久連結">第 15 題</a></p>
 <div class="sq-stem">證明當 −1 x  1 時, f ( x )  0 皆成立。(非選擇題,4 分)
  1</div>
 <p class="sq-ans">標準答案未收錄</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：由題組函數 f(x)=(3a x^2)/2+1-a/2，且 -1/2≤a≤1、-1≤x≤1。若 a≥0，則 (3a x^2)/2≥0，且 1-a/2≥1/2，因此 f(x)≥1/2≥0。若 -1/2≤a&lt;0，因 x^2≤1 而 a x^2≥a，故 f(x)≥3a/2+1-a/2=1+a≥1/2≥0。兩種情形都成立，故 f(x)≥0。</p><p>本題考點：參數分情形討論（case analysis）——係數含參數且正負會改變不等式方向時，先依係數正負分段；平方範圍——在 -1≤x≤1 時用 0≤x^2≤1 夾住含 x^2 的項。</p></details>
 </article>
 <article class="sq" id="q16">
-<p class="sq-no">第 16 題</p>
+<p class="sq-no"><a class="sq-link" href="#q16" title="這一題的永久連結">第 16 題</a></p>
 <div class="sq-stem">證明對於所有 a −[ ,1] ,的面積皆為2。(非選擇題,2 分)
  2
  1</div>
@@ -204,7 +208,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：在給定範圍內 f(x)≥0，因此 Γ 的面積可直接以定積分計算。A=∫[-1,1] ((3a x^2)/2+1-a/2) dx=(3a/2)×(2/3)+(1-a/2)×2=a+2-a=2。參數 a 的項恰好相消，故對所有 -1/2≤a≤1，Γ 的面積皆為2。</p><p>本題考點：定積分求面積（definite integral for area）——函數在區間內非負時，面積就是 ∫f(x) dx，不必另取絕對值；參數消去——展開積分後檢查含參數項是否相消，不能只憑圖形外觀判定面積不變。</p></details>
 </article>
 <article class="sq" id="q17">
-<p class="sq-no">第 17 題</p>
+<p class="sq-no"><a class="sq-link" href="#q17" title="這一題的永久連結">第 17 題</a></p>
 <div class="sq-stem">令V 為繞x 軸旋轉所得旋轉體的體積。試問對所有 a −[ ,1] ,V 是否都相等?
  2
  若相等,則求其值;若不相等,則當a 為多少時,V 有最大值,並求此最大值。

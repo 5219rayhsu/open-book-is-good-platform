@@ -40,6 +40,10 @@
 .linkgrid span{display:block;color:var(--ink-faint);font-size:.8rem;}
 .sq{border-top:1px solid var(--rule-faint);padding:1.1rem 0 .3rem;}
 .sq-no{font-size:.82rem;letter-spacing:.06em;color:var(--accent);margin:0 0 .35rem;}
+.sq-link{color:inherit;text-decoration:none;}
+.sq-link:hover{text-decoration:underline;}
+.sq:target{background:var(--rule-faint);border-radius:var(--r-sm);
+  box-shadow:0 0 0 .6rem var(--rule-faint);}
 .sq-flag{margin-left:.4rem;color:var(--ink-faint);}
 .sq-stem{font-family:var(--serif);font-size:1.02rem;line-height:1.85;color:var(--ink);}
 .sq-opts{list-style:none;padding:0;margin:.55rem 0 .5rem;}
@@ -92,7 +96,7 @@
 
 <h2>題目長什麼樣</h2>
 <p>以下自本科題庫抽 5 題示例，完整題目請看上方各年度考卷。</p>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">2024 年聯合國大會宣布2025 年為國際量子科學與科技年(IYQ),以紀念海森堡及
  薛丁格分別於1925 年及1926 年提出全新量子力學數學表述方式,並與1900 年代初期
@@ -105,7 +109,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：量子力學以量子化能量與波函數描述原子中的電子，能預測電子在不同位置出現的機率分布，並說明原子能階離散的特性。這正是（E）所述內容，故選 E。</p><p>A：普朗克的量子論首先用於解釋黑體輻射，不是直接成功解釋氫原子光譜。</p><p>B：德布羅意的物質波適用於所有具有動量的物質，不限於電子；電子只是最容易觀察波動性的例子之一。</p><p>C：波耳模型以量子化能階解釋原子光譜，並非用來說明原子核的組成或核衰變。</p><p>D：量子力學可精準預測大量電子累積後的干涉機率分布，但單一電子落在螢幕何處只能給出機率，不能逐顆精準預告位置。</p><p>本題考點：量子化（quantization）——原子束縛態的可允許能量是離散的，遇到光譜問題時要先連結能階差；波函數（wavefunction）——波函數提供位置等物理量的機率分布，不等於單次測量的確定軌跡；機率詮釋（probabilistic interpretation）——量子預測可對統計結果非常精準，卻不必然決定單一事件的位置。</p></details>
 </article>
 <aside class="sq-passage"><p>圖8 為等電位線與電場實驗裝置圖,包含電場形成裝置:由碳板、金屬電極、導線與直流電源等連接而成,以及測量工具:金屬探針P1、P2 與儀表M。兩金屬電極的大小可不計,兩金屬電極與碳板的接觸點分別位於X 軸上的A、B 兩點,其與坐標原點O 的距離為a。某生使用圖8 的實驗裝置來測量碳板上任兩點間是否有電位差,畫出等電位線,並畫出電力線,如圖9 所示。</p><p> 直流電源</p><p> 金屬探針P1</p><p> 金 金</p><p> 屬 屬</p><p> 電 電</p><p> 極 Y 極 儀表M</p><p> a a</p><p> X A O B 金屬探針P2</p><p> 碳板</p><p> 金屬電極與碳板的接觸點</p><p> 圖8</p><p>114年分科 第 6 頁 請記得在答題卷簽名欄位以正楷簽全名</p><p>物理考科 共 7 頁</p><p> Y</p><p> C</p><p> E</p><p> D</p><p> A B X O</p><p> F</p><p> 圖9</p></aside>
-<article class="sq" id="q22">
+<article class="sq">
 <p class="sq-no">第 22 題</p>
 <div class="sq-stem">(a)以箭頭畫出圖9 中C、D 二點的電場方向。(2 分)
 
@@ -121,7 +125,7 @@
 <p class="sq-ans">標準答案未收錄</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：畫 C、D 兩點的電場方向時，先在該點作等電位線的法線，再由高電位指向低電位；電場不會沿著等電位線方向。比較 E、F 的電場量值時，應比較各點附近相鄰等電位線的間距：在相同電位差下，間距較小處的電位梯度較大，電場量值也較大。因此 C、D 的箭頭與 E、F 的大小關係，都要以圖9所示曲線的垂直方向與疏密判定。</p><p>本題考點：電場方向（electric-field direction）——由高電位指向低電位，且垂直等電位線；電位梯度（potential gradient）——相同電位差分布在較短距離時，電場較強；等電位線判讀（equipotential-line interpretation）——箭頭方向與線距必須分別用垂直性與疏密判準判斷。</p></details>
 </article>
-<article class="sq" id="q16">
+<article class="sq">
 <p class="sq-no">第 16 題（多選）</p>
 <div class="sq-stem">在新款車的碰撞安全測試中,一輛質量為2000 kg 的汽車,以等速度72 km/h(20 m/s)
  在水平地面上直線前進,和質量為1000 kg 的
@@ -139,7 +143,7 @@
 <p class="sq-ans">答案：（A）（C）（E）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：0.5 s後以汽車速率10 m/s代入碰撞期間的動量守恆，可求障礙物運動狀態。初動量為2000 kg×20 m/s=4.0×10⁴ kg·m/s；0.5 s後汽車動量為2000 kg×10 m/s=2.0×10⁴ kg·m/s，所以障礙物動量為2.0×10⁴ kg·m/s、速率為20 m/s。</p><p>A：0.5 s後汽車速率維持不變，表示碰撞力已不再作用，兩物已分離。</p><p>C：由總動量守恆，障礙物速率為2.0×10⁴ kg·m/s ÷ 1000 kg=20 m/s。</p><p>E：初總動能為0.5×2000×20^2=4.0×10⁵ J；碰後總動能為0.5×2000×10^2+0.5×1000×20^2=3.0×10⁵ J，故減少1.0×10⁵ J。</p><p>B：0.5 s後汽車動能為0.5×2000×10^2=1.0×10⁵ J，只剩初值4.0×10⁵ J的1/4，不是減少一半。</p><p>D：汽車平均加速度量值為|10−20|/0.5=20 m/s²，不是10 m/s²。</p><p>本題考點：動量守恆（conservation of momentum）——外力衝量可忽略的碰撞，要用碰撞前後總動量相等求未知速率；動能（kinetic energy）——非彈性碰撞須分別計算各物體碰後動能再比較；速度—時間圖（velocity–time graph）——水平段表示速度不變，可用來判斷作用力是否結束。</p></details>
 </article>
-<article class="sq" id="q11">
+<article class="sq">
 <p class="sq-no">第 11 題</p>
 <div class="sq-stem">機車在排放廢氣時,常伴隨很大的噪音。利用干涉型消音器可以減低此類噪音,其設計
  概念如圖4 所示。當聲波抵達甲點時使其分為兩股
@@ -155,7 +159,7 @@
 <p class="sq-ans">答案：（D）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：干涉型消音器要讓兩股同頻聲波在乙點相消，路徑差必須是半個波長的奇數倍。主要噪音的波長 λ=1.0 m，最小可達成破壞性干涉的路徑差為 ΔL=λ/2=1.0/2=0.50 m，因此兩波相差半週期而最有效消音，故選 D。</p><p>A：ΔL=2.0 m=2λ，兩波相差整數個週期，會同相疊加，不是最有效的相消條件。</p><p>B：ΔL=1.0 m=λ，同樣使兩波同相到達乙點，不能有效降低噪音。</p><p>C：ΔL=0.75 m=3λ/4，並非半整數倍波長，兩波相位沒有剛好相反。</p><p>E：ΔL=0.25 m=λ/4，只造成四分之一週期的相位差，不能完全相消。</p><p>本題考點：破壞性干涉（destructive interference）——同頻波要相消時，路徑差取（n+1/2）λ；相位差（phase difference）——整數倍 λ 代表同相，半整數倍 λ 才代表反相。</p></details>
 </article>
-<article class="sq" id="q4">
+<article class="sq">
 <p class="sq-no">第 4 題</p>
 <div class="sq-stem">進行焦耳實驗時,使兩個質量各為0.42 kg 的重錘落下1.0 m,以帶動葉片旋轉,攪動
  容器內2.0 L 的水。已知水的比熱為4.2 kJ / (kg  K) ,水所散失的熱量可忽略,重力加速

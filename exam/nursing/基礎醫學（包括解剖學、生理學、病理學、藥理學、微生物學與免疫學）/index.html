@@ -40,6 +40,10 @@
 .linkgrid span{display:block;color:var(--ink-faint);font-size:.8rem;}
 .sq{border-top:1px solid var(--rule-faint);padding:1.1rem 0 .3rem;}
 .sq-no{font-size:.82rem;letter-spacing:.06em;color:var(--accent);margin:0 0 .35rem;}
+.sq-link{color:inherit;text-decoration:none;}
+.sq-link:hover{text-decoration:underline;}
+.sq:target{background:var(--rule-faint);border-radius:var(--r-sm);
+  box-shadow:0 0 0 .6rem var(--rule-faint);}
 .sq-flag{margin-left:.4rem;color:var(--ink-faint);}
 .sq-stem{font-family:var(--serif);font-size:1.02rem;line-height:1.85;color:var(--ink);}
 .sq-opts{list-style:none;padding:0;margin:.55rem 0 .5rem;}
@@ -92,35 +96,35 @@
 
 <h2>題目長什麼樣</h2>
 <p>以下自本科題庫抽 5 題示例，完整題目請看上方各年度考卷。</p>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">下列何種蛋白質屬於初級主動運輸子（active transporter）？</div>
 <ol class="sq-opts"><li><b>（A）</b>鈣通道</li><li><b>（B）</b>鈣依賴性鉀通道</li><li><b>（C）</b>鈉鈣交換子</li><li><b>（D）</b>鈣幫浦</li></ol>
 <p class="sq-ans">答案：（D）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：本題要分的是運輸蛋白的能量來源。初級主動運輸子直接水解 ATP 取得能量，將離子逆濃度梯度推送；（D）鈣幫浦（細胞膜的 PMCA 與肌漿網的 SERCA）正是以本身的 ATP 酶活性驅動鈣離子外送或回收肌漿網，故選 D。</p><p>A：鈣通道是通道蛋白，開啟時離子順電化學梯度流動，屬被動運輸，不耗能。</p><p>B：鈣依賴性鉀通道以細胞內鈣濃度作為開關訊號，本質仍是讓鉀離子順梯度流出的通道。這是最強誘答——名稱中的「鈣依賴性」讀來像是有耗能的調控，分辨關鍵在於鈣在此擔任的是開關訊號，不是能量來源。</p><p>C：鈉鈣交換子屬次級主動運輸，借用鈉鉀幫浦事先建立的鈉離子梯度所儲存的位能來搬運鈣，並不直接水解 ATP。它與正解同樣逆梯度運鈣，兩者差在能量是直接來自 ATP 或間接來自既有的離子梯度。</p><p>本題考點：膜運輸的三分判準——通道（channel）為順梯度被動運輸；初級主動運輸（primary active transport）直接水解 ATP，如鈣幫浦（Ca-ATPase）與鈉鉀幫浦；次級主動運輸（secondary active transport）如鈉鈣交換子（Na/Ca exchanger），借用既有離子梯度的位能。</p></details>
 </article>
-<article class="sq" id="q45">
+<article class="sq">
 <p class="sq-no">第 45 題</p>
 <div class="sq-stem">法蘭西氏土倫桿菌（Francisella tularensis）主要感染何種人體細胞？</div>
 <ol class="sq-opts"><li><b>（A）</b>巨噬細胞</li><li><b>（B）</b>上皮細胞</li><li><b>（C）</b>基底細胞</li><li><b>（D）</b>自然殺手細胞</li></ol>
 <p class="sq-ans">答案：（A）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題眼在「法蘭西氏土倫桿菌主要感染」——考其在宿主內存活的細胞嗜性。法蘭西氏土倫桿菌是兼性細胞內菌，主要侵入並在巨噬細胞內存活與複製，藉此逃避部分宿主防禦，故選 A。</p><p>B：上皮細胞是許多病原體的入侵或附著位置，但不是本菌最具代表性的細胞內寄生目標。</p><p>C：基底細胞屬上皮組織的再生細胞，並非土倫病感染的典型主要宿主細胞。</p><p>D：自然殺手細胞是先天免疫效應細胞，負責殺傷受感染細胞；它看似同樣涉及感染免疫，實際上是宿主防禦者而非本菌主要感染靶細胞。</p><p>本題考點：法蘭西氏土倫桿菌（Francisella tularensis）為兼性細胞內菌（facultative intracellular bacterium）；巨噬細胞（macrophage）是其重要宿主細胞；自然殺手細胞（natural killer cell）屬先天免疫效應細胞。</p></details>
 </article>
-<article class="sq" id="q79">
+<article class="sq">
 <p class="sq-no">第 79 題</p>
 <div class="sq-stem">下列何種酵素與麴菌屬（Aspergillus）之毒性無關？</div>
 <ol class="sq-opts"><li><b>（A）</b>彈性蛋白酶</li><li><b>（B）</b>葉酸酶</li><li><b>（C）</b>磷脂酶</li><li><b>（D）</b>過氧化氫酶</li></ol>
 <p class="sq-ans">答案：（B）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題眼在「與麴菌屬毒性無關」——麴菌侵入組織時可藉彈性蛋白酶、磷脂酶等破壞宿主結構，並以過氧化氫酶抵抗氧化殺菌；葉酸酶不是此類毒力機轉，故 B 為應選項。</p><p>A：彈性蛋白酶可分解彈性纖維，有助麴菌穿透組織與血管。</p><p>C：磷脂酶可破壞細胞膜磷脂，與組織侵襲及損傷有關。</p><p>D：過氧化氫酶可分解過氧化氫，幫助真菌抵抗宿主吞噬細胞的氧化壓力。這是最強誘答——它不是直接分解組織的酶，卻是抵禦宿主殺菌的重要防禦因子。</p><p>本題考點：麴菌屬（Aspergillus）的彈性蛋白酶（elastase）與磷脂酶（phospholipase）促進組織損傷；過氧化氫酶（catalase）協助抵抗氧化壓力；毒力因子須以其是否有助侵入或免疫逃避判定。</p></details>
 </article>
-<article class="sq" id="q53">
+<article class="sq">
 <p class="sq-no">第 53 題</p>
 <div class="sq-stem">下列何者不是治療骨質疏鬆症的藥物？</div>
 <ol class="sq-opts"><li><b>（A）</b>Betamethasone</li><li><b>（B）</b>Calcitonin</li><li><b>（C）</b>Bisphosphonates</li><li><b>（D）</b>Teriparatide</li></ol>
 <p class="sq-ans">答案：（A）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題眼在「不是治療骨質疏鬆症」——（A）Betamethasone 是糖皮質類固醇，長期使用反而可增加骨質流失與骨折風險，並非骨質疏鬆症的治療藥物，故選 A。</p><p>B：Calcitonin 可抑制蝕骨細胞活性，為骨代謝相關治療選項之一。</p><p>C：Bisphosphonates 可抑制蝕骨細胞介導的骨吸收，是骨質疏鬆症常用藥物類別。</p><p>D：Teriparatide 為副甲狀腺素相關的骨形成促進治療，可用於特定骨質疏鬆症病人。</p><p>本題考點：骨質疏鬆症（osteoporosis）藥物可分為抑制骨吸收與促進骨形成；Bisphosphonates 抑制骨吸收；Teriparatide 促進骨形成；糖皮質類固醇（glucocorticoids）會增加骨質流失風險。</p></details>
 </article>
-<article class="sq" id="q27">
+<article class="sq">
 <p class="sq-no">第 27 題</p>
 <div class="sq-stem">下列有關血壓的敘述，何者錯誤？</div>
 <ol class="sq-opts"><li><b>（A）</b>小動脈血壓與主動脈血壓相似</li><li><b>（B）</b>平均動脈壓較接近舒張壓而非收縮壓</li><li><b>（C）</b>通常血壓指的是動脈壓</li><li><b>（D）</b>脈壓（Pulse pressure）通常比舒張壓小</li></ol>

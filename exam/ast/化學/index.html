@@ -40,6 +40,10 @@
 .linkgrid span{display:block;color:var(--ink-faint);font-size:.8rem;}
 .sq{border-top:1px solid var(--rule-faint);padding:1.1rem 0 .3rem;}
 .sq-no{font-size:.82rem;letter-spacing:.06em;color:var(--accent);margin:0 0 .35rem;}
+.sq-link{color:inherit;text-decoration:none;}
+.sq-link:hover{text-decoration:underline;}
+.sq:target{background:var(--rule-faint);border-radius:var(--r-sm);
+  box-shadow:0 0 0 .6rem var(--rule-faint);}
 .sq-flag{margin-left:.4rem;color:var(--ink-faint);}
 .sq-stem{font-family:var(--serif);font-size:1.02rem;line-height:1.85;color:var(--ink);}
 .sq-opts{list-style:none;padding:0;margin:.55rem 0 .5rem;}
@@ -92,7 +96,7 @@
 
 <h2>題目長什麼樣</h2>
 <p>以下自本科題庫抽 5 題示例，完整題目請看上方各年度考卷。</p>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">穩定分子的分子式 CH3SH x 、 CH 3 (CH y ) 3 Cl、 CH3 NHz 中,則x、y、z 值應分別為下列
 
@@ -102,7 +106,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：判準是中性穩定分子中各原子的常見鍵結數。CH3SHx 的硫已與碳形成一鍵，還需一個氫形成第二鍵，所以 x=1；CH3(CHy)3Cl 的鏈中 CHy 各已有兩個單鍵，尚需兩個氫，所以 y=2；CH3NHz 的氮與 CH3 形成一鍵後，還需兩個氫湊成三鍵，所以 z=2。故選 A。</p><p>B：z=3 會使 CH3NHz 中的中性氮形成四個單鍵，與題設的中性穩定分子不符。</p><p>C：x=2 與 y=3 都不符合硫與碳的常見價數；把原子已有的鍵結數漏算，才會多補氫。</p><p>D：x=2、y=3 同樣把硫與鏈中碳所需的氫數估得過多。</p><p>E：x=3 使硫的鍵結數更不合理，不能形成題示的中性分子。</p><p>本題考點：價鍵（valence bonding）——先數原子已形成的單鍵，再補到其常見鍵結數；結構式（structural formula）——判斷分子式時，要以相鄰原子的實際連結數決定氫原子數；中性分子（neutral molecule）——未標示電荷時，避免把需帶電的四鍵氮或過度鍵結的硫當成一般中性結構。</p></details>
 </article>
 <aside class="sq-passage"><p>在混合溶液中,不同種類分子的分子間作用力差距,會影響溶液偏離理想性質 的幅度。圖10 是在1 大氣壓下,環己烷-乙醇混合溶液所測得的沸點對乙醇莫耳 分率數值(X)的曲線。回答下列問題:</p><p> 90</p><p> 80</p><p> 沸點</p><p> (°C)</p><p> 70</p><p> 60</p><p> 0.0 0.2 0.4 0.6 0.8 1.0</p><p> 乙醇莫耳分率(X)</p><p> 圖10</p></aside>
-<article class="sq" id="q24">
+<article class="sq">
 <p class="sq-no">第 24 題</p>
 <div class="sq-stem">下列三種液體甲、乙與丙在60 °C時,蒸氣壓大小順序為何?用「&lt;」的符號
  寫出從小到大的順序。(2 分)
@@ -116,7 +120,7 @@
 <p class="sq-ans">標準答案未收錄</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：同一溫度下，蒸氣壓較大的液體有較低的正常沸點。純環己烷的正常沸點高於純乙醇，所以乙的蒸氣壓小於甲；環己烷與乙醇混合時，異種分子間作用力較乙醇分子間的氫鍵弱，呈正偏差，丙的總蒸氣壓又較甲大。因此從小到大的順序為乙&lt;甲&lt;丙。</p><p>本題考點：蒸氣壓與沸點（vapor pressure and boiling point）——在相同外壓下，沸點較低者於同溫的蒸氣壓較高；拉午耳定律正偏差（positive deviation from Raoult&#x27;s law）——異種分子吸引力較弱時，分子較易逸出液面，總蒸氣壓上升。</p></details>
 </article>
-<article class="sq" id="q16">
+<article class="sq">
 <p class="sq-no">第 16 題（多選）</p>
 <div class="sq-stem">華生為探究銅的性質,在老師的指導下進行以下實驗:
  實驗一:取適量銅粉置入裝有0.1 M 棕黃色 FeCl3 溶液的試管中,充分反應後,
@@ -140,7 +144,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：三個實驗須連看：Fe3+ 氧化 Cu 生成 Cu2+；Cu 與 Cu2+ 在 Cl− 中形成 CuCl；實驗三排除 Cu2+ 與 SCN− 直接生成 CuSCN 的解釋。（A）、（B）、（E）因此成立，故選 ABE。</p><p>A：Cu 由 0 價氧化成 Cu2+，失去的 2 個電子由兩個 Fe3+ 各得 1 個：Cu + 2 Fe3+ → Cu2+ + 2 Fe2+，能解釋藍色的出現。</p><p>B：Cu 與 Cu2+ 生成 Cu+，在 Cl− 中形成白色沉澱：Cu + Cu2+ + 2 Cl− → 2 CuCl，符合實驗一後期現象。</p><p>E：實驗三只有 Cu2+ 與 SCN− 卻無沉澱，故實驗二的 CuSCN 不能由這兩種離子直接結合解釋。</p><p>C：紅色配合物對應 Fe3+ 與 SCN−，不是 Fe2+；差異在鐵離子的氧化態。</p><p>D：紅色褪去只表示 Fe3+—SCN− 配合物降低；SCN− 被 CuSCN 沉澱移除會改變配位平衡，不能斷定 Fe3+ 已完全消耗。</p><p>本題考點：氧化還原反應（redox reaction）——以電子得失與氧化數配平；難溶鹽（sparingly soluble salt）——沉澱是否生成要由對照實驗判斷；配位化合物（coordination compound）——顏色取決於中心金屬離子的氧化態與配體。</p></details>
 </article>
 <aside class="sq-passage"><p>未知的四類有機化合物A、B、C、D 各為飽和直鏈的醇、烷、醛與羧酸的其中 一種。圖3 為其含不同碳數的此四類化合物沸點分布,其中,A1 表示A 系列含 1 個碳的化合物,A2 表示A 系列含2 個碳的化合物,依此類推。由圖3 可知各 類化合物沸點高低順序。</p><p> 200</p><p> A 100</p><p> 沸</p><p> 點 0 B</p><p> (°C)</p><p> -100 C</p><p> -200 D</p><p> 1 2 3 4</p><p> 碳原子數</p><p> 圖3</p></aside>
-<article class="sq" id="q13">
+<article class="sq">
 <p class="sq-no">第 13 題（多選）</p>
 <div class="sq-stem">下列關於此四類有機化合物的敘述,哪些正確?</div>
 <img class="sq-fig" loading="lazy" src="../../../data/ast/figures/112_分科化學_g13_14.png" alt="第 13 題附圖">
@@ -149,7 +153,7 @@
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：由同碳數化合物的沸點分布可辨認 A 為烷類、C 為醛類，而 B 與 D 為醇與羧酸；判斷各敘述時要回到官能基造成的分子間作用力與反應性。烷類 A1 只有倫敦分散力，最接近理想氣體；B1、D1 都含可與鈉反應的 O−H；C1 為醛，能還原多侖試劑。故選 BDE。</p><p>B：A1 為烷類，分子間作用力最弱；在氣態、相同條件下，偏離理想氣體行為最小。</p><p>D：醇與羧酸都含 O−H，可與金屬鈉反應生成氫氣；B1、D1 分別屬這兩類，故可產生 H₂。</p><p>E：C1 為醛類，醛基可被多侖試劑氧化，同時使銀離子還原析出銀鏡。</p><p>A：同系物必須具有相同官能基並相差一個或多個 −CH₂−；A1 與 B1 分屬不同官能基類別，不能互稱同系物。</p><p>C：醇與羧酸都能以 O−H 形成分子間氫鍵，並非只有 D 類具有此作用力。</p><p>本題考點：官能基（functional group）——先依官能基辨認烷、醇、醛與羧酸，再推論反應性；分子間作用力（intermolecular forces）——氫鍵會提高沸點，烷類只有分散力而較接近理想氣體；多侖試劑（Tollens&#x27; reagent）——醛能被氧化並生成銀鏡，是辨認醛基的常用判準。</p></details>
 </article>
 <aside class="sq-passage"><p>甲、乙、丙、丁為四種具有孔洞的特殊大分子,其孔洞的內部可以吸附氣體。已</p><p> 知其莫耳質量分別為1000、1100、1200、1300(g/mol),均具有單一孔洞且孔洞 內總體積相同,但孔洞的口徑大小不同。氣態物質可經由孔洞進入這些特殊大分</p><p> 子內滯留,因此它們具有儲存氣體的特性。在同溫(200°C)、同壓下, H 2 、He、 Ne、Ar 及Kr 進入甲、乙、丙、丁的莫耳數比例不同,其平衡常數K 如表2 所 示。以氫氣進入甲分子的平衡常數為例,可表示如下:</p><p> nH 2 @ 甲 H 2  甲  H 2 @ 甲 K=</p><p> PH 2  n甲</p><p> nH 2 @ 甲:含 H 2 分子的甲之莫耳數,n甲:未含 H 2 分子(空)的甲之莫耳數, PH 2 :氫氣的壓力(atm)。</p><p> 表2:K( atm)1</p><p> 甲 乙 丙 丁</p><p> H 2 10  10 4 2  10 4 0 6  10 4 He 1  10 4 0.1  10 4 0 0.5  10 4 Ne 0 6  10 4 0 0</p><p> Ar 0 9  10 4 0 0</p><p> Kr 0 0 0 0</p><p> 根據上述結果回答下列問題:</p></aside>
-<article class="sq" id="q6">
+<article class="sq">
 <p class="sq-no">第 6 題</p>
 <div class="sq-stem">取甲分子1000 克,於200°C下通入氫氣,達到平衡時,氫氣的壓力為1000 atm,
  則含有 H 2 的甲莫耳數( nH 2 @ 甲)為何(mol)?</div>

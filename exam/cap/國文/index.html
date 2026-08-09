@@ -40,6 +40,10 @@
 .linkgrid span{display:block;color:var(--ink-faint);font-size:.8rem;}
 .sq{border-top:1px solid var(--rule-faint);padding:1.1rem 0 .3rem;}
 .sq-no{font-size:.82rem;letter-spacing:.06em;color:var(--accent);margin:0 0 .35rem;}
+.sq-link{color:inherit;text-decoration:none;}
+.sq-link:hover{text-decoration:underline;}
+.sq:target{background:var(--rule-faint);border-radius:var(--r-sm);
+  box-shadow:0 0 0 .6rem var(--rule-faint);}
 .sq-flag{margin-left:.4rem;color:var(--ink-faint);}
 .sq-stem{font-family:var(--serif);font-size:1.02rem;line-height:1.85;color:var(--ink);}
 .sq-opts{list-style:none;padding:0;margin:.55rem 0 .5rem;}
@@ -92,14 +96,14 @@
 
 <h2>題目長什麼樣</h2>
 <p>以下自本科題庫抽 5 題示例，完整題目請看上方各年度考卷。</p>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">下列文句中的「即」字，何者為「靠近」之意？</div>
 <ol class="sq-opts"><li><b>（A）</b>被熱水燙傷之後，應該立「即」用大量冷水沖洗</li><li><b>（B）</b>他們兩個人的關係若「即」若離，真令人難以捉摸</li><li><b>（C）</b>本活動摸彩中獎者，憑票根「即」可至服務臺領取獎品</li><li><b>（D）</b>我不是你的傭人，別以為我可以招之「即」來，揮之即去</li></ol>
 <p class="sq-ans">答案：（B）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：「即」的「靠近」義。「若即若離」中的「即」是靠近，整個詞指忽近忽遠，B 正確。</p><p>A：「立即」的「即」是立刻。</p><p>C：「即可」的「即」是就、便。</p><p>D：「招之即來，揮之即去」的「即」是就。它看起來對，是因為都可譯為迅速發生，但並非「靠近」的意思。</p><p>本題考點：文言虛詞多義——判斷詞義要放回固定語詞與句意；「若即若離」的「即」表靠近，「立即」表立刻，「即可」與「即來」表就、便。</p></details>
 </article>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">根據資料，右側詐騙簡訊使用了哪一種話術？</div>
 <img class="sq-fig" loading="lazy" src="../../../data/cap/figures/114_會考國文_試題_p1_q1_0.png" alt="第 1 題附圖">
@@ -107,7 +111,7 @@
 <p class="sq-ans">答案：（D）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：簡訊中的「逾期未繳」、「三日內繳費」與「逾期將終止供水」連續設定期限和後果，關鍵是以急迫感逼收訊者立刻行動。這符合特徵④「引發情緒反應、營造迫切採取行動的氛圍」，D 為正解。</p><p>A：簡訊沒有用親切友善的語氣建立關係，而是以終止供水施加壓力。</p><p>B：簡訊沒有編造值得同情的個人故事。</p><p>C：簡訊沒有宣稱與收訊者有相似經歷或身分。</p><p>本題考點：詐騙話術辨識——看到限期、罰則或重大損失時，先辨識其是否藉急迫感催促行動；訊息比對——依簡訊實際用語判斷話術類型，不把未出現的情節或關係套入。</p></details>
 </article>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">這則粉絲專頁貼文的用意，最可能是下列何者？</div>
 <img class="sq-fig" loading="lazy" src="../../../data/cap/figures/113_會考國文_試題_p1_q1_0.png" alt="第 1 題附圖">
@@ -115,14 +119,14 @@
 <p class="sq-ans">答案：（D）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題幹問粉絲專頁貼文的用意，圖文以秋刀魚成本上漲、漁獲減少等訊息帶出價格變動，重點是宣布調漲秋刀魚價格，D 為正解。</p><p>A：貼文沒有徵求新小編的資訊。</p><p>B：貼文沒有預告直播促銷的期程。</p><p>C：貼文重點是成本與漁獲造成的價格調整，不是暗示秋刀魚產季將近。它看起來對，是把秋刀魚相關訊息誤讀成產季預告，忽略貼文的價格語氣。</p><p>本題考點：實用文本理解——須整合圖文中的原因與行動訊息；主旨判準——成本上漲與漁獲減少指向售價調整，而非徵人、直播或產季預告。</p></details>
 </article>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">以下是一則論文摘要：「本文旨在說明臺灣國民小學至大學學生閱讀興趣與閱讀素養的關係，以及不同學齡階段的讀寫素養表現。不論年級，閱讀興趣與閱讀素養有正向關聯，然由一般學生投資於閱讀的時間反映出閱讀興趣有加強之必要。」若要以這段文字的核心概念標示一組關鍵詞，下列何者最恰當？</div>
 <ol class="sq-opts"><li><b>（A）</b>臺灣、學齡階段</li><li><b>（B）</b>國民小學、大學</li><li><b>（C）</b>正向關聯、閱讀時間</li><li><b>（D）</b>閱讀興趣、閱讀素養</li></ol>
 <p class="sq-ans">答案：（D）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：摘要反覆說明「閱讀興趣」與「閱讀素養」的關係，且以兩者的正向關聯為研究核心，故 D 最能標示全文關鍵詞。</p><p>A：「臺灣、學齡階段」只指出研究地點與範圍，未呈現核心議題。</p><p>B：「國民小學、大學」只是受試者的學段。</p><p>C：「正向關聯」是研究結論，「閱讀時間」是輔助觀察，未如 D 直接指出兩個主要概念。</p><p>本題考點：關鍵詞擷取——選能涵蓋研究對象、主要變項與核心關係的詞；研究地點、學段與單一結論通常不如核心概念具代表性。</p></details>
 </article>
-<article class="sq" id="q1">
+<article class="sq">
 <p class="sq-no">第 1 題</p>
 <div class="sq-stem">這張圖最可能在傳達下列何種訊息？</div>
 <img class="sq-fig" loading="lazy" src="../../../data/cap/figures/111_會考國文_試題_p1_q1_0.png" alt="第 1 題附圖">
