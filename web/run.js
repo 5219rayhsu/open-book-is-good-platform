@@ -329,7 +329,11 @@ function buildMCQCard(q, meta) {
      見 app.js 的 saveButtonEl()。 */
   /* 多選題:type=多選,或官方答案為多字母(如 BD/ADE)。送分題(#)非多選。
      多選 UI／集合評分見 wireMultiToggle / pickedLetters / markMCQCard / recordAnswer。 */
-  var isMulti = (q.type === '多選') || (!isFree(q) && String(q.answer).length > 1);
+  /* 🔴 不可只從 answer 長度反推題型。選填的答案是 `-|1|2` 這種逐格值，長度 >1，
+     於是被標成「（多選）」——那是告訴學生一件錯的事。gates.md §A4 記過同一族：
+     多字母的 answer 不等於多答，語意要由題型欄位傳進來，不能從欄位形狀猜。 */
+  var isMulti = (q.type === '多選')
+    || (!isWrittenAnswer(q) && !isFree(q) && String(q.answer).length > 1);
   card._isMulti = isMulti;
   var flag = (q.parse === 'review') ? '（待校題）' : '';
   card.appendChild(el('div', { 'class': 'q-meta' },
@@ -353,7 +357,7 @@ function buildMCQCard(q, meta) {
       var tb = buildTable(t); if (tb) { card.appendChild(tb); }
     });
   }
-  if (q.type === '非選') {
+  if (isWrittenAnswer(q)) {
     buildEssayAnswer(card, q);   /* 非選(簡答):textarea＋字數計數,無選項 */
   } else {
     var ol = el('ol', { 'class': 'options' });

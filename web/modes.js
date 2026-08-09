@@ -388,7 +388,7 @@ function normalizeChains(list) {
     var already = working.some(function (it) { return it.qid === prevQid; });
     if (already) { return; }   /* 前一題已在名單裡,不用拉 */
     var prevQ = byQid[prevQid];
-    if (!prevQ || prevQ.type === '非選') { return; }   /* 查不到,或不是選擇題,不拉 */
+    if (!prevQ || isWrittenAnswer(prevQ)) { return; }   /* 查不到,或不是選擇題,不拉 */
     var victimIdx = -1, k;
     for (k = 0; k < working.length; k++) {
       if (working[k].subject === prevQ.subject && chainKeyOf(working[k]) === null) { victimIdx = k; break; }

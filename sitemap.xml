@@ -9,6 +9,7 @@
   <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/counseling/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/clinical/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/teacher/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/cap/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/social-worker/社會工作/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -931,6 +932,43 @@
   <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/teacher/中等・課程教學與評量/112-tqa11240/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/teacher/中等・課程教學與評量/111-tqa11140/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/teacher/中等・課程教學與評量/110-tqa11040/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/數學甲/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/數學甲/114-分科數學甲/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/數學甲/113-分科數學甲/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/數學甲/112-分科數學甲/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/數學甲/111-分科數學甲/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/數學乙/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/數學乙/114-分科數學乙/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/物理/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/物理/114-分科物理/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/物理/113-分科物理/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/物理/112-分科物理/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/物理/111-分科物理/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/化學/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/化學/114-分科化學/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/化學/113-分科化學/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/化學/112-分科化學/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/化學/111-分科化學/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/生物/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/生物/114-分科生物/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/生物/113-分科生物/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/生物/112-分科生物/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/生物/111-分科生物/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/歷史/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/歷史/114-分科歷史/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/歷史/113-分科歷史/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/歷史/112-分科歷史/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/歷史/111-分科歷史/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/地理/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/地理/114-分科地理/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/地理/113-分科地理/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/地理/112-分科地理/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/地理/111-分科地理/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/公民與社會/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/公民與社會/114-分科公民與社會/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/公民與社會/113-分科公民與社會/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/公民與社會/112-分科公民與社會/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/公民與社會/111-分科公民與社會/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/國綜/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/國綜/115/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/國綜/114/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>

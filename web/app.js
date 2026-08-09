@@ -507,7 +507,7 @@ function buildPapersIndex() {
   if (bank) {
     var inclLegacy = !!state.settings.includeLegacy;
     bank.questions.forEach(function (q) {
-      if (q.type !== '非選' || q.parse !== 'ok') { return; }
+      if (!isWrittenAnswer(q) || q.parse !== 'ok') { return; }
       if (q.legacy === true && !inclLegacy) { return; }
       if (!ACTIVE_SUBJ_SET[q.subject] || !yearInScope(q)) { return; }   /* 非選也要吃同一組範圍 */
       add(q);

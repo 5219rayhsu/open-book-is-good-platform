@@ -138,6 +138,20 @@
    ]
   },
   {
+   "name": "ast",
+   "title": "分科測驗歷屆試題",
+   "path": "data/ast/bank.json",
+   "format": "json",
+   "mediatype": "application/json",
+   "description": "分科測驗（大學入學考試中心）民國 111–114 年歷屆選擇題 981 題。",
+   "sources": [
+    {
+     "title": "大考中心 分科測驗歷年試題（依著作權法 §9，考試試題不受著作權保護）",
+     "path": "https://www.ceec.edu.tw/"
+    }
+   ]
+  },
+  {
    "name": "gsat",
    "title": "學科能力測驗歷屆試題",
    "path": "data/gsat/bank.json",
