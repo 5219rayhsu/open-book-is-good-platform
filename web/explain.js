@@ -14,10 +14,15 @@
    ============================================================ */
 
 var EXPL = {};
+/* 「還沒載進來」與「載進來了但這題沒有」是兩件事，必須分得開：前者要安靜，
+   後者要說「尚未上線」。共用 `EXPL 是空的` 這個判斷會讓開站頭幾百毫秒內答完的
+   那一題被誤報成「沒有詳解」。 */
+var EXPL_READY = false;
 
 function _takeExpl(obj) {
   if (!obj || typeof obj !== 'object') { return false; }
   EXPL = obj.explanations ? obj.explanations : obj;
+  EXPL_READY = true;
   return true;
 }
 
@@ -45,7 +50,18 @@ function needsCaveat(c) { return c === 'hold' || c === 'low'; }
 /* 答完後掛在題卡下的「本題解釋」區塊:一段解釋 + 一行誠實小字。保持乾淨。 */
 function explEl(qid) {
   var e = explFor(qid);
-  if (!e || !e.t) { return null; }
+  /* 沒有詳解就明說（IDR-0033）。不隱藏整塊的理由：隱藏會讓「這題沒有詳解」跟
+     「網站壞了或我沒找到入口」長得一樣。詳解是逐年倒敘補產的（IDR-0028），
+     缺詳解在這個站是**常態不是異常**，常態要誠實交代節奏。
+     `EXPL_READY` 之前一律回 null——那時候還不知道有沒有，不能亂講。 */
+  if (!e || !e.t) {
+    if (!EXPL_READY) { return null; }
+    var ph = el('div', { 'class': 'explain' });
+    ph.appendChild(el('div', { 'class': 'explain-head' }, '本題解釋'));
+    ph.appendChild(el('p', { 'class': 'explain-body' },
+      '本題詳解尚未上線。詳解由最新年度向前逐批製作，完成後會隨本站更新出現。'));
+    return ph;
+  }
   var box = el('div', { 'class': 'explain' });
   box.appendChild(el('div', { 'class': 'explain-head' },
     /* 分級制 2026-07-30 換新：pass／watch／hold,字面自帶方向,不再用 high／med／low

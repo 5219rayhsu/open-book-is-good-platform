@@ -395,8 +395,17 @@ function pickedSetOf(picked) {
   }
   return letterSetOf(picked);
 }
+/* 唯讀題（IDR-0033）的一句話說明：`none_published`（官方沒給）與 `unread`（我們沒讀出來）
+   刻意是兩句不同的話，兩者在畫面上必須一眼可分。 */
+function readonlyNoteEl(q) {
+  var s = (typeof readonlyNoteOf === 'function') ? readonlyNoteOf(q) : '';
+  return s ? el('p', { 'class': 'stale-note' }, s) : null;
+}
+
 function markMCQCard(card, q, picked) {
-  var given = isFree(q); // 送分題：無單一正解，不標紅綠
+  /* 送分題與唯讀題都不標紅綠，但理由不同：送分題是「每個答案都對」，
+     唯讀題是「我們不知道哪個對」。畫面上同樣不標，文案上必須講清楚是哪一種。 */
+  var given = isFree(q) || (typeof isAnswerable === 'function' && !isAnswerable(q));
   /* accept 題把所有官方認可字母都標綠（acceptListOf 見 app.js） */
   var ansSet = correctLetterSet(q), pickSet = pickedSetOf(picked);
   card._optButtons.forEach(function (b, i) {
@@ -406,6 +415,8 @@ function markMCQCard(card, q, picked) {
     else if (!given && pickSet[L]) { b.classList.add('is-wrong'); }
     else { b.classList.add('is-dim'); }
   });
+  var ro = readonlyNoteEl(q);
+  if (ro) { card.appendChild(ro); }
   var note = staleNoteEl(q);
   if (note) { card.appendChild(note); }
   var src = sourceNoteEl(q);
@@ -505,10 +516,13 @@ function startDrill(items, meta) {
     var correct = recordAnswer(q, picked, { mode: meta.mode || 'drill' });
     if (correct) { ok += 1; }
     markMCQCard(card, q, picked);
-    var fbText = isFree(q) ? '本題送分（考選部公告一律給分）。'
-      : (correct ? '答對。正解（' + answerLabelOf(q) + '）。'
-        : '答錯。正解（' + answerLabelOf(q) + '）。');
-    var fb = el('p', { 'class': 'feedback ' + (correct ? 'good' : 'bad') }, fbText);
+    /* 唯讀題不得出現「答錯。正解（）。」——那句話同時是錯的與空的。 */
+    var ro = (typeof readonlyNoteOf === 'function') ? readonlyNoteOf(q) : '';
+    var fbText = ro ? ro
+      : (isFree(q) ? '本題送分（考選部公告一律給分）。'
+        : (correct ? '答對。正解（' + answerLabelOf(q) + '）。'
+          : '答錯。正解（' + answerLabelOf(q) + '）。'));
+    var fb = el('p', { 'class': 'feedback ' + (ro ? '' : (correct ? 'good' : 'bad')) }, fbText);
     card.appendChild(fb);
     /* 螢幕報讀器朗讀對錯。作答畫面只列對錯與正解,不掛教練金句(金句只在能力雷達/學習藍圖出現) */
     announce(fbText);
@@ -721,6 +735,16 @@ function startSheet(questions, meta) {
       if (card._markRow) { card._markRow.remove(); card._markRow = null; }
       if (card._isEssay) {
         revealEssay(card, q);   /* 非選:不自動評分,揭示官方參考答案/評分原則 */
+        if (typeof saveButtonEl === 'function') { card.appendChild(saveButtonEl(q.qid)); }
+        return;
+      }
+      /* 唯讀題（IDR-0033）：不自動評分、**不進分母**。與上面的非選同一個道理，
+         差別只在非選是「沒有選項」，這裡是「有選項但我們判不出對錯」。
+         漏掉這一段的後果不是判錯，是整卷答對率被永久壓低，而且看不出原因。 */
+      if (typeof isAnswerable === 'function' && !isAnswerable(q)) {
+        markMCQCard(card, q, pickedLetters(card) || '_');
+        var _roex = (typeof explEl === 'function') ? explEl(q.qid) : null;
+        if (_roex) { card.appendChild(_roex); }
         if (typeof saveButtonEl === 'function') { card.appendChild(saveButtonEl(q.qid)); }
         return;
       }

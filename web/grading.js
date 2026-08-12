@@ -27,6 +27,40 @@ function isFree(q) {
   return q.answer === '#';
 }
 
+/* 🔴 可作答是**白名單**，不是黑名單（IDR-0033）。判準只有一個：本站能不能替使用者
+   判對錯。能判的三個值列在這裡，其餘任何值（含未來新增的、拼錯的、還沒想到的）
+   一律不可作答。
+
+   為什麼一定要白名單：黑名單（「排除這幾個值、其餘可作答」）的失敗方向是
+   **不該判對的判對了**，看不見；白名單的失敗方向是「該能答的變成不能答」，看得見。
+   2026-08-06 那次 100 題事故就是前者。實測 2026-08-10：`unread` 有 2 題（counseling
+   與 nursing 各 1）帶著 `answer:'D'`、4 選項、`parse:'ok'` 躺在練習池裡，被當成
+   「正解是 D」在判學生對錯——而 `unread` 的意思正是「我們讀不出答案」。
+   沒有人記得把它加進黑名單，因為黑名單要靠人記得。
+
+   舊資料相容：`answer_status` 不存在時回 true，交給呼叫端既有的條件（有答案、
+   至少 2 選項）擋。這條退路只為使用者瀏覽器裡的舊快取而留。 */
+var ANSWERABLE_STATUS = { official: true, free: true, multi: true };
+
+function isAnswerable(q) {
+  if (!q) { return false; }
+  if (!q.answer_status) { return true; }
+  return ANSWERABLE_STATUS[q.answer_status] === true;
+}
+
+/* 唯讀題要顯示的一句話。`none_published` 與 `unread` 刻意寫成兩句不同的話：
+   一句是「官方沒給」，一句是「我們沒讀出來」——這兩件事在畫面上必須一眼可分。 */
+var READONLY_NOTE = {
+  not_applicable: '本題為非選擇題，無選項可作答，僅供閱讀，不列入計分與能力分析。',
+  none_published: '官方未公布本題標準答案，本站無法判定對錯，僅供閱讀，不列入計分與能力分析。',
+  unread: '本題原始資料解析異常，暫不開放作答，將於後續版本修正。'
+};
+
+function readonlyNoteOf(q) {
+  if (!q || isAnswerable(q)) { return ''; }
+  return READONLY_NOTE[q.answer_status] || '本題目前無法判定對錯，僅供閱讀，不列入計分與能力分析。';
+}
+
 function isCorrectPick(q, pickedLetter) {
   if (isFree(q)) { return true; }   /* 送分題（官方公告一律給分）：計為答對 */
   var p = sortLetters(pickedLetter);
@@ -56,5 +90,5 @@ function correctLetterSet(q) {
 }
 
 if (typeof module !== 'undefined' && module.exports) {   /* node 自檢用；瀏覽器無 module */
-  module.exports = { sortLetters, acceptListOf, isFree, isCorrectPick, answerLabelOf, letterSetOf, correctLetterSet };
+  module.exports = { sortLetters, acceptListOf, isFree, isAnswerable, readonlyNoteOf, isCorrectPick, answerLabelOf, letterSetOf, correctLetterSet };
 }

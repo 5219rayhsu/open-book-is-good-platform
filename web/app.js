@@ -480,6 +480,12 @@ function isPracticable(q, opts) {
   /* 可練＝有答案＋至少 2 選項。寫死「恰 4 選項」會誤排 5 選項自然/社會、10 選項英文
      克漏字等「非 4 選項的單選題」(gsat 約 258 題);多選題(type=多選,gsat 213 題)亦納入
      ——多選 UI／集合評分已支援(run.js wireMultiToggle/markMCQCard、recordAnswer 排序比對)。 */
+  /* 可作答白名單（IDR-0033）：判不出對錯的題一律不進池。放在最後是因為它擋掉的東西
+     與上面幾條不重疊——`unread` 帶著看起來合法的 answer 與 4 選項，上面每一條都放行。 */
+  /* `typeof` 護欄不是防禦性程式碼的裝飾：實測 2026-08-10，新的 app.js 配上使用者裝置
+     裡快取的舊 grading.js，這一行直接 ReferenceError → rebuildUsable 整個拋錯 → 站掛掉。
+     舊殼沒有白名單時退回舊行為（交給下面的「有答案＋≥2 選項」擋），比整站白畫面好。 */
+  if (typeof isAnswerable === 'function' && !isAnswerable(q)) { return false; }
   return !!(parseOk && q.answer && q.options && q.options.length >= 2);
 }
 function rebuildUsable() {
@@ -681,6 +687,10 @@ function weightedSubjectPick(weights, pool) {
    未作答('_')自然不等。pickedLetter 一律字母字串(單選一字、多選排序字串)。 */
 function recordAnswer(q, pickedLetter, opts) {
   opts = opts || {};
+  /* 唯讀題（IDR-0033）一個位元組都不寫進 log 與 SRS：它判不出對錯，寫進去就是雜訊，
+     而雜訊會一路污染雷達、趨勢、錯題本、藍圖。回 null（falsy），呼叫端的
+     `if (correct) { ok += 1; }` 自然不加分。 */
+  if (typeof isAnswerable === 'function' && !isAnswerable(q)) { return null; }
   /* 判分一律走 grading.js 的 isCorrectPick（送分 # 一律給分、accept 多重答案均給分），
      計為答對者不污染統計與弱項佇列。 */
   var correct = isCorrectPick(q, pickedLetter);
