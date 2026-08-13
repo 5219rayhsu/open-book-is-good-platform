@@ -1,0 +1,50 @@
+{
+ "gate": "B 詳解紅隊",
+ "exam": "pharmacist",
+ "when": "2026-08-13",
+ "mode": "full",
+ "mode_note": "全跑，不是抽查——對『這一波切塊時磁碟上已有的 4,257 則詳解』逐則審。使用者 2026-08-12 裁定全跑（skill 要求執行前詢問全跑或抽查）。",
+ "arms": [
+  "gpt-5.6-sol low",
+  "gpt-5.6-luna max"
+ ],
+ "combine": "OR union（任一臂判 fix 即 fix），不用多數決",
+ "blocks": "兩臂各 142/142",
+ "reviewed": 4257,
+ "verdict": {
+  "pass": 3913,
+  "fix": 344
+ },
+ "findings_by_severity": {
+  "med": 182,
+  "low": 129,
+  "high": 142,
+  "medium": 1
+ },
+ "findings_by_type": {
+  "input_gap": 109,
+  "answer_mismatch": 38,
+  "學科知識錯誤": 35,
+  "knowledge_error": 32,
+  "學科知識正確性": 21,
+  "錯誤選項辨析": 15,
+  "option_analysis": 14,
+  "factual_error": 14,
+  "fact_error": 12,
+  "knowledge": 9,
+  "subject_error": 8,
+  "unsupported_claim": 7
+ },
+ "shipped": 3913,
+ "shipped_rule": "只有 verdict=pass 且非 orphan 的才進 explanations.json。判 fix 的 344 則留在跑批目錄等修復站；21 則 orphan（沒有生成輸入、進不了紅隊區塊）排除。",
+ "not_covered": {
+  "count": 5248,
+  "why": "這一波切塊之後才生成的詳解（生成從 250 塊推進到 485 塊）。",
+  "status": "未紅隊＝不出貨。它們留在 goldens/ph2_out_p*.json，等下一波紅隊。"
+ },
+ "artifacts": [
+  "_build_features/goldens/_rt_ph2_wave2_union.json",
+  "_build_features/goldens/rtA2_ph2_orphan.json"
+ ],
+ "caveat": "本波 prompt 在中途改過兩次（475e5f3、e8ae299），兩側 flag 率相當、無品質斷崖，但**不得拿這一波做任何模型比較**（臂等價前提不成立）。"
+}

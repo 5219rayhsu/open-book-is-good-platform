@@ -82,6 +82,20 @@
    ]
   },
   {
+   "name": "pharmacist",
+   "title": "藥師歷屆試題",
+   "path": "data/pharmacist/bank.json",
+   "format": "json",
+   "mediatype": "application/json",
+   "description": "藥師（考選部）民國 101–115 年歷屆選擇題 13050 題。",
+   "sources": [
+    {
+     "title": "考選部「國家考試試題及測驗式試題答案」開放資料",
+     "path": "https://wwwq.moex.gov.tw/exam/wFrmExamQandASearch.aspx"
+    }
+   ]
+  },
+  {
    "name": "doctor",
    "title": "醫師歷屆試題",
    "path": "data/doctor/bank.json",
