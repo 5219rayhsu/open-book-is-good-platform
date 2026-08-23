@@ -18,11 +18,28 @@ var EXPL = {};
    後者要說「尚未上線」。共用 `EXPL 是空的` 這個判斷會讓開站頭幾百毫秒內答完的
    那一題被誤報成「沒有詳解」。 */
 var EXPL_READY = false;
+/* 拿不到(fetchJson 失敗時 resolve 成 null,不會 reject)。與「還沒到」分開:
+   前者要說「載入失敗」,後者要說「載入中」——都不可以是沉默。 */
+var EXPL_FAILED = false;
+
+/* 開機時詳解排在 bank.json 之後才起跑(app.js「開機」那段的串行策略),而它是次要包裡
+   最大的一份(社工師 10.5MB / gzip 3.7MB)。窗口內答完的題,舊寫法讓 explEl 回 null →
+   六個渲染點全部 `if (_ex)` 靜默跳過,畫面上與「這題沒有詳解」完全同形,而且該次不補畫。
+   2026-08-17 使用者實際回報的就是這個(社工師,全站詳解檔最大的一科)。
+   改法:窗口內先掛佔位塊,並把「換成真的」排進佇列;詳解落地時就地替換。 */
+var _explPending = [];
+
+function _flushExplPending() {
+  var q = _explPending;
+  _explPending = [];
+  q.forEach(function (fn) { fn(); });
+}
 
 function _takeExpl(obj) {
   if (!obj || typeof obj !== 'object') { return false; }
   EXPL = obj.explanations ? obj.explanations : obj;
   EXPL_READY = true;
+  _flushExplPending();
   return true;
 }
 
@@ -30,9 +47,14 @@ function resolveExpl(onReady) {
   if (_takeExpl(window.__EXPL__)) { if (onReady) { onReady(); } return; }
   if (typeof fetchJson === 'function') {
     fetchJson(dataUrl('explanations.json')).then(function (o) {
-      _takeExpl(o);
+      /* fetchJson 內建 catch,失敗是 null 不是 reject——所以失敗只能從回傳值看出來。
+         不 flush 的話,窗口內掛出去的「載入中」會永遠停在載入中。 */
+      if (!_takeExpl(o)) { EXPL_FAILED = true; _flushExplPending(); }
       if (onReady) { onReady(); }
     });
+  } else {
+    EXPL_FAILED = true;
+    _flushExplPending();
   }
 }
 
@@ -47,6 +69,24 @@ function explFor(qid) {
    因為使用者裝置上的離線快取可能還是遷移前的 explanations.json。 */
 function needsCaveat(c) { return c === 'hold' || c === 'low'; }
 
+/* 詳解檔還在路上(或載失敗)時掛的那一塊。落地後由 _flushExplPending 就地換成真的。
+   為什麼不沿用「尚未上線」那句:那句是在斷言「這題沒有詳解」,而此刻我們還不知道。 */
+function _explPlaceholder(qid) {
+  var box = el('div', { 'class': 'explain' });
+  box.appendChild(el('div', { 'class': 'explain-head' }, '本題解釋'));
+  box.appendChild(el('p', { 'class': 'explain-body' },
+    EXPL_FAILED ? '詳解這次沒載進來（網路中斷或檔案取不到）。重新整理頁面就會回來，作答紀錄不受影響。'
+                : '詳解載入中……'));
+  if (!EXPL_FAILED) {
+    _explPending.push(function () {
+      var real = explEl(qid);
+      /* parentNode 檢查:使用者可能已經翻到下一題,那塊早就從 DOM 拿掉了。 */
+      if (real && box.parentNode) { box.parentNode.replaceChild(real, box); }
+    });
+  }
+  return box;
+}
+
 /* 答完後掛在題卡下的「本題解釋」區塊:一段解釋 + 一行誠實小字。保持乾淨。 */
 function explEl(qid) {
   var e = explFor(qid);
@@ -55,7 +95,7 @@ function explEl(qid) {
      缺詳解在這個站是**常態不是異常**，常態要誠實交代節奏。
      `EXPL_READY` 之前一律回 null——那時候還不知道有沒有，不能亂講。 */
   if (!e || !e.t) {
-    if (!EXPL_READY) { return null; }
+    if (!EXPL_READY) { return _explPlaceholder(qid); }
     var ph = el('div', { 'class': 'explain' });
     ph.appendChild(el('div', { 'class': 'explain-head' }, '本題解釋'));
     ph.appendChild(el('p', { 'class': 'explain-body' },

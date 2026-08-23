@@ -1,0 +1,32 @@
+{
+ "gate": "資料層三閘（STATIONS §三）",
+ "when": "2026-08-19",
+ "commit": "38176af",
+ "scope": "全部 12 科",
+ "results": {
+  "detect_orphan_figref": {
+   "hits": 47,
+   "parse_ok": 7,
+   "note": "詳見 A3_all_20260819.json；本輪修好三類誤報後的真實數字"
+  },
+  "detect_missing_value": {
+   "hits": 7,
+   "parse_ok": 1,
+   "per_exam": {
+    "cap": 1,
+    "pharmacist": 6
+   },
+   "note": "唯一線上命中 會考_111_數學_14 已查：它有圖，`( )` 與數字串是直方圖座標標籤滲進題幹的排版噪音，不是資料缺口"
+  },
+  "clean_option_bleed": {
+   "hits": 0,
+   "parse_ok": 0,
+   "note": "十二科全綠"
+  }
+ },
+ "selftests": {
+  "detect_orphan_figref": "strong 11/11、放行 15/15",
+  "detect_missing_value": "known-bad 3/3、known-good 6/6",
+  "clean_option_bleed": "污染 6/6 切乾淨、合法 4/4 未動、降級判準 4/4"
+ }
+}

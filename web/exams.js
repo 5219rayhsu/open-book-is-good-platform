@@ -132,7 +132,7 @@ var EXAMS = [
     /* 詳解逐批補產（IDR-0028 由最新年度往前），且**只收通過紅隊查核的**，
        所以現階段大部分題目會顯示「本題詳解尚未上線」。這不是缺陷是節奏，
        前端已明講（explain.js）；這裡再講一次是因為 landing 卡片是使用者第一眼。 */
-    coverageNote: '六科選擇題全數可作答；詳解由最新年度往前逐批製作，且只收錄通過紅隊查核者，目前約三成題目已有詳解。',
+    coverageNote: '六科選擇題全數可作答；詳解由最新年度往前逐批製作，且只收錄通過紅隊查核者，目前約八成題目已有詳解。',
     staleNote: '藥事法規與臨床治療指引會修訂，舊年度題目的答案可能與現行不符，作答與引用一律以現行版本為準。'
   },
   {
@@ -410,6 +410,9 @@ function examByKey(k) {
 /* 當前考試:?exam= / #exam= 深連結優先,其次 localStorage,最後預設第一科。 */
 function pickExam() {
   var k = null;
+  /* 單機版:一檔只內嵌一科的題庫,考試由 build 時釘死,優先序高於網址與 localStorage
+     ——否則舊網址殘留的 ?exam= 或別科的 localStorage 會把它切到一個沒有資料的考試。 */
+  if (window.__EXAM_KEY__) { return examByKey(window.__EXAM_KEY__) || EXAMS[0]; }
   try {
     var qs = (location.search || '').match(/[?&]exam=([^&]+)/);
     var hs = (location.hash || '').match(/exam=([^&]+)/);
@@ -589,8 +592,10 @@ function renderLanding() {
   /* 引擎頁:考試選擇器 */
   var sw = document.getElementById('exam-switcher');
   if (sw) {
-    /* 切換器只列同類別的考試(國考內切國考、升學內切學測/會考);跨類別走標題回最初首頁。 */
-    examsInGroup(examGroup(EXAM)).forEach(function (e) {
+    /* 切換器只列同類別的考試(國考內切國考、升學內切學測/會考);跨類別走標題回最初首頁。
+       單機版只內嵌一科,列出別科等於給一顆按了會撞空題庫的鈕——只列自己這科。 */
+    var switchable = window.__EXAM_KEY__ ? [EXAM] : examsInGroup(examGroup(EXAM));
+    switchable.forEach(function (e) {
       var b = document.createElement('button');
       b.type = 'button';
       b.className = 'exam-btn' + (e.key === EXAM.key ? ' active' : '');

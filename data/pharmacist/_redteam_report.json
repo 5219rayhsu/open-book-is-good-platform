@@ -46,5 +46,175 @@
   "_build_features/goldens/_rt_ph2_wave2_union.json",
   "_build_features/goldens/rtA2_ph2_orphan.json"
  ],
- "caveat": "本波 prompt 在中途改過兩次（475e5f3、e8ae299），兩側 flag 率相當、無品質斷崖，但**不得拿這一波做任何模型比較**（臂等價前提不成立）。"
+ "caveat": "本波 prompt 在中途改過兩次（475e5f3、e8ae299），兩側 flag 率相當、無品質斷崖，但**不得拿這一波做任何模型比較**（臂等價前提不成立）。",
+ "wave3": {
+  "gate": "B 詳解紅隊",
+  "exam": "pharmacist",
+  "wave": 3,
+  "when": "2026-08-19",
+  "mode": "full",
+  "mode_note": "全跑，不是抽查——對 wave 2 未審過的 8,165 則逐則審。使用者 2026-08-12 裁定全跑（skill 要求執行前詢問全跑或抽查）。",
+  "route": "Claude Workflow（wave 2 走 codex；換路線時兩臂仍必須是不同模型）",
+  "arms": {
+   "rtA3_ph2": {
+    "model": "claude-opus-5 (session model)",
+    "blocks": 273,
+    "judged": 8165,
+    "findings": 1404,
+    "by_severity": {
+     "med": 421,
+     "low": 929,
+     "high": 54
+    }
+   },
+   "rtB3_ph2": {
+    "model": "claude-sonnet-5",
+    "blocks": 273,
+    "judged": 8165,
+    "findings": 196,
+    "by_severity": {
+     "high": 48,
+     "med": 32,
+     "low": 116
+    }
+   }
+  },
+  "combine": "OR union（任一臂有 finding 即送修），不用多數決",
+  "reviewed": 8165,
+  "verdict": {
+   "pass": 6911,
+   "fix": 1254
+  },
+  "findings_by_severity": {
+   "low": 1045,
+   "med": 453,
+   "high": 102
+  },
+  "repair": {
+   "blocks": 0,
+   "questions": 0
+  },
+  "data_layer_worklist": {
+   "findings": 137,
+   "qids": 106,
+   "note": "缺 prev／缺圖／缺表，修復站碰不得（它只能改詳解文字）"
+  },
+  "shipped_of_this_wave": 6903,
+  "repair_pipeline": {
+   "retired_fulltext_attempt": {
+    "what": "誤用 run_stage.sh fix（2026-08-02 已被 §13 淘汰的全文模式）",
+    "measured": "320 題完成時：改動 315、其中 126 題 100% 段落全換、原樣保留 0 段",
+    "disposition": "全數作廢，封存於 goldens/_retired_fulltext_fix/，STATIONS.md 已改"
+   },
+   "segment_level": {
+    "tool": "ab8_segfix.py（全文唯讀・限域輸出・零 token 機械拼回）",
+    "located": 1000,
+    "blocks_done": 24,
+    "collateral_damage": "位元組層級比對；merge 那一步會逐段驗，理論值必為 0",
+    "disposition": "**未併庫**——房規要求修復完的則送回紅隊複審才准併"
+   }
+  }
+ },
+ "rp1_rerun_20260823": {
+  "gate": "B 詳解紅隊",
+  "exam": "pharmacist",
+  "when": "2026-08-23",
+  "wave": "rp1 修復站產出的複審",
+  "mode": "full",
+  "mode_note": "全跑，不是抽查。使用者 2026-08-23 當次裁定「1,282 則複審全跑」。",
+  "route": "Claude Workflow（本輪使用者指定不走 GPT／codex）",
+  "arms": [
+   "opus 5 medium",
+   "fable 5 medium"
+  ],
+  "arm_choice_note": "§3.0 配套第 1 條要求兩臂不同家族／供應商，排除 GPT 後不可能滿足；Fable 裁定家族內取兩個不同前沿模型為可得的最大去相關，並否決 sonnet 5 當 B 臂（商鞅實測其真缺陷召回僅三成多，買到的是假冗餘）。",
+  "positive_control": {
+   "n": 20,
+   "poisoned": 10,
+   "clean": 10,
+   "arm_A": "召回 10/10、誤報 0/10",
+   "arm_B": "召回 10/10、誤報 0/10",
+   "why": "Fable 當紅隊臂無既往實測，§2.3 要求換模型層必重測；摻毒方式為把 t 裡的『故選 X』翻成別的字母。",
+   "key_file": "_build_features/goldens/_canary_key.json（跑完才看，不進 prompt）"
+  },
+  "combine": "OR union（union_rt.py）",
+  "combine_caveat": "🔴 union_rt.py 是拿『有沒有 finding』判 fix，不看兩臂自己的 verdict。紅隊 prompt 另有一條要求『缺 prev 時 verdict 照常 pass、只記一則 input_gap low』，兩者打架。本報告因此**同時列兩個數字**，不要只引其中一個。",
+  "blocks": "兩臂各 45/45（含 1 塊陽性對照），0 錯誤、0 死塊",
+  "reviewed": 1135,
+  "verdict_union_rule": {
+   "fix": 251,
+   "pass": 884
+  },
+  "verdict_arm_rule": {
+   "fix": 98,
+   "pass": 1037
+  },
+  "arm_diversity": {
+   "A_flagged": 87,
+   "B_flagged": 40,
+   "both": 29,
+   "union": 98,
+   "note": "多數決只會留下 29（30%），亦即丟掉 69 則真發現——本波再次支持 OR。"
+  },
+  "shipped": 838,
+  "shipped_rule": "只有 union 判 pass（884）且過 expl_lint（838）的才進 explanations.json。251 則因 fix 扣住（其中 153 則是兩臂都判 pass 只留 finding，見 combine_caveat，待裁決）；46 則因 lint 扣住並逐則留名。",
+  "held": {
+   "redteam_fix": {
+    "count": 251,
+    "file": "_build_features/goldens/_rp1_final.held.json",
+    "arm_verdict_fix_subset": 98
+   },
+   "lint": {
+    "count": 46,
+    "file": "_build_features/goldens/_rp1_lint_held.json",
+    "reasons": {
+     "mid-letters": 42,
+     "wide-op-in-latin": 1,
+     "conf-leak": 2,
+     "data-complaint": 1
+    }
+   }
+  },
+  "artifacts": [
+   "_build_features/goldens/_rt_rp1_union.json",
+   "_build_features/goldens/_rp1_final.json",
+   "_build_features/goldens/_rp1_merge.json",
+   "_build_features/goldens/_rp1_final.held.json",
+   "_build_features/goldens/_rp1_lint_held.json"
+  ],
+  "live_blind_context_rereview": {
+   "nursing": {
+    "reviewed": 134,
+    "verdict_union_rule": {
+     "pass": 113,
+     "fix": 21
+    },
+    "arm_verdict_fix": [
+     "101_101030_產兒科護理學_31",
+     "101_101030_產兒科護理學_36",
+     "102_102110_產兒科護理學_29",
+     "102_102110_精神科與社區衛生護理學_70",
+     "103_103030_基本護理學（包括護理原理、護理技術）與護理行政_28",
+     "103_103030_基本護理學（包括護理原理、護理技術）與護理行政_32",
+     "103_103030_基本護理學（包括護理原理、護理技術）與護理行政_55",
+     "103_103030_產兒科護理學_37",
+     "106_106030_基本護理學（包括護理原理、護理技術）與護理行政_43"
+    ],
+    "meaning": "這批當初生成時 payload 裡沒有 passage（實測 0/147 有）。補回 passage 重審，fix 代表**線上現在掛著一則有問題的詳解**，不是『不要併』。",
+    "defects_file": "_build_features/goldens/_rq1n_noop.live_defects.json"
+   },
+   "clinical": {
+    "reviewed": 13,
+    "verdict_union_rule": {
+     "pass": 12,
+     "fix": 1
+    },
+    "arm_verdict_fix": [
+     "110_110111_特論二_26"
+    ],
+    "meaning": "這批當初生成時 payload 裡沒有 passage（實測 0/147 有）。補回 passage 重審，fix 代表**線上現在掛著一則有問題的詳解**，不是『不要併』。",
+    "defects_file": "_build_features/goldens/_rq1c_noop.live_defects.json"
+   }
+  }
+ }
 }

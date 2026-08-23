@@ -1,0 +1,135 @@
+{
+  "fields": [
+    "stem",
+    "options",
+    "answer",
+    "passage",
+    "type",
+    "table",
+    "figure"
+  ],
+  "exams": {
+    "ast": {
+      "expl_commit": "8008951",
+      "explained": 981,
+      "stale": 0,
+      "stale_qids": [],
+      "unstamped": 0,
+      "explained_after_bank_grew": 0,
+      "status": "ok"
+    },
+    "cap": {
+      "expl_commit": "985e3b8",
+      "explained": 1080,
+      "stale": 2,
+      "stale_qids": [
+        "會考_111_自然_49",
+        "會考_112_數學_19"
+      ],
+      "unstamped": 0,
+      "explained_after_bank_grew": 0,
+      "status": "stale"
+    },
+    "clinical": {
+      "expl_commit": "36ea818",
+      "explained": 5640,
+      "stale": 0,
+      "stale_qids": [],
+      "unstamped": 0,
+      "explained_after_bank_grew": 0,
+      "status": "ok"
+    },
+    "counseling": {
+      "expl_commit": "e76cc59",
+      "explained": 3959,
+      "stale": 0,
+      "stale_qids": [],
+      "unstamped": 0,
+      "explained_after_bank_grew": 0,
+      "status": "ok"
+    },
+    "cpa": {
+      "expl_commit": "985e3b8",
+      "explained": 1034,
+      "stale": 0,
+      "stale_qids": [],
+      "unstamped": 0,
+      "explained_after_bank_grew": 0,
+      "status": "ok"
+    },
+    "doctor": {
+      "expl_commit": "97dc382",
+      "explained": 8880,
+      "stale": 0,
+      "stale_qids": [],
+      "unstamped": 0,
+      "explained_after_bank_grew": 0,
+      "status": "ok"
+    },
+    "gsat": {
+      "expl_commit": "985e3b8",
+      "explained": 1258,
+      "stale": 8,
+      "stale_qids": [
+        "111_數學B_14",
+        "112_數學A_19",
+        "112_數學A_20",
+        "112_數學B_18",
+        "112_數學B_19",
+        "112_數學B_20",
+        "113_數學A_20",
+        "114_數學B_20"
+      ],
+      "unstamped": 0,
+      "explained_after_bank_grew": 0,
+      "status": "stale"
+    },
+    "lawyer": {
+      "expl_commit": "2923979",
+      "explained": 3408,
+      "stale": 0,
+      "stale_qids": [],
+      "unstamped": 0,
+      "explained_after_bank_grew": 0,
+      "status": "ok"
+    },
+    "nursing": {
+      "expl_commit": "36ea818",
+      "explained": 10070,
+      "stale": 1,
+      "stale_qids": [
+        "105_105090_精神科與社區衛生護理學_50"
+      ],
+      "unstamped": 0,
+      "explained_after_bank_grew": 0,
+      "status": "stale"
+    },
+    "pharmacist": {
+      "expl_commit": "e76cc59",
+      "explained": 11794,
+      "stale": 0,
+      "stale_qids": [],
+      "unstamped": 0,
+      "explained_after_bank_grew": 0,
+      "status": "ok"
+    },
+    "social-worker": {
+      "expl_commit": "e76cc59",
+      "explained": 7331,
+      "stale": 0,
+      "stale_qids": [],
+      "unstamped": 0,
+      "explained_after_bank_grew": 0,
+      "status": "ok"
+    },
+    "teacher": {
+      "expl_commit": "8008951",
+      "explained": 3190,
+      "stale": 0,
+      "stale_qids": [],
+      "unstamped": 0,
+      "explained_after_bank_grew": 0,
+      "status": "ok"
+    }
+  }
+}

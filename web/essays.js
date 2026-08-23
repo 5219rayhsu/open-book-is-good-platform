@@ -265,7 +265,12 @@ function renderEssayPicker() {
       item.appendChild(el('span', { 'class': 'mode-name' }, e.subject + ' 第 ' + e.no + ' 題'));
       var tags = el('span', { 'class': 'mode-tags' });
       if (e.points) { tags.appendChild(el('span', { 'class': 'ptag' }, e.points + ' 分')); }
-      tags.appendChild(el('span', { 'class': 'ptag' + (e.ref ? ' lead' : '') }, e.ref ? '有參考要點' : '要點整理中'));
+      /* 🔴 三種狀態，不是兩種。作文（學測國寫／會考寫作）**刻意不寫參考要點**——
+         範文與樣卷是考生的著作，著作權法 §9 只免除試題本身，不及於範文，所以我們
+         不重製、改附官方連結。把它顯示成「要點整理中」等於承諾一件永遠不會做的事。 */
+      var _hasOfficial = Array.isArray(e.official_refs) && e.official_refs.length > 0;
+      tags.appendChild(el('span', { 'class': 'ptag' + (e.ref || _hasOfficial ? ' lead' : '') },
+        e.ref ? '有參考要點' : (_hasOfficial ? '官方範文連結' : '要點整理中')));
       item.appendChild(tags);
       item.appendChild(el('span', { 'class': 'mode-desc' }, e.prompt.slice(0, 64) + (e.prompt.length > 64 ? '…' : '')));
       item.addEventListener('click', function () { startEssay(e.qid); });
@@ -335,15 +340,54 @@ function gradeEssay(e, userText, card, submitBtn) {
   var _stale = (typeof staleNoteEl === 'function') ? staleNoteEl(e) : null;
   if (_stale) { result.appendChild(_stale); }
 
+  /* 官方範文連結。**這一段沒有 AI 產生的內容**——作文的範文是考生的著作，
+     著作權法 §9 免除的是「試題及其備用試題」，不及於範文與樣卷，所以本站不重製，
+     只提供官方出處。這比自己寫一篇「示範作文」誠實，也比留白有用。 */
+  if (Array.isArray(e.official_refs) && e.official_refs.length > 0) {
+    var offBox = el('div', { 'class': 'essay-ref' });
+    offBox.appendChild(el('h4', null, '官方範文'));
+    offBox.appendChild(el('p', null,
+      '本站不提供自寫的示範作文。範文與評分樣卷是考生的著作，著作權法第 9 條免除的是'
+      + '「試題及其備用試題」，不及於範文，因此我們不重製，改附官方出處：'));
+    var offList = el('ul', { 'class': 'essay-official' });
+    e.official_refs.forEach(function (r) {
+      var li = el('li');
+      li.appendChild(el('a', { href: r.url, target: '_blank', rel: 'noopener noreferrer' },
+        r.label || r.url));
+      offList.appendChild(li);
+    });
+    offBox.appendChild(offList);
+    offBox.appendChild(el('p', { 'class': 'honest' },
+      '連結指向官方網站，內容與可用性由官方決定；若連結失效，請到該單位官網查當年度資料。'));
+    result.appendChild(offBox);
+  }
+
   /* 揭示參考要點 */
   if (ref) {
     var refBox = el('div', { 'class': 'essay-ref' });
     if (ref.summary) { refBox.appendChild(el('p', { 'class': 'essay-ref-summary' }, '考點：' + ref.summary)); }
-    if (Array.isArray(ref.frame) && ref.frame.length) {
+    /* 🔴 frame 有兩種 schema，而且這裡曾經只認得一種。
+       social-worker 寫成陣列（292 列），lawyer/cpa/clinical/counseling 寫成字串（329 列）。
+       原本的判斷是 `Array.isArray(ref.frame)`，字串進來就**靜默跳過**——不是報錯、
+       不是顯示空白，是整個「答題架構」區塊不存在。於是 329 列在站上消失了好幾個月，
+       而「沒有顯示」跟「沒有資料」在畫面上完全同形（同 gates.md §M 的形狀）。
+       字串只切箭頭（302 列是箭頭步驟、27 列是完整句子），不切分號——寧可漏、不可錯。
+       未知形狀由 _build_features/check_essay_ref.py 在資料層擋，不在這裡靜默吞掉。 */
+    var _frame = ref.frame;
+    if (typeof _frame === 'string' && _frame.trim()) {
+      _frame = /[→⇒]|->/.test(_frame)
+        ? _frame.split(/\s*(?:→|⇒|->)\s*/).filter(function (x) { return x.trim(); })
+        : [_frame];
+    }
+    if (Array.isArray(_frame) && _frame.length) {
       refBox.appendChild(el('h4', null, '答題架構'));
-      var ol = el('ol', { 'class': 'essay-frame' });
-      ref.frame.forEach(function (f) { ol.appendChild(el('li', null, f)); });
-      refBox.appendChild(ol);
+      if (_frame.length === 1) {
+        refBox.appendChild(el('p', { 'class': 'essay-frame-prose' }, _frame[0]));
+      } else {
+        var ol = el('ol', { 'class': 'essay-frame' });
+        _frame.forEach(function (f) { ol.appendChild(el('li', null, f)); });
+        refBox.appendChild(ol);
+      }
     }
     if (Array.isArray(ref.laws) && ref.laws.length) {
       refBox.appendChild(el('h4', null, '相關法規 / 理論'));

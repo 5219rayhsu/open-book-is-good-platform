@@ -135,7 +135,11 @@ function formatPassage(text) {
 }
 /* 附圖元素(題幹附圖與題組本體圖共用):圖檔尚未整備時優雅退化成佔位字,不顯示破圖 icon。 */
 function figureImg(name, alt) {
-  var fig = el('img', { 'class': 'q-figure', src: dataUrl('figures/' + name), alt: alt, loading: 'lazy' });
+  /* 單機版(build_standalone.py)把圖 base64 內嵌成 window.__FIGS__;線上站沒有這個
+     變數,走 dataUrl 檔案載入。file:// 下 <img src> 相對路徑不會被擋,但單機版只有
+     一個 HTML、沒有 figures/ 目錄,所以內嵌圖庫是它唯一的來源。 */
+  var src = (window.__FIGS__ && window.__FIGS__[name]) || dataUrl('figures/' + name);
+  var fig = el('img', { 'class': 'q-figure', src: src, alt: alt, loading: 'lazy' });
   fig.onerror = function () {
     if (fig.parentNode) {
       fig.parentNode.replaceChild(el('p', { 'class': 'q-figure-pending' }, '（此題附圖整備中）'), fig);
