@@ -1,0 +1,2782 @@
+{
+ "targets": [
+  {
+   "qid": "113_分科物理_25",
+   "exam": "ast",
+   "why": "關鍵字",
+   "block": "ast2_in_p15.json",
+   "had_prev": false
+  },
+  {
+   "qid": "114_分科生物_28",
+   "exam": "ast",
+   "why": "關鍵字",
+   "block": "ast1_in_p8.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_101_101030_P4_調劑學與臨床藥學_03_13",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p601.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_101_101030_P4_調劑學與臨床藥學_03_77",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p604.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_101_101030_P4_調劑學與臨床藥學_03_78",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p604.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_101_101030_P5_藥物治療學_05_14",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p605.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_101_101030_P5_藥物治療學_05_17",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p605.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_101_101030_P5_藥物治療學_05_18",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p605.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_101_101100_P1_藥理學與藥物化學_1_39",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p613.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_101_101100_P1_藥理學與藥物化學_1_40",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p613.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_101_101100_P2_藥物分析與生藥學_2_40",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p616.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_101_101100_P4_調劑學與臨床藥學_3_78",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p626.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_101_101100_P4_調劑學與臨床藥學_3_80",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p626.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_101_101100_P5_藥物治療學_5_76",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p630.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_101_101100_P5_藥物治療學_5_77",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p630.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_101_101100_P5_藥物治療學_5_78",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p630.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_101_101100_P5_藥物治療學_5_79",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p630.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_101_101100_P5_藥物治療學_5_80",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p630.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_101_101100_P6_藥事行政與法規_6_01",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p630.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_102_102020_P4_調劑學與臨床藥學_3_78",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p566.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_102_102020_P4_調劑學與臨床藥學_3_80",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p566.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_102_102020_P5_藥物治療學_5_78",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p570.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_102_102020_P5_藥物治療學_5_80",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p570.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_102_102100_P4_調劑學與臨床藥學_3_78",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p588.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_102_102100_P4_調劑學與臨床藥學_3_80",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p588.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_102_102100_P6_藥事行政與法規_6_01",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p592.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P4_調劑學與臨床藥學_3_72",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p521.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P4_調劑學與臨床藥學_3_74",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p521.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P4_調劑學與臨床藥學_3_76",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p522.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P4_調劑學與臨床藥學_3_78",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p522.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P4_調劑學與臨床藥學_3_80",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p522.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_47",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p524.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_48",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p524.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_49",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p524.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_50",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p524.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_52",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p524.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_53",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p524.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_54",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p524.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_55",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p524.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_56",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p525.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_57",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p525.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_58",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p525.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_59",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p525.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_60",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p525.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_61",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p525.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_62",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p525.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_63",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p525.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_65",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p525.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_66",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "L20ph_in_p11.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_67",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p525.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_68",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p525.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_69",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p525.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_70",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "L20ph_in_p11.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_71",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p525.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_73",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p525.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_76",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p526.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103020_P5_藥物治療學_5_77",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p526.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P4_調劑學與臨床藥學_4_68",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p543.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P4_調劑學與臨床藥學_4_70",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p543.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P4_調劑學與臨床藥學_4_73",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p543.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P4_調劑學與臨床藥學_4_75",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p543.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P4_調劑學與臨床藥學_4_76",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p543.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P4_調劑學與臨床藥學_4_80",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p544.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P5_藥物治療學_5_43",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p546.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P5_藥物治療學_5_46",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p546.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P5_藥物治療學_5_47",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p546.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P5_藥物治療學_5_49",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p546.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P5_藥物治療學_5_50",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p546.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P5_藥物治療學_5_53",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p546.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P5_藥物治療學_5_55",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p546.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P5_藥物治療學_5_56",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p546.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P5_藥物治療學_5_57",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p547.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P5_藥物治療學_5_58",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p547.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P5_藥物治療學_5_60",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p547.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P5_藥物治療學_5_63",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p547.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P5_藥物治療學_5_68",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p547.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P5_藥物治療學_5_69",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p547.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P5_藥物治療學_5_72",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p547.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P5_藥物治療學_5_73",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p547.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P5_藥物治療學_5_74",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p547.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P5_藥物治療學_5_75",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p547.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P5_藥物治療學_5_76",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p547.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P5_藥物治療學_5_79",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p548.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P5_藥物治療學_5_80",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p548.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_103_103090_P6_藥事行政與法規_6_01",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p548.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104020_P4_調劑學與臨床藥學_4_72",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p477.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104020_P4_調劑學與臨床藥學_4_74",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p477.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104020_P4_調劑學與臨床藥學_4_76",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p477.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104020_P4_調劑學與臨床藥學_4_78",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p477.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104020_P4_調劑學與臨床藥學_4_80",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p477.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104020_P5_藥物治療學_5_66",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p481.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104020_P5_藥物治療學_5_67",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p481.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104020_P5_藥物治療學_5_68",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p481.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104020_P5_藥物治療學_5_71",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p481.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104020_P5_藥物治療學_5_73",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p481.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104020_P5_藥物治療學_5_74",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p481.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104020_P5_藥物治療學_5_75",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p481.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104020_P5_藥物治療學_5_77",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p481.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104020_P5_藥物治療學_5_79",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p481.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104020_P5_藥物治療學_5_80",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p481.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104020_P6_藥事行政與法規_6_01",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p482.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P3_藥劑學與生物藥劑學_3_78",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p495.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P3_藥劑學與生物藥劑學_3_80",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p496.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P4_調劑學與臨床藥學_4_69",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p499.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P4_調劑學與臨床藥學_4_70",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p499.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P4_調劑學與臨床藥學_4_71",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p499.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P4_調劑學與臨床藥學_4_72",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p499.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P4_調劑學與臨床藥學_4_74",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p499.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P4_調劑學與臨床藥學_4_78",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p499.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P4_調劑學與臨床藥學_4_80",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p500.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P5_藥物治療學_5_55",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p502.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P5_藥物治療學_5_56",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p502.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P5_藥物治療學_5_58",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p502.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P5_藥物治療學_5_60",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p503.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P5_藥物治療學_5_62",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p503.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P5_藥物治療學_5_64",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p503.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P5_藥物治療學_5_65",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "rp1_in_p20.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P5_藥物治療學_5_66",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p503.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P5_藥物治療學_5_68",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p503.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P5_藥物治療學_5_70",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p503.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P5_藥物治療學_5_72",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p503.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P5_藥物治療學_5_74",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p503.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P5_藥物治療學_5_75",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p503.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P5_藥物治療學_5_76",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p503.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P5_藥物治療學_5_78",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p503.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P5_藥物治療學_5_79",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p504.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_104_104090_P5_藥物治療學_5_80",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p504.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105020_P4_調劑學與臨床藥學_4_75",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "L20ph_in_p14.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105020_P4_調劑學與臨床藥學_4_76",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "L20ph_in_p14.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105020_P4_調劑學與臨床藥學_4_77",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p433.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105020_P5_藥物治療學_5_67",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p437.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105020_P5_藥物治療學_5_69",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p437.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105020_P5_藥物治療學_5_70",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p437.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105020_P5_藥物治療學_5_72",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p437.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105020_P5_藥物治療學_5_73",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p437.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105020_P5_藥物治療學_5_74",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p437.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105020_P5_藥物治療學_5_75",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p437.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105020_P5_藥物治療學_5_79",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p437.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105020_P5_藥物治療學_5_80",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p437.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105100_P3_藥劑學與生物藥劑學_3_80",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p452.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105100_P4_調劑學與臨床藥學_4_74",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p455.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105100_P4_調劑學與臨床藥學_4_75",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p455.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105100_P4_調劑學與臨床藥學_4_78",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p456.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105100_P5_藥物治療學_5_67",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p459.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105100_P5_藥物治療學_5_69",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p459.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105100_P5_藥物治療學_5_71",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p459.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105100_P5_藥物治療學_5_72",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p459.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105100_P5_藥物治療學_5_73",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "L20ph_in_p16.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105100_P5_藥物治療學_5_74",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "L20ph_in_p16.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105100_P5_藥物治療學_5_75",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "L20ph_in_p16.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105100_P5_藥物治療學_5_76",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p459.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105100_P5_藥物治療學_5_77",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p459.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_105_105100_P5_藥物治療學_5_80",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "rp1_in_p25.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_106_106020_P4_調劑學與臨床藥學_4_76",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p390.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_106_106020_P4_調劑學與臨床藥學_4_78",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p390.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_106_106020_P4_調劑學與臨床藥學_4_80",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p390.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_106_106020_P5_藥物治療學_5_72",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "rp1_in_p28.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_106_106020_P5_藥物治療學_5_73",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p393.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_106_106020_P5_藥物治療學_5_74",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p393.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_106_106020_P5_藥物治療學_5_75",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p394.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_106_106020_P5_藥物治療學_5_77",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p394.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_106_106020_P5_藥物治療學_5_79",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p394.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_106_106020_P5_藥物治療學_5_80",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p394.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_106_106100_P2_藥物分析與生藥學_2_40",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "L20phFIG_in_p5.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_106_106100_P4_調劑學與臨床藥學_4_69",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p411.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_106_106100_P4_調劑學與臨床藥學_4_71",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p411.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_106_106100_P4_調劑學與臨床藥學_4_72",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p411.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_106_106100_P4_調劑學與臨床藥學_4_73",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "rp1_in_p30.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_106_106100_P4_調劑學與臨床藥學_4_74",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p411.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_106_106100_P5_藥物治療學_5_68",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p415.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_106_106100_P5_藥物治療學_5_69",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p415.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_106_106100_P5_藥物治療學_5_70",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p415.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_106_106100_P5_藥物治療學_5_76",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p415.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_106_106100_P5_藥物治療學_5_78",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p416.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_106_106100_P5_藥物治療學_5_80",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p416.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_106_106100_P6_藥事行政與法規_6_01",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "rp1_in_p30.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P3_藥劑學與生物藥劑學_3_77",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p342.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P3_藥劑學與生物藥劑學_3_79",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p342.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P3_藥劑學與生物藥劑學_3_80",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p342.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P4_調劑學與臨床藥學_4_01",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p342.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P4_調劑學與臨床藥學_4_67",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p345.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P4_調劑學與臨床藥學_4_69",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p345.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P4_調劑學與臨床藥學_4_71",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p345.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P4_調劑學與臨床藥學_4_73",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p345.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P4_調劑學與臨床藥學_4_75",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p345.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P4_調劑學與臨床藥學_4_79",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p346.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P4_調劑學與臨床藥學_4_80",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p346.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P5_藥物治療學_5_01",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p346.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P5_藥物治療學_5_60",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p349.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P5_藥物治療學_5_62",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p349.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P5_藥物治療學_5_63",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p349.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P5_藥物治療學_5_64",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p349.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P5_藥物治療學_5_67",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p349.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P5_藥物治療學_5_69",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p349.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P5_藥物治療學_5_70",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p349.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P5_藥物治療學_5_71",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p349.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P5_藥物治療學_5_72",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p349.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P5_藥物治療學_5_73",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p349.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P5_藥物治療學_5_74",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p349.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P5_藥物治療學_5_75",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p349.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P5_藥物治療學_5_76",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "L20ph_in_p19.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P5_藥物治療學_5_77",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p350.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P5_藥物治療學_5_78",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p350.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107020_P5_藥物治療學_5_80",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p350.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P4_調劑學與臨床藥學_4_74",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "L20ph_in_p19.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P4_調劑學與臨床藥學_4_75",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p368.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P4_調劑學與臨床藥學_4_76",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p368.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P4_調劑學與臨床藥學_4_77",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p368.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P4_調劑學與臨床藥學_4_79",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p368.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P4_調劑學與臨床藥學_4_80",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "L20ph_in_p19.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P5_藥物治療學_5_01",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p368.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P5_藥物治療學_5_48",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p370.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P5_藥物治療學_5_50",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p370.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P5_藥物治療學_5_53",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p370.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P5_藥物治療學_5_55",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p371.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P5_藥物治療學_5_57",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p371.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P5_藥物治療學_5_59",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p371.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P5_藥物治療學_5_61",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p371.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P5_藥物治療學_5_63",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p371.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P5_藥物治療學_5_64",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p371.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P5_藥物治療學_5_66",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p371.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P5_藥物治療學_5_67",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p371.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P5_藥物治療學_5_68",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p371.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P5_藥物治療學_5_69",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p371.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P5_藥物治療學_5_70",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p371.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P5_藥物治療學_5_71",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p371.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P5_藥物治療學_5_72",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p371.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P5_藥物治療學_5_74",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p372.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P5_藥物治療學_5_75",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p372.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P5_藥物治療學_5_76",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p372.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P5_藥物治療學_5_77",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p372.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P5_藥物治療學_5_78",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p372.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P5_藥物治療學_5_79",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p372.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_107_107100_P5_藥物治療學_5_80",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p372.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108030_P2_藥物分析與生藥學_2_40",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p292.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108030_P4_調劑學與臨床藥學_4_71",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p301.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108030_P4_調劑學與臨床藥學_4_75",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p301.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108030_P4_調劑學與臨床藥學_4_77",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p301.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108030_P4_調劑學與臨床藥學_4_78",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "L20ph_in_p20.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108030_P4_調劑學與臨床藥學_4_79",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p301.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108030_P5_藥物治療學_5_61",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p305.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108030_P5_藥物治療學_5_65",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p305.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108030_P5_藥物治療學_5_67",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p305.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108030_P5_藥物治療學_5_68",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p305.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108030_P5_藥物治療學_5_69",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p305.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108030_P5_藥物治療學_5_70",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p305.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108030_P5_藥物治療學_5_74",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p305.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108030_P5_藥物治療學_5_75",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p305.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108030_P5_藥物治療學_5_76",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p305.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108030_P5_藥物治療學_5_77",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p305.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108030_P5_藥物治療學_5_79",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p305.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108030_P5_藥物治療學_5_80",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p306.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108030_P6_藥事行政與法規_6_01",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p306.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108100_P4_調劑學與臨床藥學_4_72",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p323.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108100_P4_調劑學與臨床藥學_4_74",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p323.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108100_P4_調劑學與臨床藥學_4_76",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p323.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108100_P4_調劑學與臨床藥學_4_78",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p323.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108100_P5_藥物治療學_5_74",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p327.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108100_P5_藥物治療學_5_76",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p327.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_108_108100_P5_藥物治療學_5_78",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p327.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109020_P3_藥劑學與生物藥劑學_3_79",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p253.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109020_P3_藥劑學與生物藥劑學_3_80",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p253.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109020_P4_調劑學與臨床藥學_4_01",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p253.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109020_P4_調劑學與臨床藥學_4_80",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p257.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109020_P5_藥物治療學_5_74",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p261.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109020_P5_藥物治療學_5_76",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p261.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109020_P5_藥物治療學_5_78",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p261.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109020_P5_藥物治療學_5_80",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p261.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109100_P4_調劑學與臨床藥學_4_78",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p279.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109100_P4_調劑學與臨床藥學_4_80",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p279.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109100_P5_藥物治療學_5_56",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p282.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109100_P5_藥物治療學_5_58",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p282.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109100_P5_藥物治療學_5_59",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p282.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109100_P5_藥物治療學_5_60",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "L20ph_in_p23.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109100_P5_藥物治療學_5_61",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p282.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109100_P5_藥物治療學_5_63",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p282.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109100_P5_藥物治療學_5_65",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p283.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109100_P5_藥物治療學_5_66",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "L20ph_in_p23.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109100_P5_藥物治療學_5_67",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p283.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109100_P5_藥物治療學_5_68",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p283.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109100_P5_藥物治療學_5_70",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p283.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109100_P5_藥物治療學_5_72",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p283.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109100_P5_藥物治療學_5_74",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p283.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109100_P5_藥物治療學_5_76",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p283.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109100_P5_藥物治療學_5_77",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p283.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109100_P5_藥物治療學_5_78",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p283.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109100_P5_藥物治療學_5_79",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "L20ph_in_p23.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109100_P5_藥物治療學_5_80",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "L20ph_in_p23.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_109_109100_P6_藥事行政與法規_6_01",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p283.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_110_110020_P4_調劑學與臨床藥學_4_77",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p213.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_110_110020_P4_調劑學與臨床藥學_4_78",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p213.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_110_110020_P4_調劑學與臨床藥學_4_79",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p213.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_110_110100_P4_調劑學與臨床藥學_4_79",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p224.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_110_110100_P4_調劑學與臨床藥學_4_80",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "L20ph_in_p25.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_110_110100_P5_藥物治療學_5_01",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p224.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_111_111020_P3_藥劑學與生物藥劑學_3_12",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "L20phFIG_in_p12.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_111_111100_P4_調劑學與臨床藥學_4_29",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "L20ph_in_p27.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_111_111100_P4_調劑學與臨床藥學_4_30",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p189.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_112_112020_P5_藥物治療學_5_25",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p127.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_112_112020_P5_藥物治療學_5_26",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "L20ph_in_p29.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_112_112020_P5_藥物治療學_5_27",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p127.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_112_112020_P5_藥物治療學_5_74",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p129.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_112_112020_P5_藥物治療學_5_76",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p129.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_112_112100_P5_藥物治療學_5_79",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p151.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_112_112100_P5_藥物治療學_5_80",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "L20ph_in_p30.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_112_112100_P6_藥事行政與法規_6_01",
+   "exam": "pharmacist",
+   "why": "題組宣告",
+   "block": "ph2_in_p151.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_114_114020_P3_藥劑學與生物藥劑學_03_55",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p32.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_115_115020_P5_藥物治療學_02_12",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p16.json",
+   "had_prev": false
+  },
+  {
+   "qid": "pharmacist_115_115020_P5_藥物治療學_02_78",
+   "exam": "pharmacist",
+   "why": "關鍵字",
+   "block": "ph2_in_p20.json",
+   "had_prev": false
+  },
+  {
+   "qid": "113_113030_內外科護理學_07",
+   "exam": "nursing",
+   "why": "關鍵字",
+   "block": "L16_nursing_in_p1.json",
+   "had_prev": false
+  },
+  {
+   "qid": "115_115030_內外科護理學_23",
+   "exam": "nursing",
+   "why": "題組宣告",
+   "block": "L16_nursing_in_p22.json",
+   "had_prev": false
+  },
+  {
+   "qid": "115_115030_內外科護理學_24",
+   "exam": "nursing",
+   "why": "題組宣告",
+   "block": "L16_nursing_in_p22.json",
+   "had_prev": false
+  },
+  {
+   "qid": "115_115030_內外科護理學_25",
+   "exam": "nursing",
+   "why": "題組宣告",
+   "block": "L16_nursing_in_p22.json",
+   "had_prev": false
+  },
+  {
+   "qid": "113_113030_精神科與社區衛生護理學_19",
+   "exam": "nursing",
+   "why": "關鍵字",
+   "block": "L16_nursing_in_p9.json",
+   "had_prev": false
+  },
+  {
+   "qid": "113_113030_精神科與社區衛生護理學_41",
+   "exam": "nursing",
+   "why": "關鍵字",
+   "block": "L16_nursing_in_p10.json",
+   "had_prev": false
+  },
+  {
+   "qid": "114_114030_精神科與社區衛生護理學_13",
+   "exam": "nursing",
+   "why": "關鍵字",
+   "block": "L16_nursing_in_p19.json",
+   "had_prev": false
+  },
+  {
+   "qid": "115_115030_精神科與社區衛生護理學_22",
+   "exam": "nursing",
+   "why": "關鍵字",
+   "block": "L16_nursing_in_p29.json",
+   "had_prev": false
+  },
+  {
+   "qid": "102_102030_精神科與社區衛生護理學_59",
+   "exam": "nursing",
+   "why": "關鍵字",
+   "block": "nu1_in_p47.json",
+   "had_prev": false
+  },
+  {
+   "qid": "103_103100_精神科與社區衛生護理學_39",
+   "exam": "nursing",
+   "why": "關鍵字",
+   "block": "img_nursing_in_p2.json",
+   "had_prev": false
+  },
+  {
+   "qid": "105_105030_精神科與社區衛生護理學_19",
+   "exam": "nursing",
+   "why": "關鍵字",
+   "block": "tri_n_nursing_in_p1.json",
+   "had_prev": false
+  },
+  {
+   "qid": "105_105030_精神科與社區衛生護理學_40",
+   "exam": "nursing",
+   "why": "關鍵字",
+   "block": "img_nursing_in_p3.json",
+   "had_prev": false
+  },
+  {
+   "qid": "106_106110_基本護理學（包括護理原理、護理技術）與護理行政_50",
+   "exam": "nursing",
+   "why": "關鍵字",
+   "block": "cmb_nursing_in_p1.json",
+   "had_prev": false
+  },
+  {
+   "qid": "106_106110_精神科與社區衛生護理學_30",
+   "exam": "nursing",
+   "why": "關鍵字",
+   "block": "f4_nursing_in_p1.json",
+   "had_prev": false
+  },
+  {
+   "qid": "107_107030_精神科與社區衛生護理學_16",
+   "exam": "nursing",
+   "why": "關鍵字",
+   "block": "f4_nursing_in_p1.json",
+   "had_prev": false
+  },
+  {
+   "qid": "105_105020_醫學（四）（包括小兒科、皮膚科、神經科、精神科等科目及其相關臨床實例與醫學倫理）_33",
+   "exam": "doctor",
+   "why": "題組宣告",
+   "block": "d1_in_p170.json",
+   "had_prev": false
+  },
+  {
+   "qid": "105_105020_醫學（四）（包括小兒科、皮膚科、神經科、精神科等科目及其相關臨床實例與醫學倫理）_34",
+   "exam": "doctor",
+   "why": "題組宣告",
+   "block": "d1_in_p170.json",
+   "had_prev": false
+  },
+  {
+   "qid": "106_106080_醫學（五）（包括外科、骨科、泌尿科等科目及其相關臨床實例與醫學倫理）_44",
+   "exam": "doctor",
+   "why": "題組宣告",
+   "block": "d1_in_p101.json",
+   "had_prev": false
+  },
+  {
+   "qid": "106_106080_醫學（五）（包括外科、骨科、泌尿科等科目及其相關臨床實例與醫學倫理）_47",
+   "exam": "doctor",
+   "why": "題組宣告",
+   "block": "d1_in_p101.json",
+   "had_prev": false
+  },
+  {
+   "qid": "106_106080_醫學（五）（包括外科、骨科、泌尿科等科目及其相關臨床實例與醫學倫理）_48",
+   "exam": "doctor",
+   "why": "題組宣告",
+   "block": "d1_in_p101.json",
+   "had_prev": false
+  },
+  {
+   "qid": "106_106080_醫學（五）（包括外科、骨科、泌尿科等科目及其相關臨床實例與醫學倫理）_52",
+   "exam": "doctor",
+   "why": "題組宣告",
+   "block": "d1_in_p101.json",
+   "had_prev": false
+  },
+  {
+   "qid": "107_107080_醫學（三）（包括內科、家庭醫學科等科目及其相關臨床實例與醫學倫理）_64",
+   "exam": "doctor",
+   "why": "題組宣告",
+   "block": "d1_in_p26.json",
+   "had_prev": false
+  },
+  {
+   "qid": "107_107080_醫學（三）（包括內科、家庭醫學科等科目及其相關臨床實例與醫學倫理）_65",
+   "exam": "doctor",
+   "why": "題組宣告",
+   "block": "d1_in_p26.json",
+   "had_prev": false
+  },
+  {
+   "qid": "107_107080_醫學（三）（包括內科、家庭醫學科等科目及其相關臨床實例與醫學倫理）_66",
+   "exam": "doctor",
+   "why": "題組宣告",
+   "block": "d1_in_p26.json",
+   "had_prev": false
+  },
+  {
+   "qid": "108_108030_醫學（三）（包括內科、家庭醫學科等科目及其相關臨床實例與醫學倫理）_62",
+   "exam": "doctor",
+   "why": "題組宣告",
+   "block": "d1_in_p30.json",
+   "had_prev": false
+  },
+  {
+   "qid": "108_108030_醫學（三）（包括內科、家庭醫學科等科目及其相關臨床實例與醫學倫理）_63",
+   "exam": "doctor",
+   "why": "題組宣告",
+   "block": "d1_in_p30.json",
+   "had_prev": false
+  },
+  {
+   "qid": "108_108030_醫學（三）（包括內科、家庭醫學科等科目及其相關臨床實例與醫學倫理）_64",
+   "exam": "doctor",
+   "why": "題組宣告",
+   "block": "d1_in_p30.json",
+   "had_prev": false
+  },
+  {
+   "qid": "108_108080_醫學（三）（包括內科、家庭醫學科等科目及其相關臨床實例與醫學倫理）_62",
+   "exam": "doctor",
+   "why": "題組宣告",
+   "block": "d1_in_p34.json",
+   "had_prev": false
+  },
+  {
+   "qid": "108_108080_醫學（三）（包括內科、家庭醫學科等科目及其相關臨床實例與醫學倫理）_64",
+   "exam": "doctor",
+   "why": "題組宣告",
+   "block": "d1_in_p34.json",
+   "had_prev": false
+  },
+  {
+   "qid": "108_108080_醫學（五）（包括外科、骨科、泌尿科等科目及其相關臨床實例與醫學倫理）_52",
+   "exam": "doctor",
+   "why": "題組宣告",
+   "block": "d1_in_p116.json",
+   "had_prev": false
+  },
+  {
+   "qid": "108_108080_醫學（五）（包括外科、骨科、泌尿科等科目及其相關臨床實例與醫學倫理）_53",
+   "exam": "doctor",
+   "why": "題組宣告",
+   "block": "d1_in_p116.json",
+   "had_prev": false
+  },
+  {
+   "qid": "108_108080_醫學（五）（包括外科、骨科、泌尿科等科目及其相關臨床實例與醫學倫理）_54",
+   "exam": "doctor",
+   "why": "題組宣告",
+   "block": "d1_in_p116.json",
+   "had_prev": false
+  },
+  {
+   "qid": "109_109020_醫學（五）（包括外科、骨科、泌尿科等科目及其相關臨床實例與醫學倫理）_52",
+   "exam": "doctor",
+   "why": "題組宣告",
+   "block": "d1_in_p119.json",
+   "had_prev": false
+  },
+  {
+   "qid": "109_109020_醫學（五）（包括外科、骨科、泌尿科等科目及其相關臨床實例與醫學倫理）_53",
+   "exam": "doctor",
+   "why": "題組宣告",
+   "block": "d1_in_p119.json",
+   "had_prev": false
+  },
+  {
+   "qid": "109_109020_醫學（五）（包括外科、骨科、泌尿科等科目及其相關臨床實例與醫學倫理）_54",
+   "exam": "doctor",
+   "why": "題組宣告",
+   "block": "d1_in_p119.json",
+   "had_prev": false
+  },
+  {
+   "qid": "110_110080_醫學（五）（包括外科、骨科、泌尿科等科目及其相關臨床實例與醫學倫理）_54",
+   "exam": "doctor",
+   "why": "題組宣告",
+   "block": "d1_in_p131.json",
+   "had_prev": false
+  },
+  {
+   "qid": "110_110080_醫學（五）（包括外科、骨科、泌尿科等科目及其相關臨床實例與醫學倫理）_55",
+   "exam": "doctor",
+   "why": "題組宣告",
+   "block": "d1_in_p131.json",
+   "had_prev": false
+  },
+  {
+   "qid": "110_110080_醫學（五）（包括外科、骨科、泌尿科等科目及其相關臨床實例與醫學倫理）_56",
+   "exam": "doctor",
+   "why": "題組宣告",
+   "block": "d1_in_p131.json",
+   "had_prev": false
+  },
+  {
+   "qid": "111_111100_特論三_27",
+   "exam": "clinical",
+   "why": "關鍵字",
+   "block": "L16_clinical_in_p6.json",
+   "had_prev": false
+  },
+  {
+   "qid": "111_111100_特論二_10",
+   "exam": "clinical",
+   "why": "關鍵字",
+   "block": "L16_clinical_in_p7.json",
+   "had_prev": false
+  },
+  {
+   "qid": "114_114100_總論一_12",
+   "exam": "clinical",
+   "why": "關鍵字",
+   "block": "L16_clinical_in_p45.json",
+   "had_prev": false
+  },
+  {
+   "qid": "111_111100_諮商與心理治療理論_20",
+   "exam": "counseling",
+   "why": "關鍵字",
+   "block": "csr1_in_p17.json",
+   "had_prev": false
+  },
+  {
+   "qid": "103_103110_公法_13",
+   "exam": "lawyer",
+   "why": "關鍵字",
+   "block": "b13_in_p11.json",
+   "had_prev": false
+  },
+  {
+   "qid": "103_103110_公法_24",
+   "exam": "lawyer",
+   "why": "關鍵字",
+   "block": "b18_in_p8.json",
+   "had_prev": false
+  },
+  {
+   "qid": "104_104110_公法_07",
+   "exam": "lawyer",
+   "why": "關鍵字",
+   "block": "b7_in_p1.json",
+   "had_prev": false
+  },
+  {
+   "qid": "104_104110_公法_18",
+   "exam": "lawyer",
+   "why": "關鍵字",
+   "block": "b12_in_p8.json",
+   "had_prev": false
+  },
+  {
+   "qid": "104_104110_公法_32",
+   "exam": "lawyer",
+   "why": "關鍵字",
+   "block": "b14_in_p9.json",
+   "had_prev": false
+  },
+  {
+   "qid": "104_104110_商事法_18",
+   "exam": "lawyer",
+   "why": "關鍵字",
+   "block": "b20_in_p10.json",
+   "had_prev": false
+  },
+  {
+   "qid": "105_105110_公法_02",
+   "exam": "lawyer",
+   "why": "關鍵字",
+   "block": "b9_in_p3.json",
+   "had_prev": false
+  },
+  {
+   "qid": "105_105110_公法_03",
+   "exam": "lawyer",
+   "why": "關鍵字",
+   "block": "b9_in_p3.json",
+   "had_prev": false
+  },
+  {
+   "qid": "105_105110_公法_27",
+   "exam": "lawyer",
+   "why": "關鍵字",
+   "block": "b12_in_p15.json",
+   "had_prev": false
+  },
+  {
+   "qid": "105_105110_公法_31",
+   "exam": "lawyer",
+   "why": "關鍵字",
+   "block": "b11_in_p3.json",
+   "had_prev": false
+  },
+  {
+   "qid": "105_105110_商事法_19",
+   "exam": "lawyer",
+   "why": "關鍵字",
+   "block": "b10_in_p3.json",
+   "had_prev": false
+  },
+  {
+   "qid": "105_105110_商事法_28",
+   "exam": "lawyer",
+   "why": "關鍵字",
+   "block": "b6_in_p4.json",
+   "had_prev": false
+  },
+  {
+   "qid": "106_106120_公法_20",
+   "exam": "lawyer",
+   "why": "關鍵字",
+   "block": "b20_in_p8.json",
+   "had_prev": false
+  },
+  {
+   "qid": "106_106120_公法_21",
+   "exam": "lawyer",
+   "why": "關鍵字",
+   "block": "b17_in_p7.json",
+   "had_prev": false
+  },
+  {
+   "qid": "106_106120_公法_25",
+   "exam": "lawyer",
+   "why": "關鍵字",
+   "block": "b13_in_p8.json",
+   "had_prev": false
+  },
+  {
+   "qid": "114_114130_803_0206_23",
+   "exam": "cpa",
+   "why": "關鍵字",
+   "block": "k2_in_p8.json",
+   "had_prev": false
+  }
+ ],
+ "unknown_no_payload": [
+  {
+   "qid": "pharmacist_101_101100_P3_藥劑學與生物藥劑學_4_80",
+   "exam": "pharmacist",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "pharmacist_102_102020_P3_藥劑學與生物藥劑學_4_80",
+   "exam": "pharmacist",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "pharmacist_103_103090_P3_藥劑學與生物藥劑學_3_80",
+   "exam": "pharmacist",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "pharmacist_106_106100_P3_藥劑學與生物藥劑學_3_80",
+   "exam": "pharmacist",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "pharmacist_107_107100_P3_藥劑學與生物藥劑學_3_80",
+   "exam": "pharmacist",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "pharmacist_110_110101_P3_藥劑學與生物藥劑學_5_76",
+   "exam": "pharmacist",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "pharmacist_114_114090_P3_藥劑學與生物藥劑學_03_54",
+   "exam": "pharmacist",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "104_104030_精神科與社區衛生護理學_65",
+   "exam": "nursing",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "105_105020_醫學（五）（包括外科、骨科、泌尿科等科目及其相關臨床實例與醫學倫理）_55",
+   "exam": "doctor",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "105_105100_醫學（四）（包括小兒科、皮膚科、神經科、精神科等科目及其相關臨床實例與醫學倫理）_33",
+   "exam": "doctor",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "106_106080_醫學（五）（包括外科、骨科、泌尿科等科目及其相關臨床實例與醫學倫理）_45",
+   "exam": "doctor",
+   "why": "題組宣告"
+  },
+  {
+   "qid": "106_106080_醫學（五）（包括外科、骨科、泌尿科等科目及其相關臨床實例與醫學倫理）_46",
+   "exam": "doctor",
+   "why": "題組宣告"
+  },
+  {
+   "qid": "106_106080_醫學（五）（包括外科、骨科、泌尿科等科目及其相關臨床實例與醫學倫理）_49",
+   "exam": "doctor",
+   "why": "題組宣告"
+  },
+  {
+   "qid": "112_112080_醫學（五）（包括外科、骨科、泌尿科等科目及其相關臨床實例與醫學倫理）_49",
+   "exam": "doctor",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "113_113020_醫學（五）（包括外科、骨科、泌尿科等科目及其相關臨床實例與醫學倫理）_48",
+   "exam": "doctor",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "114_114070_醫學（五）（包括外科、骨科、泌尿科等科目及其相關臨床實例與醫學倫理）_10",
+   "exam": "doctor",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "115_115030_社會工作研究方法_31",
+   "exam": "social-worker",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "113_113030_社會工作研究方法_02",
+   "exam": "social-worker",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "113_113030_社會工作研究方法_34",
+   "exam": "social-worker",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "113_113030_社會工作研究方法_35",
+   "exam": "social-worker",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "113_113100_社會工作研究方法_17",
+   "exam": "social-worker",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "112_112030_社會工作研究方法_02",
+   "exam": "social-worker",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "112_112030_社會工作研究方法_10",
+   "exam": "social-worker",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "112_112110_社會工作研究方法_33",
+   "exam": "social-worker",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "112_112110_社會工作研究方法_35",
+   "exam": "social-worker",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "111_111030_社會工作研究方法_11",
+   "exam": "social-worker",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "111_111030_社會工作研究方法_34",
+   "exam": "social-worker",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "110_110030_社會工作研究方法_16",
+   "exam": "social-worker",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "110_110030_社會工作研究方法_24",
+   "exam": "social-worker",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "108_108110_社會工作研究方法_03",
+   "exam": "social-worker",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "104_104030_社會工作研究方法_06",
+   "exam": "social-worker",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "104_104030_社會工作研究方法_32",
+   "exam": "social-worker",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "102_102110_社會工作研究方法_15",
+   "exam": "social-worker",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "102_102110_社會工作研究方法_16",
+   "exam": "social-worker",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "102_102110_社會工作研究方法_29",
+   "exam": "social-worker",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "102_102110_社會工作研究方法_30",
+   "exam": "social-worker",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "106_106030_諮商與心理治療理論_11",
+   "exam": "counseling",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "103_103110_公法_38",
+   "exam": "lawyer",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "105_105110_公法_23",
+   "exam": "lawyer",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "105_105110_商事法_07",
+   "exam": "lawyer",
+   "why": "關鍵字"
+  },
+  {
+   "qid": "tqa_112_10_學習者發展與適性輔導_23",
+   "exam": "teacher",
+   "why": "關鍵字"
+  }
+ ],
+ "had_prev": 388,
+ "scanned_blocks": 6823
+}

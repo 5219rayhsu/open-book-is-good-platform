@@ -4,16 +4,15 @@
  "A_答案配對全驗": {
   "status": "ok",
   "tool": "_build_features/verify_answer_key.py",
-  "ran_at": "2026-08-13",
-  "verified": 13050,
+  "ran_at": "2026-08-24",
+  "verified": 13049,
   "mismatch": 0,
   "not_in_table": 0,
   "unverified_no_answer_pdf": 0,
   "unverified_no_question_pdf": 0,
   "unverified_no_session_code": 0,
   "unverified_parse_failed": 0,
-  "detail": [],
-  "kept_by": "gate_report.py 不覆寫已量測的結果"
+  "detail": []
  },
  "A2_題數與缺號": {
   "status": "partial",
@@ -73,7 +72,8 @@
   "status": "ok",
   "distribution": {
    "official": 12895,
-   "free": 155
+   "free": 154,
+   "multi": 1
   },
   "src_distribution": {
    "official_pdf": 13050
