@@ -1,0 +1,33 @@
+{
+ "gate": "arm_diversity",
+ "exam": "pharmacist",
+ "measured_at": "2026-08-24T03:55+08:00",
+ "batch": "L20ph",
+ "n": 698,
+ "arms": {
+  "A": "opus-5",
+  "B": "sonnet-5"
+ },
+ "by_fix_count": {
+  "A": 221,
+  "B": 45,
+  "both": 40,
+  "union": 226,
+  "only_A": 181,
+  "only_B": 5
+ },
+ "by_high_severity": {
+  "A": 20,
+  "B": 23,
+  "only_A": 11,
+  "only_B": 14
+ },
+ "verdict": "OR 聯集正確：多數決（取交集）會丟掉 186 則發現",
+ "caveats": [
+  "🔴 嚴重度是各臂自評、未經裁決。「B 的 high 比 A 多」可能是標籤校準差異而非偵測能力差異。",
+  "🔴 B 的獨有 high 中至少 1 則是誤報（111100_P4_4_28）：那些「虛構」數字全部來自 prev，是生成端補了 prev 而紅隊 payload 未同步造成的審查者輸入不等價。",
+  "high 聯集僅 34 則，n 不大。",
+  "🔴 兩個指標方向相反：只看 fix 總數會說 B 貢獻 2%，只看 high 會說 B 獨有數多於 A。單一指標都會誤導。"
+ ],
+ "compare_with_history": "STATIONS 記載的跨家族兩臂（藥師 wave 2, 4257 題）：A 抓 223、B 抓 247、交集 126、聯集 344，兩臂各貢獻約 100 則獨有。本輪同家族配對的不對稱遠大於此。"
+}

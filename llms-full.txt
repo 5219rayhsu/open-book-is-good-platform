@@ -509,199 +509,199 @@
 
 - 科目總覽（2,320 題／29 份卷）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/
 - 115 年（80 題，詳解 69 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/115020/
-- 114 年第 2 次（80 題，詳解 66 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/114090/
-- 114 年第 1 次（80 題，詳解 70 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/114020/
-- 113 年第 2 次（80 題，詳解 60 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/113090/
-- 113 年第 1 次（80 題，詳解 67 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/113020/
-- 112 年第 2 次（80 題，詳解 59 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/112100/
-- 112 年第 1 次（80 題，詳解 66 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/112020/
-- 111 年第 2 次（80 題，詳解 64 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/111100/
-- 111 年第 1 次（80 題，詳解 69 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/111020/
-- 110 年第 2 次（80 題，詳解 65 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/110101/
-- 110 年第 1 次（80 題，詳解 73 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/110020/
-- 109 年第 2 次（80 題，詳解 69 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/109100/
-- 109 年第 1 次（80 題，詳解 73 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/109020/
-- 108 年第 2 次（80 題，詳解 64 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/108100/
-- 108 年第 1 次（80 題，詳解 66 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/108030/
-- 107 年第 2 次（80 題，詳解 70 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/107100/
-- 107 年第 1 次（80 題，詳解 68 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/107020/
-- 106 年第 2 次（80 題，詳解 65 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/106100/
-- 106 年第 1 次（80 題，詳解 66 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/106020/
-- 105 年第 2 次（80 題，詳解 72 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/105100/
+- 114 年第 2 次（80 題，詳解 73 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/114090/
+- 114 年第 1 次（80 題，詳解 72 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/114020/
+- 113 年第 2 次（80 題，詳解 69 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/113090/
+- 113 年第 1 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/113020/
+- 112 年第 2 次（80 題，詳解 70 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/112100/
+- 112 年第 1 次（80 題，詳解 72 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/112020/
+- 111 年第 2 次（80 題，詳解 73 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/111100/
+- 111 年第 1 次（80 題，詳解 73 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/111020/
+- 110 年第 2 次（80 題，詳解 71 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/110101/
+- 110 年第 1 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/110020/
+- 109 年第 2 次（80 題，詳解 71 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/109100/
+- 109 年第 1 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/109020/
+- 108 年第 2 次（80 題，詳解 71 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/108100/
+- 108 年第 1 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/108030/
+- 107 年第 2 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/107100/
+- 107 年第 1 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/107020/
+- 106 年第 2 次（80 題，詳解 73 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/106100/
+- 106 年第 1 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/106020/
+- 105 年第 2 次（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/105100/
 - 105 年第 1 次（80 題，詳解 68 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/105020/
-- 104 年第 2 次（80 題，詳解 71 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/104090/
-- 104 年第 1 次（80 題，詳解 70 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/104020/
-- 103 年第 2 次（80 題，詳解 72 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/103090/
+- 104 年第 2 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/104090/
+- 104 年第 1 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/104020/
+- 103 年第 2 次（80 題，詳解 73 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/103090/
 - 103 年第 1 次（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/103020/
 - 102 年第 2 次（80 題，詳解 71 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/102100/
-- 102 年第 1 次（80 題，詳解 70 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/102020/
-- 101 年第 2 次（80 題，詳解 69 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/101100/
-- 101 年第 1 次（80 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/101030/
+- 102 年第 1 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/102020/
+- 101 年第 2 次（80 題，詳解 73 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/101100/
+- 101 年第 1 次（80 題，詳解 66 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥理學與藥物化學/101030/
 
 ### 藥物分析與生藥學
 
 - 科目總覽（2,320 題／29 份卷）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/
-- 115 年（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/115020/
-- 114 年第 2 次（80 題，詳解 73 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/114090/
-- 114 年第 1 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/114020/
-- 113 年第 2 次（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/113090/
-- 113 年第 1 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/113020/
-- 112 年第 2 次（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/112100/
-- 112 年第 1 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/112020/
-- 111 年第 2 次（80 題，詳解 72 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/111100/
-- 111 年第 1 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/111020/
-- 110 年第 2 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/110101/
-- 110 年第 1 次（80 題，詳解 70 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/110020/
-- 109 年第 2 次（80 題，詳解 72 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/109100/
-- 109 年第 1 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/109020/
-- 108 年第 2 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/108100/
+- 115 年（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/115020/
+- 114 年第 2 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/114090/
+- 114 年第 1 次（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/114020/
+- 113 年第 2 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/113090/
+- 113 年第 1 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/113020/
+- 112 年第 2 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/112100/
+- 112 年第 1 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/112020/
+- 111 年第 2 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/111100/
+- 111 年第 1 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/111020/
+- 110 年第 2 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/110101/
+- 110 年第 1 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/110020/
+- 109 年第 2 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/109100/
+- 109 年第 1 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/109020/
+- 108 年第 2 次（80 題，詳解 80 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/108100/
 - 108 年第 1 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/108030/
-- 107 年第 2 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/107100/
-- 107 年第 1 次（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/107020/
-- 106 年第 2 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/106100/
-- 106 年第 1 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/106020/
-- 105 年第 2 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/105100/
-- 105 年第 1 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/105020/
-- 104 年第 2 次（80 題，詳解 73 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/104090/
-- 104 年第 1 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/104020/
-- 103 年第 2 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/103090/
-- 103 年第 1 次（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/103020/
-- 102 年第 2 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/102100/
-- 102 年第 1 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/102020/
-- 101 年第 2 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/101100/
-- 101 年第 1 次（80 題，詳解 36 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/101030/
+- 107 年第 2 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/107100/
+- 107 年第 1 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/107020/
+- 106 年第 2 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/106100/
+- 106 年第 1 次（80 題，詳解 80 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/106020/
+- 105 年第 2 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/105100/
+- 105 年第 1 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/105020/
+- 104 年第 2 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/104090/
+- 104 年第 1 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/104020/
+- 103 年第 2 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/103090/
+- 103 年第 1 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/103020/
+- 102 年第 2 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/102100/
+- 102 年第 1 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/102020/
+- 101 年第 2 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/101100/
+- 101 年第 1 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物分析與生藥學/101030/
 
 ### 藥劑學與生物藥劑學
 
 - 科目總覽（2,320 題／29 份卷）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/
-- 115 年（80 題，詳解 72 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/115020/
-- 114 年第 2 次（80 題，詳解 63 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/114090/
-- 114 年第 1 次（80 題，詳解 68 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/114020/
-- 113 年第 2 次（80 題，詳解 68 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/113090/
-- 113 年第 1 次（80 題，詳解 69 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/113020/
-- 112 年第 2 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/112100/
-- 112 年第 1 次（80 題，詳解 64 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/112020/
-- 111 年第 2 次（80 題，詳解 71 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/111100/
-- 111 年第 1 次（80 題，詳解 73 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/111020/
-- 110 年第 2 次（80 題，詳解 66 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/110101/
-- 110 年第 1 次（80 題，詳解 71 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/110020/
-- 109 年第 2 次（80 題，詳解 69 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/109100/
-- 109 年第 1 次（80 題，詳解 70 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/109020/
-- 108 年第 2 次（80 題，詳解 70 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/108100/
-- 108 年第 1 次（80 題，詳解 73 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/108030/
-- 107 年第 2 次（80 題，詳解 73 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/107100/
-- 107 年第 1 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/107020/
-- 106 年第 2 次（80 題，詳解 70 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/106100/
-- 106 年第 1 次（80 題，詳解 72 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/106020/
-- 105 年第 2 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/105100/
-- 105 年第 1 次（80 題，詳解 65 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/105020/
-- 104 年第 2 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/104090/
-- 104 年第 1 次（80 題，詳解 66 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/104020/
-- 103 年第 2 次（80 題，詳解 72 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/103090/
-- 103 年第 1 次（80 題，詳解 69 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/103020/
-- 102 年第 2 次（80 題，詳解 68 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/102100/
-- 102 年第 1 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/102020/
-- 101 年第 2 次（80 題，詳解 71 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/101100/
-- 101 年第 1 次（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/101030/
+- 115 年（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/115020/
+- 114 年第 2 次（80 題，詳解 69 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/114090/
+- 114 年第 1 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/114020/
+- 113 年第 2 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/113090/
+- 113 年第 1 次（80 題，詳解 71 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/113020/
+- 112 年第 2 次（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/112100/
+- 112 年第 1 次（80 題，詳解 70 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/112020/
+- 111 年第 2 次（80 題，詳解 73 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/111100/
+- 111 年第 1 次（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/111020/
+- 110 年第 2 次（80 題，詳解 73 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/110101/
+- 110 年第 1 次（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/110020/
+- 109 年第 2 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/109100/
+- 109 年第 1 次（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/109020/
+- 108 年第 2 次（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/108100/
+- 108 年第 1 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/108030/
+- 107 年第 2 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/107100/
+- 107 年第 1 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/107020/
+- 106 年第 2 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/106100/
+- 106 年第 1 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/106020/
+- 105 年第 2 次（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/105100/
+- 105 年第 1 次（80 題，詳解 73 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/105020/
+- 104 年第 2 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/104090/
+- 104 年第 1 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/104020/
+- 103 年第 2 次（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/103090/
+- 103 年第 1 次（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/103020/
+- 102 年第 2 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/102100/
+- 102 年第 1 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/102020/
+- 101 年第 2 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/101100/
+- 101 年第 1 次（80 題，詳解 80 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥劑學與生物藥劑學/101030/
 
 ### 調劑學與臨床藥學
 
 - 科目總覽（2,320 題／29 份卷）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/
-- 115 年（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/115020/
-- 114 年第 2 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/114090/
-- 114 年第 1 次（80 題，詳解 73 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/114020/
-- 113 年第 2 次（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/113090/
-- 113 年第 1 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/113020/
-- 112 年第 2 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/112100/
-- 112 年第 1 次（80 題，詳解 70 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/112020/
-- 111 年第 2 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/111100/
-- 111 年第 1 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/111020/
+- 115 年（80 題，詳解 80 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/115020/
+- 114 年第 2 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/114090/
+- 114 年第 1 次（80 題，詳解 80 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/114020/
+- 113 年第 2 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/113090/
+- 113 年第 1 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/113020/
+- 112 年第 2 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/112100/
+- 112 年第 1 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/112020/
+- 111 年第 2 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/111100/
+- 111 年第 1 次（80 題，詳解 80 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/111020/
 - 110 年第 2 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/110100/
-- 110 年第 1 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/110020/
-- 109 年第 2 次（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/109100/
+- 110 年第 1 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/110020/
+- 109 年第 2 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/109100/
 - 109 年第 1 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/109020/
-- 108 年第 2 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/108100/
-- 108 年第 1 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/108030/
-- 107 年第 2 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/107100/
-- 107 年第 1 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/107020/
-- 106 年第 2 次（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/106100/
-- 106 年第 1 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/106020/
-- 105 年第 2 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/105100/
-- 105 年第 1 次（80 題，詳解 68 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/105020/
+- 108 年第 2 次（80 題，詳解 80 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/108100/
+- 108 年第 1 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/108030/
+- 107 年第 2 次（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/107100/
+- 107 年第 1 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/107020/
+- 106 年第 2 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/106100/
+- 106 年第 1 次（80 題，詳解 80 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/106020/
+- 105 年第 2 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/105100/
+- 105 年第 1 次（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/105020/
 - 104 年第 2 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/104090/
-- 104 年第 1 次（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/104020/
-- 103 年第 2 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/103090/
-- 103 年第 1 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/103020/
+- 104 年第 1 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/104020/
+- 103 年第 2 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/103090/
+- 103 年第 1 次（80 題，詳解 80 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/103020/
 - 102 年第 2 次（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/102100/
-- 102 年第 1 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/102020/
-- 101 年第 2 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/101100/
-- 101 年第 1 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/101030/
+- 102 年第 1 次（80 題，詳解 80 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/102020/
+- 101 年第 2 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/101100/
+- 101 年第 1 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/調劑學與臨床藥學/101030/
 
 ### 藥物治療學
 
 - 科目總覽（2,320 題／29 份卷）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/
 - 115 年（80 題，詳解 80 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/115020/
-- 114 年第 2 次（80 題，詳解 73 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/114090/
-- 114 年第 1 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/114020/
-- 113 年第 2 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/113090/
-- 113 年第 1 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/113020/
-- 112 年第 2 次（80 題，詳解 71 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/112100/
-- 112 年第 1 次（80 題，詳解 73 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/112020/
-- 111 年第 2 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/111100/
-- 111 年第 1 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/111020/
-- 110 年第 2 次（80 題，詳解 72 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/110100/
-- 110 年第 1 次（80 題，詳解 72 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/110020/
-- 109 年第 2 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/109100/
-- 109 年第 1 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/109020/
-- 108 年第 2 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/108100/
-- 108 年第 1 次（80 題，詳解 73 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/108030/
-- 107 年第 2 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/107100/
-- 107 年第 1 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/107020/
-- 106 年第 2 次（80 題，詳解 69 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/106100/
-- 106 年第 1 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/106020/
-- 105 年第 2 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/105100/
-- 105 年第 1 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/105020/
+- 114 年第 2 次（80 題，詳解 80 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/114090/
+- 114 年第 1 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/114020/
+- 113 年第 2 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/113090/
+- 113 年第 1 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/113020/
+- 112 年第 2 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/112100/
+- 112 年第 1 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/112020/
+- 111 年第 2 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/111100/
+- 111 年第 1 次（80 題，詳解 80 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/111020/
+- 110 年第 2 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/110100/
+- 110 年第 1 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/110020/
+- 109 年第 2 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/109100/
+- 109 年第 1 次（80 題，詳解 80 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/109020/
+- 108 年第 2 次（80 題，詳解 80 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/108100/
+- 108 年第 1 次（80 題，詳解 80 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/108030/
+- 107 年第 2 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/107100/
+- 107 年第 1 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/107020/
+- 106 年第 2 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/106100/
+- 106 年第 1 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/106020/
+- 105 年第 2 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/105100/
+- 105 年第 1 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/105020/
 - 104 年第 2 次（80 題，詳解 80 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/104090/
-- 104 年第 1 次（80 題，詳解 76 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/104020/
-- 103 年第 2 次（80 題，詳解 73 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/103090/
-- 103 年第 1 次（80 題，詳解 73 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/103020/
-- 102 年第 2 次（80 題，詳解 74 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/102100/
-- 102 年第 1 次（80 題，詳解 78 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/102020/
-- 101 年第 2 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/101100/
+- 104 年第 1 次（80 題，詳解 80 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/104020/
+- 103 年第 2 次（80 題，詳解 75 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/103090/
+- 103 年第 1 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/103020/
+- 102 年第 2 次（80 題，詳解 77 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/102100/
+- 102 年第 1 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/102020/
+- 101 年第 2 次（80 題，詳解 80 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/101100/
 - 101 年第 1 次（80 題，詳解 79 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥物治療學/101030/
 
 ### 藥事行政與法規
 
 - 科目總覽（1,450 題／29 份卷）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/
-- 115 年（50 題，詳解 47 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/115020/
-- 114 年第 2 次（50 題，詳解 43 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/114090/
+- 115 年（50 題，詳解 50 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/115020/
+- 114 年第 2 次（50 題，詳解 46 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/114090/
 - 114 年第 1 次（50 題，詳解 49 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/114020/
 - 113 年第 2 次（50 題，詳解 50 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/113090/
-- 113 年第 1 次（50 題，詳解 48 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/113020/
+- 113 年第 1 次（50 題，詳解 50 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/113020/
 - 112 年第 2 次（50 題，詳解 49 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/112100/
-- 112 年第 1 次（50 題，詳解 47 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/112020/
+- 112 年第 1 次（50 題，詳解 50 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/112020/
 - 111 年第 2 次（50 題，詳解 48 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/111100/
-- 111 年第 1 次（50 題，詳解 49 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/111020/
-- 110 年第 2 次（50 題，詳解 46 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/110100/
-- 110 年第 1 次（50 題，詳解 47 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/110020/
-- 109 年第 2 次（50 題，詳解 48 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/109100/
+- 111 年第 1 次（50 題，詳解 50 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/111020/
+- 110 年第 2 次（50 題，詳解 47 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/110100/
+- 110 年第 1 次（50 題，詳解 49 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/110020/
+- 109 年第 2 次（50 題，詳解 50 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/109100/
 - 109 年第 1 次（50 題，詳解 49 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/109020/
-- 108 年第 2 次（50 題，詳解 45 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/108100/
-- 108 年第 1 次（50 題，詳解 44 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/108030/
-- 107 年第 2 次（50 題，詳解 44 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/107100/
-- 107 年第 1 次（50 題，詳解 45 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/107020/
-- 106 年第 2 次（50 題，詳解 48 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/106100/
-- 106 年第 1 次（50 題，詳解 45 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/106020/
-- 105 年第 2 次（50 題，詳解 46 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/105100/
-- 105 年第 1 次（50 題，詳解 47 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/105020/
-- 104 年第 2 次（50 題，詳解 46 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/104090/
-- 104 年第 1 次（50 題，詳解 48 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/104020/
-- 103 年第 2 次（50 題，詳解 46 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/103090/
+- 108 年第 2 次（50 題，詳解 47 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/108100/
+- 108 年第 1 次（50 題，詳解 46 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/108030/
+- 107 年第 2 次（50 題，詳解 46 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/107100/
+- 107 年第 1 次（50 題，詳解 48 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/107020/
+- 106 年第 2 次（50 題，詳解 50 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/106100/
+- 106 年第 1 次（50 題，詳解 46 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/106020/
+- 105 年第 2 次（50 題，詳解 48 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/105100/
+- 105 年第 1 次（50 題，詳解 50 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/105020/
+- 104 年第 2 次（50 題，詳解 47 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/104090/
+- 104 年第 1 次（50 題，詳解 49 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/104020/
+- 103 年第 2 次（50 題，詳解 48 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/103090/
 - 103 年第 1 次（50 題，詳解 49 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/103020/
-- 102 年第 2 次（50 題，詳解 46 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/102100/
-- 102 年第 1 次（50 題，詳解 45 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/102020/
-- 101 年第 2 次（50 題，詳解 39 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/101100/
-- 101 年第 1 次（50 題，詳解 42 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/101030/
+- 102 年第 2 次（50 題，詳解 49 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/102100/
+- 102 年第 1 次（50 題，詳解 46 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/102020/
+- 101 年第 2 次（50 題，詳解 48 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/101100/
+- 101 年第 1 次（50 題，詳解 48 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/pharmacist/藥事行政與法規/101030/
 
 ## 醫師（`doctor`）
 

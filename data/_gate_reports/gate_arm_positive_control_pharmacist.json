@@ -1,0 +1,28 @@
+{
+ "gate": "arm_positive_control",
+ "exam": "pharmacist",
+ "measured_at": "2026-08-24T02:37+08:00",
+ "block": "ph_canary_in_p1.json",
+ "n": 20,
+ "n_spiked": 10,
+ "spike_type": "結論字母翻成非官方答案，中段一字不動（刻意留自我矛盾）",
+ "purpose": "harness 健檢：分辨「某臂零召回」是能力還是任務沒送到。**不是**真缺陷召回率量測。",
+ "arms": {
+  "A": {
+   "model": "opus-5",
+   "verdicts": 20,
+   "recall": "10/10",
+   "false_positive": "0/10",
+   "pass": true
+  },
+  "B": {
+   "model": "sonnet-5",
+   "verdicts": 20,
+   "recall": "10/10",
+   "false_positive": "0/10",
+   "pass": true
+  }
+ },
+ "verdict": "PASS —— 兩臂皆 10/10 召回、0/10 誤報、20/20 verdict 齊",
+ "caveat": "🔴 這道對照證明的是 harness 健康（任務有送到、粗暴缺陷抓得到），**不能**推論 sonnet 適合當 B 臂。2026-08-23 紀錄的「sonnet 真缺陷召回僅三成多」講的是真實缺陷，本塊摻的是不可能漏的人造缺陷，兩者不是同一件事。真冗餘要看正式跑批的兩臂交集／聯集比。"
+}

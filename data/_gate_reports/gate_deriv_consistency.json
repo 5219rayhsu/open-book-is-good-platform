@@ -19,19 +19,16 @@
       "status": "ok"
     },
     "cap": {
-      "expl_commit": "985e3b8",
+      "expl_commit": "644d0c1",
       "explained": 1080,
-      "stale": 2,
-      "stale_qids": [
-        "會考_111_自然_49",
-        "會考_112_數學_19"
-      ],
+      "stale": 0,
+      "stale_qids": [],
       "unstamped": 0,
       "explained_after_bank_grew": 0,
-      "status": "stale"
+      "status": "ok"
     },
     "clinical": {
-      "expl_commit": "36ea818",
+      "expl_commit": "a237e59",
       "explained": 5640,
       "stale": 0,
       "stale_qids": [],
@@ -67,7 +64,7 @@
       "status": "ok"
     },
     "gsat": {
-      "expl_commit": "985e3b8",
+      "expl_commit": "644d0c1",
       "explained": 1258,
       "stale": 8,
       "stale_qids": [
@@ -94,15 +91,13 @@
       "status": "ok"
     },
     "nursing": {
-      "expl_commit": "36ea818",
+      "expl_commit": "dd33976",
       "explained": 10070,
-      "stale": 1,
-      "stale_qids": [
-        "105_105090_精神科與社區衛生護理學_50"
-      ],
+      "stale": 0,
+      "stale_qids": [],
       "unstamped": 0,
       "explained_after_bank_grew": 0,
-      "status": "stale"
+      "status": "ok"
     },
     "pharmacist": {
       "expl_commit": "e76cc59",
@@ -114,7 +109,7 @@
       "status": "ok"
     },
     "social-worker": {
-      "expl_commit": "e76cc59",
+      "expl_commit": "ae65360",
       "explained": 7331,
       "stale": 0,
       "stale_qids": [],
