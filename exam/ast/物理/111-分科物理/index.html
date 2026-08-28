@@ -66,7 +66,9 @@
 .pager a{color:var(--accent);text-decoration:none;font-weight:600;}
 .fine{font-size:.87rem;color:var(--ink-faint);line-height:1.75;}
 </style>
-
+<link rel="stylesheet" href="../../../../web/katex/katex.min.css">
+<script defer src="../../../../web/katex/katex.min.js"></script>
+<script defer src="../../../../web/katex/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}],throwOnError:false})"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","name":"111 年分科測驗物理試題","url":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/物理/111-分科物理/","inLanguage":"zh-Hant-TW","isAccessibleForFree":true,"learningResourceType":["題庫","練習題"],"educationalLevel":"升學","teaches":"物理","license":"https://creativecommons.org/publicdomain/zero/1.0/","isPartOf":{"@type":"WebSite","name":"開卷有益","url":"https://open-book-is-good-platform.1003ray1003.workers.dev/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"開卷有益","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/"},{"@type":"ListItem","position":2,"name":"分科測驗","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/"},{"@type":"ListItem","position":3,"name":"物理","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/物理/"},{"@type":"ListItem","position":4,"name":"111 年","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/物理/111-分科物理/"}]}]}</script>
 </head>
 <body>
@@ -247,15 +249,9 @@
 </article>
 <article class="sq" id="q14">
 <p class="sq-no"><a class="sq-link" href="#q14" title="這一題的永久連結">第 14 題</a>（多選）</p>
-<div class="sq-stem">如圖6 所示,磁場垂直指入紙面,使通過正方形迴路ABCD 的磁通量,穩定地以
- 1.0 T m 2 / s 的時間變化率增加,AB 段與CD 段的電阻分別為0.6kΩ與0.4kΩ。將伏特
- 計 V1 與 V2 的正極(+)分別接到A、D 點,負極(-)分別接到B、C 點,測得的電壓
- 值分別為 V1 與 V2 。假設迴路上應電流I 產生的磁場與通過伏特計的電流均可忽略,則下
- 列選項中哪些關係式可能是正確的? D I A
- + +</div>
+<div class="sq-stem">如圖6所示，磁場垂直指入紙面，使通過正方形迴路ABCD的磁通量，穩定地以\(1.0Tm^{2}/s\)的時間變化率增加，AB段與CD段的電阻分別為0.6kΩ與0.4kΩ。將伏特計\(V_{1}\)與\(V_{2}\)的正極（＋）分別接到A、D點，負極（－）分別接到B、C點，測得的電壓值分別為\(V_{1}\)與\(V_{2}\)。假設迴路上應電流I產生的磁場與通過伏特計的電流均可忽略，則下列選項中哪些關係式可能是正確的？</div>
 <img class="sq-fig" loading="lazy" src="../../../../data/ast/figures/111_分科物理_14.png" alt="第 14 題附圖">
-<ol class="sq-opts"><li><b>（A）</b>I = 1 mA</li><li><b>（B）</b>I = 1 μA V2 0.4kΩ 0.6kΩ V1
- - -</li><li><b>（C）</b>V1 = V2 = 0.6 V</li><li><b>（D）</b>V1 =− 0.6 V , V2 = 0.4 V C I B</li><li><b>（E）</b>V1 = 0.6 V , V2 = 0.4 V 圖6</li></ol>
+<ol class="sq-opts"><li><b>（A）</b>I=1mA</li><li><b>（B）</b>I=1μA</li><li><b>（C）</b>\(V_{1}=V_{2}=0.6V\)</li><li><b>（D）</b>\(V_{1}=-0.6V\)，\(V_{2}=0.4V\)</li><li><b>（E）</b>\(V_{1}=0.6V\)，\(V_{2}=0.4V\)</li></ol>
 <p class="sq-ans">答案：（A）（D）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：磁通量的變化率為 1.0 T·m^2/s=1.0 V，迴路感應電動勢量值為 1.0 V。總電阻為 0.6 kΩ+0.4 kΩ=1.0 kΩ，因此 I=1.0 V/(1.0×10^3 Ω)=1.0×10^-3 A=1 mA。磁場指入紙面且增加時，感應電流須產生指出紙面的磁場，方向為逆時針；故 V1=VA-VB=-0.6 V、V2=VD-VC=0.4 V。故選 AD。</p><p>A：由 ε=IR 代入 ε=1.0 V、R=1.0 kΩ，即得 I=1 mA。</p><p>D：逆時針電流使 AB 段電流由 B 流向 A，V1 為負；CD 段由 D 流向 C，V2 為正，數值分別為 0.6 V 與 0.4 V。</p><p>B：1 μA 會對應總電阻約 1 MΩ，與題設 1.0 kΩ 不符。</p><p>C：兩段電阻不同，依 V=IR 得到的端電壓量值不會相等。</p><p>E：電流方向已由楞次定律固定，兩個伏特計的正負號不能同時取為正。</p><p>本題考點：法拉第定律（Faraday&#x27;s law）——以 |ε|=|dΦ/dt| 求感應電動勢；歐姆定律——串聯迴路先求總電阻，再以 I=ε/R 求電流；楞次定律（Lenz&#x27;s law）——先用反抗磁通量變化決定電流方向，最後才判伏特計正負。</p></details>
 </article>
