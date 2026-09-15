@@ -66,7 +66,9 @@
 .pager a{color:var(--accent);text-decoration:none;font-weight:600;}
 .fine{font-size:.87rem;color:var(--ink-faint);line-height:1.75;}
 </style>
-
+<link rel="stylesheet" href="../../../../web/katex/katex.min.css">
+<script defer src="../../../../web/katex/katex.min.js"></script>
+<script defer src="../../../../web/katex/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}],throwOnError:false})"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","name":"111 年分科測驗數學甲試題","url":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/數學甲/111-分科數學甲/","inLanguage":"zh-Hant-TW","isAccessibleForFree":true,"learningResourceType":["題庫","練習題"],"educationalLevel":"升學","teaches":"數學甲","license":"https://creativecommons.org/publicdomain/zero/1.0/","isPartOf":{"@type":"WebSite","name":"開卷有益","url":"https://open-book-is-good-platform.1003ray1003.workers.dev/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"開卷有益","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/"},{"@type":"ListItem","position":2,"name":"分科測驗","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/"},{"@type":"ListItem","position":3,"name":"數學甲","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/數學甲/"},{"@type":"ListItem","position":4,"name":"111 年","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/數學甲/111-分科數學甲/"}]}]}</script>
 </head>
 <body>
@@ -86,17 +88,13 @@
  n =1
 
  選項。</div>
-<ol class="sq-opts"><li><b>（A）</b>2 &lt; b ≤ 3</li><li><b>（B）</b>3 &lt; b ≤ 4</li><li><b>（C）</b>4 &lt; b ≤ 5</li><li><b>（D）</b>5 &lt; b ≤ 6</li><li><b>（E）</b>6 &lt; b ≤ 7
-
-  x − y + z = 0
- </li></ol>
+<ol class="sq-opts"><li><b>（A）</b>2 &lt; b ≤ 3</li><li><b>（B）</b>3 &lt; b ≤ 4</li><li><b>（C）</b>4 &lt; b ≤ 5</li><li><b>（D）</b>5 &lt; b ≤ 6</li><li><b>（E）</b>6 &lt; b ≤ 7</li></ol>
 <p class="sq-ans">答案：（C）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：已知等比數列首項為10、公比為10，可先寫出a_n=10^n，因此a1=10、a2=100、a3=1000、a4=10000。判定b時，必須把這四項依題目給定的求和式逐項代入，算出b後再核對4&lt;b≤5，故選 C。</p><p>A：區間2&lt;b≤3與計算後的b值不符，故不入選。</p><p>B：區間3&lt;b≤4與計算後的b值不符，故不入選。</p><p>D：區間5&lt;b≤6與計算後的b值不符，故不入選。</p><p>E：區間6&lt;b≤7與計算後的b值不符，故不入選。</p><p>本題考點：等比數列（geometric sequence）——通項可寫成首項乘以公比的n−1次方；代入化簡（substitution and simplification）——範圍題先列出所有指定項，再代入題定運算式；不等式區間（inequality interval）——計算出b後，逐一核對嚴格與非嚴格端點。</p></details>
 </article>
 <article class="sq" id="q2">
 <p class="sq-no"><a class="sq-link" href="#q2" title="這一題的永久連結">第 2 題</a></p>
-<div class="sq-stem">設c 為實數使得三元一次方程組  2 x + cy + 3 z = 1 無解。試選出c 之值。
-   3 x − 3 y + cz = 0</div>
+<div class="sq-stem">設c 為實數使得三元一次方程組 \(\begin{cases}x-y+z=0\\2x+cy+3z=1\\3x-3y+cz=0\end{cases}\) 無解。試選出c 之值。</div>
 <ol class="sq-opts"><li><b>（A）</b>−3</li><li><b>（B）</b>−2</li><li><b>（C）</b>0</li><li><b>（D）</b>2</li><li><b>（E）</b>3
 
 1 1 1 年分科 第 2 頁
@@ -115,8 +113,7 @@
 </article>
 <article class="sq" id="q6">
 <p class="sq-no"><a class="sq-link" href="#q6" title="這一題的永久連結">第 6 題</a>（多選）</p>
-<div class="sq-stem">假設2 階方陣a b  所代表的線性變換將坐標平面上三點 O (0,0) , A(1,0) , B (0,1) 分別映  
-  c d 
+<div class="sq-stem">假設2 階方陣$\begin{bmatrix}a &amp; b \\ c &amp; d\end{bmatrix}$ 所代表的線性變換將坐標平面上三點 O (0,0) , A(1,0) , B (0,1) 分別映 
  射到 O (0,0) , A′(3, 3) , B′−( 3,3) ,並將與原點距離為1 的點 C ( x , y ) 映射到點 C ′ ( x ′, y ′。)
 
  試選出正確的選項。
@@ -124,7 +121,7 @@
  a b</div>
 <ol class="sq-opts"><li><b>（A）</b>行列式 = 6
  c d</li><li><b>（B）</b>OC′= 2 3
- </li><li><b>（C）</b>OC 和OC′的夾角為60°</li><li><b>（D）</b>有可能 y = y &#x27;</li><li><b>（E）</b>若x &lt; y 則 x &#x27; &lt; y &#x27;
+ </li><li><b>（C）</b>\overrightarrow{OC} 和\overrightarrow{OC}′的夾角為60°</li><li><b>（D）</b>有可能 y = y &#x27;</li><li><b>（E）</b>若x &lt; y 則 x &#x27; &lt; y &#x27;
 
 1 1 1 年分科 第 4 頁
 數學甲考科 共 11 頁</li></ol>
@@ -181,7 +178,7 @@
 <p class="sq-ans">答案：4|2</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：將週一、二、三、四記為1、2、3、4。國文固定在週一，英文可在週一、三、四。英文若在週一，剩餘三科必須分別填滿週二、三、四，有3!=6種。英文若在週三，剩餘三科的4³=64種安排中，扣掉未發週二的3³=27種與未發週四的3³=27種，再加回兩天都未發的2³=8種，得64−27−27+8=18種；英文在週四同理也有18種。總數為6+18+18=42，故填 4、2。</p><p>本題考點：滿射計數（surjection counting）——每一天至少一張時，可用容斥原理扣除未被安排的日期；容斥原理（inclusion-exclusion principle）——同時扣除兩個限制時，要把被重複扣除的交集加回；排列組合（combinatorics）——固定一科日期後，剩餘科目依是否必須覆蓋指定日期分情況計數。</p></details>
 </article>
-<aside class="sq-passage"><p>考慮坐標平面上之向量a 、b 滿足|a | +|b | = 9 以及|a −b | =。若令|7 a | =,x其中1 &lt; x &lt; 8 ,且令a 、b 的夾角為θ,則利用向量a 、b 、a −b 所形成的三角 c</p><p>形,可將cosθ以x表示成 2 + d ,其中c 、d 為常數且 c &gt; 0 。令此表示式為 f ( x ) , 9 x − x且其定義域為{ x 1 &lt; x &lt; 8} 。試回答下列問題。</p></aside>
+<aside class="sq-passage"><p>考慮坐標平面上之向量a⃗ 、b⃗ 滿足|a⃗ | +|b⃗ | = 9 以及|a⃗ −b⃗ | =。若令|7 a⃗ | =,x其中1 &lt; x &lt; 8 ,且令a⃗ 、b⃗ 的夾角為θ,則利用向量a⃗ 、b⃗ 、a⃗ −b⃗ 所形成的三角 c</p><p>形,可將cosθ以x表示成 2 + d ,其中c 、d 為常數且 c &gt; 0 。令此表示式為 f ( x ) , 9 x − x且其定義域為{ x 1 &lt; x &lt; 8} 。試回答下列問題。</p></aside>
 <article class="sq" id="q15">
 <p class="sq-no"><a class="sq-link" href="#q15" title="這一題的永久連結">第 15 題</a></p>
 <div class="sq-stem">求 f ( x ) 及其導函數。(非選擇題,4 分)</div>
@@ -190,7 +187,7 @@
 </article>
 <article class="sq" id="q16">
 <p class="sq-no"><a class="sq-link" href="#q16" title="這一題的永久連結">第 16 題</a></p>
-<div class="sq-stem">說明 f ( x ) 在定義域中遞增、遞減的情況。並說明x為多少時a 、b 的夾角θ最大。
+<div class="sq-stem">說明 f ( x ) 在定義域中遞增、遞減的情況。並說明x為多少時a⃗ 、b⃗ 的夾角θ最大。
 
  (非選擇題,4 分)</div>
 <p class="sq-ans">標準答案未收錄</p>
@@ -212,7 +209,7 @@
  首項為a ,公比為 r ( r 1 1) 的等比數列前n項之和為 S =
  1 − r
 
- n 2 n ( n + 1)(2 n + 1) n 3  n ( n + 1)  22. 級數和: k =  ∑ k = ; ∑ k =1 6 k =1  2 
+ n 2 n ( n + 1)(2 n + 1) n 3 \(\frac{n(n+1)}{2}\)       22. 級數和: k =  ∑ k = ; ∑ k =1 6 k =1   
 
 3. 三角函數的和角公式:sin( A + B ) = sin A cos B + cos A sin B
 

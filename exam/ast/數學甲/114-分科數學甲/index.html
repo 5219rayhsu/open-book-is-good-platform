@@ -66,7 +66,9 @@
 .pager a{color:var(--accent);text-decoration:none;font-weight:600;}
 .fine{font-size:.87rem;color:var(--ink-faint);line-height:1.75;}
 </style>
-
+<link rel="stylesheet" href="../../../../web/katex/katex.min.css">
+<script defer src="../../../../web/katex/katex.min.js"></script>
+<script defer src="../../../../web/katex/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}],throwOnError:false})"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","name":"114 年分科測驗數學甲試題","url":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/數學甲/114-分科數學甲/","inLanguage":"zh-Hant-TW","isAccessibleForFree":true,"learningResourceType":["題庫","練習題"],"educationalLevel":"升學","teaches":"數學甲","license":"https://creativecommons.org/publicdomain/zero/1.0/","isPartOf":{"@type":"WebSite","name":"開卷有益","url":"https://open-book-is-good-platform.1003ray1003.workers.dev/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"開卷有益","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/"},{"@type":"ListItem","position":2,"name":"分科測驗","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/"},{"@type":"ListItem","position":3,"name":"數學甲","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/數學甲/"},{"@type":"ListItem","position":4,"name":"114 年","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/數學甲/114-分科數學甲/"}]}]}</script>
 </head>
 <body>
@@ -161,9 +163,9 @@
 <article class="sq" id="q9">
 <p class="sq-no"><a class="sq-link" href="#q9" title="這一題的永久連結">第 9 題</a>（多選）</p>
 <div class="sq-stem">令A 為以原點為中心逆時針旋轉θ角的旋轉矩陣,且令B 為以x 軸為鏡射軸
-  a1 a2   c1 c2 
- (對稱軸)的鏡射矩陣。令 A =   、 BA =   。
-  a3 a4   c3 c4 
+  
+ (對稱軸)的鏡射矩陣。令 A = $\begin{bmatrix}a_{1} &amp; a_{2} \\ a_{3} &amp; a_{4}\end{bmatrix}$ 、 BA = $\begin{bmatrix}c_{1} &amp; c_{2} \\ c_{3} &amp; c_{4}\end{bmatrix}$ 。
+  
 
  9-1 9-2 ○ 已知 a1 + a2 + a3 + a4 = 2(c1 + c2 + c3 + c4 ) ,則tanθ○= 。(化為最簡分數)
  9-3 ○</div>
@@ -245,7 +247,7 @@ g(1)=3a+(1-a)=2a+1。由 a≥-1/2 得 2a+1≥2×(-1/2)+1=0。
  首項為a,公比為 r ( r ≠ 1) 的等比數列前n項之和為 S =
  1 − r
 
- n 2 n( n + 1)(2 n + 1) n 3  n ( n + 1)  22. 級數和: k = ; k = ∑ ∑   k =1 6 k =1  2 
+ n 2 n( n + 1)(2 n + 1) n 3 \(\frac{n(n+1)}{2}\)       22. 級數和: k = ; k = ∑ ∑   k =1 6 k =1   
 
 3. 三角函數的和角公式:sin( A + B ) = sin A cos B + cos A sin B
 

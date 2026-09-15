@@ -66,7 +66,9 @@
 .pager a{color:var(--accent);text-decoration:none;font-weight:600;}
 .fine{font-size:.87rem;color:var(--ink-faint);line-height:1.75;}
 </style>
-
+<link rel="stylesheet" href="../../../../web/katex/katex.min.css">
+<script defer src="../../../../web/katex/katex.min.js"></script>
+<script defer src="../../../../web/katex/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}],throwOnError:false})"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","name":"113 年分科測驗化學試題","url":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/化學/113-分科化學/","inLanguage":"zh-Hant-TW","isAccessibleForFree":true,"learningResourceType":["題庫","練習題"],"educationalLevel":"升學","teaches":"化學","license":"https://creativecommons.org/publicdomain/zero/1.0/","isPartOf":{"@type":"WebSite","name":"開卷有益","url":"https://open-book-is-good-platform.1003ray1003.workers.dev/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"開卷有益","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/"},{"@type":"ListItem","position":2,"name":"分科測驗","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/"},{"@type":"ListItem","position":3,"name":"化學","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/化學/"},{"@type":"ListItem","position":4,"name":"113 年","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/化學/113-分科化學/"}]}]}</script>
 </head>
 <body>
@@ -225,14 +227,10 @@
 </article>
 <article class="sq" id="q13">
 <p class="sq-no"><a class="sq-link" href="#q13" title="這一題的永久連結">第 13 題</a>（多選）</p>
-<div class="sq-stem">若將 N 2、 2F 及 NF3 裝入一0.656 升的密閉容器中,再藉由加熱使其進行下列反應:
- N2 (g) + F2 (g) NF3 (g) (反應式未平衡)
- 已知在527°C反應達平衡時,容器內各氣體的分壓分別為
- PN 2 = 0.040 atm , PNF3 = 0.700 atm , 2FP = 0.060 atm
- 7 2 −2
- 若三者皆符合理想氣體性質,則下列相關敘述,哪些正確?( 3 = 5.67 × 10 ) 4 × 6</div>
-<img class="sq-fig" loading="lazy" src="../../../../data/ast/figures/113_分科化學_13.png" alt="第 13 題附圖">
-<ol class="sq-opts"><li><b>（A）</b>平衡反應式之最簡整係數總和為6</li><li><b>（B）</b>密閉容器內的氣體總壓力為0.80 atm</li><li><b>（C）</b>密閉容器內 N 2 的莫耳數為 6.1 × 10 ˉ莫耳−4</li><li><b>（D）</b>此反應 K p 的數值為 5.67 × 10 2</li><li><b>（E）</b>此反應 Kc 的數值大於 K p</li></ol>
+<div class="sq-stem">若將N₂、F₂及NF₃裝入一0.656升的密閉容器中，再藉由加熱使其進行下列反應：
+\(\mathrm{N_2(g)+F_2(g)\rightleftharpoons NF_3(g)}\)（反應式未平衡）
+已知在527°C反應達平衡時，容器內各氣體的分壓分別為\(P_{\mathrm{N_2}}=0.040\,\mathrm{atm}\)、\(P_{\mathrm{F_2}}=0.060\,\mathrm{atm}\)、\(P_{\mathrm{NF_3}}=0.700\,\mathrm{atm}\)。若三者皆符合理想氣體性質，則下列相關敘述，哪些正確？（\(\dfrac{7^2}{4\times6^3}=5.67\times10^{-2}\)）</div>
+<ol class="sq-opts"><li><b>（A）</b>平衡反應式之最簡整係數總和為6</li><li><b>（B）</b>密閉容器內的氣體總壓力為0.80 atm</li><li><b>（C）</b>密閉容器內N₂的莫耳數為\(6.1\times10^{-4}\)莫耳</li><li><b>（D）</b>此反應\(K_p\)的數值為\(5.67\times10^2\)</li><li><b>（E）</b>此反應\(K_c\)的數值大於\(K_p\)</li></ol>
 <p class="sq-ans">答案：（A）（B）（E）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：先將反應配平為 N2(g)+3F2(g)⇌2NF3(g)，係數總和為 6；平衡時總壓為 0.040+0.700+0.060=0.800 atm。此反應的氣體莫耳數變化 Δn=2-4=-2，所以 Kp=Kc(RT)^-2，因 RT&gt;1，Kc&gt;Kp。三項判準分別支持 A、B、E，故選 ABE。</p><p>A：配平後係數為 1、3、2，最簡整係數總和為 6。</p><p>B：密閉容器中各氣體分壓可直接相加，總壓為 0.800 atm。</p><p>E：由 Kp=Kc(RT)^-2 可知 Kc=Kp(RT)^2，因此 Kc 大於 Kp。</p><p>C：N2 的莫耳數為 n=PV/(RT)=0.040×0.656/(0.082×800)=4.0×10^-4 mol，不是 6.1×10^-4 mol。</p><p>D：Kp=PNF3^2/(PN2×PF2^3)=0.700^2/(0.040×0.060^3)=5.67×10^4，與選項所列數值不符。</p><p>本題考點：化學平衡配平（chemical-equation balancing）——先取得正確係數，才能判斷反應商與氣體莫耳數變化；分壓（partial pressure）——理想氣體混合物的總壓為各成分分壓之和；Kp 與 Kc（pressure and concentration equilibrium constants）——用 Kp=Kc(RT)^Δn 判斷兩者大小。</p></details>
 </article>

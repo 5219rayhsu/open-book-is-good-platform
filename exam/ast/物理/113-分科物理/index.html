@@ -66,7 +66,9 @@
 .pager a{color:var(--accent);text-decoration:none;font-weight:600;}
 .fine{font-size:.87rem;color:var(--ink-faint);line-height:1.75;}
 </style>
-
+<link rel="stylesheet" href="../../../../web/katex/katex.min.css">
+<script defer src="../../../../web/katex/katex.min.js"></script>
+<script defer src="../../../../web/katex/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}],throwOnError:false})"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","name":"113 年分科測驗物理試題","url":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/物理/113-分科物理/","inLanguage":"zh-Hant-TW","isAccessibleForFree":true,"learningResourceType":["題庫","練習題"],"educationalLevel":"升學","teaches":"物理","license":"https://creativecommons.org/publicdomain/zero/1.0/","isPartOf":{"@type":"WebSite","name":"開卷有益","url":"https://open-book-is-good-platform.1003ray1003.workers.dev/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"開卷有益","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/"},{"@type":"ListItem","position":2,"name":"分科測驗","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/"},{"@type":"ListItem","position":3,"name":"物理","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/物理/"},{"@type":"ListItem","position":4,"name":"113 年","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/物理/113-分科物理/"}]}]}</script>
 </head>
 <body>
@@ -361,11 +363,9 @@
 <aside class="sq-passage"><p>一台具有三段變速系統的腳踏車(如圖10),其前齒盤的齒數為38 齒,後齒盤組有相同轉軸但齒數分別為14、19 與26 齒的3 個齒盤。鏈條套在前齒盤和後齒盤上,當前齒盤轉動1 齒,後齒輪盤也跟著轉動1 齒;且齒盤齒數與齒盤半徑成正比。</p><p> 踏板</p><p> 曲柄</p><p> 踏板</p><p> 鏈條 前齒盤 後齒盤組</p><p> 圖10</p></aside>
 <article class="sq" id="q24">
 <p class="sq-no"><a class="sq-link" href="#q24" title="這一題的永久連結">第 24 題</a>（多選）</p>
-<div class="sq-stem">齒數為n的齒盤邊緣的切線速度定為 nv 、角速度定為 ω、法線加速度(向心加速度)n
- 定為 aNn 。若變速系統將鏈條套在前齒盤與齒數19 齒的後齒盤上,當前、後齒盤轉動
- 時,下列敘述哪些正確?(多選)(5 分)</div>
-<img class="sq-fig" loading="lazy" src="../../../../data/ast/figures/113_分科物理_g24_26.png" alt="第 24 題附圖">
-<ol class="sq-opts"><li><b>（A）</b>後齒盤: v26 / v14 = 13/ 7</li><li><b>（B）</b>後齒盤: ω26 / ω=14 7 /13</li><li><b>（C）</b>後齒盤: aN26 / aN14 = 1</li><li><b>（D）</b>前齒盤與後齒盤: ω38 / ω=19 1/ 2</li><li><b>（E）</b>前齒盤與後齒盤: v38 / v19 = 2</li></ol>
+<div class="sq-stem">齒數為\(n\)的齒盤邊緣的切線速度定為\(v_n\)、角速度定為\(\omega_n\)、法線加速度（向心加速度）定為\(a_{Nn}\)。若變速系統將鏈條套在前齒盤與齒數19齒的後齒盤上，當前、後齒盤轉動時，下列敘述哪些正確？（多選）（5分）</div>
+<img class="sq-fig" loading="lazy" src="../../../../data/ast/figures/l13susp_113_分科物理_24.png" alt="第 24 題附圖">
+<ol class="sq-opts"><li><b>（A）</b>後齒盤：\(v_{26}/v_{14}=13/7\)</li><li><b>（B）</b>後齒盤：\(\omega_{26}/\omega_{14}=7/13\)</li><li><b>（C）</b>後齒盤：\(a_{N26}/a_{N14}=1\)</li><li><b>（D）</b>前齒盤與後齒盤：\(\omega_{38}/\omega_{19}=1/2\)</li><li><b>（E）</b>前齒盤與後齒盤：\(v_{38}/v_{19}=2\)</li></ol>
 <p class="sq-ans">答案：（A）（D）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：後齒盤組共用轉軸，故 26 齒盤與 14 齒盤角速度相同；又齒數與半徑成正比，切線速度 v=rω，故 v26/v14=26/14=13/7。鏈條在前、後齒盤的切線速度相同，故 ω38/ω19=r19/r38=19/38=1/2。故選 AD。</p><p>A：同軸的 26 齒盤與 14 齒盤具有相同角速度，半徑比就是齒數比 26:14=13:7，因此切線速度比為 13:7。</p><p>D：前後齒盤與同一條鏈條接觸時，v38=v19；由 ω=v/r，得到 ω38/ω19=r19/r38=1/2。</p><p>B：同軸後齒盤的角速度比應為 1，不是 7/13。</p><p>C：向心加速度 a_N=rω^2；在角速度相同下，a_N26/a_N14=26/14=13/7，不是 1。</p><p>E：鏈條未打滑時前、後齒盤的切線速度相等，v38/v19=1，不是 2。</p><p>本題考點：剛體同軸轉動（rigid-body rotation）——同一轉軸上的各點與各齒盤有相同角速度；切線速度（tangential speed）——v=rω，半徑不同時切線速度可不同；鏈條傳動（chain drive）——鏈條線速度在接觸的兩齒盤邊緣相同。</p></details>
 </article>

@@ -66,7 +66,9 @@
 .pager a{color:var(--accent);text-decoration:none;font-weight:600;}
 .fine{font-size:.87rem;color:var(--ink-faint);line-height:1.75;}
 </style>
-
+<link rel="stylesheet" href="../../../../web/katex/katex.min.css">
+<script defer src="../../../../web/katex/katex.min.js"></script>
+<script defer src="../../../../web/katex/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}],throwOnError:false})"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","name":"112 年分科測驗化學試題","url":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/化學/112-分科化學/","inLanguage":"zh-Hant-TW","isAccessibleForFree":true,"learningResourceType":["題庫","練習題"],"educationalLevel":"升學","teaches":"化學","license":"https://creativecommons.org/publicdomain/zero/1.0/","isPartOf":{"@type":"WebSite","name":"開卷有益","url":"https://open-book-is-good-platform.1003ray1003.workers.dev/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"開卷有益","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/"},{"@type":"ListItem","position":2,"name":"分科測驗","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/"},{"@type":"ListItem","position":3,"name":"化學","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/化學/"},{"@type":"ListItem","position":4,"name":"112 年","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/化學/112-分科化學/"}]}]}</script>
 </head>
 <body>
@@ -114,13 +116,9 @@
 </article>
 <article class="sq" id="q4">
 <p class="sq-no"><a class="sq-link" href="#q4" title="這一題的永久連結">第 4 題</a></p>
-<div class="sq-stem">有一多醣是由n 個葡萄糖( C6 H12 O6 )單體經脫去(n-1)個水分子聚合而成,其
- 反應如式1 所示:
- n C6 H12 O6 → C6n H10n+2 O5n+1 + (n − 1) H2 O (式1)
- 將10.0 克的此一多醣配成1.0 升的溶液,在27°C時測得其滲透壓為88.0 mmHg,
- 則此多醣是由幾個葡萄糖單體聚合而成?(已知:246 × 760 2124 )
- 88.0</div>
-<img class="sq-fig" loading="lazy" src="../../../../data/ast/figures/112_分科化學_4.png" alt="第 4 題附圖">
+<div class="sq-stem">有一多醣是由n個葡萄糖（C₆H₁₂O₆）單體經脫去（n−1）個水分子聚合而成，其反應如式1所示：
+\(n\,\mathrm{C_6H_{12}O_6}\rightarrow\mathrm{C_{6n}H_{10n+2}O_{5n+1}}+(n-1)\mathrm{H_2O}\)（式1）
+將10.0克的此一多醣配成1.0升的溶液，在27°C時測得其滲透壓為88.0 mmHg，則此多醣是由幾個葡萄糖單體聚合而成？（已知：\(\dfrac{246\times760}{88.0}\approx2124\)）</div>
 <ol class="sq-opts"><li><b>（A）</b>11</li><li><b>（B）</b>12</li><li><b>（C）</b>13</li><li><b>（D）</b>14</li><li><b>（E）</b>15</li></ol>
 <p class="sq-ans">答案：（C）</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：關鍵是先從滲透壓求多醣的莫耳數，再由分子量回推重複單體數。π = 88.0 mmHg × (1 atm / 760 mmHg) = 0.1158 atm；T = 27°C + 273 = 300 K。n(多醣) = πV/(RT) = (0.1158 atm × 1.0 L) / (0.0821 L atm mol^-1 K^-1 × 300 K) = 4.70×10^-3 mol。M(多醣) = 10.0 g / (4.70×10^-3 mol) = 2.13×10^3 g/mol，約為 2124 g/mol。由分子式得 M = 162n+18，因此 162n+18 = 2124，n = 13，故選 C。</p><p>A：若 n=11，分子量為 162×11+18 = 1800 g/mol，與滲透壓求得的約 2124 g/mol 不符。</p><p>B：若 n=12，分子量為 162×12+18 = 1962 g/mol，仍偏小。</p><p>D：若 n=14，分子量為 162×14+18 = 2286 g/mol，偏大。</p><p>E：若 n=15，分子量為 162×15+18 = 2448 g/mol，偏大更多。</p><p>本題考點：滲透壓（osmotic pressure）——非電解質稀溶液可用 πV=nRT 由滲透壓求溶質莫耳數；聚合反應的分子式（polymer molecular formula）——每形成一個糖苷鍵會脫去一個 H2O，總質量要把脫水數 n-1 一起計入；單位換算（unit conversion）——壓力、體積與溫度要分別換成 atm、L、K 才能代入氣體常數。</p></details>

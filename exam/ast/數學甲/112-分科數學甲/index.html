@@ -66,7 +66,9 @@
 .pager a{color:var(--accent);text-decoration:none;font-weight:600;}
 .fine{font-size:.87rem;color:var(--ink-faint);line-height:1.75;}
 </style>
-
+<link rel="stylesheet" href="../../../../web/katex/katex.min.css">
+<script defer src="../../../../web/katex/katex.min.js"></script>
+<script defer src="../../../../web/katex/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}],throwOnError:false})"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","name":"112 年分科測驗數學甲試題","url":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/數學甲/112-分科數學甲/","inLanguage":"zh-Hant-TW","isAccessibleForFree":true,"learningResourceType":["題庫","練習題"],"educationalLevel":"升學","teaches":"數學甲","license":"https://creativecommons.org/publicdomain/zero/1.0/","isPartOf":{"@type":"WebSite","name":"開卷有益","url":"https://open-book-is-good-platform.1003ray1003.workers.dev/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"開卷有益","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/"},{"@type":"ListItem","position":2,"name":"分科測驗","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/"},{"@type":"ListItem","position":3,"name":"數學甲","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/數學甲/"},{"@type":"ListItem","position":4,"name":"112 年","item":"https://open-book-is-good-platform.1003ray1003.workers.dev/exam/ast/數學甲/112-分科數學甲/"}]}]}</script>
 </head>
 <body>
@@ -117,18 +119,17 @@
 </article>
 <article class="sq" id="q6">
 <p class="sq-no"><a class="sq-link" href="#q6" title="這一題的永久連結">第 6 題</a>（多選）</p>
-<div class="sq-stem">設 a, b, c, d , r , s, t 皆為實數,已知坐標空間中三個非零向量 =u ( a , b ,0)、 =v ( c , d ,0) 及
-  a b 0  =w ( r , s , t ) 滿足內積 w ⋅ u = w ⋅ v = 0 。考慮三階方陣 A  c d 0  ,試選出正確的 = 
-  r s t   
+<div class="sq-stem">設 a, b, c, d , r , s, t 皆為實數,已知坐標空間中三個非零向量 =u⃗ ( a , b ,0)、 =v⃗ ( c , d ,0) 及
+ =w⃗ ( r , s , t ) 滿足內積 w⃗ ⋅ u⃗ = w⃗ ⋅ v⃗ = 0 。考慮三階方陣 A = \(\begin{bmatrix}a &amp; b &amp; 0 \\ c &amp; d &amp; 0 \\ r &amp; s &amp; t\end{bmatrix}\) ,試選出正確的 
  選項。  a b</div>
-<ol class="sq-opts"><li><b>（A）</b>若 u ⋅ v = 0 ,則行列式 ≠ 0
+<ol class="sq-opts"><li><b>（A）</b>若 u⃗ ⋅ v⃗ = 0 ,則行列式 ≠ 0
  c d
 
  a b</li><li><b>（B）</b>若 t ≠ 0 ,則行列式 ≠ 0
- c d  </li><li><b>（C）</b>若存在一個向量w′ 滿足 w ′ ⋅ u = w ′ ⋅ v = 0 且外積 w′× w ≠ 0 ,則行列式
+ c d  </li><li><b>（C）</b>若存在一個向量w⃗′ 滿足 w⃗ ′ ⋅ u⃗ = w⃗ ′ ⋅ v⃗ = 0 且外積 w⃗′× w⃗ ≠ 0⃗ ,則行列式
  a b
  ≠ 0
- c d </li><li><b>（D）</b>若對任意三個實數,e f , g ,向量(e, f , g ) 都可以表示成 u , v , w 的線性組合,則
+ c d </li><li><b>（D）</b>若對任意三個實數,e f , g ,向量(e, f , g ) 都可以表示成 u⃗ , v⃗ , w⃗ 的線性組合,則
  a b
  行列式 ≠ 0
  c d
@@ -192,10 +193,10 @@ MN^2=(5/(2√3)−√3/2)^2+(3/2−(−1/2))^2
 <p class="sq-ans">答案：1|5|5|4</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：先以容斥原理合併兩個得獎條件。四位數大於 6400 時，首位為 7、8、9 的排列數分別為 8×7×6 + 3×7 = 357、8×7×6 + 3×8×7 = 504、357，合計 1218。首位為 6 時，百位為 4、5、7、9 各有 7×6 + 1 = 43 種，百位為 8 有 7×6 + 2×7 = 56 種，合計 4×43 + 56 = 228；故大於 6400 的共有 1446。含兩個 8 的排列有 C(4,2)×8×7 = 336，兩條件重複者有 228。因此得獎數 = 1446 + 336 − 228 = 1554，故選 1554。</p><p>本題考點：容斥原理（inclusion-exclusion principle）——同時滿足兩個得獎條件的排列會重複計數，最後必須扣回交集；排列計數（permutation）——抽出順序會改變四位數，剩餘不同數字應依位置排列；重複元素（repeated element）——兩張 8 可同時出現，但其他數字不能重複，計數時要將這個限制獨立處理。</p></details>
 </article>
-<aside class="sq-passage"><p>設 ,a b 為實數,並設O 為坐標平面的原點。已知二次函數 f ( x ) = ax 2 的圖形與圓 1 </p><p> 1,Ω : x 2 + y 2 − 3 y + b = 0 皆通過點 P  ,並令點C 為Ω的圓心。根據上述,試回答下  2 </p><p>列問題。</p></aside>
+<aside class="sq-passage"><p>設 ,a b 為實數,並設O 為坐標平面的原點。已知二次函數 f ( x ) = ax 2 的圖形與圓</p><p> Ω : x 2 + y 2 − 3 y + b = 0 皆通過點 P\(1,\frac{1}{2}\)  ,並令點C 為Ω的圓心。根據上述,試回答下列問題。</p></aside>
 <article class="sq" id="q12">
 <p class="sq-no"><a class="sq-link" href="#q12" title="這一題的永久連結">第 12 題</a></p>
-<div class="sq-stem">試求向量CO 與CP 夾角的餘弦值。(非選擇題,2 分)</div>
+<div class="sq-stem">試求向量\overrightarrow{CO} 與\overrightarrow{CP} 夾角的餘弦值。(非選擇題,2 分)</div>
 <p class="sq-ans">標準答案未收錄</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題眼是「圖形與圓皆通過點 P(1, 1/2)」——這一句同時把 a 與 b 鎖死，必須先解出它們才有座標可算。把 P(1, 1/2) 代入 f(x) = ax²：1/2 = a × 1²，得 a = 1/2。再把 P 代入 Ω：1² + (1/2)² - 3 × (1/2) + b = 0，即 1 + 1/4 - 3/2 + b = 0，得 b = 1/4。將 Ω 配方：x² + (y - 3/2)² = 9/4 - b = 9/4 - 1/4 = 2，故圓心 C(0, 3/2)、半徑 r = √2。接著算兩個向量：向量 CO = O - C = (0 - 0, 0 - 3/2) = (0, -3/2)；向量 CP = P - C = (1 - 0, 1/2 - 3/2) = (1, -1)。內積 CO·CP = 0 × 1 + (-3/2) × (-1) = 3/2。長度 |CO| = 3/2，|CP| = √(1² + (-1)²) = √2——這個值恰等於半徑 √2，正好可當作 P 在圓上的檢核。故 cos θ = (3/2)/((3/2) × √2) = 1/√2 = √2/2。故答案為 √2/2。</p><p>本題考點：由「圖形通過某點」定未知係數——判準是把該點座標代進方程式，有幾個未知數就找幾個通過條件，是這類題固定的第一步。圓的一般式配方——x² + y² + Dx + Ey + F = 0 配方為 (x + D/2)² + (y + E/2)² = (D² + E² - 4F)/4，圓心與半徑一次讀出。向量夾角的餘弦公式——cos θ = (u·v)/(|u||v|)，代入前先確認兩向量都以夾角頂點（此處為 C）為起點，起點取錯會算成補角。</p></details>
 </article>
@@ -213,7 +214,7 @@ MN^2=(5/(2√3)−√3/2)^2+(3/2−(−1/2))^2
 <p class="sq-ans">標準答案未收錄</p>
 <details class="sq-exp"><summary>詳解與考點</summary><p>正解：題眼是「y = f(x) 圖形上方與 Ω 下半圓弧所圍區域」——必須先定出上、下兩條邊界曲線與積分的上下限，才能列式。由前兩小題，f(x) = x²/2，Ω 的圓心 C(0, 3/2)、半徑 √2，其下半圓弧為 y = 3/2 - √(2 - x²)。先求交點：把 x² = 2y 代入 Ω 的方程式 x² + y² - 3y + 1/4 = 0，得 2y + y² - 3y + 1/4 = 0，即 y² - y + 1/4 = 0，(y - 1/2)² = 0，得 y = 1/2（重根，正是第 13 題「相切」的代數證據），對應 x² = 2 × (1/2) = 1，x = ±1，故積分區間為 -1 ≤ x ≤ 1。再判斷上下：取 x = 0，下半圓弧 y = 3/2 - √2 ≈ 0.086，拋物線 y = 0，故此區間內圓弧在上、拋物線在下。列式：A = ∫(-1 到 1) [(3/2 - √(2 - x²)) - x²/2] dx。逐項算：∫(-1 到 1) (3/2) dx = 3；∫(-1 到 1) (x²/2) dx = (1/2) × (2/3) = 1/3；∫(-1 到 1) √(2 - x²) dx 用幾何拆法——它等於圓 x² + y² = 2 的上半部在 -1 ≤ x ≤ 1 之間所圍的面積，可拆成圓心角 90 度的扇形（面積 = (1/2) × 2 × (π/2) = π/2）加上兩個直角邊各為 1 的直角三角形（合計 2 × (1/2) × 1 × 1 = 1），即 1 + π/2。代回：A = 3 - (1 + π/2) - 1/3 = 2 - π/2 - 1/3 = 5/3 - π/2。數值檢核：5/3 ≈ 1.667、π/2 ≈ 1.571，A ≈ 0.096，是一塊兩端相切、中間微張的狹長月牙形，與圖形吻合。故答案為 5/3 - π/2。</p><p>本題考點：兩曲線圍成面積的列式——A = ∫(上曲線 - 下曲線) dx，上下關係要在區間內取一個代表點實際代值確認，不可憑草圖直覺。相切的代數訊號——聯立後出現重根即代表相切，可回頭印證上一小題的幾何結論，也順便定出積分上下限。含 √(a² - x²) 的定積分——可用「扇形加三角形」的幾何拆解取代三角代換，考場上更快且不易在換元邊界上出錯。</p></details>
 </article>
-<aside class="sq-passage"><p>坐標平面上,設Γ為中心在原點且長軸落在y 軸上的橢圓。已知對原點逆時針旋</p><p>轉θ角(其中0 &lt; θ&lt; π )的線性變換將Γ變換到新橢圓 Γ ′ : 40 x 2 + 4 5 xy + 41 y 2 = 180 ,點  5 2 5   − ,  為 Γ上離原點最遠的兩點之一。根據上述,試回答下列問題。′    3 3 </p></aside>
+<aside class="sq-passage"><p>坐標平面上,設Γ為中心在原點且長軸落在y 軸上的橢圓。已知對原點逆時針旋</p><p>轉θ角(其中0 &lt; θ&lt; π )的線性變換將Γ變換到新橢圓 Γ ′ : 40 x 2 + 4 5 xy + 41 y 2 = 180 ,點 \(−\frac{5}{3},\frac{2\sqrt{5}}{3}\)         為 Γ上離原點最遠的兩點之一。根據上述,試回答下列問題。′</p></aside>
 <article class="sq" id="q16">
 <p class="sq-no"><a class="sq-link" href="#q16" title="這一題的永久連結">第 16 題</a></p>
 <div class="sq-stem">試求 Γ短軸所在的直線方程式與短軸長。(非選擇題,4′ 分)</div>
@@ -236,7 +237,7 @@ MN^2=(5/(2√3)−√3/2)^2+(3/2−(−1/2))^2
  首項為a ,公比為 r ( r 1 1) 的等比數列前n 項之和為 S =
  1 − r
 
- n 2 n ( n + 1)(2 n + 1) n 3  n( n + 1)  22. 級數和: k = ; k =  ∑ ∑ k =1 6 k =1  2 
+ n 2 n ( n + 1)(2 n + 1) n 3 \(\frac{n(n+1)}{2}\)      22. 級數和: k = ; k =  ∑ ∑ k =1 6 k =1   
 
 3. 三角函數的和角公式:sin( A + B ) = sin A cos B + cos A sin B
 
