@@ -1405,16 +1405,16 @@
 
 ## 學科能力測驗（`gsat`）
 
-1,258 題，6 科，主管機關大學入學考試中心。入口頁 https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/
+1,261 題，6 科，主管機關大學入學考試中心。入口頁 https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/
 
 
 ### 國綜
 
-- 科目總覽（180 題／5 份卷）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/國綜/
+- 科目總覽（182 題／5 份卷）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/國綜/
 - 115 年（36 題，詳解 36 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/國綜/115/
 - 114 年（36 題，詳解 36 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/國綜/114/
 - 113 年（36 題，詳解 36 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/國綜/113/
-- 112 年（35 題，詳解 35 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/國綜/112/
+- 112 年（37 題，詳解 35 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/國綜/112/
 - 111 年（37 題，詳解 37 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/國綜/111/
 
 ### 數學A
@@ -1446,11 +1446,11 @@
 
 ### 自然
 
-- 科目總覽（288 題／5 份卷）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/自然/
+- 科目總覽（289 題／5 份卷）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/自然/
 - 115 年（56 題，詳解 56 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/自然/115/
 - 114 年（57 題，詳解 57 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/自然/114/
 - 113 年（56 題，詳解 56 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/自然/113/
-- 112 年（59 題，詳解 59 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/自然/112/
+- 112 年（60 題，詳解 59 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/自然/112/
 - 111 年（60 題，詳解 60 題）：https://open-book-is-good-platform.1003ray1003.workers.dev/exam/gsat/自然/111/
 
 ### 英文

@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "open-book.explanation-redteam-and-repair.v1",
+  "date": "2026-09-23",
+  "questionTextSource": "_dev/data/gsat/bank.json",
+  "questionSourceBankSha256": "06809aa32d6884c09d002dbee384066dc70e9dcc88567fee2f77c386965112ff",
+  "explanationsPath": "_dev/data/gsat/explanations.json",
+  "explanationSha256Before": "c1491be344faf2dfe3e35688ef795500e1c0609917a397940e57beb183a88888",
+  "explanationSha256After": "c9667740e3eb7ae0671937543435046f8856c6470a6e2e2099b656012cd1859e",
+  "backup": "_dev/data/gsat/explanations.json.pre-picnolepsy-20260923.bak",
+  "generation": {
+    "status": "reused-existing",
+    "questionRowsRegenerated": false,
+    "explanationsRegenerated": false,
+    "trace": "_dev/data/gsat/_expl_src.json",
+    "sourceFingerprints12": {
+      "114_自然_13": "69640ddb0de4",
+      "114_自然_25": "6cb0bcb124e2",
+      "115_自然_24": "ae39775bcd2b",
+      "115_自然_28": "21e53041f436"
+    }
+  },
+  "redteam": {
+    "scope": "all four designated qids (4/4), answer anchor plus every option-label/image-description comparison",
+    "method": "Manual adversarial review against the repaired canonical structured stem/options, original A-E option figure, existing official-answer verification evidence, and explanation text. No publisher explanation input.",
+    "reviewedQuestionIds": [
+      "115_自然_28",
+      "115_自然_24",
+      "114_自然_25",
+      "114_自然_13"
+    ],
+    "questions": {
+      "115_自然_28": {
+        "officialAnswer": "A",
+        "answerAnchor": "既有詳解首段明確支持 A；A–E 圖順序與題幹、選項圖標籤一致。",
+        "finding": "未發現答案或選項指稱錯誤。A 圖為細胞核完整、染色質未凝縮的間期樣態；DNA 在 S 期完成複製，後續分裂階段已晚於首次達到 2 倍量。",
+        "status": "pass; retained existing explanation unchanged"
+      },
+      "115_自然_24": {
+        "officialAnswer": "B",
+        "answerAnchor": "既有詳解首段支持 B；原標準答案證據是 115 自然答案 PDF 第 1 頁 `24 B`。",
+        "finding": "A 段錯稱圖 A 為離散分子，與圖中相連網狀原子排列不符。B 圖清楚顯示規則排列的正鈉離子與電子，支持金屬鍵答案；C 顯示相連鍵結骨架，D 顯示正負離子交錯，E 顯示線連結晶格且沒有電子海。",
+        "repair": "只替換 A 選項段；B 正解段及 C/D/E、考點段逐字保留。"
+      },
+      "114_自然_25": {
+        "officialAnswer": "D",
+        "answerAnchor": "既有詳解首段明確支持 D；D 圖顯示雙狹縫大量粒子累積後的明暗條紋。",
+        "finding": "未發現答案錨或圖像選項指稱錯誤。A 為離散繞射亮點、B 為十字光斑、C 為同心圓、E 為單亮帶，均不符合雙狹縫平行明暗條紋。",
+        "status": "pass; retained existing explanation unchanged"
+      },
+      "114_自然_13": {
+        "officialAnswer": "A",
+        "answerAnchor": "既有詳解首段支持 A；原標準答案證據是 114 自然答案 PDF 第 1 頁 `13 A`。",
+        "finding": "原 B 段錯稱 B 的配置沒有使單一半球夏熱冬冷與日地距離效應同時加強。圖 B 實為南半球夏季在近日點、冬季在遠日點；既有 A 段也只說「某半球」，漏掉 A 勝 B 的北半球陸地效應。",
+        "externalPrimarySources": [
+          "https://science.nasa.gov/science-research/earth-science/milankovitch-orbital-cycles-and-their-role-in-earths-climate/",
+          "https://sos.noaa.gov/catalog/datasets/surface-temperature/"
+        ],
+        "repair": "僅替換正解段與 B 段；補明 A 為北半球夏近日、冬遠日且北半球陸地較多；承認 B 也有南半球日地距離加成但海洋熱容量緩和季節差。其餘 C/D、E 與考點段逐字保留。"
+      }
+    }
+  },
+  "paragraphLevelRepair": {
+    "method": "Exact-match targeted paragraph replacement with pre-edit backup and post-write paragraph equality checks. Unaddressed paragraphs remain byte-identical.",
+    "questionsChanged": [
+      {
+        "questionId": "115_自然_24",
+        "paragraphsChanged": [
+          1
+        ],
+        "untouchedParagraphsByteIdentical": true,
+        "confidencePreserved": "pass",
+        "sourceFingerprint12": "ae39775bcd2b",
+        "beforeTextSha256": "70d8ab93bfab9da85dc5ef6e27162d55c3b0e863cce3f58b11a46fe3a8e280b1",
+        "afterTextSha256": "c501978ea6a0780616687e7f52dca00b1aaf8c7ca264cc4e994d764473e69405"
+      },
+      {
+        "questionId": "114_自然_13",
+        "paragraphsChanged": [
+          0,
+          1
+        ],
+        "untouchedParagraphsByteIdentical": true,
+        "confidencePreserved": "pass",
+        "sourceFingerprint12": "69640ddb0de4",
+        "beforeTextSha256": "7250ae64cdcf44c802a77776a5cdf27fa773d0907a17e668ad3d929d169fe732",
+        "afterTextSha256": "748589ad184e07bbc1e1bc1989dd1fd985ac2e6f41aa4cc23b5756f274371989"
+      }
+    ]
+  },
+  "postRepair": "Answer anchor and all option references rechecked against unchanged official answers and canonical A-E figures; see verification report.",
+  "notes": [
+    "Question generation and original explanation generation were not rerun; existing structured rows and explanation entries were reused and their provenance fingerprints recorded.",
+    "Q13 scientific cross-check: NASA describes larger tilt as producing more extreme seasons and precession aligning hemisphere seasons with perihelion/aphelion; NOAA reports larger seasonal temperature variation in the northern hemisphere due to its larger land area."
+  ]
+}

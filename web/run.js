@@ -370,16 +370,21 @@ function buildMCQCard(q, meta) {
       var li = el('li');
       var b = el('button', { type: 'button', 'class': 'opt', 'data-idx': String(i) });
       b.appendChild(el('span', { 'class': 'letter' }, '(' + LETTERS[i] + ')'));
-      b.appendChild(document.createTextNode(opt));
+      var optionText = opt;
+      if (q.option_visual === true && q.figure && String(opt).trim() === '') {
+        optionText = '圖中 ' + LETTERS[i];
+      }
+      b.appendChild(document.createTextNode(optionText));
       li.appendChild(b);
       ol.appendChild(li);
       card._optButtons.push(b);
     });
     card.appendChild(ol);
-    /* 圖選題:選項文字全空、選項本體是附圖右側的 A／B／C／D 欄(表格/圖示),提示對照圖作答。 */
-    if (q.figure && q.options.length && q.options.every(function (o) { return String(o).trim() === ''; })) {
+    /* 圖像選項題依明確旗標呈現，提示字母依實際選項數動態產生（含學測 E）。 */
+    if (q.option_visual === true && q.figure && q.options.length) {
+      var optionLabels = LETTERS.slice(0, q.options.length).join('／');
       card.appendChild(el('p', { 'class': 'subtitle opt-figure-hint' },
-        '（本題選項為上圖中的 A／B／C／D，請對照圖片作答）'));
+        '（圖中 ' + optionLabels + ' 對應下方選項）'));
     }
   }
   if (meta && meta.reason) {

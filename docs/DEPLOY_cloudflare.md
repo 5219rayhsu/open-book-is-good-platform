@@ -12,6 +12,10 @@ https://open-book-is-good-platform.1003ray1003.workers.dev/
 curl -s -o /dev/null -w '%{http_code}\n' https://open-book-is-good-platform.1003ray1003.workers.dev/exam/nursing/
 ```
 
+⚠️ **403 不等於站壞**（2026-09-16 實測）：機器人防護會擋掉部分 client——同一個網址，
+Python `urllib` 拿到 **403**，`curl` 預設 UA 與瀏覽器 UA 都是 **200**。驗活一律用 `curl`；
+非用腳本不可就自己帶瀏覽器 UA（`-A`）。看到 403 先換 client 再判斷，不要當成發佈失敗。
+
 ### 🔴 `publish_platform.sh --push` **不等於上線**（2026-08-06 實測補記）
 
 那支腳本只推 GitHub，**本身不含任何部署步驟**。真正的部署是 Cloudflare

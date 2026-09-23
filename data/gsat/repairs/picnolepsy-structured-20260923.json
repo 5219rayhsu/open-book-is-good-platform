@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "open-book.picnolepsy-structured-row-repair.v1",
+  "date": "2026-09-23",
+  "sourceBank": "_dev/data/gsat/bank.json",
+  "backup": "_dev/data/gsat/bank.json.pre-picnolepsy-20260923.bak",
+  "sourceBankBeforeSha256": "9a44599197c0c335023c2c1ea83b1a6135bfa33bf545fb0066dce66a6671546e",
+  "sourceBankAfterSha256": "06809aa32d6884c09d002dbee384066dc70e9dcc88567fee2f77c386965112ff",
+  "sourceBankBytesBefore": 1739886,
+  "sourceBankBytesAfter": 1740005,
+  "questionCountBefore": 1261,
+  "questionCountAfter": 1261,
+  "repairMethod": "Four canonical structured bank rows only; no OCR, no question screenshot fallback, q13 crop rendered from existing official PDF page 4 object/text layer. Exact stem/options/answer/passage/table values preserved.",
+  "questions": [
+    {
+      "questionId": "115_自然_28",
+      "answerPreserved": "A",
+      "stemAndOptionsByteValuePreserved": true,
+      "optionCount": 5,
+      "emptyOptionCount": 5,
+      "figure": "115_自然_試題_p9_q28_figure_labeled.png",
+      "figureSha256": "cc298f6b21ced56ae8f239e8809542f0f69c21918af53479087bfcfeeb9360fb",
+      "figureBytes": 1187350,
+      "option_visual": true,
+      "fieldsChanged": [
+        "option_visual"
+      ],
+      "canonicalRowSha256": "99770f67bb8d4e82395cb9eea0132545882e34364bfc47a6878e39b294bb58a4"
+    },
+    {
+      "questionId": "115_自然_24",
+      "answerPreserved": "B",
+      "stemAndOptionsByteValuePreserved": true,
+      "optionCount": 5,
+      "emptyOptionCount": 5,
+      "figure": "115_自然_試題_p8_q24_1.png",
+      "figureSha256": "8fd1552af6e9526cd64b93c12917e67606c382ac908f97812f9e7c77616c0f71",
+      "figureBytes": 121067,
+      "option_visual": true,
+      "fieldsChanged": [
+        "option_visual"
+      ],
+      "canonicalRowSha256": "df3568ee2ebc67d7c103ba3bf861e8585f1b8a4b2a2423f73a9ed18d7620847d"
+    },
+    {
+      "questionId": "114_自然_25",
+      "answerPreserved": "D",
+      "stemAndOptionsByteValuePreserved": true,
+      "optionCount": 5,
+      "emptyOptionCount": 5,
+      "figure": "114_自然_試題_p7_q25_0.png",
+      "figureSha256": "445a8f0f40db9f89ea33e9984407a949a66fe9a465df904d6274fbe15bb12ce5",
+      "figureBytes": 293666,
+      "option_visual": true,
+      "fieldsChanged": [
+        "option_visual"
+      ],
+      "canonicalRowSha256": "6472b2d34258d2cfd4b07b99d82c4fd2beb98fb8c9e2d412a0eb53b3640edc7e"
+    },
+    {
+      "questionId": "114_自然_13",
+      "answerPreserved": "A",
+      "stemAndOptionsByteValuePreserved": true,
+      "optionCount": 5,
+      "emptyOptionCount": 0,
+      "figure": "114_自然_試題_p4_q13_options.png",
+      "figureSha256": "df411f61c0c4ea500b3c475a429cb1443db75a5a5d36541c0e07059ff2b30a8e",
+      "figureBytes": 125836,
+      "option_visual": true,
+      "fieldsChanged": [
+        "figure",
+        "needs_figure",
+        "option_visual"
+      ],
+      "canonicalRowSha256": "8e2851e5e08aad70c5a66cefdd422a44b2ff5afd451389bfa4de4bc884cab5f3"
+    }
+  ],
+  "q13FigureExtraction": {
+    "sourcePdf": "_raw/升學/114_自然_試題.pdf",
+    "sourcePdfSha256": "62b238bd109907dac0efb5dd4e019de1a59a3b283f031e90ae50fb32aafff136",
+    "page": 4,
+    "cropBBoxPt": [
+      82.5,
+      604.5,
+      532.0,
+      778.0
+    ],
+    "visualReview": "Five complete A-E orbit diagrams and labels visible; no stem or neighboring question text.",
+    "output": "_dev/data/gsat/figures/114_自然_試題_p4_q13_options.png"
+  }
+}

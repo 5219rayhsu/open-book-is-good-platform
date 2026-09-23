@@ -1,0 +1,258 @@
+{
+  "schemaVersion": "open-book.picnolepsy-four-question-source-and-postrepair-verification.v1",
+  "date": "2026-09-23",
+  "scope": "Exactly the four originally selected qids; no substitutions.",
+  "questionRowGeneration": {
+    "status": "reused-existing-canonical-bank-rows",
+    "regeneratedThisRun": false,
+    "canonicalSource": "_dev/data/gsat/bank.json",
+    "backup": "_dev/data/gsat/bank.json.pre-picnolepsy-20260923.bak",
+    "bankBeforeSha256": "9a44599197c0c335023c2c1ea83b1a6135bfa33bf545fb0066dce66a6671546e",
+    "bankAfterSha256": "06809aa32d6884c09d002dbee384066dc70e9dcc88567fee2f77c386965112ff",
+    "questionCountBefore": 1261,
+    "questionCountAfter": 1261,
+    "onlyChangedQids": [
+      "114_自然_13",
+      "114_自然_25",
+      "115_自然_24",
+      "115_自然_28"
+    ],
+    "note": "No PDF parsing, OCR, download, or bank rebuild was performed. Existing structured bank rows were retained; repairs add explicit visual-option metadata and attach the isolated q13 options figure."
+  },
+  "explanationGeneration": {
+    "status": "reused-existing-explanation-entries",
+    "regeneratedThisRun": false,
+    "source": "_dev/data/gsat/explanations.json",
+    "trace": "_dev/data/gsat/_expl_src.json",
+    "traceEntryScope": [
+      "115_自然_28",
+      "115_自然_24",
+      "114_自然_25",
+      "114_自然_13"
+    ],
+    "traceFingerprints12": {
+      "115_自然_28": "21e53041f436",
+      "115_自然_24": "ae39775bcd2b",
+      "114_自然_25": "6cb0bcb124e2",
+      "114_自然_13": "69640ddb0de4"
+    },
+    "sha256Before": "c1491be344faf2dfe3e35688ef795500e1c0609917a397940e57beb183a88888",
+    "sha256After": "c9667740e3eb7ae0671937543435046f8856c6470a6e2e2099b656012cd1859e",
+    "changedExplanationQids": [
+      "114_自然_13",
+      "115_自然_24"
+    ],
+    "allFourRedTeamed": true,
+    "redteamReport": "_dev/data/gsat/repairs/picnolepsy-explanation-redteam-20260923.json"
+  },
+  "answerVerification": {
+    "status": "existing-independent-verification-reused-and-compared",
+    "sourceGitObject": "HEAD:失神/website/exam/data/question-pool.json",
+    "sourceCommit": "768550e82c401031b6defa2aa76856a98416a897",
+    "sourcePoolVersion": "2026-09-23.gsat-five-only.v3",
+    "answerPdfBytesReparsedThisRun": false,
+    "check": "For each qid current bank.answer equals historical pool.originalCorrectOptionId and historical verification.officialAnswer.officialCorrectOptionId; independent flag is true."
+  },
+  "questions": [
+    {
+      "questionId": "115_自然_28",
+      "answer": "A",
+      "canonicalRowSha256": "99770f67bb8d4e82395cb9eea0132545882e34364bfc47a6878e39b294bb58a4",
+      "canonicalRowChangedFieldsFromPreRepair": [
+        "option_visual"
+      ],
+      "stemOptionsAndAnswerRetainedByteValue": true,
+      "optionCount": 5,
+      "blankOptionCount": 5,
+      "optionVisualMarker": true,
+      "officialQuestionPdf": {
+        "path": "_raw/升學/115_自然_試題.pdf",
+        "sha256": "9381c4030a413dc47c2e5072f6955b67e0aef6098e3fee8cf13ca3b81feabd41",
+        "pdfPage": 10
+      },
+      "officialAnswerVerificationReusedFromV3": {
+        "gitObject": "HEAD:失神/website/exam/data/question-pool.json",
+        "poolVersion": "2026-09-23.gsat-five-only.v3",
+        "sourcePdf": "_raw/升學/115_自然_答案.pdf",
+        "sourcePdfSha256": "ba42c71786f7e34af2671bb5d18367aa80487b93afe668e12035594f571770c2",
+        "answerPdfPage": 1,
+        "answerRow": "28   A",
+        "independentlyVerified": true,
+        "recheckedFromPdfThisRun": false
+      },
+      "figure": {
+        "path": "_dev/data/gsat/figures/115_自然_試題_p9_q28_figure_labeled.png",
+        "sha256": "cc298f6b21ced56ae8f239e8809542f0f69c21918af53479087bfcfeeb9360fb",
+        "bytes": 1187350,
+        "visualReview": "A-E labels and all five diagrams clear; isolated option figure; no question screenshot fallback."
+      },
+      "explanation": {
+        "sourceFingerprint12": "21e53041f436",
+        "sourceTrace": "_dev/data/gsat/_expl_src.json",
+        "status": "all-four red-team complete; post-repair rechecked",
+        "changedFromPrevious": false,
+        "reviewFinding": "未發現答案或選項指稱錯誤。A 圖為細胞核完整、染色質未凝縮的間期樣態；DNA 在 S 期完成複製，後續分裂階段已晚於首次達到 2 倍量。",
+        "repair": "No explanation text change required; retained after adversarial review.",
+        "postRepairCheckedAgainstFigure": true
+      }
+    },
+    {
+      "questionId": "115_自然_24",
+      "answer": "B",
+      "canonicalRowSha256": "df3568ee2ebc67d7c103ba3bf861e8585f1b8a4b2a2423f73a9ed18d7620847d",
+      "canonicalRowChangedFieldsFromPreRepair": [
+        "option_visual"
+      ],
+      "stemOptionsAndAnswerRetainedByteValue": true,
+      "optionCount": 5,
+      "blankOptionCount": 5,
+      "optionVisualMarker": true,
+      "officialQuestionPdf": {
+        "path": "_raw/升學/115_自然_試題.pdf",
+        "sha256": "9381c4030a413dc47c2e5072f6955b67e0aef6098e3fee8cf13ca3b81feabd41",
+        "pdfPage": 9
+      },
+      "officialAnswerVerificationReusedFromV3": {
+        "gitObject": "HEAD:失神/website/exam/data/question-pool.json",
+        "poolVersion": "2026-09-23.gsat-five-only.v3",
+        "sourcePdf": "_raw/升學/115_自然_答案.pdf",
+        "sourcePdfSha256": "ba42c71786f7e34af2671bb5d18367aa80487b93afe668e12035594f571770c2",
+        "answerPdfPage": 1,
+        "answerRow": "24    B",
+        "independentlyVerified": true,
+        "recheckedFromPdfThisRun": false
+      },
+      "figure": {
+        "path": "_dev/data/gsat/figures/115_自然_試題_p8_q24_1.png",
+        "sha256": "8fd1552af6e9526cd64b93c12917e67606c382ac908f97812f9e7c77616c0f71",
+        "bytes": 121067,
+        "visualReview": "A-E labels and all five diagrams clear; isolated option figure; no question screenshot fallback."
+      },
+      "explanation": {
+        "sourceFingerprint12": "ae39775bcd2b",
+        "sourceTrace": "_dev/data/gsat/_expl_src.json",
+        "status": "all-four red-team complete; post-repair rechecked",
+        "changedFromPrevious": true,
+        "reviewFinding": "A 段錯稱圖 A 為離散分子，與圖中相連網狀原子排列不符。B 圖清楚顯示規則排列的正鈉離子與電子，支持金屬鍵答案；C 顯示相連鍵結骨架，D 顯示正負離子交錯，E 顯示線連結晶格且沒有電子海。",
+        "repair": "只替換 A 選項段；B 正解段及 C/D/E、考點段逐字保留。",
+        "postRepairCheckedAgainstFigure": true
+      }
+    },
+    {
+      "questionId": "114_自然_25",
+      "answer": "D",
+      "canonicalRowSha256": "6472b2d34258d2cfd4b07b99d82c4fd2beb98fb8c9e2d412a0eb53b3640edc7e",
+      "canonicalRowChangedFieldsFromPreRepair": [
+        "option_visual"
+      ],
+      "stemOptionsAndAnswerRetainedByteValue": true,
+      "optionCount": 5,
+      "blankOptionCount": 5,
+      "optionVisualMarker": true,
+      "officialQuestionPdf": {
+        "path": "_raw/升學/114_自然_試題.pdf",
+        "sha256": "62b238bd109907dac0efb5dd4e019de1a59a3b283f031e90ae50fb32aafff136",
+        "pdfPage": 8
+      },
+      "officialAnswerVerificationReusedFromV3": {
+        "gitObject": "HEAD:失神/website/exam/data/question-pool.json",
+        "poolVersion": "2026-09-23.gsat-five-only.v3",
+        "sourcePdf": "_raw/升學/114_自然_答案.pdf",
+        "sourcePdfSha256": "217816174af6528a190fb31e2cde3c11df16380ae02aa4ed09f3284b3e8360c9",
+        "answerPdfPage": 1,
+        "answerRow": "25   D",
+        "independentlyVerified": true,
+        "recheckedFromPdfThisRun": false
+      },
+      "figure": {
+        "path": "_dev/data/gsat/figures/114_自然_試題_p7_q25_0.png",
+        "sha256": "445a8f0f40db9f89ea33e9984407a949a66fe9a465df904d6274fbe15bb12ce5",
+        "bytes": 293666,
+        "visualReview": "A-E labels and all five diagrams clear; isolated option figure; no question screenshot fallback."
+      },
+      "explanation": {
+        "sourceFingerprint12": "6cb0bcb124e2",
+        "sourceTrace": "_dev/data/gsat/_expl_src.json",
+        "status": "all-four red-team complete; post-repair rechecked",
+        "changedFromPrevious": false,
+        "reviewFinding": "未發現答案錨或圖像選項指稱錯誤。A 為離散繞射亮點、B 為十字光斑、C 為同心圓、E 為單亮帶，均不符合雙狹縫平行明暗條紋。",
+        "repair": "No explanation text change required; retained after adversarial review.",
+        "postRepairCheckedAgainstFigure": true
+      }
+    },
+    {
+      "questionId": "114_自然_13",
+      "answer": "A",
+      "canonicalRowSha256": "8e2851e5e08aad70c5a66cefdd422a44b2ff5afd451389bfa4de4bc884cab5f3",
+      "canonicalRowChangedFieldsFromPreRepair": [
+        "needs_figure",
+        "option_visual",
+        "figure"
+      ],
+      "stemOptionsAndAnswerRetainedByteValue": true,
+      "optionCount": 5,
+      "blankOptionCount": 0,
+      "optionVisualMarker": true,
+      "officialQuestionPdf": {
+        "path": "_raw/升學/114_自然_試題.pdf",
+        "sha256": "62b238bd109907dac0efb5dd4e019de1a59a3b283f031e90ae50fb32aafff136",
+        "pdfPage": 4
+      },
+      "officialAnswerVerificationReusedFromV3": {
+        "gitObject": "HEAD:失神/website/exam/data/question-pool.json",
+        "poolVersion": "2026-09-23.gsat-five-only.v3",
+        "sourcePdf": "_raw/升學/114_自然_答案.pdf",
+        "sourcePdfSha256": "217816174af6528a190fb31e2cde3c11df16380ae02aa4ed09f3284b3e8360c9",
+        "answerPdfPage": 1,
+        "answerRow": "13   A",
+        "independentlyVerified": true,
+        "recheckedFromPdfThisRun": false
+      },
+      "figure": {
+        "path": "_dev/data/gsat/figures/114_自然_試題_p4_q13_options.png",
+        "sha256": "df411f61c0c4ea500b3c475a429cb1443db75a5a5d36541c0e07059ff2b30a8e",
+        "bytes": 125836,
+        "visualReview": "A-E labels and all five diagrams clear; isolated option figure; no question screenshot fallback."
+      },
+      "explanation": {
+        "sourceFingerprint12": "69640ddb0de4",
+        "sourceTrace": "_dev/data/gsat/_expl_src.json",
+        "status": "all-four red-team complete; post-repair rechecked",
+        "changedFromPrevious": true,
+        "reviewFinding": "原 B 段錯稱 B 的配置沒有使單一半球夏熱冬冷與日地距離效應同時加強。圖 B 實為南半球夏季在近日點、冬季在遠日點；既有 A 段也只說「某半球」，漏掉 A 勝 B 的北半球陸地效應。",
+        "repair": "僅替換正解段與 B 段；補明 A 為北半球夏近日、冬遠日且北半球陸地較多；承認 B 也有南半球日地距離加成但海洋熱容量緩和季節差。其餘 C/D、E 與考點段逐字保留。",
+        "postRepairCheckedAgainstFigure": true
+      }
+    }
+  ],
+  "q13FigureCrop": {
+    "sourcePdf": "_raw/升學/114_自然_試題.pdf",
+    "sourcePdfSha256": "62b238bd109907dac0efb5dd4e019de1a59a3b283f031e90ae50fb32aafff136",
+    "page": 4,
+    "cropBBoxPt": [
+      82.5,
+      604.5,
+      532.0,
+      778.0
+    ],
+    "method": "crop from existing official PDF page render and object/text layer; no OCR",
+    "asset": "_dev/data/gsat/figures/114_自然_試題_p4_q13_options.png",
+    "visualReview": "Five complete orbit diagrams and A-E labels visible; no stem or footer."
+  },
+  "publicStaticPages": {
+    "generator": "_build_features/gen_deep_pages.py called by _build_features/gen_static_pages.py",
+    "runtime": "Python 3.12.14",
+    "deepPageSelftest": "passed",
+    "staticPageSelftest": "passed",
+    "directRendererAssertions": "passed for 4/4; five labels, no blank items, q13 text options unchanged",
+    "generation": "passed; 1,203 subject and paper pages traversed; changed outputs limited to _dev/exam/gsat/index.html and _dev/exam/gsat/自然/{114,115}/index.html",
+    "targetPages": [
+      "/exam/gsat/自然/114/#q13",
+      "/exam/gsat/自然/114/#q25",
+      "/exam/gsat/自然/115/#q24",
+      "/exam/gsat/自然/115/#q28"
+    ],
+    "targetPageCheck": "Each anchor resolves uniquely to matching qid stems and figure assets; five A-E rows including E; three blank-text questions display 圖中 A-E; q13 official text choices remain unchanged."
+  },
+  "limits": "Question rows and explanations were intentionally reused from the existing structured bank and explanation trace. Existing independently verified answer-PDF evidence was compared to repaired bank answers; answer PDFs were not re-parsed in this verification pass."
+}
